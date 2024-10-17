@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Headstage 64 </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Headstage 64 ">
+      
+      
+      <link rel="icon" href="../../../favicon.png">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/hardware/hs64/overview.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="hs64_hs64">
+          <h1>Headstage 64</h1>
+
+
+
+  
+  
+<p>These are the devices available on the Headstage64:</p>
+<ul>
+<li><a class="xref" href="rhd2164.html">Rhd2164</a>:
+<ul>
+<li>64 electrophysiology channels for passive probes (e.g. tetrode, silicon probe, etc.) sampled at 30 kHz with 16 bit depth</li>
+<li>Adjustable analog band-pass filter:
+<ul>
+<li>Lower cutoff configurable from 0.1 Hz to 500 Hz</li>
+<li>Upper cutoff configurable from 100 Hz to 20 kHz</li>
+</ul>
+</li>
+<li>Optional adjustable digital high-pass filter with cutoff configurable from 0.146 Hz to 3309 Hz</li>
+<li>Three auxiliary ADC channels sampled at 30 kHz with 16 bit depth</li>
+</ul>
+</li>
+<li><a class="xref" href="bno055.html">Bno055</a>: 9-axis IMU for real-time, 3D orientation tracking sampled up to ~100 Hz for easy automated commutation with Open Ephys commutators</li>
+<li><a class="xref" href="ts4231.html">Ts4231</a>: For compatibility with HTC Vive Lighthouses for real-time, 3D position tracking</li>
+<li><a class="xref" href="estim.html">Electrical Stimulation</a>: Single current source with ±15V compliance voltage and automatic electrode discharge
+<ul>
+<li>The stimulation waveform is highly configurable via the <a class="xref" href="../../../api/OpenEphys.Onix1.Headstage64ElectricalStimulatorTrigger.html">Headstage64ElectricalStimulatorTrigger</a>'s properties.</li>
+</ul>
+</li>
+<li><a class="xref" href="ostim.html">Optical Stimulation</a>: Two current sources with 800mA upper limit
+<ul>
+<li>The stimulation waveform is highly configurable via the <a class="xref" href="../../../api/OpenEphys.Onix1.Headstage64OpticalStimulatorTrigger.html">Headstage64OpticalStimulatorTrigger</a>'s properties.</li>
+</ul>
+</li>
+</ul>
+<div class="TIP">
+<h5>Tip</h5>
+<p>For a detailed explanation of the Rhd2164 amplifier's properties, read the <a href="https://intantech.com/files/Intan_RHD2164_datasheet.pdf">datasheet</a>.</p>
+</div>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Visit the <a href="https://open-ephys.github.io/onix-docs/Hardware%20Guide/Headstages/headstage-64/index.html">Headstage64 Hardware Guide</a> to learn more about the hardware such as weight, dimensions, and proper power voltages.</p>
+</div>
+<p>The following pages in the Headstage64 Guide provide an example workflow and a
+breakdown of its components.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/hardware/hs64/overview.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          &copy; 2024 Open Ephys and Contributors. Made with <a href="https://dotnet.github.io/docfx">docfx</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

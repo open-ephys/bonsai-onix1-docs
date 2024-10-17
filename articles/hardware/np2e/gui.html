@@ -1,0 +1,280 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>NeuropixelsV2e GUI </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="NeuropixelsV2e GUI ">
+      
+      
+      <link rel="icon" href="../../../favicon.png">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/hardware/np2e/gui.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="np2e_gui">
+          <h1>NeuropixelsV2e GUI</h1>
+
+
+
+  
+  
+<div class="NOTE">
+<h5>Note</h5>
+<p>The Neuropixels V2e Beta Headstage GUI functions identically to the Neuropixels V2e Headstage.</p>
+</div>
+<p>The <code>NeuropixelsV2e</code> headstage has a graphical user interface when the <code>OpenEphys.Onix1.Design</code> package is downloaded. For more information on how to install that library, check out the <a class="xref" href="../../getting-started/install-configure-bonsai.html">Installation</a> page.</p>
+<h2 id="overview">Overview</h2>
+<p>For <code>NeuropixelsV2eHeadstage</code>, the GUI allows for an easy way to change settings and visualize the effect. From the GUI, you can:</p>
+<ul>
+<li>Configure <code>Probe A</code> and <code>Probe B</code> independently
+<ul>
+<li>Choose the probe calibration file</li>
+<li>Change the <a class="xref" href="../../../api/OpenEphys.Onix1.NeuropixelsV2QuadShankReference.html">reference</a> for all electrodes</li>
+<li>Choose pre-defined channel presets or manually define within a constrained set of possible combinations</li>
+<li>Easily visualize which electrodes are enabled</li>
+</ul>
+</li>
+<li>Enable and disable the <a class="xref" href="../../../api/OpenEphys.Onix1.PolledBno055Data.html">Bno055</a> stream</li>
+</ul>
+<p>There are two ways to access configuration dialogs; 1) at the individual <code>NeuropixelsV2eProbeConfiguration</code> level where either <code>Probe A</code> or <code>Probe B</code> can be modified by itself, and 2) at the headstage level where both probes can be modified, as well as the <code>NeuropixelsV2eBno055</code> device.</p>
+<p>Whether the GUI is opened at the probe configuration level, or the headstage level, the usage will be almost identical. There are some additional tabs present at the headstage level, but the <code>Probe A</code> and <code>Probe B</code> tabs will act exactly the same as opening a probe configuration GUI for that specific probe.</p>
+<h3 id="channel-constraints">Channel constraints</h3>
+<p>For <code>NeuropixelsV2e</code>, there will always be 384 channels enabled across the entire probe. Therefore, when enabling electrodes (either <a href="#manually-enabling-electrodes">manually</a> or using <a href="#channel-presets">channel presets</a>), some previously enabled electrodes will be disabled. Additionally, if more than 384 electrodes are manually selected to be enabled, only the last 384 channels will end up being enabled. It is therefore recommended to always double-check that the correct electrodes are enabled.</p>
+<p>As an example, let us assume that electrodes <code>0</code> through <code>383</code> are initially enabled (this corresponds to 384 channels). Then, electrodes <code>384</code> and <code>385</code> are enabled. When these electrodes are enabled, electrodes <code>0</code> and <code>1</code> will be disabled. In this way, there will always be 384 channels enabled.</p>
+<p>In addition to the absolute number of channels, there are other restrictions in place regarding which combinations of electrodes can be enabled at any given time. Specifically, in the <a class="xref" href="../../../api/OpenEphys.Onix1.NeuropixelsV2QuadShankElectrode.html">NeuropixelsV2QuadShankElectrode</a> there is a <code>Channel</code> property which defines the channel index of an electrode. Across the entire probe, no two electrodes that share the same <code>Channel</code> can be simultaneously enabled.</p>
+<p><a href="#channel-presets">Channel presets</a> take this into account automatically and ensure that the rules are followed. When manually enabling electrodes, the indexing logic is applied in the order that electrodes are selected. If two (or more) electrodes are selected that share a <code>Channel</code> value, the highest indexed electrode is the only one that will be enabled.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Due to these constraints, it is possible that a desired combination of electrodes is not feasible.</p>
+</div>
+<h3 id="keeping-or-discarding-configuration-settings">Keeping or discarding configuration settings</h3>
+<p>While the GUI is open, any changes to the configuration settings can be freely modified and will not affect the configuration unless <code>Okay</code> is pressed. This includes all aspects of the configuration, such as which electrodes are enabled, the chosen reference channel, and the probe calibration file.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The hardware is not actually configured until the workflow starts.</p>
+</div>
+<p>If the window is closed any other way (such as by pressing <code>Cancel</code>, or pressing the <kbd>X</kbd> to close the window), then any changes made <em>will not</em> be saved.</p>
+<h3 id="probeinterface">ProbeInterface</h3>
+<p>The <code>NeuropixelsV2eHeadstage</code> GUI uses <a href="https://probeinterface.readthedocs.io/en/main/index.html">ProbeInterface</a> as the format to draw the probes and electrodes visually. For more information on ProbeInterface and the resulting JSON file, check out their <a href="https://probeinterface.readthedocs.io/en/main/format_spec.html">format specifications</a> page.</p>
+<p>When opening the GUI, there is a default probe configuration that is loaded and drawn, which can be saved to a <a href="#save-probeinterface-file">JSON file</a>. Conversely, an existing JSON file can be <a href="#load-probeinterface-file">loaded</a> to update the current channel configuration. If for any reason the default configuration is needed, it can be <a href="#load-default-configuration">loaded again</a> at any time.</p>
+<h2 id="open-probe-configuration-gui">Open Probe Configuration GUI</h2>
+<p><img src="../../../images/neuropixelsv2e-gui-tut/bonsai-editor-where-to-click.png" alt="Open the GUI"></p>
+<p>Steps to open the Probe Configuration GUI:</p>
+<ul>
+<li>Select the <code>ConfigureNeuropixelsV2eHeadstage</code> node.</li>
+<li>Click on the <code>NeuropixelsV2eProbeConfiguration</code> to edit (either <code>ProbeConfigurationA</code> or <code>ProbeConfigurationB</code>).</li>
+<li>Select the <kbd>...</kbd> button on the right-most part of the property pane (#1 above).</li>
+</ul>
+<p>Once opened, if no probe calibration file has been selected the window should look like the image below. To view the probe, follow the steps <a href="#choosing-a-probe-calibration-file">below</a>.</p>
+<p><img src="../../../images/neuropixelsv2e-gui-tut/probeconfiguration-dialog.png" alt="Probe Configuration GUI"></p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>The controls shown for this GUI are the same as the ones shown for the <code>NeuropixelsV2e Headstage Configuration</code> below.</p>
+</div>
+<h3 id="choosing-a-probe-calibration-file">Choosing a probe calibration file</h3>
+<p>Upon opening the GUI for the first time, if no probe calibration file was set in the Bonsai editor, the window will be mostly blank. To populate the window with a drawing of the probe, click on the ellipsis button to the right of the empty text box under &quot;Probe Calibration File:&quot; (see below). This will open a file dialog, where the calibration file can be searched for and selected.</p>
+<p align="center">
+  <img src="../../../images/neuropixelsv2e-gui-tut/probeconfiguration-filecalibration.png">
+</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Files are expected to be named <code>XXXXXXXXXXX_gainCalValues.csv</code>, where &quot;XXXXXXXXXXX&quot; is the probe serial number.</p>
+</div>
+<p>Once the file is selected, press <code>Open</code> or <kbd>Enter</kbd>. This will populate the text box with the filepath to the calibration file and enable visualization of the electrodes. Below is a view of the Probe Configuration GUI that has been opened for <code>Probe A</code> with a gain calibration file selected. Note that the <code>Gain Correction</code> textbox and the <code>Gain Calibration SN: </code> status strip are automatically filled in with values found in the calibration file.</p>
+<p><img src="../../../images/neuropixelsv2e-gui-tut/probeconfiguration-dialog-with-probe.png" alt="Probe Configuration GUI with Probe shown"></p>
+<h3 id="selecting-channel-reference">Selecting channel reference</h3>
+<p align="center">
+  <img src="../../../images/neuropixelsv2e-gui-tut/probeconfiguration-reference.png">
+</p>
+<p>Underneath the probe calibration filepath, there is a dropdown menu for choosing the reference for all channels. For possible values and a brief description of what they correspond to, check out the <a class="xref" href="../../../api/OpenEphys.Onix1.NeuropixelsV2QuadShankReference.html">references page</a>.</p>
+<h3 id="channel-presets">Channel presets</h3>
+<p>To save time, it is possible to select a preset channel combination from the <code>Channel Presets</code> dropdown. These presets are defined to work within the constraints of <code>NeuropixelsV2e</code> channel combinations defined <a href="#channel-constraints">above</a>.</p>
+<p align="center">
+  <img src="../../../images/neuropixelsv2e-gui-tut/probeconfiguration-channelpresets.png">
+</p>
+<p>Channel presets follow one of these patterns:</p>
+<ul>
+<li>Shank N Bank [A | B | C | D]
+<ul>
+<li>Enables all electrodes in the chosen bank on shank N</li>
+<li>To learn more about the banks along each shank, check out the <a class="xref" href="../../../api/OpenEphys.Onix1.NeuropixelsV2QuadShankBank.html">NeuropixelsV2QuadShankBank</a> page.</li>
+</ul>
+</li>
+<li>All Shanks N_M
+<ul>
+<li>Enables all electrodes starting at shank index N up to shank index M across all four shanks</li>
+</ul>
+</li>
+</ul>
+<p>If electrodes are manually enabled, the <code>Channel Presets</code> dropdown will change to <strong>None</strong>, indicating that a channel preset is no longer selected.</p>
+<h3 id="maneuvering-along-the-probe">Maneuvering along the probe</h3>
+<p>Once a GUI has been <a href="#open-probe-configuration-gui">opened</a> and a probe calibration file has been <a href="#choosing-a-probe-calibration-file">selected</a>, the main panel on the left will be populated with a <code>NeuropixelsV2e</code> probe. Below are the buttons used to navigate within this panel to view and choose electrodes.</p>
+<ul>
+<li>Mouse Controls
+<ul>
+<li>Mouse wheel zooms in/out towards the cursor</li>
+<li>Left-click and drag will select electrodes within the drawn rectangle</li>
+<li>Left-click on an electrode will select that electrode</li>
+<li>Left-click in empty space will clear the selected electrodes</li>
+<li>Middle-click and drag will pan the electrodes</li>
+</ul>
+</li>
+<li>Scroll bar
+<ul>
+<li>On the right side of the main panel there is a scroll bar that can be used to move the probe up and down</li>
+<li>Panning the probe up or down will update the scroll bar once the movement has completed</li>
+<li>The scroll bar can be moved by:
+<ul>
+<li>Grabbing the marker using the mouse and dragging it up or down</li>
+<li>Placing the cursor either above or below the marker and clicking</li>
+<li>Using the mouse wheel to scroll up or down while the cursor is over the scroll bar</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="zoom-and-pan-limits">Zoom and pan limits</h3>
+<p>When zooming in and out, note that there are limits in both directions. The probe can only be zoomed out to the point that the entire probe is visible within the panel and no more. Similarly, while zooming in the probe will not zoom in past a certain point.</p>
+<p>In addition to the absolute zoom limits, the panel will automatically shift the probe to ensure it is always in view. This is handled each time the probe is zoomed or panned.</p>
+<p>To reset the view at any time, click on the <code>Reset Zoom</code> button to fully zoom out the panel.</p>
+<h3 id="manually-enabling-electrodes">Manually enabling electrodes</h3>
+<p>Electrodes can be selected at any zoom level, but it is often preferable to zoom in to read the electrode indices. Consider maximizing the screen to see those numbers more easily.</p>
+<p>To select, as described <a href="#maneuvering-along-the-probe">above</a>, either click-and-drag the cursor over the desired electrodes, or select individual electrodes by clicking on them one-by-one. Once the electrodes to enable are selected, click on the <code>Enable Selected Electrodes</code> button in the right panel. At this point the selected electrodes should turn blue, indicating that they are now enabled. It is important to note that when electrodes are enabled, a number of previously enabled electrodes will be disabled due to channel constraints. For more information, read the <a href="#channel-constraints">Channel constraints</a> section above.</p>
+<p>The short video below shows how to select, clear selection, enable selected electrodes, and translate using the scroll bar. Note that once electrodes are manually enabled, the <code>Channel Presets</code> drop-down changes from <code>Shank0BankA</code> to <code>None</code>. Then, once the selected electrodes match the preset, it is automatically changed back to <code>Shank0BankA</code>.</p>
+<div>
+  <video width="650" height="365" controls="" muted="" loop="">
+    <source src="../../../images/neuropixelsv2e-gui-tut/probeconfiguration-enable-electrodes.webm">
+  </video>
+</div>
+<h3 id="loading-and-saving-channel-configurations">Loading and saving channel configurations</h3>
+<p>When the GUI is first opened and after a probe calibration file has been specified, the default <a href="#probeinterface">ProbeInterface</a> configuration is loaded and drawn in the main panel. In this case, the default configuration is for a quad-shank <code>NeuropixelsV2e</code> probe, with the <code>Shank0BankA</code> channel preset selected. To load a new configuration, load the default configuration, or save the current configuration, go to the File drop-down menu (see below) and choose the relevant option.</p>
+<p align="center">
+  <img src="../../../images/neuropixelsv2e-gui-tut/probeconfiguration-filemenu.png">
+</p>
+<h4 id="save-probeinterface-file">Save ProbeInterface file</h4>
+<p>To save a <a href="#probeinterface">ProbeInterface</a> JSON file fully describing the probe, including which electrodes are currently enabled, go to the File drop-down menu, and select <code>Save Channel Configuration</code>. This will open a file dialog window to save the new JSON file. Choose a folder location and a name for the file, then hit <code>Save</code>. This will export the current channel configuration. This is a useful way to save any manually enabled electrodes as a backup, or to easily switch between different configurations between recordings.</p>
+<h4 id="load-probeinterface-file">Load ProbeInterface file</h4>
+<p>To load a <a href="#probeinterface">ProbeInterface</a> JSON file, navigate to the File drop-down menu and select <code>Load Channel Configuration</code>. This will open a file dialog window; browse to the existing JSON file, select it and press <code>Open</code> to load the channel configuration. The new probe shape will be loaded and drawn, with the enabled electrodes highlighted as usual.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>When loading a new configuration, the total number of electrodes must match the existing configuration, and the number of enabled electrodes must match.</p>
+</div>
+<h4 id="load-default-configuration">Load default configuration</h4>
+<p>To load the default channel configuration at any time, navigate to the File drop-down menu and choose <code>Load Default Channel Configuration</code>. This will load the default configuration, with the <code>Shank0BankA</code> channel preset selected.</p>
+<h2 id="open-headstage-configuration-gui">Open Headstage Configuration GUI</h2>
+<p><img src="../../../images/neuropixelsv2e-gui-tut/bonsai-editor-where-to-click.png" alt="Open the GUI"></p>
+<p>Step to open the headstage configuration GUI</p>
+<ul>
+<li>Double-click the <code>ConfigureNeuropixelsV2eHeadstage</code> node (#2 above)</li>
+</ul>
+<p>Once opened, if no probe calibration is selected for either <code>Probe A</code> or <code>Probe B</code>, then both tabs will only show their controls on the right and no probes (see below).</p>
+<p><img src="../../../images/neuropixelsv2e-gui-tut/headstage-dialog.png" alt="Headstage Configuration GUI"></p>
+<h3 id="configure-probe-a">Configure Probe A</h3>
+<p>Using the headstage configuration GUI is exactly the same as using the <a href="#open-probe-configuration-gui">probe configuration GUI</a>. After the GUI has been <a href="#open-headstage-configuration-gui">opened</a> and a probe calibration file has been <a href="#choosing-a-probe-calibration-file">selected</a>, <code>Probe A</code> will be drawn in the corresponding tab (see below).</p>
+<p><img src="../../../images/neuropixelsv2e-gui-tut/headstage-dialog-with-probe-a.png" alt="Headstage Configuration GUI with probe A"></p>
+<h3 id="configure-probe-b">Configure Probe B</h3>
+<p>Using the headstage configuration GUI is exactly the same as using the <a href="#open-probe-configuration-gui">probe configuration GUI</a>. After the GUI has been <a href="#open-headstage-configuration-gui">opened</a> and a probe calibration file has been <a href="#choosing-a-probe-calibration-file">selected</a>, <code>Probe B</code> will be drawn in the corresponding tab (see below).</p>
+<p><img src="../../../images/neuropixelsv2e-gui-tut/headstage-dialog-with-probe-b.png" alt="Headstage Configuration GUI with probe B"></p>
+<h3 id="configure-bno055">Configure Bno055</h3>
+<p>At the headstage level, there is another device tab listed for a <a class="xref" href="../../../api/OpenEphys.Onix1.PolledBno055Data.html">Bno055</a>. From this tab, the device can be enabled or disabled by selecting the appropriate value from the drop-down menu next to <code>Enable</code>. While the <code>DeviceAddress</code> and <code>DeviceName</code> values are modifiable here, they have no affect on the underlying device configuration; only changes to the <code>Enable</code> property will be respected.</p>
+<p><img src="../../../images/neuropixelsv2e-gui-tut/headstage-dialog-with-bno055.png" alt="Headstage Configuration GUI with Bno055"></p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/hardware/np2e/gui.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          &copy; 2024 Open Ephys and Contributors. Made with <a href="https://dotnet.github.io/docfx">docfx</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
