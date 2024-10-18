@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Headstage64 Rhd2164 </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Headstage64 Rhd2164 ">
+      
+      
+      <link rel="icon" href="../../../favicon.png">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/hardware/hs64/rhd2164.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="hs64_rhd2164">
+          <h1>Headstage64 Rhd2164</h1>
+
+
+
+  
+  
+<p>The following excerpt from the Headstage64 <a class="xref" href="overview.html">example workflow</a> demonstrates the Rhd2164 functionality by streaming and saving data from the Rhd2164 device.</p>
+<div class="workflow"><p><img src="../../../workflows/hardware/hs64/rhd2164.bonsai" alt="/workflows/hardware/hs64/rhd2164.bonsai workflow"></p>
+</div>
+<p>The <a class="xref" href="../../../api/OpenEphys.Onix1.Rhd2164Data.html">Rhd2164Data</a> operator generates a sequence of <a class="xref" href="../../../api/OpenEphys.Onix1.Rhd2164DataFrame.html">Rhd2164DataFrame</a>s using the following settings:</p>
+<ul>
+<li><code>BufferSize</code> is set to 30. Each <code>Rhd2164DataFrame</code> will contain a [1 x 30 sample] <code>Clock</code> vector, a [64 channel x 30 sample] <code>AmplifierData</code> matrix, and a [3 channel x 30 sample] <code>AuxData</code> matrix. This corresponds to 1.2 ms of data per data frame.</li>
+<li>The <code>Headstage64Data</code>'s <code>DeviceName</code> property is set to &quot;Headstage64/Rhd2164&quot;. This links the <code>Rhd2164Data</code> operator to the corresponding configuration operator.</li>
+</ul>
+<p>The relevant properties are extracted from the <code>Rhd2164DataFrame</code> by right-clicking the <code>Rhd2164Data</code> operator, and choosing the following <strong>Output</strong> members: <code>Clock</code>, <code>AmplifierData</code>, and <code>AuxData</code>. The <a href="https://bonsai-rx.org/docs/api/Bonsai.Dsp.MatrixWriter.html"><code>MatrixWriter</code></a> operators saves the selected members to files with the following format: <code>rhd2164-clock_&lt;timestamp&gt;.raw</code>, <code>rhd2164-amplifier_&lt;timestamp&gt;.raw</code>, and <code>rhd2164-aux_&lt;timestamp&gt;.raw</code>, respectively.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/hardware/hs64/rhd2164.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          &copy; 2024 Open Ephys and Contributors. Made with <a href="https://dotnet.github.io/docfx">docfx</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

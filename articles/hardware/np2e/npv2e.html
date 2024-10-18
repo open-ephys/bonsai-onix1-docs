@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>NeuropixelsV2e </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="NeuropixelsV2e ">
+      
+      
+      <link rel="icon" href="../../../favicon.png">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/hardware/np2e/npv2e.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="np2e_npv2e">
+          <h1>NeuropixelsV2e</h1>
+
+
+
+  
+  
+<div class="NOTE">
+<h5>Note</h5>
+<p>The NeuropixelsV2eBeta Headstage functions nearly identically to the NeuropixelsV2e Headstage. Simply replace <code>NeuropixelsV2eData</code> with <code>NeuropixelsV2eBetaData</code> and set its <code>DeviceName</code> property to &quot;NeuropixelsV2eBetaHeadstage/NeuropixelsV2eBeta&quot;.</p>
+</div>
+<p>The following excerpt from the NeuropixelsV2e Headstage <a class="xref" href="overview.html">example workflow</a> demonstrates Neuropixels 2.0 probe functionality by streaming data and saves Neuropixels 2.0 probe data. The second chain  is disabled by default, assuming that only one probe is connected to the headstage. If two probes are connected, the second <code>NeuropixelsV2eData</code> chain can be enabled to stream data from both probes simultaneously. To enable, select all nodes in the disabled chain and press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>, or click <code>Enable</code> right-clicking the selected nodes.</p>
+<div class="workflow"><p><img src="../../../workflows/hardware/np2e/np2.bonsai" alt="/workflows/hardware/breakout/np2.bonsai workflow"></p>
+</div>
+<p>The <a class="xref" href="../../../api/OpenEphys.Onix1.NeuropixelsV2eData.html">NeuropixelsV2eData</a> operator generates a sequence of <a class="xref" href="../../../api/OpenEphys.Onix1.NeuropixelsV2eDataFrame.html">NeuropixelsV2eDataFrame</a>s. In the NeuropixelsV2e Headstage example workflow,</p>
+<ul>
+<li><code>BufferSize</code> is set to 30. Therefore, each frame will contain a [1 x 30 sample] <code>Clock</code> vector and a [384 channel x
+30 sample] <code>AmplifierData</code> matrix. The Neuropixels 2.0 probe samples at 30 kHz per channel so this
+corresponds to 1 ms of data.</li>
+<li><code>DeviceName</code> property is set to &quot;NeuropixelsV2eHeadstage/NeuropixelsV2e&quot;. This links the <code>NeuropixelsV2eData</code> operator to the corresponding configuration operator.</li>
+<li><code>ProbeIndex</code> property is set to &quot;ProbeA&quot;. This links the data generated by this probe to the probe in port A of the headstage.</li>
+</ul>
+<p>The relevant properties are extracted from the <a class="xref" href="../../../api/OpenEphys.Onix1.NeuropixelsV2eDataFrame.html">NeuropixelsV2eDataFrame</a> by right-clicking the <a class="xref" href="../../../api/OpenEphys.Onix1.NeuropixelsV2eData.html">NeuropixelsV2eData</a> operator, and choosing the following <strong>Output</strong> members: <code>Clock</code>, and <code>AmplifierData</code>. The <a href="https://bonsai-rx.org/docs/api/Bonsai.Dsp.MatrixWriter.html"><code>MatrixWriter</code></a> operators saves the selected members to files with the following format: <code>np2-a-clock_&lt;timestamp&gt;.raw</code> and <code>np2-a-amp&lt;timestamp&gt;.raw</code>, respectively.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/hardware/np2e/npv2e.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          &copy; 2024 Open Ephys and Contributors. Made with <a href="https://dotnet.github.io/docfx">docfx</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
