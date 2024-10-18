@@ -1,5 +1,5 @@
 <p>
-  The following excerpt from the {{{hardware}}} <a class="xref" href="~/articles/hardware/{{{oe.hardwareDirectory}}}/overview.html">example workflow</a> demonstrates port status functionality and saves timestamped port status data.
+  The {{{hardware}}} reports when a port connection enters or leaves an aberrant state. This is helpful for diagnostic purposes - knowing the time and and type of a communication failure can facilitate tracking down its cause. The following excerpt from the {{{hardware}}} <a class="xref" href="~/articles/hardware/{{{oe.hardwareDirectory}}}/overview.html">example workflow</a> demonstrates port status functionality and saves timestamped port status data.
 </p> 
 
 <div class="workflow"> 
@@ -7,7 +7,7 @@
 </div>
 
 <p>
-  The {{{hardware}}} reports when a port connection enters or leaves an aberrant state via the <a class="xref" href="~/api/OpenEphys.Onix1.PortStatus.html">PortStatus</a> operator, which generates a sequence of <a class="xref" href="~/api/OpenEphys.Onix1.PortStatus.html">PortStatusFrame</a>s. Events that cause the <code>PortStatus</code> to emit a <code>PortStatusFrame</code> include the SERDES losing or gaining lock, SERDES failing or passing parity check, or the <a class="xref" href="~/api/OpenEphys.Onix1.PortStatusCode.html">PortStatusCode</a> changing value. The <code>DeviceName</code> is set to "{{{hardwareOperator}}}/PortController". This links the <code>PortStatus</code> operator to the corresponding configuration operator.
+  Port status data is produced in Bonsai by the <a class="xref" href="~/api/OpenEphys.Onix1.PortStatus.html">PortStatus</a> operator which generates a sequence of <a class="xref" href="~/api/OpenEphys.Onix1.PortStatus.html">PortStatusFrames</a>. <code>PortStatus</code> emits a <code>PortStatusFrame</code> when the SERDES loses or gains lock, the SERDES fails or passes parity check, or the <a class="xref" href="~/api/OpenEphys.Onix1.PortStatusCode.html">PortStatusCode</a> changes value. The <code>DeviceName</code> is set to "{{{hardwareOperator}}}/PortController". This links the <code>PortStatus</code> operator to the corresponding configuration operator.
 </p>
 
 <p>
