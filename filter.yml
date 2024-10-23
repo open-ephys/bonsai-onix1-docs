@@ -4,3 +4,9 @@ apiRules:
       uid: System.ObsoleteAttribute
 - exclude:
     uidRegex: ^OpenEphys.Onix1.Design
+# https://github.com/dotnet/docfx/issues/10173#issuecomment-2430513568
+# https://github.com/dotnet/docfx/blob/af68cbdd73b803a010fd8c22ad64148bf6337a8f/src/Docfx.Dotnet/Resources/defaultfilterconfig.yml#L35-L40
+attributeRules:
+- include: # this is necessary to pull our custom attributes into .yml metadata without disabling default filter
+    uidRegex: ^System\.ComponentModel\.(CategoryAttribute|DescriptionAttribute)$
+    type: Type 
