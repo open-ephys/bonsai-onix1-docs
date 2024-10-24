@@ -4,27 +4,31 @@ param
     [parameter(mandatory=$false)][switch][Alias("c")]$clean,
     [parameter(mandatory=$false)][switch][Alias("b")]$build,
     [parameter(mandatory=$false)][switch][Alias("d")]$doclinkchecker,
-    [parameter(mandatory=$false)][string][Alias("l")]$linkcheck,
-    [parameter(mandatory=$false)][string][Alias("a")]$all
+    [parameter(mandatory=$false)][string][Alias("l")]$lychee,
+    [parameter(mandatory=$false)][string][Alias("a")]$all,
+    [parameter(mandatory=$false)][switch][Alias("r")]$remote
 )
 
 # this is called removeartifacts instead of clean because clean might be already mean something in powershell?
 function removeartifacts
 {
     $deletePaths = ".\workflows\**\*.svg", ".\workflows\hardware\**\*.svg", ".\workflows\**\*.bonsai.layout", ".\workflows\hardware\**\*.bonsai.layout", ".\api\*.yml", ".\api\.manifest", ".\_site\", ".\_raw\", ".\_view\", ".\src\onix-bonsai-onix1\artifacts\"
-
     foreach($deletePath in $deletePaths){if (Test-Path $deletePath){Remove-Item $deletePath -Recurse}}
     Write-Output ""
 }
 
 function build{.\build.ps1 --logLevel Suggestion --warningsAsErrors}
 
-function linkcheck 
+function lychee($lycheePath, $remote)
 {
-    param($lycheePath)
     Write-Output "`nRunning lychee..."
     Write-Output "------------------------------------------`n"
-    Invoke-Expression "& `"$lycheePath`" --no-progress --base _site --exclude ^https://github\.com.*merge.* --exclude ^https://github\.com.*apiSpec.* '_site/**/*.html'"
+    if ($remote){ 
+        Invoke-Expression "& `"$lycheePath`" --no-progress --base _site --exclude ^https://github\.com.*merge.* --exclude ^https://github\.com.*apiSpec.* '_site/**/*.html'"
+    }
+    else{
+        Invoke-Expression "& `"$lycheePath`" --no-progress --base _site --exclude ^https://github\.com.*merge.* --exclude ^https://github\.com.*apiSpec.* --exclude ^https://github\.com/open-ephys/onix1-bonsai-docs/blob/.*/#L1 '_site/**/*.html'"
+    }
     Write-Output "`n"
 }
 
@@ -41,7 +45,7 @@ if ($build){build}
 
 if ($doclinkchecker){doclinkchecker}
 
-if ($PSBoundParameters.ContainsKey("linkcheck")){linkcheck($linkcheck)}
+if ($PSBoundParameters.ContainsKey("lychee")){lychee $lychee $remote}
 
 if ($PSBoundParameters.ContainsKey("all"))
 {
@@ -60,5 +64,5 @@ if ($PSBoundParameters.ContainsKey("all"))
     Start-Sleep -Seconds 2
     doclinkchecker
     Start-Sleep -Seconds 2
-    linkcheck($all)
+    lychee $all $remote
 }
