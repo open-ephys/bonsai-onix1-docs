@@ -1,0 +1,4231 @@
+{
+  "source_base_path": "D:/a/bonsai-onix1-docs/bonsai-onix1-docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.AnalogIODataType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.AnalogIODataType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.AnalogIODirection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.AnalogIODirection.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.AnalogIOVoltageRange.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.AnalogIOVoltageRange.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.AnalogInput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.AnalogInput.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.AnalogInputDataFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.AnalogInputDataFrame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.AnalogOutput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.AnalogOutput.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.Bno055AxisMap.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.Bno055AxisMap.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.Bno055AxisSign.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.Bno055AxisSign.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.Bno055CalibrationFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.Bno055CalibrationFlags.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.Bno055Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.Bno055Data.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.Bno055DataFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.Bno055DataFrame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.BreakoutButtonState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.BreakoutButtonState.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.BufferedDataFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.BufferedDataFrame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureAnalogIO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureAnalogIO.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureBno055.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureBno055.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureBreakoutBoard.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureBreakoutBoard.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureDigitalIO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureDigitalIO.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureHarpSyncInput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureHarpSyncInput.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureHeadstage64.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureHeadstage64.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureHeadstage64ElectricalStimulator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureHeadstage64ElectricalStimulator.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureHeadstage64OpticalStimulator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureHeadstage64OpticalStimulator.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureHeadstageNric1384.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureHeadstageNric1384.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureHeartbeat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureHeartbeat.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureLoadTester.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureLoadTester.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureMemoryMonitor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureMemoryMonitor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureNeuropixelsV1e.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureNeuropixelsV1e.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureNeuropixelsV1eHeadstage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureNeuropixelsV1eHeadstage.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureNeuropixelsV1f.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureNeuropixelsV1f.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureNeuropixelsV1fHeadstage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureNeuropixelsV1fHeadstage.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureNeuropixelsV2e.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureNeuropixelsV2e.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureNeuropixelsV2eBeta.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureNeuropixelsV2eBeta.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureNeuropixelsV2eBetaHeadstage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureNeuropixelsV2eBetaHeadstage.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureNeuropixelsV2eHeadstage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureNeuropixelsV2eHeadstage.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureNric1384.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureNric1384.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureOutputClock.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureOutputClock.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigurePolledBno055.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigurePolledBno055.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureRhd2164.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureRhd2164.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureTS4231V1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureTS4231V1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureUclaMiniscopeV4.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureUclaMiniscopeV4.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ConfigureUclaMiniscopeV4Camera.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ConfigureUclaMiniscopeV4Camera.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.ContextTask.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.ContextTask.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.CreateContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.CreateContext.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.DataFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.DataFrame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.DeviceFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.DeviceFactory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.DeviceNameConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.DeviceNameConverter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.DigitalInput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.DigitalInput.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.DigitalInputDataFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.DigitalInputDataFrame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.DigitalOutput.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.DigitalOutput.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.DigitalPortState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.DigitalPortState.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.Electrode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.Electrode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.HarpSyncInputData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.HarpSyncInputData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.HarpSyncInputDataFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.HarpSyncInputDataFrame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.HarpSyncSource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.HarpSyncSource.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.Headstage64ElectricalStimulatorTrigger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.Headstage64ElectricalStimulatorTrigger.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.Headstage64OpticalStimulatorTrigger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.Headstage64OpticalStimulatorTrigger.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.HeartbeatData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.HeartbeatData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.HeartbeatDataFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.HeartbeatDataFrame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.IConfigureNeuropixelsV1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.IConfigureNeuropixelsV1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.IConfigureNeuropixelsV2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.IConfigureNeuropixelsV2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.MemoryMonitorData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.MemoryMonitorData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.MemoryMonitorDataFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.MemoryMonitorDataFrame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.MultiDeviceFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.MultiDeviceFactory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV1Adc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV1Adc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV1AdcCalibration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV1AdcCalibration.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV1Bank.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV1Bank.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV1DataFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV1DataFrame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV1Electrode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV1Electrode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV1Gain.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV1Gain.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV1Helper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV1Helper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV1Probe.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV1Probe.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV1ProbeConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV1ProbeConfiguration.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV1ReferenceSource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV1ReferenceSource.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV1eData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV1eData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV1eGainCorrection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV1eGainCorrection.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV1eProbeGroup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV1eProbeGroup.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV1fData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV1fData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV2GainCorrection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV2GainCorrection.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV2Helper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV2Helper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV2Probe.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV2Probe.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV2QuadShankBank.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV2QuadShankBank.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV2QuadShankElectrode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV2QuadShankElectrode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV2QuadShankProbeConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV2QuadShankProbeConfiguration.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV2QuadShankReference.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV2QuadShankReference.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV2eBetaData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV2eBetaData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV2eBetaDataFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV2eBetaDataFrame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV2eData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV2eData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV2eDataFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV2eDataFrame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.NeuropixelsV2eProbeGroup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.NeuropixelsV2eProbeGroup.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.Nric1384Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.Nric1384Data.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.Nric1384DataFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.Nric1384DataFrame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.OutputClockData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.OutputClockData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.OutputClockParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.OutputClockParameters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.PolledBno055Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.PolledBno055Data.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.PortName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.PortName.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.PortStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.PortStatus.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.PortStatusCode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.PortStatusCode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.PortStatusFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.PortStatusFrame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.Rhd2164AnalogHighCutoff.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.Rhd2164AnalogHighCutoff.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.Rhd2164AnalogLowCutoff.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.Rhd2164AnalogLowCutoff.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.Rhd2164Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.Rhd2164Data.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.Rhd2164DataFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.Rhd2164DataFrame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.Rhd2164DspCutoff.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.Rhd2164DspCutoff.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.SingleDeviceFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.SingleDeviceFactory.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.StartAcquisition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.StartAcquisition.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.TS4231V1Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.TS4231V1Data.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.TS4231V1DataFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.TS4231V1DataFrame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.TS4231V1Envelope.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.TS4231V1Envelope.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.TS4231V1PositionData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.TS4231V1PositionData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.TS4231V1PositionDataFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.TS4231V1PositionDataFrame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.UclaMiniscopeV4CameraData.UclaMiniscopeV4ImageDepth.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.UclaMiniscopeV4CameraData.UclaMiniscopeV4ImageDepth.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.UclaMiniscopeV4CameraData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.UclaMiniscopeV4CameraData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.UclaMiniscopeV4CameraFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.UclaMiniscopeV4CameraFrame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.UclaMiniscopeV4FramesPerSecond.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.UclaMiniscopeV4FramesPerSecond.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.UclaMiniscopeV4SensorGain.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.UclaMiniscopeV4SensorGain.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenEphys.Onix1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenEphys.Onix1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/configure.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/configure.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/core.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/core.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/dataio.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/dataio.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/device-configure.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/device-configure.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started/bonsai-usage.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started/bonsai-usage.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started/initialize-oni-context.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started/initialize-oni-context.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started/install-configure-bonsai.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started/install-configure-bonsai.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started/next-steps.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started/next-steps.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started/operator-types.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started/operator-types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started/property-categories.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started/property-categories.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started/start-workflow.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started/start-workflow.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started/tips-tricks.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started/tips-tricks.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started/visualize-data.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started/visualize-data.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/breakout/analog-io.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/breakout/analog-io.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/breakout/clock-output.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/breakout/clock-output.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/breakout/configuration.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/breakout/configuration.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/breakout/digital-inputs.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/breakout/digital-inputs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/breakout/digital-outputs.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/breakout/digital-outputs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/breakout/harp-sync.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/breakout/harp-sync.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/breakout/heartbeat.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/breakout/heartbeat.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/breakout/load-data.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/breakout/load-data.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/breakout/memory-monitor.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/breakout/memory-monitor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/breakout/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/breakout/overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/breakout/workflow.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/breakout/workflow.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/hs64/bno055.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/hs64/bno055.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/hs64/configuration.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/hs64/configuration.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/hs64/estim.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/hs64/estim.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/hs64/memory-monitor.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/hs64/memory-monitor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/hs64/ostim.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/hs64/ostim.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/hs64/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/hs64/overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/hs64/port-status.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/hs64/port-status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/hs64/rhd2164.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/hs64/rhd2164.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/hs64/ts4231.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/hs64/ts4231.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/hs64/workflow.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/hs64/workflow.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/np1e/bno055.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/np1e/bno055.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/np1e/configuration.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/np1e/configuration.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/np1e/gui.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/np1e/gui.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/np1e/npv1e.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/np1e/npv1e.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/np1e/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/np1e/overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/np1e/port-status.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/np1e/port-status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/np2e/bno055.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/np2e/bno055.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/np2e/configuration.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/np2e/configuration.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/np2e/gui.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/np2e/gui.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/np2e/npv2e.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/np2e/npv2e.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/np2e/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/np2e/overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/hardware/np2e/port-status.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/hardware/np2e/port-status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html"
+        },
+        ".json": {
+          "relative_path": "articles/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/tutorials/buffers-memory-usage.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/tutorials/buffers-memory-usage.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/tutorials/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/tutorials/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/tutorials/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/tutorials/toc.html"
+        },
+        ".json": {
+          "relative_path": "articles/tutorials/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "favicon.png",
+      "output": {
+        "resource": {
+          "relative_path": "favicon.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/beaker.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/beaker.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/bonsai-editor-package-manager-highlight.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/bonsai-editor-package-manager-highlight.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/bonsai-editor-place-create-context-manually.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/bonsai-editor-place-create-context-manually.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/bonsai-editor-place-create-context-search.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/bonsai-editor-place-create-context-search.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/bonsai-editor-start-button.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/bonsai-editor-start-button.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/bonsai-install-Bonsai.StarterPack.webp",
+      "output": {
+        "resource": {
+          "relative_path": "images/bonsai-install-Bonsai.StarterPack.webp"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/bonsai-install-OpenEphys.Commutator.webp",
+      "output": {
+        "resource": {
+          "relative_path": "images/bonsai-install-OpenEphys.Commutator.webp"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/bonsai-install-OpenEphys.Onix1.Design.webp",
+      "output": {
+        "resource": {
+          "relative_path": "images/bonsai-install-OpenEphys.Onix1.Design.webp"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/bonsai-install-OpenEphys.Onix1.webp",
+      "output": {
+        "resource": {
+          "relative_path": "images/bonsai-install-OpenEphys.Onix1.webp"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/bonsai-package-manager-browse.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/bonsai-package-manager-browse.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/bonsai-package-manager-openephys.onix.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/bonsai-package-manager-openephys.onix.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/bonsai-package-manager-starterpack.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/bonsai-package-manager-starterpack.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/bonsai-splash-page-new-file.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/bonsai-splash-page-new-file.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/bonsai-splash-page-package-manager-highlight.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/bonsai-splash-page-package-manager-highlight.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/bonsai-uninstall-Bonsai.OpenEphys.webp",
+      "output": {
+        "resource": {
+          "relative_path": "images/bonsai-uninstall-Bonsai.OpenEphys.webp"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/bonsai-update-none.webp",
+      "output": {
+        "resource": {
+          "relative_path": "images/bonsai-update-none.webp"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/bonsai-update.webp",
+      "output": {
+        "resource": {
+          "relative_path": "images/bonsai-update.webp"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/books.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/books.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/breakout-edited-callouts.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/breakout-edited-callouts.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/breakout-tut_analog-input-display.gif",
+      "output": {
+        "resource": {
+          "relative_path": "images/breakout-tut_analog-input-display.gif"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/breakout-tut_analog-input-graph.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/breakout-tut_analog-input-graph.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/breakout-tut_analog-output-graph.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/breakout-tut_analog-output-graph.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/breakout-tut_config-chain.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/breakout-tut_config-chain.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/breakout-tut_device-options.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/breakout-tut_device-options.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/breakout-tut_digital-input-graph.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/breakout-tut_digital-input-graph.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/breakout-tut_digital-output-graph.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/breakout-tut_digital-output-graph.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/breakout-tut_heartbeat-graph.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/breakout-tut_heartbeat-graph.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/breakout-tut_mem-monitor-graph.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/breakout-tut_mem-monitor-graph.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/breakout-tut_ramp-gen.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/breakout-tut_ramp-gen.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/combinator-operator.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/combinator-operator.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/hardware/breakout/add-member-selector.gif",
+      "output": {
+        "resource": {
+          "relative_path": "images/hardware/breakout/add-member-selector.gif"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/hardware/breakout/analog-io.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "images/hardware/breakout/analog-io.mp4"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/hardware/breakout/configuration.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "images/hardware/breakout/configuration.mp4"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/hardware/breakout/digital-inputs.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "images/hardware/breakout/digital-inputs.mp4"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/hardware/breakout/digital-outputs.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "images/hardware/breakout/digital-outputs.mp4"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/macbook.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/macbook.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv1e-gui-tut/bonsai-editor-where-to-click.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv1e-gui-tut/bonsai-editor-where-to-click.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv1e-gui-tut/headstage-adc-calibration-choose-file.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv1e-gui-tut/headstage-adc-calibration-choose-file.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv1e-gui-tut/headstage-ap-correction.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv1e-gui-tut/headstage-ap-correction.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv1e-gui-tut/headstage-bno055.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv1e-gui-tut/headstage-bno055.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv1e-gui-tut/headstage-channel-presets.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv1e-gui-tut/headstage-channel-presets.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv1e-gui-tut/headstage-configuration-dialog.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv1e-gui-tut/headstage-configuration-dialog.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv1e-gui-tut/headstage-configuration-enable-electrodes.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv1e-gui-tut/headstage-configuration-enable-electrodes.mp4"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv1e-gui-tut/headstage-configuration-enable-electrodes.webm",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv1e-gui-tut/headstage-configuration-enable-electrodes.webm"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv1e-gui-tut/headstage-configuration-file-menu.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv1e-gui-tut/headstage-configuration-file-menu.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv1e-gui-tut/headstage-files-selected.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv1e-gui-tut/headstage-files-selected.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv1e-gui-tut/headstage-gain-calibration-choose-file.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv1e-gui-tut/headstage-gain-calibration-choose-file.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv1e-gui-tut/headstage-lfp-correction.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv1e-gui-tut/headstage-lfp-correction.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv1e-gui-tut/headstage-reference.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv1e-gui-tut/headstage-reference.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv1e-gui-tut/headstage-spike-filter.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv1e-gui-tut/headstage-spike-filter.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv1e-gui-tut/status-strip-blocked-symbol.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv1e-gui-tut/status-strip-blocked-symbol.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv1e-gui-tut/status-strip-critical-symbol.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv1e-gui-tut/status-strip-critical-symbol.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv1e-gui-tut/status-strip-ready-symbol.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv1e-gui-tut/status-strip-ready-symbol.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv1e-gui-tut/status-strip-refresh-symbol.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv1e-gui-tut/status-strip-refresh-symbol.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv1e-gui-tut/view-adc-calibration-values.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv1e-gui-tut/view-adc-calibration-values.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv2e-gui-tut/bonsai-editor-where-to-click.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv2e-gui-tut/bonsai-editor-where-to-click.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv2e-gui-tut/headstage-dialog-with-bno055.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv2e-gui-tut/headstage-dialog-with-bno055.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv2e-gui-tut/headstage-dialog-with-probe-a.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv2e-gui-tut/headstage-dialog-with-probe-a.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv2e-gui-tut/headstage-dialog-with-probe-b.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv2e-gui-tut/headstage-dialog-with-probe-b.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv2e-gui-tut/headstage-dialog.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv2e-gui-tut/headstage-dialog.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv2e-gui-tut/probeconfiguration-channelpresets.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv2e-gui-tut/probeconfiguration-channelpresets.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv2e-gui-tut/probeconfiguration-dialog-with-probe.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv2e-gui-tut/probeconfiguration-dialog-with-probe.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv2e-gui-tut/probeconfiguration-dialog.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv2e-gui-tut/probeconfiguration-dialog.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv2e-gui-tut/probeconfiguration-enable-electrodes.webm",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv2e-gui-tut/probeconfiguration-enable-electrodes.webm"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv2e-gui-tut/probeconfiguration-filecalibration.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv2e-gui-tut/probeconfiguration-filecalibration.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv2e-gui-tut/probeconfiguration-filemenu.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv2e-gui-tut/probeconfiguration-filemenu.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/neuropixelsv2e-gui-tut/probeconfiguration-reference.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/neuropixelsv2e-gui-tut/probeconfiguration-reference.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/right-arrow.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/right-arrow.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/running.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/running.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/screwdriver.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/screwdriver.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/sink-operator.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/sink-operator.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/source-operator.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/source-operator.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/transform-operator.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/transform-operator.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "logo.svg",
+      "output": {
+        "resource": {
+          "relative_path": "logo.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/analog-inputs.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/analog-inputs.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/analog-inputs.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/analog-inputs.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/analog-io.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/analog-io.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/analog-io.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/analog-io.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/analog-outputs.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/analog-outputs.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/analog-outputs.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/analog-outputs.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/breakout.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/breakout.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/breakout.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/breakout.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/clock-output.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/clock-output.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/clock-output.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/clock-output.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/configuration.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/configuration.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/configuration.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/configuration.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/digital-inputs.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/digital-inputs.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/digital-inputs.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/digital-inputs.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/digital-outputs.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/digital-outputs.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/digital-outputs.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/digital-outputs.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/harp-sync.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/harp-sync.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/harp-sync.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/harp-sync.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/heartbeat.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/heartbeat.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/heartbeat.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/heartbeat.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/load-breakoutboard.py",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/load-breakoutboard.py"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/memory-monitor.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/memory-monitor.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/memory-monitor.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/memory-monitor.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/ramp-generator.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/ramp-generator.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/breakout/ramp-generator.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/breakout/ramp-generator.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/hs64/bno055.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/hs64/bno055.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/hs64/bno055.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/hs64/bno055.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/hs64/configuration.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/hs64/configuration.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/hs64/configuration.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/hs64/configuration.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/hs64/estim.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/hs64/estim.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/hs64/estim.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/hs64/estim.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/hs64/hs64.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/hs64/hs64.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/hs64/hs64.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/hs64/hs64.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/hs64/ostim.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/hs64/ostim.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/hs64/ostim.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/hs64/ostim.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/hs64/port-status.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/hs64/port-status.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/hs64/port-status.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/hs64/port-status.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/hs64/rhd2164.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/hs64/rhd2164.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/hs64/rhd2164.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/hs64/rhd2164.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/hs64/ts4231.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/hs64/ts4231.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/hs64/ts4231.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/hs64/ts4231.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/np1e/bno055.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/np1e/bno055.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/np1e/bno055.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/np1e/bno055.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/np1e/configuration.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/np1e/configuration.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/np1e/configuration.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/np1e/configuration.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/np1e/np1.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/np1e/np1.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/np1e/np1.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/np1e/np1.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/np1e/np1e.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/np1e/np1e.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/np1e/np1e.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/np1e/np1e.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/np1e/port-status.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/np1e/port-status.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/np1e/port-status.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/np1e/port-status.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/np2e/bno055.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/np2e/bno055.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/np2e/bno055.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/np2e/bno055.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/np2e/configuration.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/np2e/configuration.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/np2e/configuration.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/np2e/configuration.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/np2e/np2.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/np2e/np2.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/np2e/np2.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/np2e/np2.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/np2e/np2e.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/np2e/np2e.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/np2e/np2e.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/np2e/np2e.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/np2e/port-status.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/np2e/port-status.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/np2e/port-status.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/np2e/port-status.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/np2ebeta.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/np2ebeta.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/hardware/np2ebeta.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/hardware/np2ebeta.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/AnalogInput.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/AnalogInput.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/AnalogInput.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/AnalogInput.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/AnalogOutput.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/AnalogOutput.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/AnalogOutput.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/AnalogOutput.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/Bno055Data.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/Bno055Data.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/Bno055Data.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/Bno055Data.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureAnalogIO.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureAnalogIO.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureAnalogIO.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureAnalogIO.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureBno055.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureBno055.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureBno055.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureBno055.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureBreakoutBoard.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureBreakoutBoard.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureBreakoutBoard.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureBreakoutBoard.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureDigitalIO.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureDigitalIO.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureDigitalIO.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureDigitalIO.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureHarpSyncInput.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureHarpSyncInput.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureHarpSyncInput.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureHarpSyncInput.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureHeadstage64.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureHeadstage64.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureHeadstage64.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureHeadstage64.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureHeadstage64ElectricalStimulator.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureHeadstage64ElectricalStimulator.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureHeadstage64ElectricalStimulator.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureHeadstage64ElectricalStimulator.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureHeadstage64OpticalStimulator.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureHeadstage64OpticalStimulator.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureHeadstage64OpticalStimulator.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureHeadstage64OpticalStimulator.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureHeadstageNric1384.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureHeadstageNric1384.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureHeadstageNric1384.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureHeadstageNric1384.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureHeartbeat.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureHeartbeat.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureHeartbeat.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureHeartbeat.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureLoadTester.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureLoadTester.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureLoadTester.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureLoadTester.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureMemoryMonitor.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureMemoryMonitor.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureMemoryMonitor.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureMemoryMonitor.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNeuropixelsV1e.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNeuropixelsV1e.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNeuropixelsV1e.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNeuropixelsV1e.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNeuropixelsV1eBno055.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNeuropixelsV1eBno055.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNeuropixelsV1eBno055.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNeuropixelsV1eBno055.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNeuropixelsV1eHeadstage.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNeuropixelsV1eHeadstage.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNeuropixelsV1eHeadstage.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNeuropixelsV1eHeadstage.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNeuropixelsV1f.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNeuropixelsV1f.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNeuropixelsV1f.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNeuropixelsV1f.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNeuropixelsV1fHeadstage.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNeuropixelsV1fHeadstage.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNeuropixelsV1fHeadstage.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNeuropixelsV1fHeadstage.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNeuropixelsV2e.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNeuropixelsV2e.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNeuropixelsV2e.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNeuropixelsV2e.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNeuropixelsV2eBeta.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNeuropixelsV2eBeta.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNeuropixelsV2eBeta.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNeuropixelsV2eBeta.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNeuropixelsV2eBetaBno055.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNeuropixelsV2eBetaBno055.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNeuropixelsV2eBetaBno055.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNeuropixelsV2eBetaBno055.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNeuropixelsV2eBetaHeadstage.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNeuropixelsV2eBetaHeadstage.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNeuropixelsV2eBetaHeadstage.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNeuropixelsV2eBetaHeadstage.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNeuropixelsV2eBno055.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNeuropixelsV2eBno055.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNeuropixelsV2eBno055.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNeuropixelsV2eBno055.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNeuropixelsV2eHeadstage.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNeuropixelsV2eHeadstage.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNeuropixelsV2eHeadstage.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNeuropixelsV2eHeadstage.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNric1384.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNric1384.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureNric1384.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureNric1384.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureOutputClock.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureOutputClock.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureOutputClock.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureOutputClock.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigurePolledBno055.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigurePolledBno055.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigurePolledBno055.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigurePolledBno055.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureRhd2164.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureRhd2164.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureRhd2164.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureRhd2164.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureTS4231V1.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureTS4231V1.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureTS4231V1.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureTS4231V1.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureUclaMiniscopeV4.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureUclaMiniscopeV4.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureUclaMiniscopeV4.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureUclaMiniscopeV4.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureUclaMiniscopeV4Camera.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureUclaMiniscopeV4Camera.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/ConfigureUclaMiniscopeV4Camera.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/ConfigureUclaMiniscopeV4Camera.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/CreateContext.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/CreateContext.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/CreateContext.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/CreateContext.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/DigitalInput.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/DigitalInput.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/DigitalInput.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/DigitalInput.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/DigitalOutput.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/DigitalOutput.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/DigitalOutput.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/DigitalOutput.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/HarpSyncInputData.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/HarpSyncInputData.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/HarpSyncInputData.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/HarpSyncInputData.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/Headstage64ElectricalStimulatorTrigger.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/Headstage64ElectricalStimulatorTrigger.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/Headstage64ElectricalStimulatorTrigger.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/Headstage64ElectricalStimulatorTrigger.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/Headstage64OpticalStimulatorTrigger.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/Headstage64OpticalStimulatorTrigger.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/Headstage64OpticalStimulatorTrigger.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/Headstage64OpticalStimulatorTrigger.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/HeartbeatData.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/HeartbeatData.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/HeartbeatData.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/HeartbeatData.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/MemoryMonitorData.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/MemoryMonitorData.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/MemoryMonitorData.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/MemoryMonitorData.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/NeuropixelsV1eBno055Data.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/NeuropixelsV1eBno055Data.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/NeuropixelsV1eBno055Data.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/NeuropixelsV1eBno055Data.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/NeuropixelsV1eData.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/NeuropixelsV1eData.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/NeuropixelsV1eData.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/NeuropixelsV1eData.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/NeuropixelsV1fData.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/NeuropixelsV1fData.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/NeuropixelsV1fData.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/NeuropixelsV1fData.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/NeuropixelsV2eBetaData.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/NeuropixelsV2eBetaData.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/NeuropixelsV2eBetaData.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/NeuropixelsV2eBetaData.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/NeuropixelsV2eBno055Data.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/NeuropixelsV2eBno055Data.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/NeuropixelsV2eBno055Data.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/NeuropixelsV2eBno055Data.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/NeuropixelsV2eData.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/NeuropixelsV2eData.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/NeuropixelsV2eData.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/NeuropixelsV2eData.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/Nric1384Data.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/Nric1384Data.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/Nric1384Data.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/Nric1384Data.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/OutputClockData.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/OutputClockData.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/OutputClockData.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/OutputClockData.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/PolledBno055Data.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/PolledBno055Data.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/PolledBno055Data.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/PolledBno055Data.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/PortStatus.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/PortStatus.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/PortStatus.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/PortStatus.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/Rhd2164Data.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/Rhd2164Data.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/Rhd2164Data.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/Rhd2164Data.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/StartAcquisition.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/StartAcquisition.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/StartAcquisition.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/StartAcquisition.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/TS4231V1Data.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/TS4231V1Data.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/TS4231V1Data.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/TS4231V1Data.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/TS4231V1PositionData.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/TS4231V1PositionData.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/TS4231V1PositionData.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/TS4231V1PositionData.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/UclaMiniscopeV4CameraData.bonsai",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/UclaMiniscopeV4CameraData.bonsai"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "workflows/operators/UclaMiniscopeV4CameraData.svg",
+      "output": {
+        "resource": {
+          "relative_path": "workflows/operators/UclaMiniscopeV4CameraData.svg"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

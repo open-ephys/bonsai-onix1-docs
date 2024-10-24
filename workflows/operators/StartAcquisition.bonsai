@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.8.1"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:onix1="clr-namespace:OpenEphys.Onix1;assembly=OpenEphys.Onix1"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="onix1:StartAcquisition">
+          <onix1:ReadSize>2048</onix1:ReadSize>
+          <onix1:WriteSize>2048</onix1:WriteSize>
+        </Combinator>
+      </Expression>
+    </Nodes>
+    <Edges />
+  </Workflow>
+</WorkflowBuilder>
