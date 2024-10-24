@@ -102,4 +102,4 @@ Sometimes it is helpful to uninstall packages. [Open the package manager](#open-
 
 ## Next Steps
 
-Now that Bonsai has been installed and configured, it is time to start constructing a workflow to capture data from your ONIX system. The following sections give a high-level understanding of how Bonsai is organized, and some of the ONIX-specific concepts that will be useful for learning how to work with the operators. If you are familiar with Bonsai, you might want to skip to the <xref:tutorials> section.
+Now that Bonsai has been installed and configured, it is time to start constructing a workflow to capture data from your ONIX system. The following sections give a high-level understanding of how Bonsai is organized, and some of the ONIX-specific concepts that will be useful for learning how to work with the operators.

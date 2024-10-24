@@ -13,7 +13,7 @@ These are the devices available on the Headstage64:
     - Optional adjustable digital high-pass filter with cutoff configurable from 0.146 Hz to 3309 Hz
     - Three auxiliary ADC channels sampled at 30 kHz with 16 bit depth
 - [Bno055](xref:hs64_bno055): 9-axis IMU for real-time, 3D orientation tracking sampled up to ~100 Hz for easy automated commutation with Open Ephys commutators
-- [Ts4231](xref:hs64_ts4231): For compatibility with HTC Vive Lighthouses for real-time, 3D position tracking
+- [Ts4231](xref:hs64_ts4231): For compatibility with HTC Vive Lighthouses for real-time, 3D position tracking sampled at 30 Hz in ideal conditions
 - [Electrical Stimulation](xref:hs64_estim): Single current source with ±15V compliance voltage and automatic electrode discharge
     - The stimulation waveform is highly configurable via the <xref:OpenEphys.Onix1.Headstage64ElectricalStimulatorTrigger>'s properties.
 - [Optical Stimulation](xref:hs64_ostim): Two current sources with 800mA upper limit

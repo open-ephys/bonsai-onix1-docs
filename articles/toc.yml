@@ -68,8 +68,8 @@
       href: hardware/hs64/rhd2164.md
     - name: Orientation Data & Commutation
       href: hardware/hs64/bno055.md
-    # - name: Position Data
-    #   href: hardware/hs64/ts4231.md
+    - name: Position Data
+      href: hardware/hs64/ts4231.md
     # - name: Electrical Stimulation
     #   href: hardware/hs64/estim.md
     # - name: Optical Stimulation
