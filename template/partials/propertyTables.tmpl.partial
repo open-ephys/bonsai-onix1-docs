@@ -1,24 +1,24 @@
 <tr>
   <td style = "white-space: nowrap;">
     <code>{{{name}}}</code>
-      {{#acquisition}}
-        <div>
-          <a class="xref" href="~/articles/getting-started/property-categories.html#acquisition">
-            <button class="badge bg-primary-subtle border border-primary-subtle text-primary-emphasis rounded-pill">
-              acquisition
-            </button>
-          </a>
-        </div>
-      {{/acquisition}}
-      {{#configuration}}
-        <div>
-          <a class="xref" href="~/articles/getting-started/property-categories.html#configuration">
-            <button class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill">
-              configuration 
-            </button>
-          </a>
-        </div>
-      {{/configuration}}
+    {{#acquisition}}
+      <div>
+        <a class="xref" href="~/articles/getting-started/property-categories.html#acquisition">
+          <button class="badge bg-primary-subtle border border-primary-subtle text-primary-emphasis rounded-pill" data-bs-toggle="tooltip" data-bs-title="Default tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip">
+            acquisition
+          </button>
+        </a>
+      </div>
+    {{/acquisition}}
+    {{#configuration}}
+      <div>
+        <a class="xref" href="~/articles/getting-started/property-categories.html#configuration">
+          <button class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill" data-bs-toggle="tooltip" data-bs-title="Default tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip">
+            configuration 
+          </button>
+        </a>
+      </div>
+    {{/configuration}}
   </td>
   <td style = "white-space: nowrap;">
     {{{type}}}
