@@ -21,32 +21,42 @@ Download and install [git](https://git-scm.com/downloads) if it is not installed
 > Usually, the command will eventually return.
 
 1. Clone the documentation repository:
-
     ``` console
     git clone https://github.com/open-ephys/onix1-bonsai-docs
     cd onix1-bonsai-docs
     ```
 1. Pull in the latest files from the submodules according to the commit that the submodules point to:
-
     ``` console
     git submodule update --recursive --init
     ```
     In particular, the source code is available in this repo as a submodule. This will update the source code to the latest commit on main.
 1. Configure the docfx version and restore docfx companion tools such as [DocLinkChecker](https://github.com/Ellerbach/docfx-companion-tools/tree/main/src/DocLinkChecker).
-
     ``` console
     dotnet tool restore --configfile ./.bonsai/NuGet.config
     ```
 1. To make the `docfx` command available after restoring the config file from the previous step, run:
-
     ``` console
     dotnet tool restore
     ```
-1. Set up a local Bonsai environment for automatically exporting SVGs, run: 
-
+    If the above command yields the following error:
     ``` console
-    ./.bonsai/Setup.cmd
+    It was not possible to find any installed .NET Core SDKs
     ```
+    even after installing .NET as described previously in the readme, refer to [this comment](https://github.com/dotnet/core/issues/6095#issuecomment-809006602) for a potential fix. If you follow the instructions described in the comment, make sure you proceed in a terminal or command prompt opened after changing the environment variables.
+1. Set up a local Bonsai environment for automatically exporting SVGs, run: 
+    ``` console
+    ./.bonsai/Setup.ps1
+    ```
+    If the above command yields the following error:
+    ``` console
+    ./Setup.ps1 : File C:\Users\User\...\bonsai-onix1-docs\Setup.ps1 cannot be loaded because running scripts is      
+    disabled on this system. For more information, see about_Execution_Policies at https:/go.microsoft.com/fwlink/?LinkID=135170. 
+    At line:1 char:1
+    + ~~~~~~~~~~~
+        + CategoryInfo          : SecurityError: (:) [], PSSecurityException
+        + FullyQualifiedErrorId : UnauthorizedAccess
+    ```
+    Run a command like this `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned` in Windows Powershell as admin. You can modify the choose which [execution policy](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.4) best suits your needs. The scope of the execution policy can also be set using [Set-ExecutionPolicy](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.5). `RemoteSigned` is the most restrictive policy that allows running local powershell scripts without signing them.
 
 ## Build Documentation Locally
 
