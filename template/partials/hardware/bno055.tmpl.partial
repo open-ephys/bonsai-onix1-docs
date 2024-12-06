@@ -1,5 +1,5 @@
 <p>
-  The following excerpt from the {{{hardware}}} <a class="xref" href="~/articles/hardware/{{{workflowDirectory}}}.html">example workflow</a> demonstrates Bno055 functionality, saves Bno055 data, and commutates the {{{hardware}}} if there is a proper commutator connection.
+  The following excerpt from the {{{hardware}}} <a class="xref" href="~/articles/hardware/{{{oe.hardwareDirectory}}}/{{{workflowLocation}}}.html">example workflow</a> demonstrates Bno055 functionality, saves Bno055 data, and commutates the {{{hardware}}} if there is a proper commutator connection.
 </p> 
 
 <div class="workflow"> 
@@ -20,5 +20,5 @@
 
 <div class="NOTE">
   <h5>NOTE</h5>
-  <p>To remove automated commutation, simply delete the last node by selecting it and pressing <kbd>Delete</kbd>.</p>
+  <p>The <code>AutoCommutator</code> operator is included in the workflow by default because it is so commonly used with {{{hardware}}}. However, it is disabled for people without a commutator to be able to run the workflow. To enable it, select the node and press <kbd>Ctrl + Shift + D</kbd> or select "Enable" in the context menu that appears after right-clicking the node.</p>
 </div>

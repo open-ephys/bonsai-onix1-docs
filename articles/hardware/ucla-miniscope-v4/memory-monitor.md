@@ -1,7 +1,8 @@
 ---
-uid: np1e_memory-monitor
+uid: ucla-miniscope-v4_memory-monitor
 title: Memory Monitor
 memoryMonitor: true
-hardware: Neuropixels v1e Headstage
+hardware: UCLA Miniscope v4
 workflowLocation: overview
 ---
+

@@ -7,6 +7,6 @@ In Bonsai, a "workflow" is composed of ["operators"](https://bonsai-rx.org/docs/
 
 | Operator Type | Description | Example ONIX operators |
 | --------- | ----------- | ------------------ |
-| Source    | Generate acquisition state or hardware data | [`CreateContext`](xref:OpenEphys.Onix1.CreateContext), [`Bno055Data`](xref:OpenEphys.Onix1.Bno055Data), [`NeuropixelsV1eData`](xref:OpenEphys.Onix1.NeuropixelsV1eData) |
-| Sink      | Configure and send data to hardware | [`ConfigureHeadstage64`](xref:OpenEphys.Onix1.ConfigureHeadstage64), [`ConfigureNeuropixelsV1eHeadstage`](xref:OpenEphys.Onix1.ConfigureNeuropixelsV1eHeadstage) |
-| Combinator | Manage control flow | [`StartAcquisition`](xref:OpenEphys.Onix1.StartAcquisition) |
+| Source    | Generate acquisition state or hardware data | [CreateContext](xref:OpenEphys.Onix1.CreateContext), [Bno055Data](xref:OpenEphys.Onix1.Bno055Data), [NeuropixelsV1eData](xref:OpenEphys.Onix1.NeuropixelsV1eData) |
+| Sink      | Configure and send data to hardware | [ConfigureHeadstage64](xref:OpenEphys.Onix1.ConfigureHeadstage64), [ConfigureNeuropixelsV1eHeadstage](xref:OpenEphys.Onix1.ConfigureNeuropixelsV1eHeadstage) |
+| Combinator | Manage control flow | [StartAcquisition](xref:OpenEphys.Onix1.StartAcquisition) |

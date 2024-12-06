@@ -5,4 +5,4 @@ accomplished using a [TimeStamp](https://bonsai-rx.org/docs/api/Bonsai.Reactive.
 to capture the computer's wall clock time. This
 `Timestamp` is saved along with `ContextTask`'s properties (e.g.,
 `AcquisitionClockHz`, `BlockReadSize`, `BlockWriteSize`) to a csv
-file (`start-time_<timestamp>.csv`) when the the workflow is started.
+file (`start-time_<filecount>.csv`) when the the workflow is started.

@@ -5,8 +5,8 @@ hardware: Headstage64
 configuration: true
 operator: ConfigureHeadstage64
 dataRate: 4.1
-timeUntilFullBuffer: 500 μs
-blockReadSize: 2048
+timeUntilFullBuffer: 1000 μs
+blockReadSize: 4096
 workflowLocation: workflow
 ---
 

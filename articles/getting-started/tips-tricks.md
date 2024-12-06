@@ -20,7 +20,7 @@ Aside from determining the order of execution, the order of operators within a w
 | Change order of operators in a row | Hold **Ctrl**, click and hold the first operator, drag to the right to the second operator, and release | This action does not require that the operator be selected prior to performing the action. This can change the order of any two operators that are a part of the same row; it is not constrained to adjacent operators. Note that if the new placement of the operators is not valid (such as giving a `Source` operator an input), it will knock the operator of the current row and remove any connections |
 
 > [!Note]
-> In the context of `OpenEphys.Onix1`, all workflows start with (top line) a [`CreateContext`](xref:OpenEphys.Onix1.CreateContext) operator connected to an arbitrary number of `Configure*` operators, finished with a [`StartAcquisition`](xref:OpenEphys.Onix1.StartAcquisition) operator. Subsequent rows will contain the corresponding `*Data` operators for capturing data from the hardware has been configured above.
+> In the context of `OpenEphys.Onix1`, all workflows start with (top line) a [CreateContext](xref:OpenEphys.Onix1.CreateContext) operator connected to an arbitrary number of `Configure*` operators, finished with a [StartAcquisition](xref:OpenEphys.Onix1.StartAcquisition) operator. Subsequent rows will contain the corresponding `*Data` operators for capturing data from the hardware has been configured above.
 
 <br>
 

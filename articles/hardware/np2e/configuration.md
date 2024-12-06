@@ -5,8 +5,8 @@ hardware: NeuropixelsV2e Headstage
 configuration: true
 operator: ConfigureNeuropixelsV2eHeadstage
 dataRate: 18.1
-timeUntilFullBuffer: 220 μs
-blockReadSize: 4096
+timeUntilFullBuffer: 440 μs
+blockReadSize: 8192
 workflowLocation: overview
 ---
 

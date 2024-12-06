@@ -20,11 +20,11 @@ outputting that counter to the digital output port.
 ![/workflows/hardware/breakout/digital-outputs.bonsai workflow](../../../workflows/hardware/breakout/digital-outputs.bonsai)
 :::
 
-The [Timer](https://bonsai-rx.org/docs/api/Bonsai.Shaders.Timer.html) operator generates a sequence
+The [Timer](xref:Bonsai.Shaders.Timer) operator generates a sequence
 of [64-bit signed integer](https://learn.microsoft.com/en-us/dotnet/api/system.int64?view=net-8.0)s
-in ~100ms intervals. The [Int](https://bonsai-rx.org/docs/api/Bonsai.Expressions.IntProperty.html)
+in ~100ms intervals. The [Int](xref:Bonsai.Expressions.IntProperty)
 operator emits an integer (with a value of 1 in our case) when an item is received from the upstream
-sequence. The [Accumulate](https://bonsai-rx.org/docs/api/Bonsai.Reactive.Accumulate.html) operator
+sequence. The [Accumulate](xref:Bonsai.Reactive.Accumulate) operator
 increments a value by the values of items in its upstream sequence. The `Accumulate` operator emits
 this value when an item is received from the upstream sequence.
 

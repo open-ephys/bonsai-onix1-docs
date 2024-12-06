@@ -2,7 +2,7 @@
   The Onix system reports when a headstage port connection enters or leaves an aberrant state. Such aberrant states include loss
   of communication lock, detection of parity or CRC error, reception of a badly formatted packet, etc.. Knowing the time
   and type of a communication failure is a good first step to track down its cause. The following excerpt from the
-  {{{hardware}}} <a class="xref" href="~/articles/hardware/{{{workflowDirectory}}}.html">example
+  {{{hardware}}} <a class="xref" href="~/articles/hardware/{{{oe.hardwareDirectory}}}/{{{workflowLocation}}}.html">example
   workflow</a> demonstrates port status functionality and saves timestamped port status data.
 </p> 
 

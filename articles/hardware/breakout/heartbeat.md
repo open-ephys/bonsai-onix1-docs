@@ -21,6 +21,6 @@ The <xref:OpenEphys.Onix1.HeartbeatData> operator generates a sequence of
 interval defined during <xref:breakout_configuration> using the <xref:OpenEphys.Onix1.ConfigureBreakoutBoard>'s
 `Heartbeat BeatsPerSecond` property (in our case 10 Hz). The `HeartbeatData`'s `DeviceName` property is set to
 "BreakoutBoard/Heartbeat". This links the `HeartbeatData` operator to the corresponding configuration operator. The
-[MemberSelector](https://bonsai-rx.org/docs/api/Bonsai.Expressions.MemberSelectorBuilder.html) operator selects the
+[MemberSelector](xref:Bonsai.Expressions.MemberSelectorBuilder) operator selects the
 `Clock` member from the `HeartbeatDataFrame` so the user can visualize the number of clock cycles that have passed for
 a given heartbeat pulse if they double-click the `Clock` node.

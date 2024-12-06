@@ -5,6 +5,6 @@ hardware: Headstage 64
 portStatus: true
 configureHardwareOperator: ConfigureHeadstage64
 hardwareOperator: Headstage64
-workflowDirectory: hs64/workflow
+workflowLocation: workflow
 ---
 

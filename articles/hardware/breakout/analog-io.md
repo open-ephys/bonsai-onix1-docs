@@ -73,32 +73,30 @@ does exactly this on analog IO channel 0.
 :::
 
 The <xref:OpenEphys.Onix1.AnalogInput> operator receives a sequence of
-<xref:OpenEphys.Onix1.AnalogInputDataFrame>s. In the Breakout Board example workflow:
+<xref:OpenEphys.Onix1.AnalogInputDataFrame>s with the following properties settings:
 
-- The `AnalogInput`'s `DeviceName` is set to "BreakoutBoard/AnalogIO". This links the `AnalogInput`
-  operator to the corresponding configuration operator. 
-- The `AnalogInput`'s `BufferSize` is set to 50. Therefore, each frame will contain a 50-element
+- `BufferSize` is set to 50. Therefore, each frame will contain a 50-element
   `Clock` vector and a 12-channel x 50-sample `AnalogData` matrix. The analog inputs are sampled at
   100 kHz per channel so this corresponds to 500 µs of data. That's lower than the minimal latency
   introduced by the `BlockReadSize` setting. Therefore, the chosen value for  `BufferSize` will not
   impose a significant effect on processing latency. The buffer will be filled essentially every
   time hardware is accessed and propagated instantly.
-- The `AnalogInput`'s `DataType` is set to `Volts`. This means that samples will be represented as
+- `DataType` is set to `Volts`. This means that samples will be represented as
   units of units of voltage in a single-precision floating point type.
+- `DeviceName` is set to "BreakoutBoard/AnalogIO". This links the `AnalogInput`
+  operator to the corresponding configuration operator. 
 
-The [MemberSelector](https://bonsai-rx.org/docs/api/Bonsai.Expressions.MemberSelectorBuilder.html)
+The [MemberSelector](xref:Bonsai.Expressions.MemberSelectorBuilder)
 operators each select a member from the `AnalogInputDataFrame`, `Clock` and `AnalogData` which
 contain the <xref:OpenEphys.Onix1.ContextTask.AcquisitionClockHz>-based sample times and sample
 values, respectively. The
-[MatrixWriter](https://bonsai-rx.org/docs/api/Bonsai.Dsp.MatrixWriter.html) operators saves the
+[MatrixWriter](xref:Bonsai.Dsp.MatrixWriter) operators saves the
 selected members to files with the following format: `analog-clock_<filecount>.raw` and
 `analog-data_<filecount>.raw`, respectively. 
 
 > [!Tip]
-> The easiest way to add a
-> [MemberSelector](https://bonsai-rx.org/docs/api/Bonsai.Expressions.MemberSelectorBuilder.html) to
-> the output of an operator is to right-click the node and hover over `Output` in the resulting
-> context menu to examine the output type. A <code>MemberSelector</code> can be added by
+> The easiest way to add a `MemberSelector` to the output of an operator is to right-click the node and hover over
+> `Output` in the resulting context menu to examine the output type. A <code>MemberSelector</code> can be added by
 > left-clicking the desired expanded property of the `Output` type.
 >
 > ![Add a MemberSelector](../../../images/hardware/breakout/add-member-selector.gif){width=600px,align=center}

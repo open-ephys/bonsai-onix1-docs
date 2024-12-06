@@ -1,5 +1,5 @@
 <p>
-  The following excerpt from the Breakout Board <a class="xref" href="~/articles/hardware/{{{workflowDirectory}}}.html">example workflow</a> demonstrates
+  The following excerpt from the Breakout Board <a class="xref" href="~/articles/hardware/{{{oe.hardwareDirectory}}}/{{{workflowLocation}}}.html">example workflow</a> demonstrates
   memory monitor functionality.
 </p>
 

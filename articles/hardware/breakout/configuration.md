@@ -7,7 +7,6 @@ operator: ConfigureBreakoutBoard
 dataRate: 2.5
 timeUntilFullBuffer: 800 μs
 blockReadSize: 2048
-videoCaption: 
 workflowLocation: workflow
 ---
 

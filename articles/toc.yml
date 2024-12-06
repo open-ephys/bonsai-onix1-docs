@@ -82,3 +82,15 @@
     - name: Memory Monitor
       href: hardware/hs64/memory-monitor.md
     - href: hardware/hs64/load-data.md
+  - href: hardware/ucla-miniscope-v4/overview.md
+    items: 
+    - name: Configuration
+      href: hardware/ucla-miniscope-v4/configuration.md
+    - name: Port Status
+      href: hardware/ucla-miniscope-v4/port-status.md
+    - name: Camera Data
+      href: hardware/ucla-miniscope-v4/camera.md
+    - name: Orientation Data & Commutation
+      href: hardware/ucla-miniscope-v4/bno055.md
+    - name: Memory Monitor
+      href: hardware/ucla-miniscope-v4/memory-monitor.md

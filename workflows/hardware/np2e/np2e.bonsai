@@ -111,7 +111,7 @@
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="onix1:StartAcquisition">
-          <onix1:ReadSize>4096</onix1:ReadSize>
+          <onix1:ReadSize>8192</onix1:ReadSize>
           <onix1:WriteSize>2048</onix1:WriteSize>
         </Combinator>
       </Expression>

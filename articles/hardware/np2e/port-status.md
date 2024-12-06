@@ -5,7 +5,7 @@ hardware: NeuropixelsV2e Headstage
 portStatus: true
 configureHardwareOperator: ConfigureNeuropixelsV2eHeadstage
 hardwareOperator: NeuropixelsV2eHeadstage
-workflowDirectory: np2e/overview
+workflowLocation: overview
 ---
 
 > [!NOTE]
