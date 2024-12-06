@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.8.5"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:onix1="clr-namespace:OpenEphys.Onix1;assembly=OpenEphys.Onix1"
+                 xmlns:dsp="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="onix1:NeuropixelsV2eData">
+          <onix1:DeviceName>NeuropixelsV2eHeadstage/NeuropixelsV2e</onix1:DeviceName>
+          <onix1:BufferSize>30</onix1:BufferSize>
+          <onix1:ProbeIndex>ProbeA</onix1:ProbeIndex>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Clock</Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="dsp:MatrixWriter">
+          <dsp:Path>np2-a-clock_.raw</dsp:Path>
+          <dsp:Suffix>FileCount</dsp:Suffix>
+          <dsp:Overwrite>false</dsp:Overwrite>
+          <dsp:Layout>ColumnMajor</dsp:Layout>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>AmplifierData</Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="dsp:MatrixWriter">
+          <dsp:Path>np2-a-amp_.raw</dsp:Path>
+          <dsp:Suffix>FileCount</dsp:Suffix>
+          <dsp:Overwrite>false</dsp:Overwrite>
+          <dsp:Layout>ColumnMajor</dsp:Layout>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="Combinator">
+          <Combinator xsi:type="onix1:NeuropixelsV2eData">
+            <onix1:DeviceName>NeuropixelsV2eHeadstage/NeuropixelsV2e</onix1:DeviceName>
+            <onix1:BufferSize>30</onix1:BufferSize>
+            <onix1:ProbeIndex>ProbeB</onix1:ProbeIndex>
+          </Combinator>
+        </Builder>
+      </Expression>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="MemberSelector">
+          <Selector>Clock</Selector>
+        </Builder>
+      </Expression>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="Combinator">
+          <Combinator xsi:type="dsp:MatrixWriter">
+            <dsp:Path>np2-b-clock_.raw</dsp:Path>
+            <dsp:Suffix>FileCount</dsp:Suffix>
+            <dsp:Overwrite>false</dsp:Overwrite>
+            <dsp:Layout>ColumnMajor</dsp:Layout>
+          </Combinator>
+        </Builder>
+      </Expression>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="MemberSelector">
+          <Selector>AmplifierData</Selector>
+        </Builder>
+      </Expression>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="Combinator">
+          <Combinator xsi:type="dsp:MatrixWriter">
+            <dsp:Path>np2-b-amp_.raw</dsp:Path>
+            <dsp:Suffix>FileCount</dsp:Suffix>
+            <dsp:Overwrite>false</dsp:Overwrite>
+            <dsp:Layout>ColumnMajor</dsp:Layout>
+          </Combinator>
+        </Builder>
+      </Expression>
+    </Nodes>
+    <Edges>
+      <Edge From="0" To="1" Label="Source1" />
+      <Edge From="0" To="3" Label="Source1" />
+      <Edge From="1" To="2" Label="Source1" />
+      <Edge From="3" To="4" Label="Source1" />
+      <Edge From="5" To="6" Label="Source1" />
+      <Edge From="5" To="8" Label="Source1" />
+      <Edge From="6" To="7" Label="Source1" />
+      <Edge From="8" To="9" Label="Source1" />
+    </Edges>
+  </Workflow>
+</WorkflowBuilder>

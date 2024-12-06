@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ContextTask </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ContextTask ">
+      
+      <meta name="description" content="Encapsulates a single ONI context and orchestrates interaction with ONI-compliant hardware.">
+      <link rel="icon" href="../favicon.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/open-ephys/onix-bonsai-onix1/new/main/apiSpec/new?filename=OpenEphys_Onix1_ContextTask.md&amp;value=---%0Auid%3A%20OpenEphys.Onix1.ContextTask%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo-light-mode.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="OpenEphys.Onix1.ContextTask">
+
+
+  <div>
+    <h1 id="OpenEphys_Onix1_ContextTask" data-uid="OpenEphys.Onix1.ContextTask" class="text-break" style="display: inline-block;">
+    ContextTask
+    <a class="header-action link-secondary" title="View source" href="https://github.com/open-ephys/onix-bonsai-onix1/blob/main/OpenEphys.Onix1/ContextTask.cs/#L36"><i class="bi bi-code-slash"></i></a>
+    </h1>
+  </div>
+
+  <div><p>Encapsulates a single ONI context and orchestrates interaction with ONI-compliant hardware.</p>
+<p>The <a href="https://open-ephys.github.io/ONI/">Open Neuro Interface (ONI)</a> hardware
+specification and API describe a general purpose acquisition system architecture and programming
+interface for communication with a host PC. One requirement of ONI is that a host application must
+hold a &quot;context&quot; that contains handles for hardware communication, data acquisition parameters, etc.
+for a particular hardware controller, such as the ONIX PCIe card. <a class="xref" href="OpenEphys.Onix1.ContextTask.html">ContextTask</a> fulfills
+this role for this library. Additionally, once data acquisition is started by the <a class="xref" href="OpenEphys.Onix1.StartAcquisition.html">StartAcquisition</a> operator, <a class="xref" href="OpenEphys.Onix1.ContextTask.html">ContextTask</a> performs the following:</p>
+<ul><li>It automatically reads and distributes data from hardware using a dedicated acquisition
+thread.</li><li>It allows data to be written to devices that accept them.</li><li>It allows reading from and writing to device registers to control their operation (e.g. <a class="xref" href="OpenEphys.Onix1.ConfigureBno055.html">Enable</a> or <a class="xref" href="OpenEphys.Onix1.ConfigureRhd2164.html">AnalogHighCutoff</a>).</li></ul>
+Additionally, this operator exposes important information about the underlying ONI hardware such as
+the device table, clock rates, and block read and write sizes. <strong>In summary, <a class="xref" href="OpenEphys.Onix1.ContextTask.html">ContextTask</a> forms a complete interface for all hardware interaction within the library: all
+physical interaction with the ONIX system passes through this class.</strong>
+</div>
+
+
+  <h2>Properties</h2>
+
+
+  <table>
+
+    <tr>
+      <th style="white-space: nowrap;">Property</th>
+      <th style="white-space: nowrap;">Type</th> 
+      <th>Description</th>
+    </tr>
+
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>AcquisitionClockHz</code>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>
+      </td>
+      <td class="tableFormat">
+      <p>Gets the acquisition clock rate in Hz.</p>
+<p>This property describes the frequency of ONI controller's acquisition clock, which is used to
+generate the <a class="xref" href="OpenEphys.Onix1.DataFrame.html">Clock</a> counter value included in all data frames
+produced by Data IO operators in this library (e.g. <a class="xref" href="OpenEphys.Onix1.NeuropixelsV1eData.html">NeuropixelsV1eData</a> or <a class="xref" href="OpenEphys.Onix1.Bno055Data.html">Bno055Data</a>). The value of this property is determined during hardware initialization.</p>
+
+      </td>
+    </tr>    
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>BlockReadSize</code>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>
+      </td>
+      <td class="tableFormat">
+      <p>Gets the number of bytes read per cycle of the <a class="xref" href="OpenEphys.Onix1.ContextTask.html">ContextTask</a>'s acquisition thread.</p>
+<p>This option allows control over a fundamental trade-off between closed-loop response time and
+available bandwidth. A minimal value, which is determined by <a class="xref" href="OpenEphys.Onix1.ContextTask.html">MaxReadFrameSize</a>, will provide the lowest response latency, so long as data
+can be cleared from hardware memory fast enough to prevent buffering. Larger values will both
+reduce system call frequency and reduce the number of function calls per unit time performed by
+Bonsai, and therefore, increase available bandwidth. Larger values may improve processing
+performance for high-bandwidth data sources. The optimal value depends on the host computer and
+hardware configuration and must be determined via testing (e.g. using <a class="xref" href="OpenEphys.Onix1.MemoryMonitorData.html">MemoryMonitorData</a>).</p>
+
+      </td>
+    </tr>    
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>BlockWriteSize</code>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>
+      </td>
+      <td class="tableFormat">
+      <p>Gets the number of bytes that are pre-allocated for writing data to hardware.</p>
+<p>This value determines the amount of memory that is pre-allocated for calls to <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">Write(uint, IntPtr, int)</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">Write&lt;T&gt;(uint, T)</a>, and
+<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">Write&lt;T&gt;(uint, T[])</a>. A larger size will reduce the frequency of
+dynamic memory allocation system calls but increase the expense of each of those calls. The minimum
+size of this option is determined by <a class="xref" href="OpenEphys.Onix1.ContextTask.html">MaxWriteFrameSize</a>. The effect on
+real-time performance is typically not as large as that of <a class="xref" href="OpenEphys.Onix1.ContextTask.html">BlockReadSize</a>
+because this parameter defines a readily-available pool of memory for the creation of output data
+frames, but does not determine when they are written to hardware. Data is written to hardware as
+soon as an output frame has been created. In contrast data is read from hardware whenever more than
+<a class="xref" href="OpenEphys.Onix1.StartAcquisition.html">ReadSize</a> bytes have accumulated in the input buffer.</p>
+
+      </td>
+    </tr>    
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>DeviceTable</code>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>, <span class="xref">Device</span>&gt;
+      </td>
+      <td class="tableFormat">
+      <p>Gets the device table containing the device hierarchy of the acquisition system.</p>
+<p>This dictionary provides access to the <a href="https://open-ephys.github.io/ONI/hw-spec/dev_table.html">ONI Device Table</a>, which maps
+a set of fully-qualified <a href="https://open-ephys.github.io/ONI/hw-spec/dev_table.html#dev-address"> ONI Device
+Addresses</a> to a corresponding set of <a href="https://open-ephys.github.io/ONI/hw-spec/devices.html#dev-desc">ONI Device
+Descriptors</a>. The value of this property is determined during hardware initialization.</p>
+
+      </td>
+    </tr>    
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>MaxReadFrameSize</code>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>
+      </td>
+      <td class="tableFormat">
+      <p>Gets the size of the largest data frame produced by any device with the acquisition system in bytes.</p>
+<p>This number describes the the size, in bytes, of the largest <a href="https://open-ephys.github.io/ONI/hw-spec/controller.html#data-frames">ONI Data Frame</a>
+produced by any device within the current device table that generates data. Therefore, it also
+defines the lower bound for the value of <a class="xref" href="OpenEphys.Onix1.ContextTask.html">BlockReadSize</a>. The value of this property
+is determined during hardware initialization.</p>
+
+      </td>
+    </tr>    
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>MaxWriteFrameSize</code>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>
+      </td>
+      <td class="tableFormat">
+      <p>Gets the size of the largest data frame consumed by any device with the acquisition system in bytes.</p>
+<p>This number describes the the size, in bytes, of the largest <a href="https://open-ephys.github.io/ONI/hw-spec/controller.html#data-frames">ONI Data Frame</a>
+consumed by any device within the current device table that accepts data. Therefore, it also
+defines the lower bound for the value of <a class="xref" href="OpenEphys.Onix1.ContextTask.html">BlockWriteSize</a>. The value of this property
+is determined during hardware initialization.</p>
+
+      </td>
+    </tr>    
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>SystemClockHz</code>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>
+      </td>
+      <td class="tableFormat">
+      <p>Gets the system clock rate in Hz.</p>
+<p>This property describes the frequency of the clock governing the ONI controller. The value of this
+property is determined during hardware initialization.</p>
+
+      </td>
+    </tr>    
+
+  </table>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/open-ephys/onix-bonsai-onix1/blob/main/OpenEphys.Onix1/ContextTask.cs/#L36" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          &copy; 2024 Open Ephys and Contributors. Made with <a href="https://dotnet.github.io/docfx">docfx</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

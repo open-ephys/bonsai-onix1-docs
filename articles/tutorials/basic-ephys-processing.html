@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Basic Ephys Data Processing in Bonsai </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Basic Ephys Data Processing in Bonsai ">
+      
+      
+      <link rel="icon" href="../../favicon.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/tutorials/basic-ephys-processing.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo-light-mode.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="basic-ephys-processing">
+          <h1>Basic Ephys Data Processing in Bonsai</h1>
+
+
+
+
+
+  
+<p>This tutorial shows how to use ONIX hardware and the OpenEphys.Onix1 Bonsai package to perform basic online signal
+processing on electrophysiology data in Bonsai such as channel selection and reordering, frequency filtering and event
+detection (in this example, spike detection using a fixed threshold crossing).</p>
+<p>This type of processing is helpful for visualizing data during acquisition and can be a starting point for more advanced
+workflows such as closed-loop experiments. For specialized data visualizations from very dense arrays like Neuropixels
+probes, for example, we recommend piping that data to the Open Ephys GUI.</p>
+<!-- Event detection in Bonsai will be faster and it allows actuation using ONIX or other hardware for closed-loop
+applications. However, more advanced event detection algorithms such as spike sorting, ripple detection, etc. need
+specific implementations in Bonsai. -->
+<!-- I'm not sure we need to discuss what this tutorial doesn't do -->
+<p>This tutorial guides you through building the following workflow:</p>
+<div class="workflow"><p><img src="../../workflows/tutorials/basic-ephys-processing/spikes.bonsai" alt="/workflows/tutorials/basic-ephys-processing/spikes.bonsai workflow"></p>
+</div>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Although this tutorial uses headstage64 as an example, the process is similar for other ephys headstages. This
+tutorial assumes you are familiar with the <a class="xref" href="../hardware/index.html">hardware guide</a> of the ONIX headstage you intend to use.
+Use this <a class="xref" href="../getting-started/reference.html">reference</a> for which ephys <a class="xref" href="../../api/dataio.html">Data I/O Operators</a> and scaling you need to use for each headstage, and links to relevant
+documentation.</p>
+</div>
+<h2 id="set-up-and-get-started-in-bonsai">Set up and get started in Bonsai</h2>
+<p>Follow the <a class="xref" href="../getting-started/index.html">Getting Started</a> guide to set up and get familiarized with Bonsai. In particular:</p>
+<ul>
+<li><a class="xref" href="../getting-started/install-configure-bonsai.html#install-packages-in-bonsai">Download the necessary Bonsai packages</a> or
+<a class="xref" href="../getting-started/install-configure-bonsai.html#update-packages-in-bonsai">check for updates</a>. This tutorial assumes
+you're using the latest software.</li>
+<li>Read about <a class="xref" href="../getting-started/visualize-data.html">visualizing data</a> since we recommend checking each step of the tutorial by visualizing the data produced but we don't cover it here.</li>
+</ul>
+<h2 id="configure-the-hardware">Configure the hardware</h2>
+<div class="workflow"><p><img src="../../workflows/tutorials/basic-ephys-processing/configuration.bonsai" alt="/workflows/tutorials/basic-ephys-processing/configuration.bonsai workflow"></p>
+</div>
+<p>Construct a <a class="xref" href="../getting-started/initialize-oni-context.html">top-level hardware configuration chain</a>:</p>
+<ol>
+<li>Place the <a class="xref" href="../../api/configure.html">configuration operators</a> that correspond to the hardware you intend to use between
+<a class="xref" href="../../api/OpenEphys.Onix1.CreateContext.html">CreateContext</a> and <a class="xref" href="../../api/OpenEphys.Onix1.StartAcquisition.html">StartAcquisition</a>. In this example, these are
+<a class="xref" href="../../api/OpenEphys.Onix1.ConfigureHeadstage64.html">ConfigureHeadstage64</a> and <a class="xref" href="../../api/OpenEphys.Onix1.ConfigureBreakoutBoard.html">ConfigureBreakoutBoard</a>.</li>
+<li>Confirm that the device that streams electrophysiology data is enabled. The Rhd2164 device (an Intan amplifier) on
+the headstage64 is the only device used in this tutorial, so you could disable other devices on the headstage and on the
+breakout board to improve performance if you wanted to.</li>
+</ol>
+<h2 id="stream-ephys-data-into-bonsai">Stream ephys data into Bonsai</h2>
+<div class="workflow"><p><img src="../../workflows/tutorials/basic-ephys-processing/ephys-data.bonsai" alt="/workflows/tutorials/basic-ephys-processing/ephys-data.bonsai workflow"></p>
+</div>
+<p>Place the relevant operators to stream electrophysiology data from your headstage:</p>
+<ol>
+<li>Because the device on headstage64 that streams electrophysiology data is the Rhd2164 Intan amplifier, we placed the
+<a class="xref" href="../../api/OpenEphys.Onix1.Rhd2164Data.html">Rhd2164Data</a> node onto the workflow. Use this <a class="xref" href="../getting-started/reference.html">reference</a> to find the ephys data operator
+that corresponds to each device.</li>
+<li>Select the relevant members from the data frames that the data operator produces. In this example, the relevant members are &quot;AmplifierData&quot; and &quot;Clock&quot;. To select those members, right-click the <code>Rhd2164</code> node, hover over the output option in the context menu, and select it from
+the list.</li>
+<li>Visualize the raw data to confirm that the ephys data operator is streaming data.</li>
+</ol>
+<h2 id="select-and-reorder-channels">Select and reorder channels</h2>
+<div class="workflow"><p><img src="../../workflows/tutorials/basic-ephys-processing/select-convert-ephys-data.bonsai" alt="/workflows/tutorials/basic-ephys-processing/select-convert-ephys-data.bonsai workflow"></p>
+</div>
+<p>Connect a <a class="xref" href="https://bonsai-rx.org/docs/api/Bonsai.Dsp.SelectChannels.html">SelectChannels</a> operator to the electrophysiology data stream and edit its &quot;Channels&quot; property.</p>
+<ul>
+<li>Remember indexing in Bonsai starts at 0.</li>
+<li>Use commas to list multiple channels and brackets for ranges.</li>
+<li>Reorder channels by listing the channel numbers in the order in which you want to visualize the channels.</li>
+</ul>
+<h2 id="convert-ephys-data-to-microvolts">Convert ephys data to microvolts</h2>
+<div class="workflow"><p><img src="../../workflows/tutorials/basic-ephys-processing/select-convert-ephys-data.bonsai" alt="/workflows/tutorials/basic-ephys-processing/select-convert-ephys-data.bonsai workflow"></p>
+</div>
+<h3 id="center-the-signal-around-zero">Center the signal around zero</h3>
+<p>Connect a <a class="xref" href="https://bonsai-rx.org/docs/api/Bonsai.Dsp.ConvertScale.html">ConvertScale</a> operator to the <code>SelectChannels</code> operator and set its properties:</p>
+<ul>
+<li>Edit its &quot;Shift&quot; property to subtract 2<sup>bit depth - 1</sup> from the signal. Use this <a class="xref" href="../getting-started/reference.html">reference</a> to find
+the Shift necessary for each device. In this example, we &quot;Shift&quot; -32768 because the Rhd2164 device outputs unsigned
+16-bit data.</li>
+<li>Set the &quot;Depth&quot; property to F32 because this bit depth is required to correctly represent scaled data from all
+devices.</li>
+</ul>
+<h3 id="scale-the-signal-to-microvolts">Scale the signal to microvolts</h3>
+<p>Connect a second <code>ConvertScale</code> operator to the first <code>ConvertScale</code> operator and set its properties:</p>
+<ul>
+<li>Edit its &quot;Scale&quot; property to multiply the signal by a scalar in order to get microvolt values. This scalar is
+determined by the gain of the amplifier and resolution the ADC contained in the amplifier device. Use this
+<a class="xref" href="../getting-started/reference.html">reference</a> to find the &quot;Scale&quot; necessary for each device. In this example, we &quot;Scale&quot; by 0.195 because
+the Rhd2164 device on headstage64 has a step size of 0.195 μV/bit</li>
+<li>Keep the &quot;Depth&quot; property at F32.</li>
+</ul>
+<p>Visualize the transformed data to confirm the output of the shifting and scaling operations
+worked as expected, i.e. that the signal is centered around zero and that the values make sense in microvolts.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Although both the Shift and Scale calculation can be done in one <code>ConvertScale</code> operator, the calculations are
+more straightforward using two operators connected in series because the <code>ConvertScale</code> operator applies the
+&quot;Shift&quot; offset after applying the &quot;Scale&quot; scalar so if we used a single operator, we would have to scale the Shift
+parameter.</p>
+</div>
+<h2 id="apply-a-filter">Apply a filter</h2>
+<div class="workflow"><p><img src="../../workflows/tutorials/basic-ephys-processing/filter-ephys-data.bonsai" alt="/workflows/tutorials/basic-ephys-processing/filter-ephys-data.bonsai workflow"></p>
+</div>
+<p>Connect a <code>FrequencyFilter</code> operator to the second <code>ConvertScale</code> operator and set its properties.</p>
+<ul>
+<li>Set its &quot;SampleRate&quot; property to 30000. Ephys data in all devices is 30 kHz.</li>
+<li>Set the &quot;FilterType&quot; property to an adequate type. In this example, we use a high pass filter to look at spikes.</li>
+<li>Set the &quot;Cutoff1&quot; and &quot;Cutoff2&quot; properties to an adequate value. In this example, we use 300 Hz as the
+lower cutoff frequency.</li>
+</ul>
+<p>Visualize the filtered data.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>If you choose to save data, we recommend you place the <code>MatrixWriter</code> operator before filtering and scaling to save raw
+data instead of scaled or filtered data. Filtering with the <code>FrequencyFilter</code> operator before recording could remove signals from a bandwidth of interest and converting to microvolts with the second <code>ConvertScale</code> operator could increase the size of your data without increasing meaningful information.</p>
+</div>
+<h2 id="detect-events">Detect events</h2>
+<div class="workflow"><p><img src="../../workflows/tutorials/basic-ephys-processing/spike-detection.bonsai" alt="/workflows/tutorials/basic-ephys-processing/spike-detection.bonsai workflow"></p>
+</div>
+<p>Based on the amplitude of the signal on the selected channel, set a fixed threshold for detecting spikes. <!-- discuss these details? --></p>
+<p>Visualize the spike data.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>You can test the spike detection using a pre-recorded data known to have spikes: recreate the
+workflow from this example without the hardware configuration chain in a new workflow and replace the ephys data node (in the case of the headstage64, replace
+the <code>Rhd2164</code> node) with a <code>MatrixReader</code> that reads from the file containing spiking ephys data in unsigned 16-bit format.</p>
+</div>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/tutorials/basic-ephys-processing.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          &copy; 2024 Open Ephys and Contributors. Made with <a href="https://dotnet.github.io/docfx">docfx</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
