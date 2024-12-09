@@ -1,0 +1,82 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[
+<!ENTITY E14 'matrix(1.00 0.00 0.00 1.00 84.00 4.00 ) '><!ENTITY E8 'stroke:rgb(169,169,169);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:2;stroke-linejoin:miter;'><!ENTITY E7 'M 10.158 33.2 C 3.4054 31.7591 -1.861 26.4692 -3.271 19.71 '><!ENTITY E9 'matrix(1.00 0.00 0.00 1.00 164.00 4.00 ) '><!ENTITY E19 'matrix(1.00 0.00 0.00 1.00 4.00 4.00 ) '><!ENTITY E1 'stroke:rgb(169,169,169);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:1;stroke-linejoin:miter;'><!ENTITY E10 'stroke:none;opacity:1;fill:rgb(155,91,179);'><!ENTITY E5 'matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) '>
+]>
+<svg width="303.6559" height="80.47558" id="SvgGdi_output" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <style>text { fill: #000; } @media (prefers-color-scheme: dark) { text { fill: #eee; } }</style>
+  <rect id="background" height="100.00%" style="fill:none;" width="100.00%" y="0.00" x="0.00" />
+  <g style="shape-rendering:auto;" id="root_group">
+    <line y1="19.00" style="stroke:rgb(169,169,169);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:1;stroke-linejoin:miter;" id="2" x2="240.00" y2="19.00" x1="198.00" />
+    <line y1="19.00" style="stroke:rgb(169,169,169);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:1;stroke-linejoin:miter;" id="3" x2="160.00" y2="19.00" x1="118.00" />
+    <line y1="19.00" style="stroke:rgb(169,169,169);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:1;stroke-linejoin:miter;" id="4" x2="80.00" y2="19.00" x1="38.00" />
+    <ellipse id="37" cy="15.00" cx="15.00" rx="15.00" ry="15.00" transform="matrix(1.00 0.00 0.00 1.00 244.00 4.00 ) " style="stroke:none;opacity:1;fill:rgb(238,192,75);" />
+    <text id="39" transform="matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) " x="244.00px" y="39.00px" style="stroke:none;clip-path:url(#41_text_clipper);font-family:Microsoft Sans Serif;font-size:8.25pt;opacity:1;">
+      <tspan dy="8.25pt" id="43">Start</tspan>
+    </text>
+    <text id="45" transform="matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) " x="244.00px" y="51.45px" style="stroke:none;clip-path:url(#47_text_clipper);font-family:Microsoft Sans Serif;font-size:8.25pt;opacity:1;">
+      <tspan dy="8.25pt" id="49">Acquisition</tspan>
+    </text>
+    <path d="M 10.158 33.2 C 3.4054 31.7591 -1.861 26.4692 -3.271 19.71 " style="stroke:rgb(169,169,169);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:2;stroke-linejoin:miter;" transform="matrix(1.00 0.00 0.00 1.00 164.00 4.00 ) " id="54" />
+    <ellipse id="55" cy="15.00" cx="15.00" transform="matrix(1.00 0.00 0.00 1.00 164.00 4.00 ) " rx="15.00" ry="15.00" style="stroke:none;opacity:1;fill:rgb(155,91,179);" />
+    <text id="56" transform="matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) " x="164.00px" y="39.00px" style="stroke:none;clip-path:url(#58_text_clipper);font-family:Microsoft Sans Serif;font-size:8.25pt;opacity:1;">
+      <tspan dy="8.25pt" id="60">Configure</tspan>
+    </text>
+    <text id="62" transform="matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) " x="164.00px" y="51.45px" style="stroke:none;clip-path:url(#64_text_clipper);font-family:Microsoft Sans Serif;font-size:8.25pt;opacity:1;">
+      <tspan dy="8.25pt" id="66">Neuropixels</tspan>
+    </text>
+    <text id="68" transform="matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) " x="164.00px" y="63.90px" style="stroke:none;clip-path:url(#70_text_clipper);font-family:Microsoft Sans Serif;font-size:8.25pt;opacity:1;">
+      <tspan dy="8.25pt" id="72">V1f</tspan>
+    </text>
+    <path d="M 10.158 33.2 C 3.4054 31.7591 -1.861 26.4692 -3.271 19.71 " style="stroke:rgb(169,169,169);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:2;stroke-linejoin:miter;" transform="matrix(1.00 0.00 0.00 1.00 84.00 4.00 ) " id="74" />
+    <ellipse id="75" cy="15.00" cx="15.00" transform="matrix(1.00 0.00 0.00 1.00 84.00 4.00 ) " rx="15.00" ry="15.00" style="stroke:none;opacity:1;fill:rgb(155,91,179);" />
+    <text id="76" transform="matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) " x="84.00px" y="39.00px" style="stroke:none;clip-path:url(#78_text_clipper);font-family:Microsoft Sans Serif;font-size:8.25pt;opacity:1;">
+      <tspan dy="8.25pt" id="80">Configure</tspan>
+    </text>
+    <text id="82" transform="matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) " x="84.00px" y="51.45px" style="stroke:none;clip-path:url(#84_text_clipper);font-family:Microsoft Sans Serif;font-size:8.25pt;opacity:1;">
+      <tspan dy="8.25pt" id="86">Neuropixels</tspan>
+    </text>
+    <text id="88" transform="matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) " x="84.00px" y="63.90px" style="stroke:none;clip-path:url(#90_text_clipper);font-family:Microsoft Sans Serif;font-size:8.25pt;opacity:1;">
+      <tspan dy="8.25pt" id="92">V1f</tspan>
+    </text>
+    <path style="stroke:rgb(169,169,169);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:2;stroke-linejoin:miter;" transform="matrix(1.00 0.00 0.00 1.00 4.00 4.00 ) " id="97" d="M 31.179 5.2 C 34.9985 11.0918 34.9814 18.682 31.13552 24.557 " />
+    <ellipse id="98" cy="15.00" cx="15.00" transform="matrix(1.00 0.00 0.00 1.00 4.00 4.00 ) " rx="15.00" ry="15.00" style="stroke:none;opacity:1;fill:rgb(91,178,126);" />
+    <text id="99" transform="matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) " x="4.00px" y="39.00px" style="stroke:none;clip-path:url(#101_text_clipper);font-family:Microsoft Sans Serif;font-size:8.25pt;opacity:1;">
+      <tspan dy="8.25pt" id="103">Create</tspan>
+    </text>
+    <text id="105" transform="matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) " x="4.00px" y="51.45px" style="stroke:none;clip-path:url(#107_text_clipper);font-family:Microsoft Sans Serif;font-size:8.25pt;opacity:1;">
+      <tspan dy="8.25pt" id="109">Context</tspan>
+    </text>
+  </g>
+  <defs id="clips_hatches_and_gradients">
+    <clipPath id="41_text_clipper">
+      <rect x="244.00" y="39.00" width="58.66" height="27.65" id="42" />
+    </clipPath>
+    <clipPath id="47_text_clipper">
+      <rect x="244.00" y="51.45" width="58.66" height="27.65" id="48" />
+    </clipPath>
+    <clipPath id="58_text_clipper">
+      <rect x="164.00" y="39.00" width="63.62" height="41.48" id="59" />
+    </clipPath>
+    <clipPath id="64_text_clipper">
+      <rect x="164.00" y="51.45" width="63.62" height="41.48" id="65" />
+    </clipPath>
+    <clipPath id="70_text_clipper">
+      <rect x="164.00" y="63.90" width="63.62" height="41.48" id="71" />
+    </clipPath>
+    <clipPath id="78_text_clipper">
+      <rect x="84.00" y="39.00" width="63.62" height="41.48" id="79" />
+    </clipPath>
+    <clipPath id="84_text_clipper">
+      <rect x="84.00" y="51.45" width="63.62" height="41.48" id="85" />
+    </clipPath>
+    <clipPath id="90_text_clipper">
+      <rect x="84.00" y="63.90" width="63.62" height="41.48" id="91" />
+    </clipPath>
+    <clipPath id="101_text_clipper">
+      <rect x="4.00" y="39.00" width="42.71" height="27.65" id="102" />
+    </clipPath>
+    <clipPath id="107_text_clipper">
+      <rect x="4.00" y="51.45" width="42.71" height="27.65" id="108" />
+    </clipPath>
+  </defs>
+</svg>

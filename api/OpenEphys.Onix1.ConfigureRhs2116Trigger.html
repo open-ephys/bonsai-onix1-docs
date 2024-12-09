@@ -1,0 +1,335 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ConfigureRhs2116Trigger </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ConfigureRhs2116Trigger ">
+      
+      <meta name="description" content="Configures an ONIX RHS 2116 Trigger device.">
+      <link rel="icon" href="../favicon.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/open-ephys/onix-bonsai-onix1/new/main/apiSpec/new?filename=OpenEphys_Onix1_ConfigureRhs2116Trigger.md&amp;value=---%0Auid%3A%20OpenEphys.Onix1.ConfigureRhs2116Trigger%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo-light-mode.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="OpenEphys.Onix1.ConfigureRhs2116Trigger">
+
+    <div class="Important alert alert-info">
+      <h5>TIP</h5>
+      <p>
+        This is a device configuration operator. <a class="xref" href="configure.html">Aggregate configuration operators</a> are recommended in lieu of <a class="xref" href="device-configure.html">device configuration operators</a> for interfacing with Open Ephys Onix hardware.
+      </p>
+    </div>
+
+  <div>
+    <h1 id="OpenEphys_Onix1_ConfigureRhs2116Trigger" data-uid="OpenEphys.Onix1.ConfigureRhs2116Trigger" class="text-break" style="display: inline-block;">
+    ConfigureRhs2116Trigger
+    <a class="header-action link-secondary" title="View source" href="https://github.com/open-ephys/onix-bonsai-onix1/blob/main/OpenEphys.Onix1/ConfigureRhs2116Trigger.cs/#L20"><i class="bi bi-code-slash"></i></a>
+    </h1>
+    <p style="display: inline; text-transform: capitalize"> sink Operator</p>
+  </div>
+
+  <div><p>Configures an ONIX RHS 2116 Trigger device.</p>
+<p>The RHS2116 Trigger device generates triggers for Intan RHS2116 bioamplifier and stimulator chip(s)
+either from a remote source via external SYNC pin or locally via GPIO or TRIGGER register. This
+device can be used to synchronize stimulus application and recovery across chips.</p>
+</div>
+
+  <div class="workflow"><p><img src="../workflows/operators/ConfigureRhs2116Trigger.bonsai" alt="ConfigureRhs2116Trigger Workflow"></p></div>
+  <h2>Inputs & Outputs</h2>
+
+  <div><p>Configures an RHS2116 Trigger device.</p>
+<p>This will schedule configuration actions to be applied by a <a class="xref" href="OpenEphys.Onix1.StartAcquisition.html">StartAcquisition</a> node
+prior to data acquisition.</p>
+</div> 
+
+  <table style="border: 0px; table-layout: fixed; padding: 0; margin: 0; margin-bottom: 1rem;">
+    <tr style="border: 0px;">
+
+    <!-- input -->
+
+    <td style="border: 0px; vertical-align: middle; margin: 0; padding: 0; width: 45%;">
+      <table style="table-layout: fixed; padding: 0; margin: 0; vertical-align: middle;">
+      <tr style="border: 0px;">
+        <td style="border: 1px solid; vertical-align: middle; width: 80%; border-color: var(--bs-border-color);">
+        <div class="tableFormat"><p>A sequence of <a class="xref" href="OpenEphys.Onix1.ContextTask.html">ContextTask</a> that holds all configuration actions.</p>
+</div>
+        </td>
+        <td style="text-align: right; vertical-align: middle; margin: 0; padding: 0; width: 20%; border: 0px;">
+        <img src="../images/right-arrow.svg" alt="right-arrow">
+        </td>
+      </tr>
+      </table>
+    </td>
+
+    <!-- operator -->
+
+    <td style="border: 0px; text-align: center; vertical-align: middle; margin: 0; padding: 0; width: 10%;">
+      <img src="../images/sink-operator.svg" alt="representation of a sink operator">
+    </td>
+
+    <!-- output -->
+
+    <td style="border: 0px; vertical-align: middle; margin: 0; padding: 0; width: 45%;">
+      <table style="table-layout: fixed; padding: 0; margin: 0; vertical-align: middle;">
+      <tr style="border: 0px;">
+        <td style="border: 0px; vertical-align: middle; margin: 0; padding: 0; width: 20%;">
+        <img src="../images/right-arrow.svg" alt="right-arrow">
+        </td>
+        <td style="border: 1px solid; vertical-align: middle; width: 80%; border-color: var(--bs-border-color);">
+        <div class="tableFormat"><p>The original sequence with the side effect of an additional configuration action to configure
+aN RHS2116 Trigger device.</p>
+</div>
+        </td>
+      </tr>
+      </table>
+    </td>
+    </tr>
+  </table>
+
+
+  <h2>Properties</h2>
+
+
+  <table>
+
+    <tr>
+      <th style="white-space: nowrap;">Property</th>
+      <th style="white-space: nowrap;">Type</th> 
+      <th>Description</th>
+    </tr>
+
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>ProbeGroup</code>
+        <div>
+          <a class="xref" href="../articles/getting-started/property-categories.html#configuration">
+            <button class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill">
+              configuration 
+            </button>
+          </a>
+        </div>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="OpenEphys.Onix1.Rhs2116ProbeGroup.html">Rhs2116ProbeGroup</a>
+      </td>
+      <td class="tableFormat">
+      <p>Gets or sets the <a class="xref" href="OpenEphys.Onix1.Rhs2116ProbeGroup.html">Rhs2116ProbeGroup</a> channel configuration.</p>
+
+      </td>
+    </tr>    
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>StimulusSequence</code>
+        <div>
+          <a class="xref" href="../articles/getting-started/property-categories.html#acquisition">
+            <button class="badge bg-primary-subtle border border-primary-subtle text-primary-emphasis rounded-pill">
+              acquisition
+            </button>
+          </a>
+        </div>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="OpenEphys.Onix1.Rhs2116StimulusSequencePair.html">Rhs2116StimulusSequencePair</a>
+      </td>
+      <td class="tableFormat">
+      <p>Gets or sets the stimulus sequence.</p>
+
+      </td>
+    </tr>    
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>TriggerSource</code>
+        <div>
+          <a class="xref" href="../articles/getting-started/property-categories.html#configuration">
+            <button class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill">
+              configuration 
+            </button>
+          </a>
+        </div>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="OpenEphys.Onix1.Rhs2116TriggerSource.html">Rhs2116TriggerSource</a>
+      </td>
+      <td class="tableFormat">
+      <p>Gets or sets the trigger source.</p>
+<p>If set to <a class="xref" href="OpenEphys.Onix1.Rhs2116TriggerSource.html">Local</a>, respect local triggers (e.g. via GPIO
+or TRIGGER register) and broadcast via sync pin. If multiple chips are connected to the SYNC pin,
+then this device becomes a transmitter to trigger stimulation sequences on other RHS2116 Trigger
+devices with TRIGGERSOURCE = 0x1 (receiver).
+If set to <a class="xref" href="OpenEphys.Onix1.Rhs2116TriggerSource.html">External</a>, only respect triggers received from sync pin.</p>
+
+        <table>
+          <tr>
+            <td class="term"><code>Local = 0</code></td>
+            <td class="description"></td>
+          </tr>
+          <tr>
+            <td class="term"><code>External = 1</code></td>
+            <td class="description"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>    
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>DeviceName</code>
+        <div>
+          <a class="xref" href="../articles/getting-started/property-categories.html#configuration">
+            <button class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill">
+              configuration 
+            </button>
+          </a>
+        </div>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>
+      </td>
+      <td class="tableFormat">
+      <p>Gets or sets a unique device name.</p>
+<p>The device name provides a unique, human-readable identifier that is used to link software
+elements for configuration, control, and data streaming to hardware. For instance, it can be used
+to link configuration operators to data IO operators within a workflow. This value is
+usually not set manually, but is assigned in a <a class="xref" href="OpenEphys.Onix1.MultiDeviceFactory.html">MultiDeviceFactory</a> to correspond to a
+fixed address with a piece of hardware such as a headstage. This address is used for software
+communication.</p>
+
+      </td>
+    </tr>    
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>DeviceAddress</code>
+        <div>
+          <a class="xref" href="../articles/getting-started/property-categories.html#configuration">
+            <button class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill">
+              configuration 
+            </button>
+          </a>
+        </div>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>
+      </td>
+      <td class="tableFormat">
+      <p>Gets or sets the device address.</p>
+<p>This is a fully-qualified numerical hardware address of a device within the device table produced
+by an <a href="https://open-ephys.github.io/ONI/">Open Neuro Interface (ONI)</a> compliant
+acquisition system. This value is usually not set manually, but is assigned in a <a class="xref" href="OpenEphys.Onix1.MultiDeviceFactory.html">MultiDeviceFactory</a> to correspond to a fixed address with a piece of hardware such as a
+headstage. This address is used for hardware communication.</p>
+
+      </td>
+    </tr>    
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>DeviceType</code>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a>
+      </td>
+      <td class="tableFormat">
+      <p>Gets or sets the device identity.</p>
+<p>This type provides a device identity to each device within the device table produced by an <a href="https://open-ephys.github.io/ONI/">Open Neuro Interface (ONI)</a> compliant acquisition
+system.</p>
+
+      </td>
+    </tr>    
+
+  </table>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/open-ephys/onix-bonsai-onix1/blob/main/OpenEphys.Onix1/ConfigureRhs2116Trigger.cs/#L20" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          &copy; 2024 Open Ephys and Contributors. Made with <a href="https://dotnet.github.io/docfx">docfx</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

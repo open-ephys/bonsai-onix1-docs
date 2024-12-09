@@ -1,0 +1,586 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ConfigureUclaMiniscopeV4 </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ConfigureUclaMiniscopeV4 ">
+      
+      <meta name="description" content="Configures a UCLA Miniscope V4 on the specified port.">
+      <link rel="icon" href="../favicon.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/open-ephys/onix-bonsai-onix1/new/main/apiSpec/new?filename=OpenEphys_Onix1_ConfigureUclaMiniscopeV4.md&amp;value=---%0Auid%3A%20OpenEphys.Onix1.ConfigureUclaMiniscopeV4%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo-light-mode.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="OpenEphys.Onix1.ConfigureUclaMiniscopeV4">
+
+
+  <div>
+    <h1 id="OpenEphys_Onix1_ConfigureUclaMiniscopeV4" data-uid="OpenEphys.Onix1.ConfigureUclaMiniscopeV4" class="text-break" style="display: inline-block;">
+    ConfigureUclaMiniscopeV4
+    <a class="header-action link-secondary" title="View source" href="https://github.com/open-ephys/onix-bonsai-onix1/blob/main/OpenEphys.Onix1/ConfigureUclaMiniscopeV4.cs/#L23"><i class="bi bi-code-slash"></i></a>
+    </h1>
+    <p style="display: inline; text-transform: capitalize"> sink Operator</p>
+  </div>
+
+  <div><p>Configures a UCLA Miniscope V4 on the specified port.</p>
+<p>The UCLA Miniscope V4 is a miniaturized fluorescent microscope for performing single-photon calcium
+imaging in freely moving animals. It has the following features:</p>
+<ul><li>A Python-480 0.48 Megapixel CMOS image sensor.</li><li>A BNO055 9-axis IMU for real-time, 3D orientation tracking.</li><li>An electrowetting lens for remote focal plane adjustment.</li><li>An excitation LED with adjustable brightness control and optional exposure-driven
+interleaving to reduce photobleaching.</li></ul>
+</div>
+
+  <div class="workflow"><p><img src="../workflows/operators/ConfigureUclaMiniscopeV4.bonsai" alt="ConfigureUclaMiniscopeV4 Workflow"></p></div>
+  <h2>Inputs & Outputs</h2>
+
+  <div><p>Configure all devices in the device group.</p>
+<p>This will schedule configuration actions to be applied by a <a class="xref" href="OpenEphys.Onix1.StartAcquisition.html">StartAcquisition</a> instance
+prior to data acquisition.</p>
+</div> 
+
+  <table style="border: 0px; table-layout: fixed; padding: 0; margin: 0; margin-bottom: 1rem;">
+    <tr style="border: 0px;">
+
+    <!-- input -->
+
+    <td style="border: 0px; vertical-align: middle; margin: 0; padding: 0; width: 45%;">
+      <table style="table-layout: fixed; padding: 0; margin: 0; vertical-align: middle;">
+      <tr style="border: 0px;">
+        <td style="border: 1px solid; vertical-align: middle; width: 80%; border-color: var(--bs-border-color);">
+        <div class="tableFormat"><p>A sequence of <a class="xref" href="OpenEphys.Onix1.ContextTask.html">ContextTask</a> instances that hold configuration actions.</p>
+</div>
+        </td>
+        <td style="text-align: right; vertical-align: middle; margin: 0; padding: 0; width: 20%; border: 0px;">
+        <img src="../images/right-arrow.svg" alt="right-arrow">
+        </td>
+      </tr>
+      </table>
+    </td>
+
+    <!-- operator -->
+
+    <td style="border: 0px; text-align: center; vertical-align: middle; margin: 0; padding: 0; width: 10%;">
+      <img src="../images/sink-operator.svg" alt="representation of a sink operator">
+    </td>
+
+    <!-- output -->
+
+    <td style="border: 0px; vertical-align: middle; margin: 0; padding: 0; width: 45%;">
+      <table style="table-layout: fixed; padding: 0; margin: 0; vertical-align: middle;">
+      <tr style="border: 0px;">
+        <td style="border: 0px; vertical-align: middle; margin: 0; padding: 0; width: 20%;">
+        <img src="../images/right-arrow.svg" alt="right-arrow">
+        </td>
+        <td style="border: 1px solid; vertical-align: middle; width: 80%; border-color: var(--bs-border-color);">
+        <div class="tableFormat"><p>The original sequence modified by adding additional configuration actions required to configure
+all the devices in the device group.</p>
+</div>
+        </td>
+      </tr>
+      </table>
+    </td>
+    </tr>
+  </table>
+
+
+  <h2>Properties</h2>
+
+
+  <h3>Configuration</h3>
+
+
+  <p>These are properties of the aggregate operator:</p>
+
+  <table>
+
+    <tr>
+      <th style="white-space: nowrap;">Property</th>
+      <th style="white-space: nowrap;">Type</th> 
+      <th>Description</th>
+    </tr>
+
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>Port</code>
+        <div>
+          <a class="xref" href="../articles/getting-started/property-categories.html#configuration">
+            <button class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill">
+              configuration 
+            </button>
+          </a>
+        </div>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="OpenEphys.Onix1.PortName.html">PortName</a>
+      </td>
+      <td class="tableFormat">
+      <p>Gets or sets the port.</p>
+<p>The port is the physical connection to the ONIX breakout board and must be specified prior to operation.</p>
+
+        <table>
+          <tr>
+            <td class="term"><code>PortA = 1</code></td>
+            <td class="description"></td>
+          </tr>
+          <tr>
+            <td class="term"><code>PortB = 2</code></td>
+            <td class="description"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>    
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>PortVoltage</code>
+        <div>
+          <a class="xref" href="../articles/getting-started/property-categories.html#configuration">
+            <button class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill">
+              configuration 
+            </button>
+          </a>
+        </div>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?
+      </td>
+      <td class="tableFormat">
+      <p>Gets or sets the port voltage override.</p>
+<p>
+If defined, it will override automated voltage discovery and apply the specified voltage to the miniscope.
+If left blank, an automated headstage detection algorithm will attempt to communicate with the miniscope and
+apply an appropriate voltage for stable operation. Because ONIX allows any coaxial tether to be used, some of
+which are thin enough to result in a significant voltage drop, its may be required to manually specify the
+port voltage.
+</p>
+<p>
+Warning: this device requires 4.0 to 5.0V, measured at the miniscope, for proper operation. Supplying higher
+voltages may result in damage.
+</p>
+
+      </td>
+    </tr>    
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>Name</code>
+        <div>
+          <a class="xref" href="../articles/getting-started/property-categories.html#configuration">
+            <button class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill">
+              configuration 
+            </button>
+          </a>
+        </div>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>
+      </td>
+      <td class="tableFormat">
+      <p>Gets or sets a unique device group name.</p>
+<p>A human-readable identifier that is used as a prefix for the <a class="xref" href="OpenEphys.Onix1.SingleDeviceFactory.html">DeviceName</a> of each device in the the group.</p>
+
+      </td>
+    </tr>    
+
+  </table>
+  <h3>Devices</h3>
+
+
+  <h4>Bno055</h4>
+
+  <p>Bno055 is a <a class="xref" href="OpenEphys.Onix1.ConfigurePolledBno055.html">ConfigurePolledBno055</a> operator encapsulated by the ConfigureUclaMiniscopeV4 operator with the following properties:</p>
+
+  <table>
+
+    <tr>
+      <th style="white-space: nowrap;">Property</th>
+      <th style="white-space: nowrap;">Type</th> 
+      <th>Description</th>
+    </tr>
+
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>AxisMap</code>
+        <div>
+          <a class="xref" href="../articles/getting-started/property-categories.html#configuration">
+            <button class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill">
+              configuration 
+            </button>
+          </a>
+        </div>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="OpenEphys.Onix1.Bno055AxisMap.html">Bno055AxisMap</a>
+      </td>
+      <td class="tableFormat">
+      <p>Gets or sets the axis map that will be applied during configuration.</p>
+<p>This value can be changed to compensate for the Bno055's mounting orientation.
+Specifically, this value can be set to rotate the Bno055's coordinate system compared
+to the default orientation presented on page 24 of the Bno055 datasheet.</p>
+
+        <table>
+          <tr>
+            <td class="term"><code>XYZ = 36</code></td>
+            <td class="description"></td>
+          </tr>
+          <tr>
+            <td class="term"><code>XZY = 24</code></td>
+            <td class="description"></td>
+          </tr>
+          <tr>
+            <td class="term"><code>YXZ = 33</code></td>
+            <td class="description"></td>
+          </tr>
+          <tr>
+            <td class="term"><code>YZX = 9</code></td>
+            <td class="description"></td>
+          </tr>
+          <tr>
+            <td class="term"><code>ZXY = 18</code></td>
+            <td class="description"></td>
+          </tr>
+          <tr>
+            <td class="term"><code>ZYX = 6</code></td>
+            <td class="description"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>    
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>AxisSign</code>
+        <div>
+          <a class="xref" href="../articles/getting-started/property-categories.html#configuration">
+            <button class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill">
+              configuration 
+            </button>
+          </a>
+        </div>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="OpenEphys.Onix1.Bno055AxisSign.html">Bno055AxisSign</a>
+      </td>
+      <td class="tableFormat">
+      <p>Gets or sets the axis sign that will be applied during configuration.</p>
+<p>This value can be changed to compensate for the Bno055's mounting orientation.
+Specifically, this value can be set to mirror specific axes in the Bno055's coordinate
+system compared to the default orientation presented on page 24 of the Bno055 datasheet.</p>
+
+        <table>
+          <tr>
+            <td class="term"><code>Default = 0</code></td>
+            <td class="description"></td>
+          </tr>
+          <tr>
+            <td class="term"><code>MirrorZ = 1</code></td>
+            <td class="description"></td>
+          </tr>
+          <tr>
+            <td class="term"><code>MirrorY = 2</code></td>
+            <td class="description"></td>
+          </tr>
+          <tr>
+            <td class="term"><code>MirrorX = 4</code></td>
+            <td class="description"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>    
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>Enable</code>
+        <div>
+          <a class="xref" href="../articles/getting-started/property-categories.html#configuration">
+            <button class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill">
+              configuration 
+            </button>
+          </a>
+        </div>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>
+      </td>
+      <td class="tableFormat">
+      <p>Gets or sets a value specifying whether the Bno055 device is enabled.</p>
+<p>If set to true, <a class="xref" href="OpenEphys.Onix1.PolledBno055Data.html">PolledBno055Data</a> will produce data. If set to false,
+<a class="xref" href="OpenEphys.Onix1.PolledBno055Data.html">PolledBno055Data</a> will not produce data.</p>
+
+      </td>
+    </tr>    
+
+  </table>
+
+
+  <h4>Camera</h4>
+
+  <p>Camera is a <a class="xref" href="OpenEphys.Onix1.ConfigureUclaMiniscopeV4Camera.html">ConfigureUclaMiniscopeV4Camera</a> operator encapsulated by the ConfigureUclaMiniscopeV4 operator with the following properties:</p>
+
+  <table>
+
+    <tr>
+      <th style="white-space: nowrap;">Property</th>
+      <th style="white-space: nowrap;">Type</th> 
+      <th>Description</th>
+    </tr>
+
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>Enable</code>
+        <div>
+          <a class="xref" href="../articles/getting-started/property-categories.html#configuration">
+            <button class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill">
+              configuration 
+            </button>
+          </a>
+        </div>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>
+      </td>
+      <td class="tableFormat">
+      <p>Gets or sets a value indicating whether the camera will produce image data.</p>
+<p>If set to true, <a class="xref" href="OpenEphys.Onix1.UclaMiniscopeV4CameraData.html">UclaMiniscopeV4CameraData</a> will produce image data. If set to false, <a class="xref" href="OpenEphys.Onix1.UclaMiniscopeV4CameraData.html">UclaMiniscopeV4CameraData</a> will not produce image data.</p>
+
+      </td>
+    </tr>    
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>FrameRate</code>
+        <div>
+          <a class="xref" href="../articles/getting-started/property-categories.html#configuration">
+            <button class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill">
+              configuration 
+            </button>
+          </a>
+        </div>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="OpenEphys.Onix1.UclaMiniscopeV4FramesPerSecond.html">UclaMiniscopeV4FramesPerSecond</a>
+      </td>
+      <td class="tableFormat">
+      <p>Gets or sets the camera video rate in frames per second.</p>
+
+        <table>
+          <tr>
+            <td class="term"><code>Fps10Hz = 0</code></td>
+            <td class="description"></td>
+          </tr>
+          <tr>
+            <td class="term"><code>Fps15Hz = 1</code></td>
+            <td class="description"></td>
+          </tr>
+          <tr>
+            <td class="term"><code>Fps20Hz = 2</code></td>
+            <td class="description"></td>
+          </tr>
+          <tr>
+            <td class="term"><code>Fps25Hz = 3</code></td>
+            <td class="description"></td>
+          </tr>
+          <tr>
+            <td class="term"><code>Fps30Hz = 4</code></td>
+            <td class="description"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>    
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>InterleaveLed</code>
+        <div>
+          <a class="xref" href="../articles/getting-started/property-categories.html#configuration">
+            <button class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill">
+              configuration 
+            </button>
+          </a>
+        </div>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>
+      </td>
+      <td class="tableFormat">
+      <p>Gets or sets a value indicating whether the excitation LED should turn on only when the camera
+shutter is open.</p>
+<p>If set to true, the excitation LED will turn on briefly before, and turn off briefly after, the
+camera begins photon collection on its photodiode array. If set to false, the excitation LED will
+remain on at all times.</p>
+
+      </td>
+    </tr>    
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>LedBrightness</code>
+        <div>
+          <a class="xref" href="../articles/getting-started/property-categories.html#acquisition">
+            <button class="badge bg-primary-subtle border border-primary-subtle text-primary-emphasis rounded-pill">
+              acquisition
+            </button>
+          </a>
+        </div>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>
+      </td>
+      <td class="tableFormat">
+      <p>Gets or sets the excitation LED brightness level (0-100%).</p>
+
+      </td>
+    </tr>    
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>LiquidLensVoltage</code>
+        <div>
+          <a class="xref" href="../articles/getting-started/property-categories.html#acquisition">
+            <button class="badge bg-primary-subtle border border-primary-subtle text-primary-emphasis rounded-pill">
+              acquisition
+            </button>
+          </a>
+        </div>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>
+      </td>
+      <td class="tableFormat">
+      <p>Gets or sets the liquid lens driver voltage (Volts RMS).</p>
+<p>The imaging focal plane is controlled by using a MAX14574 high-voltage liquid lens driver. This
+chip produces pulse-width modulated, 5 kHz alternative electric field that deforms the miniscope's
+liquid lens in order to change the focal plane. The strength of this field determines the degree
+of deformation and therefore the focal depth. The default setting of 47 Volts RMS corresponds to
+approximately mid-range.</p>
+
+      </td>
+    </tr>    
+    <tr>
+      <td style="white-space: nowrap;">
+        <code>SensorGain</code>
+        <div>
+          <a class="xref" href="../articles/getting-started/property-categories.html#acquisition">
+            <button class="badge bg-primary-subtle border border-primary-subtle text-primary-emphasis rounded-pill">
+              acquisition
+            </button>
+          </a>
+        </div>
+      </td>
+      <td style="white-space: nowrap;">
+      <a class="xref" href="OpenEphys.Onix1.UclaMiniscopeV4SensorGain.html">UclaMiniscopeV4SensorGain</a>
+      </td>
+      <td class="tableFormat">
+      <p>Gets or sets the camera sensor's analog gain.</p>
+
+        <table>
+          <tr>
+            <td class="term"><code>Low = 225</code></td>
+            <td class="description"></td>
+          </tr>
+          <tr>
+            <td class="term"><code>Medium = 228</code></td>
+            <td class="description"></td>
+          </tr>
+          <tr>
+            <td class="term"><code>High = 36</code></td>
+            <td class="description"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>    
+
+  </table>
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/open-ephys/onix-bonsai-onix1/blob/main/OpenEphys.Onix1/ConfigureUclaMiniscopeV4.cs/#L23" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          &copy; 2024 Open Ephys and Contributors. Made with <a href="https://dotnet.github.io/docfx">docfx</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

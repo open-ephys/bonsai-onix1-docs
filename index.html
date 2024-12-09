@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>OpenEphys.Onix1 </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="OpenEphys.Onix1 ">
+      
+      
+      <link rel="icon" href="favicon.png">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="landing" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="logo-light-mode.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="index">
+          <h1>OpenEphys.Onix1</h1>
+
+
+
+
+
+  
+<p><code>OpenEphys.Onix1</code> is a <a href="https://bonsai-rx.org/">Bonsai</a> library that can be used to control the <a href="https://open-ephys.org/onix/oeps-9006">ONIX PCIe Acquisition System</a>. It provides:</p>
+<ul>
+<li>Support for a variety of tools such as <a href="https://www.neuropixels.org/">Neuropixels (all
+variants)</a>,
+<a href="https://open-ephys.org/miniscope-v4/miniscope-v4">Miniscopes</a>, <a href="https://open-ephys.org/onix/oeps-7741">Intan-based
+headstages</a>, and more</li>
+<li>Automatic hardware synchronization of all data streams.</li>
+<li>Torque-free commutation of ultra-thin (down to ~0.2mm diameter) tethers</li>
+<li>High performance closed-loop performance (100 usec feedback loop times)</li>
+</ul>
+<br>
+<div class="quick-links">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><a class="xref" href="articles/getting-started/index.html">User Guide</a></th>
+<th style="text-align: center;"><a class="xref" href="api/OpenEphys.Onix1.html">Operator Reference</a></th>
+<th style="text-align: center;"><a class="xref" href="articles/tutorials/index.html">Tutorials</a></th>
+<th style="text-align: center;"><a href="https://open-ephys.github.io/onix-docs/">Hardware Guide</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><a class="xref" href="articles/getting-started/index.html"><img src="images/running.svg" width="150" alt="User Guide"></a></td>
+<td style="text-align: center;"><a class="xref" href="api/OpenEphys.Onix1.html"><img src="images/books.svg" width="150" alt="Operator Reference"></a></td>
+<td style="text-align: center;"><a class="xref" href="articles/tutorials/index.html"><img src="images/beaker.svg" width="150" alt="Tutorials"></a></td>
+<td style="text-align: center;"><a href="https://open-ephys.github.io/onix-docs/"><img src="images/screwdriver.svg" width="150" alt="Tutorials"></a></td>
+</tr>
+<tr>
+<td style="text-align: center;">Start here for usage instructions.</td>
+<td style="text-align: center;">Detailed information on library components.</td>
+<td style="text-align: center;">How to make the most of ONIX in Bonsai.</td>
+<td style="text-align: center;">Go to the hardware documentation site.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<br>
+<h3 id="why-bonsai">Why Bonsai?</h3>
+<p>ONIX is built on the <a href="https://open-ephys.github.io/ONI/">ONI standard</a>, which is software
+agnostic. Bonsai is the first software target pursued by the Open Ephys team for
+ONIX hardware. There are three major reasons for this:</p>
+<ol>
+<li><p><strong>Performance.</strong> ONIX is a universal interface for neural recording instruments. It can
+capture data produced by neural probes, cameras, high-speed ADCs, etc. In
+general terms, ONIX can capture data from arbitrary mixtures of
+asynchronous<a id="fnref:1" href="#fn:1" class="footnote-ref"><sup>1</sup></a> data sources. Bonsai provides an extremely powerful,
+open-source software platform for elegantly collecting, combining, and
+processing data from essentially any data source regardless of its sample
+rate, sample regularity, packet size, and bandwidth. Bonsai accomplishes this
+task in a fundamental manner: it explicitly models each data source as an
+ordered temporal sequence with a start and end called an
+<a href="https://reactivex.io/documentation/observable.html">Observable</a>. This is
+analogous to how, for instance,
+<a href="https://numpy.org/doc/stable/index.html">Numpy</a> explicitly models fixed-size
+multi-dimensional arrays as
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray">ndarrays</a>.
+And, just like Numpy offers an extensive linear algebra toolkit
+to operate on these arrays, Bonsai offers an analogous
+<a href="https://reactivex.io/documentation/operators.html">toolkit</a>
+for operating on temporal sequences of data. Because Bonsai was created around this core
+data model and operator library, it makes capturing, processing, and combining data
+sequences from different hardware sources natural in Bonsai, whereas it is
+bug prone and difficult in other software options.</p>
+</li>
+<li><p><strong>Code quality.</strong> Open Ephys has been developing open source hardware and
+software for the Neuroscience community for over a decade. In terms of code
+quality, Bonsai is excellent. Bonsai uses a modern language and build system,
+has integrated package management, and an extremely clean, featureful, and well
+maintained API. Given that Bonsai's development model perfectly aligns with our
+values, we are very proud to be able to contribute to its growth in the
+Neuroscience community.</p>
+</li>
+<li><p><strong>Third party integration.</strong> Bonsai provides support for
+hundreds of pieces of open- and closed-source hardware and software that are
+used extensively in neuroscience research. For instance:</p>
+<ul>
+<li>The classic Open Ephys <a href="https://open-ephys.org/acquisition-system">acquisition system</a></li>
+<li><a href="https://open-ephys.github.io/miniscope-docs/index.html">Ucla Miniscope ecosystem</a></li>
+<li><a href="https://bonsai-rx.org/daqmx/articles/intro.html">National Instruments</a> acquisition boards</li>
+<li>Virtually every machine-vision and sCMOS camera<a id="fnref:2" href="#fn:2" class="footnote-ref"><sup>2</sup></a></li>
+<li><a href="https://sanworks.github.io/Bpod_Wiki/">Sanworks Bpod</a></li>
+<li><a href="https://harp-tech.org/index.html">Harp</a></li>
+<li><a href="https://github.com/bonsai-rx/deeplabcut">Deeplabcut</a> &amp; <a href="https://github.com/bonsai-rx/sleap">Sleap</a></li>
+<li>And much more</li>
+</ul>
+<p>By targeting Bonsai, ONIX can be used seamlessly with these third party tools.</p>
+</li>
+</ol>
+<div class="NOTE">
+<h5>Note</h5>
+<p>We put a lot of effort into
+making these docs useful for everyone. If you have suggestions for making
+them even better, please contribute by either <a href="https://github.com/bonsai-rx/docs/issues">raising an
+issue</a> or following the links saying
+<strong>Edit this page</strong>. We welcome all constructive feedback. As always, our goals
+are better performing tools, less redundant development, and more reproducible
+science.</p>
+<p>In addition to this library, we are currently developing ONIX support for the
+<a href="https://open-ephys.org/gui/">Open Ephys GUI</a>.</p>
+</div>
+<div class="footnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Although physical data sources are asynchronous (e.g. a Neuropixels probe
+runs on a distinct clock and produces data at a distinct rate compared to the
+camera sensor on a Miniscope), all data is hardware-timestamped on a common
+clock. No post-hoc data alignment is required.<a href="#fnref:1" class="footnote-back-ref">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://github.com/bonsai-rx/spinnaker">Flir</a>, <a href="https://github.com/bonsai-rx/vimba">Allied
+Vision</a>,
+<a href="https://github.com/bonsai-rx/ximea">Ximea</a>,
+<a href="https://github.com/bonsai-rx/pylon">Basler</a>,
+<a href="https://github.com/bonsai-rx/pco">Excelitas</a>, etc.<a href="#fnref:2" class="footnote-back-ref">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          &copy; 2024 Open Ephys and Contributors. Made with <a href="https://dotnet.github.io/docfx">docfx</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

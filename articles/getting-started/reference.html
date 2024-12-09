@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Software Reference </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Software Reference ">
+      
+      
+      <link rel="icon" href="../../favicon.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/getting-started/reference.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo-light-mode.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="reference">
+          <h1>Software Reference</h1>
+
+
+
+
+
+  
+<p>The following table provides information about which operators correspond to which hardware and the &quot;Shift&quot; and &quot;Scale&quot;
+values to convert the ADC value to μV. &quot;Shift&quot; refers to the value required to subtract from unsigned data to center its
+dynamic range around zero. The &quot;Shift&quot; value is typically <span class="math">\(2^{(bit depth - 1)}\)</span>. &quot;Scale&quot; refers to the scalar required to
+multiply to your data to convert it from units of DAC step size to μV.</p>
+<table>
+<thead>
+<tr>
+<th>Hardware</th>
+<th>Configuration Operator</th>
+<th>Analog Input Device</th>
+<th>Ephys Data Operator</th>
+<th>Data Frame</th>
+<th>Shift</th>
+<th>Scale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Headstage64</td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.ConfigureHeadstage64.html">ConfigureHeadstage64</a></td>
+<td><a href="https://intantech.com/files/Intan_RHD2164_datasheet.pdf">Intan Rhd2164 (amplifier &amp; auxiliary)</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.Rhd2164Data.html">Rhd2164Data</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.Rhd2164DataFrame.html">Rhd2164DataFrame</a></td>
+<td>-32768</td>
+<td>0.195</td>
+</tr>
+<tr>
+<td>HeadstageRhs2116</td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.ConfigureHeadstageRhs2116.html">ConfigureHeadstageRhs2116</a></td>
+<td><a href="https://intantech.com/files/Intan_RHS2116_datasheet.pdf">Intan Rhs2116</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.Rhs2116Data.html">Rhs2116Data</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.Rhs2116DataFrame.html">Rhs2116DataFrame</a></td>
+<td>-32768</td>
+<td>0.195</td>
+</tr>
+<tr>
+<td>NeuropixelsV1e<wbr>Headstage</td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.ConfigureNeuropixelsV1eHeadstage.html">ConfigureNeuropixelsV1eHeadstage</a></td>
+<td><a href="https://www.neuropixels.org/_files/ugd/328966_c5e4d31e8a974962b5eb8ec975408c9f.pdf">Neuropixels 1.0 probe (AP &amp; LFP)</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.NeuropixelsV1eData.html">NeuropixelsV1eData</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.NeuropixelsV1DataFrame.html">NeuropixelsV1DataFrame</a></td>
+<td>-512</td>
+<td><span class="math">\(1.2e6/1024/gain\)</span>*</td>
+</tr>
+<tr>
+<td>NeuropixelsV2e<wbr>Headstage</td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.ConfigureNeuropixelsV2eHeadstage.html">ConfigureNeuropixelsV2eHeadstage</a></td>
+<td><a href="https://www.neuropixels.org/_files/ugd/328966_2b39661f072d405b8d284c3c73588bc6.pdf">Neuropixels 2.0 probe</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.NeuropixelsV2eData.html">NeuropixelsV2eData</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.NeuropixelsV2eDataFrame.html">NeuropixelsV2eDataFrame</a></td>
+<td>-2048</td>
+<td>3.05176</td>
+</tr>
+</tbody>
+</table>
+<!-- | NeuropixelsV2eBeta<wbr>Headstage | <xref:OpenEphys.Onix1.ConfigureNeuropixelsV2eBetaHeadstage> | Neuropixels 2.0 Beta probe                                                                                             | <xref:OpenEphys.Onix1.NeuropixelsV2eBetaData> | <xref:OpenEphys.Onix1.NeuropixelsV2eBetaDataFrame> | -8192  | 0.7629             |
+| BreakoutBoard                    | <xref:OpenEphys.Onix1.ConfigureBreakoutBoard>               | [Breakout Board Analog Input]() in                                                                                       | <xref:OpenEphys.Onix1.AnalogInput>            | <xref:OpenEphys.Onix1.AnalogInputDataFrame>        | -8192  | 0.7629             | -->
+<p>* The Neuropixels 1.0 probes have selectable gain which has an effect on the multiplier for scaling the signal to μV,
+so the <span class="math">\(1.2e6/1024/gain\)</span> formula must be used to calculate the correct &quot;Scale&quot; value. The Gain is set by the user in the
+<a class="xref" href="../hardware/np1e/gui.html">Configuration GUI</a> of that headstage.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/getting-started/reference.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          &copy; 2024 Open Ephys and Contributors. Made with <a href="https://dotnet.github.io/docfx">docfx</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
