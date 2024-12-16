@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Breakout Board Digital Inputs </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Breakout Board Digital Inputs ">
+      
+      
+      <link rel="icon" href="../../../favicon.png">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/hardware/breakout/digital-inputs.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../logo-light-mode.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="breakout_digital-inputs">
+          <h1>Breakout Board Digital Inputs</h1>
+
+
+
+
+
+  
+<p>The following excerpt from the Breakout Board <a class="xref" href="workflow.html">example workflow</a> demonstrates digital inputs
+functionality by responding to button presses and saves digital inputs data.</p>
+<div class="workflow"><p><img src="../../../workflows/hardware/breakout/digital-inputs.bonsai" alt="/workflows/hardware/breakout/digital-inputs.bonsai workflow"></p>
+</div>
+<p>The <a class="xref" href="../../../api/OpenEphys.Onix1.DigitalInput.html">DigitalInput</a> operator generates a sequence of <a class="xref" href="../../../api/OpenEphys.Onix1.DigitalInputDataFrame.html">DigitalInputDataFrame</a>s.
+Although the digital inputs are sampled at 4 Mhz, these data frames are only emitted when the port status changes (i.e.,
+when a pin, button, or switch is toggled). The digital input ports on the Breakout Board operate at a 3.3V logic levels
+but are also 5V tolerant. In the Breakout Board example workflow, the <code>DigitalInput</code>'s <code>DeviceName</code> property is set to
+&quot;BreakoutBoard/DigitalInput&quot;. This links the <code>DigitalInput</code> operator to the corresponding configuration operator.</p>
+<p>The <a class="xref" href="https://bonsai-rx.org/docs/api/Bonsai.IO.CsvWriter.html">CsvWriter</a> operator writes the <code>Clock</code>, <code>DigitalInputs</code>, and <code>Buttons</code> members from the
+<code>DigitalInputDataFrame</code> to a file with the following name format: <code>digital-input_&lt;filecount&gt;.csv</code>. Because <code>CsvWriter</code>
+is a <em>sink</em> operator, its output sequence is equivalent to its input sequence. In other words, its output is equivalent
+to <code>DigitalInput</code>'s output. Therefore, it's possible to use
+<a class="xref" href="https://bonsai-rx.org/docs/api/Bonsai.Expressions.MemberSelectorBuilder.html">MemberSelector</a> operators on the <code>CsvWriter</code> to select members from
+<code>DigitalInputDataFrame</code>. This is most easily performed by clicking the relevant members that appear by hovering over the
+&quot;Output&quot; option that appears in the context menu that appears after right-clicking the <code>CsvWriter</code> node. The members
+selected in the workflow, <a class="xref" href="../../../api/OpenEphys.Onix1.DigitalPortState.html">DigitalPortState</a> and <a class="xref" href="../../../api/OpenEphys.Onix1.BreakoutButtonState.html">BreakoutButtonState</a>, are
+enumerators with values that correspond to bit positions of the breakout board's digital ports. When <code>DigitalPortState</code>
+or <code>OpenEphys.Onix1.BreakoutButtonState</code> is connected to a <code>HasFlags</code> operator, the names that appear in the
+<code>HasFlags</code>'s <code>Value</code> property's dropdown menu correspond to bit positions in the respective digital input port. In this
+workflow, the top <code>HasFlags</code> operator checks if <code>Triangle</code> or <code>X</code> are <code>True</code>.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/hardware/breakout/digital-inputs.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          &copy; 2024 Open Ephys and Contributors. Made with <a href="https://dotnet.github.io/docfx">docfx</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

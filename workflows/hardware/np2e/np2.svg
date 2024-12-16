@@ -1,0 +1,146 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[
+<!ENTITY E18 'stroke:none;opacity:1;fill:rgb(68,154,223);'><!ENTITY E10 'matrix(1.00 0.00 0.00 1.00 164.00 84.00 ) '><!ENTITY E9 'matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) '><!ENTITY E5 'stroke:none;opacity:1;fill:rgb(155,91,179);'><!ENTITY E20 'stroke:none;fill-rule:evenodd;opacity:1;fill:rgb(255,255,255);'><!ENTITY E3 'stroke:rgb(169,169,169);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:2;stroke-linejoin:miter;'><!ENTITY E22 'M 5.5001 19.484 10.6493 19.484 16.2743 10.2485 19.3728 10.2485 M 14.6769 17.1481 16.3089 19.4828 19.2202 19.4828 M 5.500199 10.2437 10.7586 10.2437 12.1652 12.8707 '><!ENTITY E19 'M 19.156 13.888 19.156 10.3647 19.156 6.841399 25.2585 10.3647 22.2072 12.1264 z '><!ENTITY E21 'M 19.156 22.97 19.156 19.4467 19.156 15.9234 25.2585 19.4467 22.2072 21.2084 z '><!ENTITY E7 'stroke:rgb(255,255,255);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:2;stroke-linejoin:miter;'><!ENTITY E1 'stroke:rgb(169,169,169);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:1;stroke-linejoin:miter;'><!ENTITY E31 'matrix(1.00 0.00 0.00 1.00 4.00 4.00 ) '><!ENTITY E28 'matrix(1.00 0.00 0.00 1.00 84.00 244.00 ) '><!ENTITY E4 'matrix(1.00 0.00 0.00 1.00 164.00 4.00 ) '><!ENTITY E24 'matrix(1.00 0.00 0.00 1.00 84.00 84.00 ) '><!ENTITY E17 'matrix(1.00 0.00 0.00 1.00 84.00 4.00 ) '><!ENTITY E12 'stroke:none;opacity:1;fill:rgb(169,169,169);'><!ENTITY E2 'M 10.158 33.2 C 3.4054 31.7591 -1.861 26.4692 -3.271 19.71 '><!ENTITY E26 'matrix(1.00 0.00 0.00 1.00 84.00 164.00 ) '><!ENTITY E38 'stroke:rgb(0,0,0);fill:rgb(0,0,0);'><!ENTITY E37 'stroke-linecap:butt;shape-rendering:crispEdges;'><!ENTITY E6 'M 20.824 23.115 20.824 7.098999 M 17.3572 17.48 17.3572 12.7339 M 13.8904 21.2046 13.8904 9.009602 M 10.4236 18.6248 10.4236 11.5896 M 6.9568 16.3923 6.9568 13.822 '>
+]>
+<svg width="229.838" height="292.8252" id="SvgGdi_output" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <style>text { fill: #000; } @media (prefers-color-scheme: dark) { text { fill: #eee; } }</style>
+  <rect id="background" height="100.00%" style="fill:none;" width="100.00%" y="0.00" x="0.00" />
+  <g style="shape-rendering:auto;" id="root_group">
+    <line y1="19.00" style="stroke:rgb(169,169,169);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:1;stroke-linejoin:miter;" id="2" x2="160.00" y2="19.00" x1="118.00" />
+    <line y1="99.00" style="stroke:rgb(169,169,169);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:1;stroke-linejoin:miter;" id="3" x2="160.00" y2="99.00" x1="118.00" />
+    <line y1="179.00" style="stroke:rgb(169,169,169);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:1;stroke-linejoin:miter;" id="4" x2="160.00" y2="179.00" x1="118.00" />
+    <line y1="259.00" style="stroke:rgb(169,169,169);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:1;stroke-linejoin:miter;" id="5" x2="160.00" y2="259.00" x1="118.00" />
+    <line y1="19.00" style="stroke:rgb(169,169,169);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:1;stroke-linejoin:miter;" id="6" x2="80.00" y2="19.00" x1="38.00" />
+    <line y1="19.00" style="stroke:rgb(169,169,169);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:1;stroke-linejoin:miter;" id="7" x2="80.00" y2="99.00" x1="38.00" />
+    <line y1="179.00" style="stroke:rgb(169,169,169);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:1;stroke-linejoin:miter;" id="8" x2="80.00" y2="179.00" x1="38.00" />
+    <line y1="179.00" style="stroke:rgb(169,169,169);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:1;stroke-linejoin:miter;" id="9" x2="80.00" y2="259.00" x1="38.00" />
+    <path d="M 10.158 33.2 C 3.4054 31.7591 -1.861 26.4692 -3.271 19.71 " style="stroke:rgb(169,169,169);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:2;stroke-linejoin:miter;" transform="matrix(1.00 0.00 0.00 1.00 164.00 4.00 ) " id="43" />
+    <ellipse id="44" cy="15.00" cx="15.00" transform="matrix(1.00 0.00 0.00 1.00 164.00 4.00 ) " rx="15.00" ry="15.00" style="stroke:none;opacity:1;fill:rgb(155,91,179);" />
+    <path d="M 20.824 23.115 20.824 7.098999 M 17.3572 17.48 17.3572 12.7339 M 13.8904 21.2046 13.8904 9.009602 M 10.4236 18.6248 10.4236 11.5896 M 6.9568 16.3923 6.9568 13.822 " style="stroke:rgb(255,255,255);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:2;stroke-linejoin:miter;" transform="matrix(1.00 0.00 0.00 1.00 164.00 4.00 ) " id="47" />
+    <text id="48" transform="matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) " x="164.00px" y="39.00px" style="stroke:none;clip-path:url(#50_text_clipper);font-family:Microsoft Sans Serif;font-size:8.25pt;opacity:1;">
+      <tspan dy="8.25pt" id="52">MatrixWriter</tspan>
+    </text>
+    <path d="M 10.158 33.2 C 3.4054 31.7591 -1.861 26.4692 -3.271 19.71 " style="stroke:rgb(169,169,169);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:2;stroke-linejoin:miter;" transform="matrix(1.00 0.00 0.00 1.00 164.00 84.00 ) " id="54" />
+    <ellipse id="55" cy="15.00" cx="15.00" transform="matrix(1.00 0.00 0.00 1.00 164.00 84.00 ) " rx="15.00" ry="15.00" style="stroke:none;opacity:1;fill:rgb(155,91,179);" />
+    <path d="M 20.824 23.115 20.824 7.098999 M 17.3572 17.48 17.3572 12.7339 M 13.8904 21.2046 13.8904 9.009602 M 10.4236 18.6248 10.4236 11.5896 M 6.9568 16.3923 6.9568 13.822 " style="stroke:rgb(255,255,255);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:2;stroke-linejoin:miter;" transform="matrix(1.00 0.00 0.00 1.00 164.00 84.00 ) " id="56" />
+    <text id="57" transform="matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) " x="164.00px" y="119.00px" style="stroke:none;clip-path:url(#59_text_clipper);font-family:Microsoft Sans Serif;font-size:8.25pt;opacity:1;">
+      <tspan dy="8.25pt" id="61">MatrixWriter</tspan>
+    </text>
+    <ellipse id="63" cy="179.00" cx="179.00" rx="15.00" ry="15.00" style="stroke:none;opacity:1;fill:rgb(169,169,169);" />
+    <path d="M 20.824 23.115 20.824 7.098999 M 17.3572 17.48 17.3572 12.7339 M 13.8904 21.2046 13.8904 9.009602 M 10.4236 18.6248 10.4236 11.5896 M 6.9568 16.3923 6.9568 13.822 " style="stroke:rgb(255,255,255);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:2;stroke-linejoin:miter;" id="64" transform="matrix(1.00 0.00 0.00 1.00 164.00 164.00 ) " />
+    <ellipse id="65" cy="179.00" cx="179.00" rx="15.00" ry="15.00" style="fill:url(#66_HatchBrush);" />
+    <text id="69" transform="matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) " x="164.00px" y="199.00px" style="stroke:none;clip-path:url(#71_text_clipper);font-family:Microsoft Sans Serif;font-size:8.25pt;opacity:1;">
+      <tspan dy="8.25pt" id="73">MatrixWriter</tspan>
+    </text>
+    <ellipse id="75" cy="259.00" cx="179.00" rx="15.00" ry="15.00" style="stroke:none;opacity:1;fill:rgb(169,169,169);" />
+    <path d="M 20.824 23.115 20.824 7.098999 M 17.3572 17.48 17.3572 12.7339 M 13.8904 21.2046 13.8904 9.009602 M 10.4236 18.6248 10.4236 11.5896 M 6.9568 16.3923 6.9568 13.822 " style="stroke:rgb(255,255,255);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:2;stroke-linejoin:miter;" id="76" transform="matrix(1.00 0.00 0.00 1.00 164.00 244.00 ) " />
+    <ellipse id="77" cy="259.00" cx="179.00" rx="15.00" ry="15.00" style="fill:url(#78_HatchBrush);" />
+    <text id="81" transform="matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) " x="164.00px" y="279.00px" style="stroke:none;clip-path:url(#83_text_clipper);font-family:Microsoft Sans Serif;font-size:8.25pt;opacity:1;">
+      <tspan dy="8.25pt" id="85">MatrixWriter</tspan>
+    </text>
+    <ellipse id="89" cy="15.00" cx="15.00" transform="matrix(1.00 0.00 0.00 1.00 84.00 4.00 ) " rx="15.00" ry="15.00" style="stroke:none;opacity:1;fill:rgb(68,154,223);" />
+    <path d="M 19.156 13.888 19.156 10.3647 19.156 6.841399 25.2585 10.3647 22.2072 12.1264 z " style="stroke:none;fill-rule:evenodd;opacity:1;fill:rgb(255,255,255);" transform="matrix(1.00 0.00 0.00 1.00 84.00 4.00 ) " id="94" />
+    <path d="M 19.156 22.97 19.156 19.4467 19.156 15.9234 25.2585 19.4467 22.2072 21.2084 z " style="stroke:none;fill-rule:evenodd;opacity:1;fill:rgb(255,255,255);" transform="matrix(1.00 0.00 0.00 1.00 84.00 4.00 ) " id="95" />
+    <path d="M 5.5001 19.484 10.6493 19.484 16.2743 10.2485 19.3728 10.2485 M 14.6769 17.1481 16.3089 19.4828 19.2202 19.4828 M 5.500199 10.2437 10.7586 10.2437 12.1652 12.8707 " style="stroke:rgb(255,255,255);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:2;stroke-linejoin:miter;" transform="matrix(1.00 0.00 0.00 1.00 84.00 4.00 ) " id="96" />
+    <text id="97" transform="matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) " x="84.00px" y="39.00px" style="stroke:none;clip-path:url(#99_text_clipper);font-family:Microsoft Sans Serif;font-size:8.25pt;opacity:1;">
+      <tspan dy="8.25pt" id="101">Clock</tspan>
+    </text>
+    <ellipse id="103" cy="15.00" cx="15.00" transform="matrix(1.00 0.00 0.00 1.00 84.00 84.00 ) " rx="15.00" ry="15.00" style="stroke:none;opacity:1;fill:rgb(68,154,223);" />
+    <path d="M 19.156 13.888 19.156 10.3647 19.156 6.841399 25.2585 10.3647 22.2072 12.1264 z " style="stroke:none;fill-rule:evenodd;opacity:1;fill:rgb(255,255,255);" transform="matrix(1.00 0.00 0.00 1.00 84.00 84.00 ) " id="104" />
+    <path d="M 19.156 22.97 19.156 19.4467 19.156 15.9234 25.2585 19.4467 22.2072 21.2084 z " style="stroke:none;fill-rule:evenodd;opacity:1;fill:rgb(255,255,255);" transform="matrix(1.00 0.00 0.00 1.00 84.00 84.00 ) " id="105" />
+    <path d="M 5.5001 19.484 10.6493 19.484 16.2743 10.2485 19.3728 10.2485 M 14.6769 17.1481 16.3089 19.4828 19.2202 19.4828 M 5.500199 10.2437 10.7586 10.2437 12.1652 12.8707 " style="stroke:rgb(255,255,255);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:2;stroke-linejoin:miter;" transform="matrix(1.00 0.00 0.00 1.00 84.00 84.00 ) " id="106" />
+    <text id="107" transform="matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) " x="84.00px" y="119.00px" style="stroke:none;clip-path:url(#109_text_clipper);font-family:Microsoft Sans Serif;font-size:8.25pt;opacity:1;">
+      <tspan dy="8.25pt" id="111">AmplifierData</tspan>
+    </text>
+    <ellipse id="113" cy="179.00" cx="99.00" rx="15.00" ry="15.00" style="stroke:none;opacity:1;fill:rgb(169,169,169);" />
+    <path d="M 19.156 13.888 19.156 10.3647 19.156 6.841399 25.2585 10.3647 22.2072 12.1264 z " style="stroke:none;fill-rule:evenodd;opacity:1;fill:rgb(255,255,255);" transform="matrix(1.00 0.00 0.00 1.00 84.00 164.00 ) " id="114" />
+    <path d="M 19.156 22.97 19.156 19.4467 19.156 15.9234 25.2585 19.4467 22.2072 21.2084 z " style="stroke:none;fill-rule:evenodd;opacity:1;fill:rgb(255,255,255);" transform="matrix(1.00 0.00 0.00 1.00 84.00 164.00 ) " id="115" />
+    <path d="M 5.5001 19.484 10.6493 19.484 16.2743 10.2485 19.3728 10.2485 M 14.6769 17.1481 16.3089 19.4828 19.2202 19.4828 M 5.500199 10.2437 10.7586 10.2437 12.1652 12.8707 " style="stroke:rgb(255,255,255);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:2;stroke-linejoin:miter;" transform="matrix(1.00 0.00 0.00 1.00 84.00 164.00 ) " id="116" />
+    <ellipse id="117" cy="179.00" cx="99.00" rx="15.00" ry="15.00" style="fill:url(#118_HatchBrush);" />
+    <text id="121" transform="matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) " x="84.00px" y="199.00px" style="stroke:none;clip-path:url(#123_text_clipper);font-family:Microsoft Sans Serif;font-size:8.25pt;opacity:1;">
+      <tspan dy="8.25pt" id="125">Clock</tspan>
+    </text>
+    <ellipse id="127" cy="259.00" cx="99.00" rx="15.00" ry="15.00" style="stroke:none;opacity:1;fill:rgb(169,169,169);" />
+    <path d="M 19.156 13.888 19.156 10.3647 19.156 6.841399 25.2585 10.3647 22.2072 12.1264 z " style="stroke:none;fill-rule:evenodd;opacity:1;fill:rgb(255,255,255);" transform="matrix(1.00 0.00 0.00 1.00 84.00 244.00 ) " id="128" />
+    <path d="M 19.156 22.97 19.156 19.4467 19.156 15.9234 25.2585 19.4467 22.2072 21.2084 z " style="stroke:none;fill-rule:evenodd;opacity:1;fill:rgb(255,255,255);" transform="matrix(1.00 0.00 0.00 1.00 84.00 244.00 ) " id="129" />
+    <path d="M 5.5001 19.484 10.6493 19.484 16.2743 10.2485 19.3728 10.2485 M 14.6769 17.1481 16.3089 19.4828 19.2202 19.4828 M 5.500199 10.2437 10.7586 10.2437 12.1652 12.8707 " style="stroke:rgb(255,255,255);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:2;stroke-linejoin:miter;" transform="matrix(1.00 0.00 0.00 1.00 84.00 244.00 ) " id="130" />
+    <ellipse id="131" cy="259.00" cx="99.00" rx="15.00" ry="15.00" style="fill:url(#132_HatchBrush);" />
+    <text id="135" transform="matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) " x="84.00px" y="279.00px" style="stroke:none;clip-path:url(#137_text_clipper);font-family:Microsoft Sans Serif;font-size:8.25pt;opacity:1;">
+      <tspan dy="8.25pt" id="139">AmplifierData</tspan>
+    </text>
+    <path style="stroke:rgb(169,169,169);fill:none;stroke-linecap:butt;stroke-miterlimit:9;opacity:1;stroke-width:2;stroke-linejoin:miter;" transform="matrix(1.00 0.00 0.00 1.00 4.00 4.00 ) " id="144" d="M 31.179 5.2 C 34.9985 11.0918 34.9814 18.682 31.13552 24.557 " />
+    <ellipse id="145" cy="15.00" cx="15.00" transform="matrix(1.00 0.00 0.00 1.00 4.00 4.00 ) " rx="15.00" ry="15.00" style="stroke:none;opacity:1;fill:rgb(91,178,126);" />
+    <text id="147" transform="matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) " x="4.00px" y="39.00px" style="stroke:none;clip-path:url(#149_text_clipper);font-family:Microsoft Sans Serif;font-size:8.25pt;opacity:1;">
+      <tspan dy="8.25pt" id="151">Neuropixels</tspan>
+    </text>
+    <text id="153" transform="matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) " x="4.00px" y="51.45px" style="stroke:none;clip-path:url(#155_text_clipper);font-family:Microsoft Sans Serif;font-size:8.25pt;opacity:1;">
+      <tspan dy="8.25pt" id="157">V2eData</tspan>
+    </text>
+    <ellipse id="159" cy="179.00" cx="19.00" rx="15.00" ry="15.00" style="stroke:none;opacity:1;fill:rgb(169,169,169);" />
+    <ellipse id="160" cy="179.00" cx="19.00" rx="15.00" ry="15.00" style="fill:url(#161_HatchBrush);" />
+    <text id="164" transform="matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) " x="4.00px" y="199.00px" style="stroke:none;clip-path:url(#166_text_clipper);font-family:Microsoft Sans Serif;font-size:8.25pt;opacity:1;">
+      <tspan dy="8.25pt" id="168">Neuropixels</tspan>
+    </text>
+    <text id="170" transform="matrix(1.00 0.00 0.00 1.00 0.00 0.00 ) " x="4.00px" y="211.45px" style="stroke:none;clip-path:url(#172_text_clipper);font-family:Microsoft Sans Serif;font-size:8.25pt;opacity:1;">
+      <tspan dy="8.25pt" id="174">V2eData</tspan>
+    </text>
+  </g>
+  <defs id="clips_hatches_and_gradients">
+    <clipPath id="50_text_clipper">
+      <rect x="164.00" y="39.00" width="64.84" height="13.83" id="51" />
+    </clipPath>
+    <clipPath id="59_text_clipper">
+      <rect x="164.00" y="119.00" width="64.84" height="13.83" id="60" />
+    </clipPath>
+    <pattern id="66_HatchBrush" patternContentUnits="userSpaceOnUse" height="8.00" style="stroke-linecap:butt;shape-rendering:crispEdges;" patternUnits="userSpaceOnUse" width="8.00" y="0.00" x="0.00">
+      <rect id="67" height="8.00" style="fill:rgb(255,255,255);" width="8.00" y="0.00" x="0.00" />
+      <line y1="0.00" style="stroke:rgb(0,0,0);fill:rgb(0,0,0);" id="68" x2="0.00" y2="8.00" x1="8.00" />
+    </pattern>
+    <clipPath id="71_text_clipper">
+      <rect x="164.00" y="199.00" width="64.84" height="13.83" id="72" />
+    </clipPath>
+    <pattern id="78_HatchBrush" patternContentUnits="userSpaceOnUse" height="8.00" style="stroke-linecap:butt;shape-rendering:crispEdges;" patternUnits="userSpaceOnUse" width="8.00" y="0.00" x="0.00">
+      <rect id="79" height="8.00" style="fill:rgb(255,255,255);" width="8.00" y="0.00" x="0.00" />
+      <line y1="0.00" style="stroke:rgb(0,0,0);fill:rgb(0,0,0);" id="80" x2="0.00" y2="8.00" x1="8.00" />
+    </pattern>
+    <clipPath id="83_text_clipper">
+      <rect x="164.00" y="279.00" width="64.84" height="13.83" id="84" />
+    </clipPath>
+    <clipPath id="99_text_clipper">
+      <rect x="84.00" y="39.00" width="32.06" height="13.83" id="100" />
+    </clipPath>
+    <clipPath id="109_text_clipper">
+      <rect x="84.00" y="119.00" width="71.86" height="13.83" id="110" />
+    </clipPath>
+    <pattern id="118_HatchBrush" patternContentUnits="userSpaceOnUse" height="8.00" style="stroke-linecap:butt;shape-rendering:crispEdges;" patternUnits="userSpaceOnUse" width="8.00" y="0.00" x="0.00">
+      <rect id="119" height="8.00" style="fill:rgb(255,255,255);" width="8.00" y="0.00" x="0.00" />
+      <line y1="0.00" style="stroke:rgb(0,0,0);fill:rgb(0,0,0);" id="120" x2="0.00" y2="8.00" x1="8.00" />
+    </pattern>
+    <clipPath id="123_text_clipper">
+      <rect x="84.00" y="199.00" width="32.06" height="13.83" id="124" />
+    </clipPath>
+    <pattern id="132_HatchBrush" patternContentUnits="userSpaceOnUse" height="8.00" style="stroke-linecap:butt;shape-rendering:crispEdges;" patternUnits="userSpaceOnUse" width="8.00" y="0.00" x="0.00">
+      <rect id="133" height="8.00" style="fill:rgb(255,255,255);" width="8.00" y="0.00" x="0.00" />
+      <line y1="0.00" style="stroke:rgb(0,0,0);fill:rgb(0,0,0);" id="134" x2="0.00" y2="8.00" x1="8.00" />
+    </pattern>
+    <clipPath id="137_text_clipper">
+      <rect x="84.00" y="279.00" width="71.86" height="13.83" id="138" />
+    </clipPath>
+    <clipPath id="149_text_clipper">
+      <rect x="4.00" y="39.00" width="63.62" height="27.65" id="150" />
+    </clipPath>
+    <clipPath id="155_text_clipper">
+      <rect x="4.00" y="51.45" width="63.62" height="27.65" id="156" />
+    </clipPath>
+    <pattern id="161_HatchBrush" patternContentUnits="userSpaceOnUse" height="8.00" style="stroke-linecap:butt;shape-rendering:crispEdges;" patternUnits="userSpaceOnUse" width="8.00" y="0.00" x="0.00">
+      <rect id="162" height="8.00" style="fill:rgb(255,255,255);" width="8.00" y="0.00" x="0.00" />
+      <line y1="0.00" style="stroke:rgb(0,0,0);fill:rgb(0,0,0);" id="163" x2="0.00" y2="8.00" x1="8.00" />
+    </pattern>
+    <clipPath id="166_text_clipper">
+      <rect x="4.00" y="199.00" width="63.62" height="27.65" id="167" />
+    </clipPath>
+    <clipPath id="172_text_clipper">
+      <rect x="4.00" y="211.45" width="63.62" height="27.65" id="173" />
+    </clipPath>
+  </defs>
+</svg>

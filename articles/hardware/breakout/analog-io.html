@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Breakout Board Analog IO </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Breakout Board Analog IO ">
+      
+      
+      <link rel="icon" href="../../../favicon.png">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/hardware/breakout/analog-io.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../logo-light-mode.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="breakout_analog-io">
+          <h1>Breakout Board Analog IO</h1>
+
+
+
+
+
+  
+<p>The following excerpt from the Breakout Board <a class="xref" href="workflow.html">example workflow</a> demonstrates analog
+IO functionality by computing a ~1Hz sawtooth pattern, outputting it to the analog IO port, and
+reading it back from the analog IO port. It also saves analog input data.</p>
+<div class="workflow"><p><img src="../../../workflows/hardware/breakout/analog-io.bonsai" alt="/workflows/hardware/breakout/analog-io.bonsai workflow"></p>
+</div>
+<h2 id="analog-outputs">Analog outputs</h2>
+<div class="workflow"><p><img src="../../../workflows/hardware/breakout/analog-outputs.bonsai" alt="/workflows/hardware/breakout/analog-outputs.bonsai workflow"></p>
+</div>
+<p>The <code>RampGenerator</code> operator generates a sequence of single precision floating point values which
+comprises ~1Hz sawtooth waveform from -10 to 10. The <a class="xref" href="../../../api/OpenEphys.Onix1.AnalogOutput.html">AnalogOutput</a> updates the
+analog output port upon receiving a value in the upstream sequence. In the Breakout Board example
+workflow:</p>
+<ul>
+<li>The <code>AnalogOutput</code>'s <code>DeviceName</code> property is set to &quot;BreakoutBoard/AnalogIO&quot;. This links the
+<code>AnalogOutput</code> operator to the corresponding configuration operator.</li>
+<li>The <code>AnalogOutput</code>'s <code>DataType</code> property is set to &quot;Volts&quot;. The <code>RampGenerator</code> operator computes
+a sawtooth pattern that consists floats in units of volts, so <code>AnalogOutput</code> must be set
+to &quot;Volts&quot; to accept this input. Of course, the <code>RampGenerator</code> could be used to produce a
+sequence of signed 16-bit DAC codes. In that case, <code>DataType</code> property would be set to &quot;S16&quot;.</li>
+</ul>
+<p>Although a voltage ramp is sent to all the channels, only channel 0 was selected to be a output, so
+this is the only channel that will be affected. If other channels are configured as output (see
+<a class="xref" href="configuration.html">Breakout Board Configuration</a>), they will also ramp their voltage. The <code>RampGenerator</code> is a
+<a href="https://bonsai-rx.org/docs/articles/editor.html#workflow">GroupWorkflow</a> that contains multiple
+Bonsai operators. Examine <code>RampGenerator</code>'s internals by pressing <kbd>Ctrl</kbd> + <kbd>Enter</kbd>
+when the node is selected:</p>
+<div class="workflow"><p><img src="../../../workflows/hardware/breakout/ramp-generator.bonsai" alt="/workflows/hardware/breakout/ramp-generator.bonsai workflow"></p>
+</div>
+<div class="TIP">
+<h5>Tip</h5>
+<p>To understand how the <code>RampGenerator</code> works, double click each
+nodes in the workflow while its running to visualize how data is transformed
+as it flows through each operator. Additionally, the <kdb>F1</kdb> key can be
+pressed while a node is selected ot bring up its documentation.</p>
+<figure>
+  <video width="100%" loop="true" controls="true"><source src="../../../images/hardware/breakout/analog-io.mp4" type="video/mp4"></video>
+  <figcaption>
+    This video shows how Bonsai how to examine the data flowing through
+    different elements of workflow as it operates. The "AnalogOutput" window
+    shows the values that are being used by the <code>AnalogOutput</code>
+    operator to update the analog IO port. 12 signals are produced, one for each
+    channel.  However, only analog channel 0 is actually updated because it's
+    the only channel configured as output by the <code>BreakoutBoard</code>
+    operator. The "AnalogData" window shows the voltages at the various pins of
+    the analog IO port. They are being read by the the ADCs on the breakout
+    board and produced in Bonsai by the <code>AnalogInput</code> operator. This
+    confirms that only analog channel 0 is outputting the sawtooth waveform.
+  </figcaption>
+</figure>
+</div>
+<h2 id="analog-inputs">Analog inputs</h2>
+<p>Analog input data is recorded from all analog IO channels, regardless of each channels'
+<code>AnalogIO</code> setting. Because analog inputs and outputs share pins on the breakout board,
+this enables a loopback of signals from the analog output through the analog input so that a copy of
+the output signal being sent to external hardware can be saved automatically. The example workflow
+does exactly this on analog IO channel 0.</p>
+<div class="workflow"><p><img src="../../../workflows/hardware/breakout/analog-inputs.bonsai" alt="/workflows/hardware/breakout/analog-inputs.bonsai workflow"></p>
+</div>
+<p>The <a class="xref" href="../../../api/OpenEphys.Onix1.AnalogInput.html">AnalogInput</a> operator receives a sequence of
+<a class="xref" href="../../../api/OpenEphys.Onix1.AnalogInputDataFrame.html">AnalogInputDataFrame</a>s with the following properties settings:</p>
+<ul>
+<li><code>BufferSize</code> is set to 50. Therefore, each frame will contain a 50-element
+<code>Clock</code> vector and a 12-channel x 50-sample <code>AnalogData</code> matrix. The analog inputs are sampled at
+100 kHz per channel so this corresponds to 500 µs of data. That's lower than the minimal latency
+introduced by the <code>BlockReadSize</code> setting. Therefore, the chosen value for  <code>BufferSize</code> will not
+impose a significant effect on processing latency. The buffer will be filled essentially every
+time hardware is accessed and propagated instantly.</li>
+<li><code>DataType</code> is set to <code>Volts</code>. This means that samples will be represented as
+units of units of voltage in a single-precision floating point type.</li>
+<li><code>DeviceName</code> is set to &quot;BreakoutBoard/AnalogIO&quot;. This links the <code>AnalogInput</code>
+operator to the corresponding configuration operator.</li>
+</ul>
+<p>The <a class="xref" href="https://bonsai-rx.org/docs/api/Bonsai.Expressions.MemberSelectorBuilder.html">MemberSelector</a>
+operators each select a member from the <code>AnalogInputDataFrame</code>, <code>Clock</code> and <code>AnalogData</code> which
+contain the <a class="xref" href="../../../api/OpenEphys.Onix1.ContextTask.html">AcquisitionClockHz</a>-based sample times and sample
+values, respectively. The
+<a class="xref" href="https://bonsai-rx.org/docs/api/Bonsai.Dsp.MatrixWriter.html">MatrixWriter</a> operators saves the
+selected members to files with the following format: <code>analog-clock_&lt;filecount&gt;.raw</code> and
+<code>analog-data_&lt;filecount&gt;.raw</code>, respectively.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>The easiest way to add a <code>MemberSelector</code> to the output of an operator is to right-click the node and hover over
+<code>Output</code> in the resulting context menu to examine the output type. A <code>MemberSelector</code> can be added by
+left-clicking the desired expanded property of the <code>Output</code> type.</p>
+<p><img src="../../../images/hardware/breakout/add-member-selector.gif" width="600px,align=center" alt="Add a MemberSelector"></p>
+</div>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/hardware/breakout/analog-io.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          &copy; 2024 Open Ephys and Contributors. Made with <a href="https://dotnet.github.io/docfx">docfx</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

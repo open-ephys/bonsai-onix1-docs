@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Visualize Data </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Visualize Data ">
+      
+      
+      <link rel="icon" href="../../favicon.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/getting-started/visualize-data.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo-light-mode.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="visualize-data">
+          <h1>Visualize Data</h1>
+
+
+
+
+
+  
+<p>Bonsai has <a href="https://bonsai-rx.org/docs/articles/editor.html?#type-visualizers">&quot;type visualizers&quot;</a> that display data
+produced by an operator. They are opened by double-clicking the corresponding node while the workflow is running.</p>
+<p>Read below for more details about how to visualize data.</p>
+<h2 id="selecting-operator-data-members-for-visualization">Selecting operator data members for visualization</h2>
+<p>Some operators, such as <a class="xref" href="../../api/dataio.html">ONIX data I/O operators</a>, require selecting members from their output to visualize
+their data:</p>
+<ol>
+<li>Right-click the node that corresponds to the data I/O operator you'd like to visualize.</li>
+<li>Hover the cursor over the &quot;Output&quot; option that appears in the context menu.</li>
+<li>Click the member you would like to visualize from the list of members.</li>
+</ol>
+<p>This populates the workflow with a <a class="xref" href="https://bonsai-rx.org/docs/api/Bonsai.Expressions.MemberSelectorBuilder.html">MemberSelectorBuilder</a> operator that selects the single
+member from the data frame produced by the data I/O operator.</p>
+<video controls="">
+  <source src="../../images/select-member.mp4" type="video/mp4">
+</video> 
+<div class="NOTE">
+<h5>Note</h5>
+<p>Member selection is required when an operator's output type doesn't have type visualizers that allow users to inspect
+the data in a meaningful capacity. This is true for <a class="xref" href="../../api/dataio.html">ONIX data I/O operators</a> which typically produce
+<a class="xref" href="../../api/data-elements.html">data frames</a>.</p>
+</div>
+<h2 id="selecting-visualizers">Selecting visualizers</h2>
+<p>Select the visualizer you would like to use for visualizing data:</p>
+<ol>
+<li>Right-click the <code>MemberSelector</code> node labelled with the member you would like to visualize.</li>
+<li>Hover the cursor over the &quot;Select Visualizer&quot; option in the context menu.</li>
+<li>Click the visualizer you would like to use from the list of visualizers.</li>
+</ol>
+<video controls="">
+  <source src="../../images/set-visualizer.mp4" type="video/mp4">
+</video> 
+<h2 id="opening-visualizers">Opening visualizers</h2>
+<p>Open the visualizer and check:</p>
+<ol>
+<li>Start the workflow.</li>
+<li>If the desired visualizer is closed, double-click the <code>MemberSelector</code> node labelled with the member you would
+like to visualize.</li>
+<li>Visualize the data.</li>
+</ol>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Data will only be visualized if the operator is producing data. If you can't see any data, check that:</p>
+<ul>
+<li>The device from which you are trying to read is enabled.</li>
+<li>Events are occurring. Some devices are stream-based and some are event-based. Event-based devices only produce data upon certain
+events. For example, the <a class="xref" href="../../api/OpenEphys.Onix1.DigitalInput.html">DigitalInput</a> operator only produces data when the digital
+port status changes state.</li>
+</ul>
+</div>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Visualizers can be selected while the workflow is running which is helpful for more quickly trying different visualizer
+options in succession if you are unsure about which one you want to use.</p>
+</div>
+<h2 id="configuring-visualizers">Configuring visualizers</h2>
+<p>Some visualizers, in particular those that involve plots, allow additional configuration.
+Right-click the visualizer window to gain access to configuration options.</p>
+<p>For example, the MatVisualizer allows configuration of:</p>
+<ul>
+<li>X and Y scale: click to toggle between &quot;auto&quot; and fixed values.</li>
+<li>Channel view: click the grid square to toggle between superimposed or separate</li>
+<li>History Length: click the arrow and configure the number of samples displayed in the plot.</li>
+<li>Display Previous: click the arrow and configure the amount of buffers displayed in the plot.</li>
+<li>Channel Offset: click the arrow and configure the Y offset.</li>
+<li>Channels per Page: click the arrow and configure the amount of channels displayed per visualizer page. The page number is displayed at the top of the visualizer. Move between pages by using the PageUp and PageDn keys on the keyboard.</li>
+</ul>
+<video controls="">
+  <source src="../../images/visualize-data.mp4" type="video/mp4">
+</video> 
+<div class="TIP">
+<h5>Tip</h5>
+<p>For other data visualization options, additional visualizers are available as standalone operators and can be found in
+the <code>Bonsai.Design.Visualizers</code> package. These visualizer operators must be connected to an operator that produces a
+sequence of compatible data. The visualizer window can be opened by double-clicking the visualizer node instead of the
+preceding data node.</p>
+</div>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/getting-started/visualize-data.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          &copy; 2024 Open Ephys and Contributors. Made with <a href="https://dotnet.github.io/docfx">docfx</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

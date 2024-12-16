@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Initialize the ONI Context </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Initialize the ONI Context ">
+      
+      
+      <link rel="icon" href="../../favicon.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/getting-started/initialize-oni-context.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo-light-mode.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="initialize-onicontext">
+          <h1>Initialize the ONI Context</h1>
+
+
+
+
+
+  
+<p>The <a class="xref" href="../../api/OpenEphys.Onix1.CreateContext.html">CreateContext</a> operator initializes the acquisition context, and it should be the first operator you add to your workflow as it provides access to the hardware device table for all other configuration operators. There are several different ways to find this operator and add it to the workflow:</p>
+<ol>
+<li><p>From the Bonsai editor, navigate to the toolbox on the left side of the screen and expand the <strong>Source</strong> section. Next, expand the <strong>OpenEphys.Onix1</strong> section, and find the <code>CreateContext</code> line. The operator can then be added by either double-clicking it, or dragging and dropping the operator into the workflow.</p>
+<p><img src="../../images/bonsai-editor-place-create-context-manually.png" width="700px" alt="Search for CreateContext operator manually"></p>
+</li>
+<li><p>Click on the textbox at the top of the toolbox on the left, or from Ctrl + E to focus on the textbox, and type <code>CreateContext</code> to search for the operator. Same as (1), the operator can be placed by double-clicking or dragging and dropping; additionally, if the <code>CreateContext</code> string is highlighted Enter can be pressed to place the operator immediately.</p>
+<p><img src="../../images/bonsai-editor-place-create-context-search.png" width="700px" alt="Search for CreateContext operator from textbox"></p>
+</li>
+<li><p>Hover over the image of the <code>CreateContext</code> workflow below, and click on the clipboard icon in the top-right corner of the workflow image to copy the workflow to the clipboard. Navigate back to Bonsai, and paste the copied workflow into the active editor. Pasting can be done via Ctrl + V, or right-clicking in the editor and choosing <strong>Paste</strong>.</p>
+</li>
+</ol>
+<h2 id="createcontext-workflow">CreateContext Workflow</h2>
+<p>This is a nominally functional workflow that provides access to the ONI context, from which all operators can then be linked to and configured, while also demonstrating how a Breakout Board can be configured before finishing the configuration chain by placing a <a class="xref" href="../../api/OpenEphys.Onix1.StartAcquisition.html">StartAcquisition</a> operator:</p>
+<div class="workflow"><p><img src="../../workflows/operators/ConfigureBreakoutBoard.bonsai" alt="CreateContext"></p>
+</div>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/getting-started/initialize-oni-context.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          &copy; 2024 Open Ephys and Contributors. Made with <a href="https://dotnet.github.io/docfx">docfx</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
