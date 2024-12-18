@@ -82,6 +82,19 @@
     - name: Memory Monitor
       href: hardware/hs64/memory-monitor.md
     - href: hardware/hs64/load-data.md
+  - href: hardware/rhs2116/overview.md
+    items: 
+    - name: Configuration
+      href: hardware/rhs2116/configuration.md
+    - name: Port Status
+      href: hardware/rhs2116/port-status.md
+    - name: Rhs2116 Electrophysiology Data
+      href: hardware/rhs2116/rhs2116-record.md
+    - name: Rhs2116 Stimulation
+      href: hardware/rhs2116/rhs2116-stimulate.md
+    - name: Memory Monitor
+      href: hardware/rhs2116/memory-monitor.md
+    - href: hardware/rhs2116/load-data.md
   - href: hardware/ucla-miniscope-v4/overview.md
     items: 
     - name: Configuration

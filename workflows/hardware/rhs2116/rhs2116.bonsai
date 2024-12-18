@@ -1,0 +1,600 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.8.5"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:onix1="clr-namespace:OpenEphys.Onix1;assembly=OpenEphys.Onix1"
+                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
+                 xmlns:dsp="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="onix1:CreateContext">
+          <onix1:Driver>riffa</onix1:Driver>
+          <onix1:Index>0</onix1:Index>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="onix1:ConfigureBreakoutBoard">
+          <onix1:Name>BreakoutBoard</onix1:Name>
+          <onix1:Heartbeat>
+            <onix1:DeviceName>BreakoutBoard/Heartbeat</onix1:DeviceName>
+            <onix1:DeviceAddress>0</onix1:DeviceAddress>
+            <onix1:Enable>true</onix1:Enable>
+            <onix1:BeatsPerSecond>10</onix1:BeatsPerSecond>
+          </onix1:Heartbeat>
+          <onix1:AnalogIO>
+            <onix1:DeviceName>BreakoutBoard/AnalogIO</onix1:DeviceName>
+            <onix1:DeviceAddress>6</onix1:DeviceAddress>
+            <onix1:Enable>false</onix1:Enable>
+            <onix1:InputRange0>TenVolts</onix1:InputRange0>
+            <onix1:InputRange1>TenVolts</onix1:InputRange1>
+            <onix1:InputRange2>TenVolts</onix1:InputRange2>
+            <onix1:InputRange3>TenVolts</onix1:InputRange3>
+            <onix1:InputRange4>TenVolts</onix1:InputRange4>
+            <onix1:InputRange5>TenVolts</onix1:InputRange5>
+            <onix1:InputRange6>TenVolts</onix1:InputRange6>
+            <onix1:InputRange7>TenVolts</onix1:InputRange7>
+            <onix1:InputRange8>TenVolts</onix1:InputRange8>
+            <onix1:InputRange9>TenVolts</onix1:InputRange9>
+            <onix1:InputRange10>TenVolts</onix1:InputRange10>
+            <onix1:InputRange11>TenVolts</onix1:InputRange11>
+            <onix1:Direction0>Input</onix1:Direction0>
+            <onix1:Direction1>Input</onix1:Direction1>
+            <onix1:Direction2>Input</onix1:Direction2>
+            <onix1:Direction3>Input</onix1:Direction3>
+            <onix1:Direction4>Input</onix1:Direction4>
+            <onix1:Direction5>Input</onix1:Direction5>
+            <onix1:Direction6>Input</onix1:Direction6>
+            <onix1:Direction7>Input</onix1:Direction7>
+            <onix1:Direction8>Input</onix1:Direction8>
+            <onix1:Direction9>Input</onix1:Direction9>
+            <onix1:Direction10>Input</onix1:Direction10>
+            <onix1:Direction11>Input</onix1:Direction11>
+          </onix1:AnalogIO>
+          <onix1:DigitalIO>
+            <onix1:DeviceName>BreakoutBoard/DigitalIO</onix1:DeviceName>
+            <onix1:DeviceAddress>7</onix1:DeviceAddress>
+            <onix1:Enable>false</onix1:Enable>
+          </onix1:DigitalIO>
+          <onix1:ClockOutput>
+            <onix1:DeviceName>BreakoutBoard/OutputClock</onix1:DeviceName>
+            <onix1:DeviceAddress>5</onix1:DeviceAddress>
+            <onix1:ClockGate>false</onix1:ClockGate>
+            <onix1:Frequency>1000000</onix1:Frequency>
+            <onix1:DutyCycle>50</onix1:DutyCycle>
+            <onix1:Delay>0</onix1:Delay>
+          </onix1:ClockOutput>
+          <onix1:HarpInput>
+            <onix1:DeviceName>BreakoutBoard/HarpSyncInput</onix1:DeviceName>
+            <onix1:DeviceAddress>12</onix1:DeviceAddress>
+            <onix1:Enable>false</onix1:Enable>
+            <onix1:Source>Breakout</onix1:Source>
+          </onix1:HarpInput>
+          <onix1:MemoryMonitor>
+            <onix1:DeviceName>BreakoutBoard/MemoryMonitor</onix1:DeviceName>
+            <onix1:DeviceAddress>10</onix1:DeviceAddress>
+            <onix1:Enable>true</onix1:Enable>
+            <onix1:SamplesPerSecond>10</onix1:SamplesPerSecond>
+          </onix1:MemoryMonitor>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="onix1:ConfigureHeadstageRhs2116">
+          <onix1:Name>HeadstageRhs2116</onix1:Name>
+          <onix1:Rhs2116Pair>
+            <onix1:DeviceName>HeadstageRhs2116/Rhs2116Pair</onix1:DeviceName>
+            <onix1:DeviceAddress>256</onix1:DeviceAddress>
+            <onix1:Enable>true</onix1:Enable>
+            <onix1:DspCutoff>Off</onix1:DspCutoff>
+            <onix1:AnalogLowCutoff>Low100mHz</onix1:AnalogLowCutoff>
+            <onix1:AnalogLowCutoffRecovery>Low250Hz</onix1:AnalogLowCutoffRecovery>
+            <onix1:AnalogHighCutoff>High10000Hz</onix1:AnalogHighCutoff>
+          </onix1:Rhs2116Pair>
+          <onix1:StimulusTrigger>
+            <onix1:DeviceName>HeadstageRhs2116/StimulusTrigger</onix1:DeviceName>
+            <onix1:DeviceAddress>258</onix1:DeviceAddress>
+            <onix1:TriggerSource>Local</onix1:TriggerSource>
+            <onix1:ProbeGroup>eyJzcGVjaWZpY2F0aW9uIjoicHJvYmVpbnRlcmZhY2UiLCJ2ZXJzaW9uIjoiMC4yLjIxIiwicHJvYmVzIjpbeyJuZGltIjoyLCJzaV91bml0cyI6Im1tIiwiYW5ub3RhdGlvbnMiOnsibmFtZSI6IlJoczIxMTZBIiwibWFudWZhY3R1cmVyIjoiIn0sImNvbnRhY3RfYW5ub3RhdGlvbnMiOnsiQW5ub3RhdGlvbnMiOm51bGx9LCJjb250YWN0X3Bvc2l0aW9ucyI6W1sxNi4wLDMuMF0sWzE1LjAsMy4wXSxbMTQuMCwzLjBdLFsxMy4wLDMuMF0sWzEyLjAsMy4wXSxbMTEuMCwzLjBdLFsxMC4wLDMuMF0sWzkuMCwzLjBdLFs4LjAsMy4wXSxbNy4wLDMuMF0sWzYuMCwzLjBdLFs1LjAsMy4wXSxbNC4wLDMuMF0sWzMuMCwzLjBdLFsyLjAsMy4wXSxbMS4wLDMuMF1dLCJjb250YWN0X3BsYW5lX2F4ZXMiOltbWzEuMCwwLjBdLFswLjAsMS4wXV0sW1sxLjAsMC4wXSxbMC4wLDEuMF1dLFtbMS4wLDAuMF0sWzAuMCwxLjBdXSxbWzEuMCwwLjBdLFswLjAsMS4wXV0sW1sxLjAsMC4wXSxbMC4wLDEuMF1dLFtbMS4wLDAuMF0sWzAuMCwxLjBdXSxbWzEuMCwwLjBdLFswLjAsMS4wXV0sW1sxLjAsMC4wXSxbMC4wLDEuMF1dLFtbMS4wLDAuMF0sWzAuMCwxLjBdXSxbWzEuMCwwLjBdLFswLjAsMS4wXV0sW1sxLjAsMC4wXSxbMC4wLDEuMF1dLFtbMS4wLDAuMF0sWzAuMCwxLjBdXSxbWzEuMCwwLjBdLFswLjAsMS4wXV0sW1sxLjAsMC4wXSxbMC4wLDEuMF1dLFtbMS4wLDAuMF0sWzAuMCwxLjBdXSxbWzEuMCwwLjBdLFswLjAsMS4wXV1dLCJjb250YWN0X3NoYXBlcyI6WyJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiXSwiY29udGFjdF9zaGFwZV9wYXJhbXMiOlt7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfV0sInByb2JlX3BsYW5hcl9jb250b3VyIjpbWzAuNSwyLjVdLFsxNi41LDIuNV0sWzE2LjUsMy41XSxbMC41LDMuNV0sWzAuNSwyLjVdXSwiZGV2aWNlX2NoYW5uZWxfaW5kaWNlcyI6WzAsMSwyLDMsNCw1LDYsNyw4LDksMTAsMTEsMTIsMTMsMTQsMTVdLCJjb250YWN0X2lkcyI6WyIwIiwiMSIsIjIiLCIzIiwiNCIsIjUiLCI2IiwiNyIsIjgiLCI5IiwiMTAiLCIxMSIsIjEyIiwiMTMiLCIxNCIsIjE1Il0sInNoYW5rX2lkcyI6WyIiLCIiLCIiLCIiLCIiLCIiLCIiLCIiLCIiLCIiLCIiLCIiLCIiLCIiLCIiLCIiXX0seyJuZGltIjoyLCJzaV91bml0cyI6Im1tIiwiYW5ub3RhdGlvbnMiOnsibmFtZSI6IlJoczIxMTZCIiwibWFudWZhY3R1cmVyIjoiIn0sImNvbnRhY3RfYW5ub3RhdGlvbnMiOnsiQW5ub3RhdGlvbnMiOm51bGx9LCJjb250YWN0X3Bvc2l0aW9ucyI6W1sxLjAsMS4wXSxbMi4wLDEuMF0sWzMuMCwxLjBdLFs0LjAsMS4wXSxbNS4wLDEuMF0sWzYuMCwxLjBdLFs3LjAsMS4wXSxbOC4wLDEuMF0sWzkuMCwxLjBdLFsxMC4wLDEuMF0sWzExLjAsMS4wXSxbMTIuMCwxLjBdLFsxMy4wLDEuMF0sWzE0LjAsMS4wXSxbMTUuMCwxLjBdLFsxNi4wLDEuMF1dLCJjb250YWN0X3BsYW5lX2F4ZXMiOltbWzEuMCwwLjBdLFswLjAsMS4wXV0sW1sxLjAsMC4wXSxbMC4wLDEuMF1dLFtbMS4wLDAuMF0sWzAuMCwxLjBdXSxbWzEuMCwwLjBdLFswLjAsMS4wXV0sW1sxLjAsMC4wXSxbMC4wLDEuMF1dLFtbMS4wLDAuMF0sWzAuMCwxLjBdXSxbWzEuMCwwLjBdLFswLjAsMS4wXV0sW1sxLjAsMC4wXSxbMC4wLDEuMF1dLFtbMS4wLDAuMF0sWzAuMCwxLjBdXSxbWzEuMCwwLjBdLFswLjAsMS4wXV0sW1sxLjAsMC4wXSxbMC4wLDEuMF1dLFtbMS4wLDAuMF0sWzAuMCwxLjBdXSxbWzEuMCwwLjBdLFswLjAsMS4wXV0sW1sxLjAsMC4wXSxbMC4wLDEuMF1dLFtbMS4wLDAuMF0sWzAuMCwxLjBdXSxbWzEuMCwwLjBdLFswLjAsMS4wXV1dLCJjb250YWN0X3NoYXBlcyI6WyJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiLCJjaXJjbGUiXSwiY29udGFjdF9zaGFwZV9wYXJhbXMiOlt7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfSx7InJhZGl1cyI6MC4zLCJ3aWR0aCI6bnVsbCwiaGVpZ2h0IjpudWxsfV0sInByb2JlX3BsYW5hcl9jb250b3VyIjpbWzAuNSwwLjVdLFsxNi41LDAuNV0sWzE2LjUsMS41XSxbMC41LDEuNV0sWzAuNSwwLjVdXSwiZGV2aWNlX2NoYW5uZWxfaW5kaWNlcyI6WzE2LDE3LDE4LDE5LDIwLDIxLDIyLDIzLDI0LDI1LDI2LDI3LDI4LDI5LDMwLDMxXSwiY29udGFjdF9pZHMiOlsiMCIsIjEiLCIyIiwiMyIsIjQiLCI1IiwiNiIsIjciLCI4IiwiOSIsIjEwIiwiMTEiLCIxMiIsIjEzIiwiMTQiLCIxNSJdLCJzaGFua19pZHMiOlsiIiwiIiwiIiwiIiwiIiwiIiwiIiwiIiwiIiwiIiwiIiwiIiwiIiwiIiwiIiwiIl19XX0=</onix1:ProbeGroup>
+            <onix1:StimulusSequence>
+              <onix1:Stimuli>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>0</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>3000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>6000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>9000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>12000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>15000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>18000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>21000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>24000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>27000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>30000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>33000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>36000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>39000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>42000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>45000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>48000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>51000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>54000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>57000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>60000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>63000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>66000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>69000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>72000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>75000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>78000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>81000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>84000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>87000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>90000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+                <onix1:Rhs2116Stimulus>
+                  <onix1:NumberOfStimuli>1</onix1:NumberOfStimuli>
+                  <onix1:AnodicFirst>true</onix1:AnodicFirst>
+                  <onix1:DelaySamples>93000</onix1:DelaySamples>
+                  <onix1:DwellSamples>0</onix1:DwellSamples>
+                  <onix1:AnodicAmplitudeSteps>100</onix1:AnodicAmplitudeSteps>
+                  <onix1:AnodicWidthSamples>3</onix1:AnodicWidthSamples>
+                  <onix1:CathodicAmplitudeSteps>100</onix1:CathodicAmplitudeSteps>
+                  <onix1:CathodicWidthSamples>3</onix1:CathodicWidthSamples>
+                  <onix1:InterStimulusIntervalSamples>0</onix1:InterStimulusIntervalSamples>
+                </onix1:Rhs2116Stimulus>
+              </onix1:Stimuli>
+              <onix1:CurrentStepSize>Step10000nA</onix1:CurrentStepSize>
+            </onix1:StimulusSequence>
+          </onix1:StimulusTrigger>
+          <onix1:Port>PortA</onix1:Port>
+          <onix1:PortVoltage xsi:nil="true" />
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="onix1:StartAcquisition">
+          <onix1:ReadSize>2048</onix1:ReadSize>
+          <onix1:WriteSize>2048</onix1:WriteSize>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:Timestamp" />
+      </Expression>
+      <Expression xsi:type="io:CsvWriter">
+        <io:FileName>start-time_.csv</io:FileName>
+        <io:Append>false</io:Append>
+        <io:Overwrite>false</io:Overwrite>
+        <io:Suffix>FileCount</io:Suffix>
+        <io:IncludeHeader>false</io:IncludeHeader>
+        <io:Selector>Timestamp,Value.AcquisitionClockHz,Value.BlockReadSize,Value.BlockWriteSize</io:Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="onix1:PortStatus">
+          <onix1:DeviceName>HeadstageRhs2116/LinkController</onix1:DeviceName>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:Timestamp" />
+      </Expression>
+      <Expression xsi:type="io:CsvWriter">
+        <io:FileName>port-status_.csv</io:FileName>
+        <io:Append>false</io:Append>
+        <io:Overwrite>false</io:Overwrite>
+        <io:Suffix>FileCount</io:Suffix>
+        <io:IncludeHeader>false</io:IncludeHeader>
+        <io:Selector>Timestamp,Value</io:Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="onix1:DigitalInput">
+          <onix1:DeviceName>BreakoutBoard/DigitalIO</onix1:DeviceName>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Buttons</Selector>
+      </Expression>
+      <Expression xsi:type="rx:Condition">
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="HasFlag">
+              <Operand xsi:type="WorkflowProperty" TypeArguments="onix1:BreakoutButtonState">
+                <Value>Square</Value>
+              </Operand>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge From="0" To="1" Label="Source1" />
+            <Edge From="1" To="2" Label="Source1" />
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="DoubleProperty">
+          <Value>0</Value>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="onix1:Rhs2116StimulusTrigger">
+          <onix1:DeviceName>HeadstageRhs2116/StimulusTrigger</onix1:DeviceName>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="onix1:Rhs2116PairData">
+          <onix1:DeviceName>HeadstageRhs2116/Rhs2116Pair</onix1:DeviceName>
+          <onix1:BufferSize>30</onix1:BufferSize>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Clock</Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="dsp:MatrixWriter">
+          <dsp:Path>rhs2116pair-clock_.raw</dsp:Path>
+          <dsp:Suffix>FileCount</dsp:Suffix>
+          <dsp:Overwrite>false</dsp:Overwrite>
+          <dsp:Layout>ColumnMajor</dsp:Layout>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>DCData</Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="dsp:MatrixWriter">
+          <dsp:Path>rhs2116pair-dc_.raw</dsp:Path>
+          <dsp:Suffix>FileCount</dsp:Suffix>
+          <dsp:Overwrite>false</dsp:Overwrite>
+          <dsp:Layout>ColumnMajor</dsp:Layout>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>AmplifierData</Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="dsp:MatrixWriter">
+          <dsp:Path>rhs2116pair-ac_.raw</dsp:Path>
+          <dsp:Suffix>FileCount</dsp:Suffix>
+          <dsp:Overwrite>false</dsp:Overwrite>
+          <dsp:Layout>ColumnMajor</dsp:Layout>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="onix1:MemoryMonitorData">
+          <onix1:DeviceName>BreakoutBoard/MemoryMonitor</onix1:DeviceName>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>PercentUsed</Selector>
+      </Expression>
+    </Nodes>
+    <Edges>
+      <Edge From="0" To="1" Label="Source1" />
+      <Edge From="1" To="2" Label="Source1" />
+      <Edge From="2" To="3" Label="Source1" />
+      <Edge From="2" To="4" Label="Source1" />
+      <Edge From="4" To="5" Label="Source1" />
+      <Edge From="6" To="7" Label="Source1" />
+      <Edge From="7" To="8" Label="Source1" />
+      <Edge From="9" To="10" Label="Source1" />
+      <Edge From="10" To="11" Label="Source1" />
+      <Edge From="11" To="12" Label="Source1" />
+      <Edge From="12" To="13" Label="Source1" />
+      <Edge From="14" To="15" Label="Source1" />
+      <Edge From="14" To="17" Label="Source1" />
+      <Edge From="14" To="19" Label="Source1" />
+      <Edge From="15" To="16" Label="Source1" />
+      <Edge From="17" To="18" Label="Source1" />
+      <Edge From="19" To="20" Label="Source1" />
+      <Edge From="21" To="22" Label="Source1" />
+    </Edges>
+  </Workflow>
+</WorkflowBuilder>
