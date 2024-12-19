@@ -175,14 +175,6 @@ If there are discrepancies between local and remote builds:
 * Confirm local and remote docfx versions are consistent. This inconsistency can occur when, for example, running `docfx` instead of `dotnet docfx` or running `dotnet tool restore --configfile <configfile>` on another config file other than the one in this repo.
 * Clear any locally cached files that aren't available remotely. Such files exist in the `api` directory (though care to not delete the `.gitignore` in that directory), the `_site` directory, and the workflows directory. Run `./docfx-utils.ps1 -c` to clean artifacts from previous builds. 
 
-## Docs Maintainability
+## Style Guide
 
-### Creating Edited Screenshots
-
-There are webpages with edited screenshots of Bonsai. The source material (.xcf GIMP files) belongs in the img-src directory for ease of maintenance. The headers below describe how you can quickly create a new screenshot.
-
-To take the screenshot (in Windows), use the `Windows+Shift+S` hotkey, select the `Window` option, and select the window you would like to screenshot. The preference is to take a screenshot against a grey background (e.g. create a (R: 127, G: 127, B: 127) background in GIMP) because some of the background makes it into the screenshot.
-
-#### Bonsai Package Manager Screenshot Edits
-
-The layer group consisting of the highlight layer and 1,2,3,4 layers of the screenshots in the bonsai-install\*.xcf or bonsai-update\*.xcf files can be copy and pasted on top of other screenshots. This enables an expedited editing process for creating new edited screenshots. When creating the screenshot, do not change the size of the package manager after opening it.
+Refer to the [Style Guide](style-guide.md).
