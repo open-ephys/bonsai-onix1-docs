@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Installation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Installation ">
+      
+      
+      <link rel="icon" href="../../favicon.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/getting-started/install-configure-bonsai.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo-light-mode.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="install-configure-bonsai">
+          <h1>Installation</h1>
+
+
+
+
+
+  <h2 id="install-bonsai">Install Bonsai</h2>
+<p>To download Bonsai, select between the portable download and the installer download <a href="https://bonsai-rx.org/docs/articles/installation.html">here</a>.</p>
+<ul>
+<li>The <strong>Portable</strong> download (.zip) installs a sandboxed version of Bonsai. Portable environments enable users to switch between different environments to prevent package conflicts or confusion between similar packages.
+<ul>
+<li>To install from the <strong>Portable</strong> download, extract the downloaded file. You can start the portable Bonsai by running the <code>Bonsai.exe</code> that is inside the extracted folder.</li>
+</ul>
+</li>
+<li>The <strong>Installer</strong> download (.exe) installs Bonsai and all its dependencies globally.
+<ul>
+<li>To install from the <strong>Installer</strong> download, run the downloaded <code>Bonsai-X.X.X.exe</code> file and agree to the involved licenses. You can start the globally installed Bonsai by launching it from the <code>Bonsai Setup</code> window after installing or searching for it in your OS's search function, for example.</li>
+</ul>
+</li>
+</ul>
+<div class="TIP">
+<h5>Tip</h5>
+<p>When using multiple environments, create and name shortcuts such that different Bonsai environments are easier to find and distinguish.</p>
+</div>
+<h2 id="open-bonsai-package-manager">Open Bonsai Package Manager</h2>
+<p>The Bonsai package manager can be accessed from Bonsai's landing window or its workflow editor:</p>
+<p><img src="../../images/bonsai-splash-page-package-manager-highlight.png" width="350px" alt="Package manager from splash page"> or <img src="../../images/bonsai-editor-package-manager-highlight.png" width="425px" alt="Package manager from editor"></p>
+<h2 id="install-packages-in-bonsai">Install Packages in Bonsai</h2>
+<p>The following packages required to run the workflows in this documentation are:</p>
+<ul>
+<li><code>Bonsai.StarterPack</code>: the &quot;standard library&quot; for Bonsai that contains tools that are used in almost every workflow.</li>
+<li><code>OpenEphys.Commutator</code>: Bonsai package for controlling Open Ephys commutators.</li>
+<li><code>OpenEphys.Onix1.Design</code>: An extension of the <code>OpenEphys.Onix1</code> library that includes graphical user interfaces (GUIs).</li>
+</ul>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Additional packages will allow you to extend the functionality of ONIX hardware beyond the scope of this documentation. There are packages that allow ONIX be combined with <a href="https://bonsai-rx.org/docs/tutorials/vision-psychophysics.html">visual psychophysics</a>, <a href="https://bonsai-rx.org/sleap/">markerless pose estimation</a>, <a href="https://harp-tech.org/">HARP behavioral devices</a>, and much more.</p>
+</div>
+<h3 id="openephysonix1">OpenEphys.Onix1</h3>
+<p>To install the <code>OpenEphys.Onix1</code> package <a href="#open-bonsai-package-manager">open the package manager</a> and:</p>
+<ol>
+<li>Click the <code>Browse</code> tab.</li>
+<li>Set <code>Package source</code> to <code>All</code> or <code>NuGet</code>.</li>
+<li>Search <code>OpenEphys.Onix1</code>.</li>
+<li>Click <code>Install</code>.</li>
+<li>Click <code>I Accept</code> when the license agreement window appears.</li>
+</ol>
+<p><img src="../../images/bonsai-install-OpenEphys.Onix1.webp" width="650px" alt="Bonsai OpenEphys.Onix1 Install Screenshot"></p>
+<h3 id="openephysonix1design">OpenEphys.Onix1.Design</h3>
+<p>To install the <code>OpenEphys.Onix1.Design</code> package <a href="#open-bonsai-package-manager">open the package manager</a> and:</p>
+<ol>
+<li>Click the <code>Browse</code> tab.</li>
+<li>Set <code>Package source</code> to <code>All</code> or <code>NuGet</code>.</li>
+<li>Search <code>OpenEphys.Onix1.Design</code>.</li>
+<li>Click <code>Install</code>.</li>
+<li>Click <code>I Accept</code> when the license agreement window appears.</li>
+</ol>
+<p><img src="../../images/bonsai-install-OpenEphys.Onix1.Design.webp" width="650px" alt="Bonsai OpenEphys.Onix1.Design Install Screenshot"></p>
+<h3 id="bonsaistarterpack">Bonsai.StarterPack</h3>
+<p>To install the <code>Bonsai.StarterPack</code> package <a href="#open-bonsai-package-manager">open the package manager</a> and:</p>
+<ol>
+<li>Click the <code>Browse</code> tab.</li>
+<li>Set <code>Package source</code> to <code>Bonsai Packages</code>.</li>
+<li>Search for <code>Bonsai.StarterPack</code>.</li>
+<li>Click <code>Install</code>.</li>
+</ol>
+<p><img src="../../images/bonsai-install-Bonsai.StarterPack.webp" width="650px" alt="Bonsai Bonsai.StarterPack Install Screenshot"></p>
+<h3 id="openephyscommutator">OpenEphys.Commutator</h3>
+<p>To install the <code>OpenEphys.Commutator</code> package <a href="#open-bonsai-package-manager">open the package manager</a> and:</p>
+<ol>
+<li>Click the <code>Browse</code> tab.</li>
+<li>Set <code>Package source</code> to <code>All</code> or <code>NuGet</code>.</li>
+<li>Search for <code>OpenEphys.Commutator</code>.</li>
+<li>Click <code>Install</code>.</li>
+</ol>
+<p><img src="../../images/bonsai-install-OpenEphys.Commutator.webp" width="650px" alt="Bonsai OpenEphys.Commutator Install Screenshot"></p>
+<h2 id="update-packages-in-bonsai">Update Packages in Bonsai</h2>
+<p>It is good practice to periodically check for package updates. To do this, <a href="#open-bonsai-package-manager">open the package manager</a> and:</p>
+<ol>
+<li>Click the <code>Update</code> tab.</li>
+<li>Set <code>Package source</code> to <code>All</code>.</li>
+<li>Leave the search bar blank if you want to check for updates for all packages.<br>
+Alternatively, if you want to check for an update for a particular package, you may type that package's name in the search bar to expedite the update retrieval process.</li>
+<li>Click <code>Update All</code> if you want to perform all available updates.<br>
+Alternatively, click on a package and click <code>Update</code> if you want to perform a subset of the available updates.</li>
+</ol>
+<p><img src="../../images/bonsai-update.webp" width="650px" alt="Bonsai Update All or Just One Screenshot"></p>
+<h2 id="uninstall-packages-in-bonsai">Uninstall Packages in Bonsai</h2>
+<p>Sometimes it is helpful to uninstall packages. <a href="#open-bonsai-package-manager">Open the package manager</a> and:</p>
+<ol>
+<li>Click the <code>Installed</code> tab.</li>
+<li>Set <code>Package source</code> to <code>All</code>.</li>
+<li>Leave the search bar blank if you want to see all installed packages.<br>
+Alternatively, if you want to uninstall a particular package, you may type that package's name in the search bar.</li>
+<li>Click a package and click <code>Uninstall</code> to uninstall a packages.</li>
+</ol>
+<p><img src="../../images/bonsai-uninstall-Bonsai.OpenEphys.webp" width="650px" alt="Bonsai Uninstall"></p>
+<h2 id="next-steps">Next Steps</h2>
+<p>Now that Bonsai has been installed and configured, it is time to start constructing a workflow to capture data from your ONIX system. The following sections give a high-level understanding of how Bonsai is organized, and some of the ONIX-specific concepts that will be useful for learning how to work with the operators.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/getting-started/install-configure-bonsai.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          &copy; 2024 Open Ephys and Contributors. Made with <a href="https://dotnet.github.io/docfx">docfx</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

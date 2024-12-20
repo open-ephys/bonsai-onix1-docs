@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.8.5"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:onix1="clr-namespace:OpenEphys.Onix1;assembly=OpenEphys.Onix1"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="onix1:CreateContext">
+          <onix1:Driver>riffa</onix1:Driver>
+          <onix1:Index>0</onix1:Index>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="onix1:ConfigureRhs2116">
+          <onix1:DeviceAddress>0</onix1:DeviceAddress>
+          <onix1:Enable>true</onix1:Enable>
+          <onix1:DspCutoff>Off</onix1:DspCutoff>
+          <onix1:AnalogLowCutoff>Low100mHz</onix1:AnalogLowCutoff>
+          <onix1:AnalogLowCutoffRecovery>Low250Hz</onix1:AnalogLowCutoffRecovery>
+          <onix1:AnalogHighCutoff>High10000Hz</onix1:AnalogHighCutoff>
+          <onix1:RespectExternalActiveStim>true</onix1:RespectExternalActiveStim>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="onix1:StartAcquisition">
+          <onix1:ReadSize>2048</onix1:ReadSize>
+          <onix1:WriteSize>2048</onix1:WriteSize>
+        </Combinator>
+      </Expression>
+    </Nodes>
+    <Edges>
+      <Edge From="0" To="1" Label="Source1" />
+      <Edge From="1" To="2" Label="Source1" />
+    </Edges>
+  </Workflow>
+</WorkflowBuilder>

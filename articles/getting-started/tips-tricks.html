@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Tips and Tricks </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Tips and Tricks ">
+      
+      
+      <link rel="icon" href="../../favicon.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/getting-started/tips-tricks.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo-light-mode.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="tips-and-tricks">
+          <h1>Tips and Tricks</h1>
+
+
+
+
+
+  <h2 id="bonsai-operator-actions">Bonsai Operator Actions</h2>
+<p>When running a workflow in Bonsai, operators are evaluated from left to right, and top to bottom. In a workflow, each node represents an operator defining an sequence of values. Nodes can be connected to other nodes, from left to right. Each connection indicates that the downstream operator on the right subscribes, or &quot;listens&quot;, to the notifications of the upstream operator on the left. The table below provides some useful information to effectively use the workflow editor. It provides information on how to add connections between operators, remove connections, reordering operators horizontally and vertically, as well as some shortcuts to aid in placing operators more efficiently.</p>
+<p>Aside from determining the order of execution, the order of operators within a workflow determines which editing actions can be taken. In the table below, the &quot;first&quot; operator is always the one that is on the left side, or on the bottom for multiple rows of operators. If the first operator clicked is on the right side, or on the top, these actions will not work.</p>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>Clicks / Keystrokes</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connect two operators</td>
+<td>Click and hold the first operator, drag the cursor to the second operator, and release</td>
+<td>While dragging the cursor, it will temporarily change to a red symbol until there is a valid target (e.g., the second operator), where it will change to an up arrow</td>
+</tr>
+<tr>
+<td>Connect two operators</td>
+<td>Right-click the first operator, and select <strong>Create Connection</strong>. Select the second operator</td>
+<td>While moving the cursor, it will change to an up arrow. A valid operator target will change color when hovering over it</td>
+</tr>
+<tr>
+<td>Connect two operators on placement</td>
+<td>Click on an operator in the editor to select it, then place an operator using either method (1) or (2) above</td>
+<td>If an operator is currently selected in the editor when a new operator is added, whether it is added by clicking and dragging, double-clicking, or pressing <strong>Enter</strong>, the newly placed operator will be connected to the first operator automatically</td>
+</tr>
+<tr>
+<td>Disconnect two operators</td>
+<td>Click the first operator to select it, hold <strong>Shift</strong>, click and hold the first operator, drag to the second operator, and release</td>
+<td>While dragging the cursor, it will temporarily change to a red symbol until there is a valid target (e.g., the second operator), where it will change to an up arrow</td>
+</tr>
+<tr>
+<td>Disconnect two operators</td>
+<td>Right-click the first operator, and select <strong>Remove Connection</strong>. Select the second operator</td>
+<td>While moving the cursor, it will change to an up arrow. A valid operator target will change color when hovering over it</td>
+</tr>
+<tr>
+<td>Move row of operators up</td>
+<td>Hold <strong>Alt</strong>, click and hold the first operator, drag upwards to an operator in another row, and release</td>
+<td>This action does not require that the operator be selected prior to performing the action. The second operator that is highlighted when the button / mouse are released will now be under the first operator</td>
+</tr>
+<tr>
+<td>Change order of operators in a row</td>
+<td>Hold <strong>Ctrl</strong>, click and hold the first operator, drag to the right to the second operator, and release</td>
+<td>This action does not require that the operator be selected prior to performing the action. This can change the order of any two operators that are a part of the same row; it is not constrained to adjacent operators. Note that if the new placement of the operators is not valid (such as giving a <code>Source</code> operator an input), it will knock the operator of the current row and remove any connections</td>
+</tr>
+</tbody>
+</table>
+<div class="NOTE">
+<h5>Note</h5>
+<p>In the context of <code>OpenEphys.Onix1</code>, all workflows start with (top line) a <a class="xref" href="../../api/OpenEphys.Onix1.CreateContext.html">CreateContext</a> operator connected to an arbitrary number of <code>Configure*</code> operators, finished with a <a class="xref" href="../../api/OpenEphys.Onix1.StartAcquisition.html">StartAcquisition</a> operator. Subsequent rows will contain the corresponding <code>*Data</code> operators for capturing data from the hardware has been configured above.</p>
+</div>
+<br>
+<h2 id="accessing-guis">Accessing GUIs</h2>
+<p>Some operators, specifically many of the <code>Configure*</code> operators, can have a GUI attached to the operator that allows for easy manipulation of <strong>Configuration</strong> properties in a graphical environment. These GUIs can be accessed by double-clicking on an operator; if there is a GUI assigned to it, then it will be opened up in a new window. Please note that not all operators have GUIs, but if you think that an operator would benefit from having this functionality added please reach out to us.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>GUIs are not part of the base <code>OpenEphys.Onix1</code> library. To take advantage of this added functionality, you must install the accompanying <code>OpenEphys.Onix1.Design</code> library using the Bonsai package manager.</p>
+</div>
+<p>A number of Bonsai operators also come with GUIs, but similar to <code>OpenEphys.Onix1</code>, the corresponding <code>*.Design</code> library must be installed before it can be leveraged.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/getting-started/tips-tricks.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          &copy; 2024 Open Ephys and Contributors. Made with <a href="https://dotnet.github.io/docfx">docfx</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,300 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Software Reference </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Software Reference ">
+      
+      
+      <link rel="icon" href="../../favicon.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/getting-started/reference.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo-light-mode.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="reference">
+          <h1>Software Reference</h1>
+
+
+
+
+
+  
+<p>The following table provides information about which operators correspond to which hardware and the &quot;Offset&quot; and &quot;Scale&quot;
+values to convert the ADC value to μV. &quot;Offset&quot; refers to the value required to subtract from unsigned data to center
+its dynamic range around zero. It's typically <span class="math">\(-2^{(bitDepth - 1)}\)</span> for unsigned data. &quot;Scale&quot; refers to the scalar
+required to multiply to your data to convert it from units of DAC/ADC step size to μV.</p>
+<!--
+- Column select (i.e. Alt+Shift on VS Code) can be extremely helpful for editing this table
+- Remove any white space at end of table after pipe symbol (|) or else DocLinkChecker will complain
+-->
+<table>
+<thead>
+<tr>
+<th>Analog Device</th>
+<th>Bit Depth</th>
+<th>Offset</th>
+<th>Scale/Step Size <br> (μV/bit)</th>
+<th>Relevant Data Operator</th>
+<th>Data Frame</th>
+<th>Relevant Hardware</th>
+<th>Configuration Operator(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://intantech.com/files/Intan_RHD2164_datasheet.pdf">Intan Rhd2164 (amplifier &amp; auxiliary)</a></td>
+<td>16</td>
+<td>-32768</td>
+<td>0.195</td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.Rhd2164Data.html">Rhd2164Data</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.Rhd2164DataFrame.html">Rhd2164DataFrame</a></td>
+<td><a href="https://open-ephys.github.io/onix-docs/Hardware%20Guide/Headstages/headstage-64/index.html">Headstage 64</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.ConfigureHeadstage64.html">ConfigureHeadstage64</a></td>
+</tr>
+<tr>
+<td><a href="https://intantech.com/files/Intan_RHS2116_datasheet.pdf">Intan Rhs2116 (AC)</a></td>
+<td>16</td>
+<td>-32768</td>
+<td>0.195</td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.Rhs2116Data.html">Rhs2116Data</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.Rhs2116DataFrame.html">Rhs2116DataFrame</a></td>
+<td><a href="https://open-ephys.github.io/onix-docs/Hardware%20Guide/Headstages/headstage-rhs2116.html">Headstage Rhs2116</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.ConfigureHeadstageRhs2116.html">ConfigureHeadstageRhs2116</a></td>
+</tr>
+<tr>
+<td><a href="https://intantech.com/files/Intan_RHS2116_datasheet.pdf">Intan Rhs2116 (DC)</a></td>
+<td>10</td>
+<td>-512</td>
+<td>-19230</td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.Rhs2116Data.html">Rhs2116Data</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.Rhs2116DataFrame.html">Rhs2116DataFrame</a></td>
+<td><a href="https://open-ephys.github.io/onix-docs/Hardware%20Guide/Headstages/headstage-rhs2116.html">Headstage Rhs2116</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.ConfigureHeadstageRhs2116.html">ConfigureHeadstageRhs2116</a></td>
+</tr>
+<tr>
+<td><a href="https://www.neuropixels.org/_files/ugd/328966_c5e4d31e8a974962b5eb8ec975408c9f.pdf">Imec Neuropixels 1.0 probe (AP &amp; LFP)</a></td>
+<td>10</td>
+<td>-512</td>
+<td>1.2e6/1024/gain<a id="fnref:1" href="#fn:1" class="footnote-ref"><sup>1</sup></a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.NeuropixelsV1eData.html">NeuropixelsV1eData</a>, <a class="xref" href="../../api/OpenEphys.Onix1.NeuropixelsV1fData.html">NeuropixelsV1fData</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.NeuropixelsV1DataFrame.html">NeuropixelsV1DataFrame</a></td>
+<td><a href="https://open-ephys.github.io/onix-docs/Hardware%20Guide/Headstages/headstage-neuropix-1e.html">Headstage Neuropixels V1e</a>, <a href="https://open-ephys.github.io/onix-docs/Hardware%20Guide/Headstages/headstage-neuropix-1.html">Headstage Neuropixels V1f</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.ConfigureNeuropixelsV1eHeadstage.html">ConfigureNeuropixelsV1eHeadstage</a></td>
+</tr>
+<tr>
+<td><a href="https://www.neuropixels.org/_files/ugd/328966_2b39661f072d405b8d284c3c73588bc6.pdf">Imec Neuropixels 2.0 probe</a></td>
+<td>12</td>
+<td>-2048</td>
+<td>1e6/80/2^12 = <br> 3.0517578125</td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.NeuropixelsV2eData.html">NeuropixelsV2eData</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.NeuropixelsV2eDataFrame.html">NeuropixelsV2eDataFrame</a></td>
+<td><a href="https://open-ephys.github.io/onix-docs/Hardware%20Guide/Headstages/headstage-neuropix-2e.html">Headstage Neuropixels V2e</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.ConfigureNeuropixelsV2eHeadstage.html">ConfigureNeuropixelsV2eHeadstage</a></td>
+</tr>
+<tr>
+<td>Imec Neuropixels 2.0 Beta probe</td>
+<td>14</td>
+<td>-8192</td>
+<td>1e6/80/2^14 = <br> 0.76293945312</td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.NeuropixelsV2eBetaData.html">NeuropixelsV2eBetaData</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.NeuropixelsV2eBetaDataFrame.html">NeuropixelsV2eBetaDataFrame</a></td>
+<td><a href="https://open-ephys.github.io/onix-docs/Hardware%20Guide/Headstages/headstage-neuropix-2e-beta.html">Headstage Neuropixels V2e Beta</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.ConfigureNeuropixelsV2eBetaHeadstage.html">ConfigureNeuropixelsV2eBetaHeadstage</a></td>
+</tr>
+<tr>
+<td><a href="https://www.neuropixels.org/_files/ugd/328966_c59e77054175456cb0c3ef82b32219c1.pdf">Imec Nric 1.0 384 (AP &amp; LFP)</a></td>
+<td>10</td>
+<td>-512</td>
+<td>1.2e6/1024/gain<a id="fnref:2" href="#fn:1" class="footnote-ref"><sup>1</sup></a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.Nric1384Data.html">Nric1384Data</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.Nric1384DataFrame.html">Nric1384DataFrame</a></td>
+<td>Headstage Nric1384</td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.ConfigureHeadstageNric1384.html">ConfigureHeadstageNric1384</a></td>
+</tr>
+<tr>
+<td><a href="https://open-ephys.github.io/onix-docs/Hardware%20Guide/Breakout%20Board/index.html">Breakout Board analog input</a></td>
+<td>16</td>
+<td>-32768</td>
+<td>voltageRange/2^16<a id="fnref:3" href="#fn:2" class="footnote-ref"><sup>2</sup></a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.AnalogInput.html">AnalogInput</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.AnalogInputDataFrame.html">AnalogInputDataFrame</a></td>
+<td><a href="https://open-ephys.github.io/onix-docs/Hardware%20Guide/Breakout%20Board/index.html">Breakout Board</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.ConfigureBreakoutBoard.html">ConfigureBreakoutBoard</a></td>
+</tr>
+<tr>
+<td><a href="https://open-ephys.github.io/onix-docs/Hardware%20Guide/Breakout%20Board/index.html">Breakout Board analog output</a></td>
+<td>16</td>
+<td>0</td>
+<td>20e6/2^16 = <br> 305.17578125 <br> (in &quot;S16&quot; mode)<a id="fnref:4" href="#fn:3" class="footnote-ref"><sup>3</sup></a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.AnalogOutput.html">AnalogOutput</a></td>
+<td>-</td>
+<td><a href="https://open-ephys.github.io/onix-docs/Hardware%20Guide/Breakout%20Board/index.html">Breakout Board</a></td>
+<td><a class="xref" href="../../api/OpenEphys.Onix1.ConfigureBreakoutBoard.html">ConfigureBreakoutBoard</a>, <a class="xref" href="../../api/OpenEphys.Onix1.AnalogOutput.html">AnalogOutput</a></td>
+</tr>
+</tbody>
+</table>
+<div class="TIP">
+<h5>Tip</h5>
+<ul>
+<li>If you are trying to insert the &quot;Offset&quot; value from this table into the &quot;Offset&quot; field of the
+<a href="https://open-ephys.github.io/gui-docs/User-Manual/Plugins/Ephys-Socket.html">Ephys Socket</a> of the
+<a href="https://open-ephys.github.io/gui-docs/index.html">Open Ephys GUI</a>, insert a positive value. The Ephys Socket
+multiplies the value in the &quot;Offset&quot; field by -1 so you must insert a positive value in the &quot;Offset&quot; field.</li>
+<li>If you are trying to insert the &quot;Offset&quot; and &quot;Scale&quot; values from this table into the &quot;Shift&quot; property and &quot;Scale&quot;
+property fields of a single <a class="xref" href="https://bonsai-rx.org/docs/api/Bonsai.Dsp.ConvertScale.html">ConvertScale</a> operator in Bonsai, insert the &quot;Offset&quot; value multiplied
+by the &quot;Scale&quot; value into the &quot;Shift&quot; property field. The <code>ConvertScale</code> operator applies the shift transformation
+after the scale transformation so you must pre-scale the value in the &quot;Shift&quot; property field. You can also use two
+<code>ConvertScales</code> to apply the &quot;Shift&quot; transformation before the &quot;Scale&quot; transformation so that you don't have to
+pre-scale.</li>
+</ul>
+</div>
+<p>The above table includes devices that expose unconverted DAC/ADC values to users. Devices excluded by the above
+table include:</p>
+<ul>
+<li>(<a class="xref" href="../../api/OpenEphys.Onix1.PolledBno055Data.html">Polled</a>) <a class="xref" href="../../api/OpenEphys.Onix1.Bno055Data.html">Bno055</a> is an orientation sensor.
+<ul>
+<li>Euler angles: degrees</li>
+<li>Quaternion: unitless</li>
+<li>Linear acceleration: m/s^2</li>
+<li>Gravity: m/s^2</li>
+<li>Temperature: Celsius</li>
+</ul>
+</li>
+<li><a class="xref" href="../../api/OpenEphys.Onix1.TS4231V1PositionData.html">Ts4231</a> is a position sensor.
+<ul>
+<li>Position: arbitrary units (defined by the relative positions of the lighthouses and the <code>P</code>/<code>Q</code> property values set by the
+user in Bonsai)</li>
+</ul>
+</li>
+<li><a class="xref" href="../../api/OpenEphys.Onix1.UclaMiniscopeV4CameraData.html">Python480</a> is a camera sensor. It technically exposes unconverted
+DAC/ADC values to users, but converting those values to photon count is less common so it is omitted from the table.</li>
+</ul>
+<div class="footnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>The Neuropixels 1.0 probes and Imec Nric 1.0 384 amplifier have selectable gain. The appropriate &quot;Scale&quot; value
+depends on the chosen gain according to the following formula: 1.2e6/1024/gain. The gain is configured in the
+<a class="xref" href="../hardware/np1e/gui.html">NeuropixelsV1e Headstage Configuration GUI</a>, for example.<a href="#fnref:1" class="footnote-back-ref">&#8617;</a><a href="#fnref:2" class="footnote-back-ref">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>The Breakout Board analog input range can be configured to accept ±10 volts, ±5 volts, or ±2.5 volts input range.
+The appropriate &quot;Scale&quot; value depends on the chosen analog input voltage range according to the following formula:
+voltageRange/2^16. This voltage range is configured by editing <a class="xref" href="../../api/OpenEphys.Onix1.ConfigureBreakoutBoard.html">ConfigureBreakoutBoard</a>'s
+<code>AnalogIO</code> InputRange properties and must be configured per analog input. The voltage ranges associated with
+the constants in the <a class="xref" href="../../api/OpenEphys.Onix1.AnalogIOVoltageRange.html">AnalogIOVoltageRange</a> enum are:</p>
+<ul>
+<li><code>TwoPointFiveVolts</code>: 5e6</li>
+<li><code>FiveVolts</code>: 10e6</li>
+<li><code>TenVolts</code>: 20e6</li>
+</ul>
+<p><a href="#fnref:3" class="footnote-back-ref">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>The Breakout Board analog output can be configured to accept units of volt or DAC step size (305.17578125 μV/bit).
+The appropriate &quot;Scale&quot; value is only relevant if you are outputting in units of volts depends on the chosen analog
+output datatype. This datatype is configured by editing <a class="xref" href="../../api/OpenEphys.Onix1.AnalogOutput.html">AnalogOutput</a>'s <code>DataType</code> property. This
+operator accepts signed data, so no shift is necessary.<a href="#fnref:4" class="footnote-back-ref">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/open-ephys/bonsai-onix1-docs/blob/main/articles/getting-started/reference.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          &copy; 2024 Open Ephys and Contributors. Made with <a href="https://dotnet.github.io/docfx">docfx</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
