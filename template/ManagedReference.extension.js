@@ -121,7 +121,7 @@ exports.preTransform = function (model) {
     if (operator.hub) {
       properties = extractConstituentOperatorsData(model);
       properties.unshift({
-        'object': 'Configuration',
+        'object': model.name[0].value.replace('Configure', ''),
         'constituentOperator': false,
         'hasProperties': true,
         'properties': sortPropertiesData([

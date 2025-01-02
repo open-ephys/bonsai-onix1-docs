@@ -13,8 +13,8 @@
       {{#acquisition}}
       <div>
         <a class="xref" href="~/articles/getting-started/property-categories.html#acquisition">
-          <button class="badge bg-primary-subtle border border-primary-subtle text-primary-emphasis rounded-pill">
-            acquisition
+          <button class="badge oe-badge-border oe-badge-blue">
+            Acquisition
           </button>
         </a>
       </div>
@@ -22,8 +22,8 @@
       {{#configuration}}
       <div>
         <a class="xref" href="~/articles/getting-started/property-categories.html#configuration">
-          <button class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill">
-            configuration 
+          <button class="badge oe-badge-border oe-badge-orange">
+            Configuration 
           </button>
         </a>
       </div>
