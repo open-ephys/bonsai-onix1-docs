@@ -4,8 +4,9 @@
   - href: getting-started/bonsai-usage.md
   - href: getting-started/operator-types.md
   - href: getting-started/tips-tricks.md
+  - href: getting-started/script-workflow.md
+  - href: getting-started/onix-bonsai.md
   - href: getting-started/property-categories.md
-  - href: getting-started/initialize-oni-context.md
   - href: getting-started/start-workflow.md
   - href: getting-started/visualize-data.md
   - href: getting-started/reference.md

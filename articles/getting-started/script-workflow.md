@@ -1,9 +1,10 @@
 ---
-uid: initialize-onicontext
-title: Initialize the ONI Context
+uid: script-workflow
+title: Bonsai Workflow Editor
 ---
 
-The [CreateContext](xref:OpenEphys.Onix1.CreateContext) operator initializes the acquisition context, and it should be the first operator you add to your workflow as it provides access to the hardware device table for all other configuration operators. There are several different ways to find this operator and add it to the workflow:
+Scripting in Bonsai involves placing nodes onto the workflow editor. This page describes how to do
+that using <xref:OpenEphys.Onix1.CreateContext> as an example.
 
 1. From the Bonsai editor, navigate to the toolbox on the left side of the screen and expand the **Source** section. Next, expand the **OpenEphys.Onix1** section, and find the `CreateContext` line. The operator can then be added by either double-clicking it, or dragging and dropping the operator into the workflow.
 

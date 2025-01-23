@@ -8,7 +8,7 @@ produced by an operator. They are opened by double-clicking the corresponding no
 
 Read below for more details about how to visualize data.
 
-## Selecting operator data members for visualization
+## Select data member(s)
 
 Some operators, such as [ONIX data I/O operators](xref:dataio), require selecting members from their output to visualize
 their data:  
@@ -28,7 +28,7 @@ member from the data frame produced by the data I/O operator.
 > the data in a meaningful capacity. This is true for [ONIX data I/O operators](xref:dataio) which typically produce 
 > [data frames](xref:data-elements).
 
-## Selecting visualizers
+## Select visualizers
 
 Select the visualizer you would like to use for visualizing data:
   1. Right-click the `MemberSelector` node labelled with the member you would like to visualize.
@@ -39,9 +39,9 @@ Select the visualizer you would like to use for visualizing data:
   <source src="../../images/set-visualizer.mp4" type="video/mp4">
 </video> 
 
-## Opening visualizers
+## Open visualizers
 
-Open the visualizer and check:
+Open the visualizer:
   1. Start the workflow.
   1. If the desired visualizer is closed, double-click the `MemberSelector` node labelled with the member you would
      like to visualize.
@@ -58,7 +58,7 @@ Open the visualizer and check:
   > Visualizers can be selected while the workflow is running which is helpful for more quickly trying different visualizer
   > options in succession if you are unsure about which one you want to use.
 
-## Configuring visualizers
+## Configure visualizers
 Some visualizers, in particular those that involve plots, allow additional configuration.
 Right-click the visualizer window to gain access to configuration options.
   

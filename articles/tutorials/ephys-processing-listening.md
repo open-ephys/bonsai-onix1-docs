@@ -42,7 +42,7 @@ tutorial by visualizing the data produced.
 
 ## Configure the Hardware
 
-Construct a [top-level hardware configuration chain](xref:initialize-onicontext): 
+Construct a [top-level hardware configuration chain](xref:onix-bonsai): 
 
 ::: workflow
 ![/workflows/tutorials/ephys-process-listen/configure.bonsai workflow](../../workflows/tutorials/ephys-process-listen/configure.bonsai)

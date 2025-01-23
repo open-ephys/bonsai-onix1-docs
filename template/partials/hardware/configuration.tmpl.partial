@@ -31,7 +31,7 @@
     <p>
         To learn more about the top-level configuration motif in every workflow involving ONIX
         hardware, visit the <a class="xref"
-        href="~/articles/getting-started/initialize-oni-context.html">Configuration Chain
+        href="~/articles/getting-started/onix-bonsai#construct-top-level-configuration-chain.html">Configuration Chain
         Tutorial</a>.
     </p>
 </div>
