@@ -51,8 +51,8 @@ ap_recording = se.read_binary(os.path.join(data_directory,  f"np1-spike_{suffix}
                            3e5, 
                            np.uint16, 
                            num_channels, 
-                           gain_to_uV=ap_scalar, 
-                           offset_to_uV=-ap_offset) 
+                           gain_to_uV=-ap_scalar, 
+                           offset_to_uV=ap_offset) 
 ap_traces_plot = sw.plot_traces(ap_recording, 
                    backend='matplotlib', 
                    return_scaled=True, 
@@ -68,8 +68,8 @@ lfp_recording = se.read_binary(os.path.join(data_directory,  f"np1-lfp_{suffix}.
                            3e5/12, 
                            np.uint16, 
                            num_channels, 
-                           gain_to_uV=lfp_scalar, 
-                           offset_to_uV=-lfp_offset) 
+                           gain_to_uV=-lfp_scalar, 
+                           offset_to_uV=lfp_offset) 
 lfp_traces_plot = sw.plot_traces(lfp_recording, 
                    backend='matplotlib', 
                    return_scaled=True, 
