@@ -110,7 +110,7 @@
           <onix1:Name>HS-NPX-B</onix1:Name>
           <onix1:NeuropixelsV2e>
             <onix1:DeviceName>HS-NPX-B/NeuropixelsV2e</onix1:DeviceName>
-            <onix1:DeviceAddress>256</onix1:DeviceAddress>
+            <onix1:DeviceAddress>512</onix1:DeviceAddress>
             <onix1:Enable>true</onix1:Enable>
             <onix1:ProbeConfigurationA>
               <onix1:Probe>ProbeA</onix1:Probe>
@@ -125,12 +125,12 @@
           </onix1:NeuropixelsV2e>
           <onix1:Bno055>
             <onix1:DeviceName>HS-NPX-B/PolledBno055</onix1:DeviceName>
-            <onix1:DeviceAddress>257</onix1:DeviceAddress>
+            <onix1:DeviceAddress>513</onix1:DeviceAddress>
             <onix1:Enable>true</onix1:Enable>
             <onix1:AxisMap>YZX</onix1:AxisMap>
             <onix1:AxisSign>MirrorY MirrorX</onix1:AxisSign>
           </onix1:Bno055>
-          <onix1:Port>PortA</onix1:Port>
+          <onix1:Port>PortB</onix1:Port>
           <onix1:PortVoltage xsi:nil="true" />
         </Combinator>
       </Expression>
