@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SETTINGS>
+  <INFO>
+    <VERSION>0.6.7</VERSION>
+    <PLUGIN_API_VERSION>8</PLUGIN_API_VERSION>
+    <DATE>11 Feb 2025 0:46:47</DATE>
+    <OS>Windows 10</OS>
+    <MACHINE name="DESKTOP-PP31GLN" cpu_model="Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz"
+             cpu_num_cores="8"/>
+  </INFO>
+  <SIGNALCHAIN>
+    <PROCESSOR name="Ephys Socket" insertionPoint="0" pluginName="Ephys Socket"
+               type="4" index="0" libraryName="Ephys Socket" libraryVersion="0.4.0"
+               processorType="2" nodeId="100">
+      <GLOBAL_PARAMETERS/>
+      <STREAM name="EphysSocketStream" description="Data acquired via network stream"
+              sample_rate="30000.0" channel_count="1">
+        <PARAMETERS/>
+      </STREAM>
+      <CUSTOM_PARAMETERS/>
+      <EDITOR isCollapsed="0" isDrawerOpen="0" displayName="Ephys Socket" activeStream="0">
+        <PARAMETERS port="9001" fs="30000" scale="1.171875" offset="512"/>
+      </EDITOR>
+    </PROCESSOR>
+    <PROCESSOR name="Probe Viewer" insertionPoint="1" pluginName="Probe Viewer"
+               type="1" index="9" libraryName="Probe Viewer" libraryVersion="0.3.2"
+               processorType="3" nodeId="101">
+      <GLOBAL_PARAMETERS/>
+      <STREAM name="EphysSocketStream" description="Data acquired via network stream"
+              sample_rate="30000.0" channel_count="1">
+        <PARAMETERS enable_stream="1"/>
+      </STREAM>
+      <CUSTOM_PARAMETERS/>
+      <EDITOR isCollapsed="0" isDrawerOpen="0" displayName="Probe Viewer" activeStream="0"
+              Type="Visualizer" selectedStream="0">
+        <TAB Active="1" Index="3"/>
+        <WINDOW Active="0"/>
+        <CANVAS>
+          <STREAM id="10026" zoomLowerBound="11" zoomOffset="0" zoomHeight="1"/>
+          <OPTIONS renderMode="1" rmsLow="0.0" rmsHi="250.0" fftLow="-100.0" fftHi="0.0"
+                   fftFreqBin="1" spikeLow="0.0" spikeHi="10000.0" spikeThreshold="-50.0"
+                   colourScheme="1"/>
+        </CANVAS>
+      </EDITOR>
+    </PROCESSOR>
+  </SIGNALCHAIN>
+  <SIGNALCHAIN>
+    <PROCESSOR name="Ephys Socket" insertionPoint="0" pluginName="Ephys Socket"
+               type="4" index="0" libraryName="Ephys Socket" libraryVersion="0.4.0"
+               processorType="2" nodeId="102">
+      <GLOBAL_PARAMETERS/>
+      <STREAM name="EphysSocketStream" description="Data acquired via network stream"
+              sample_rate="30000.0" channel_count="1">
+        <PARAMETERS/>
+      </STREAM>
+      <CUSTOM_PARAMETERS/>
+      <EDITOR isCollapsed="0" isDrawerOpen="0" displayName="Ephys Socket" activeStream="0">
+        <PARAMETERS port="9002" fs="30000" scale="23.4375" offset="512"/>
+      </EDITOR>
+    </PROCESSOR>
+    <PROCESSOR name="LFP Viewer" insertionPoint="1" pluginName="LFP Viewer"
+               type="1" index="6" libraryName="LFP viewer" libraryVersion="0.6.7"
+               processorType="3" nodeId="103">
+      <GLOBAL_PARAMETERS/>
+      <STREAM name="EphysSocketStream" description="Data acquired via network stream"
+              sample_rate="30000.0" channel_count="1">
+        <PARAMETERS enable_stream="1"/>
+      </STREAM>
+      <CUSTOM_PARAMETERS/>
+      <EDITOR isCollapsed="0" isDrawerOpen="0" displayName="LFP Viewer" activeStream="0"
+              Type="LfpDisplayEditor">
+        <TAB Active="0" Index="-1"/>
+        <WINDOW Active="0"/>
+        <VALUES SelectedLayout="1"/>
+      </EDITOR>
+    </PROCESSOR>
+  </SIGNALCHAIN>
+  <EDITORVIEWPORT scroll="0">
+    <EPHYS_SOCKET ID="102"/>
+    <LFP_VIEWER ID="103"/>
+  </EDITORVIEWPORT>
+  <DATAVIEWPORT selectedTab="3"/>
+  <AUDIO sampleRate="48000.0" bufferSize="1024" deviceType="Windows Audio"/>
+  <CONTROLPANEL isOpen="0" recordPath="C:\Users\cshor\Documents\Open Ephys" recordEngine="BINARY"
+                clockMode="0"/>
+  <AUDIOEDITOR isMuted="0" volume="50.0" noiseGate="0.0"/>
+  <FILENAMECONFIG>
+    <PREPEND state="0" value=""/>
+    <MAIN state="1" value="YYYY-MM-DD_HH-MM-SS"/>
+    <APPEND state="0" value=""/>
+  </FILENAMECONFIG>
+  <PROCESSORLIST>
+    <COLOR ID="801" R="59" G="59" B="59"/>
+    <COLOR ID="804" R="241" G="90" B="41"/>
+    <COLOR ID="802" R="0" G="174" B="239"/>
+    <COLOR ID="803" R="0" G="166" B="81"/>
+    <COLOR ID="805" R="147" G="149" B="152"/>
+    <COLOR ID="806" R="255" G="0" B="0"/>
+    <COLOR ID="807" R="0" G="0" B="0"/>
+  </PROCESSORLIST>
+  <UICOMPONENT isProcessorListOpen="1" isEditorViewportOpen="1"/>
+</SETTINGS>

@@ -1,13 +1,4 @@
 - href: index.md
   items: 
-  - href: ephys-processing-listening.md
-  # - href: open-ephys-socket.md
-  # - href: buffers-memory-usage.md
-  # - href: bno-calibration.md
-  # - href: dynamic-properties.md
-  # - href: custom-operator.md
-  # - href: integrate-harp.md
-  # - href: behavioral-experiment.md
-  # - href: create-gui.md
-  # - href: custom-operator.md
-  # - href: low-latency-closed-loop.md
+    - href: ephys-processing-listening.md
+    - href: ephys-socket.md

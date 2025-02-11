@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.8.5"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:p1="clr-namespace:OpenEphys.Sockets.Bonsai;assembly=OpenEphys.Sockets.Bonsai"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="p1:TcpServer">
+          <p1:Name>SpikeSocket</p1:Name>
+          <p1:Port>9001</p1:Port>
+          <p1:Address>localhost</p1:Address>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="p1:TcpServer">
+          <p1:Name>LfpSocket</p1:Name>
+          <p1:Port>9002</p1:Port>
+          <p1:Address>localhost</p1:Address>
+        </Combinator>
+      </Expression>
+    </Nodes>
+    <Edges />
+  </Workflow>
+</WorkflowBuilder>
