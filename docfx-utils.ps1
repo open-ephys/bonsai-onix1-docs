@@ -11,7 +11,7 @@ param
 # this is called removeartifacts instead of clean because clean might be already mean something in powershell?
 function removeartifacts
 {
-    $deletePaths = ".\workflows\**\*.svg", ".\workflows\hardware\**\*.svg", ".\workflows\**\*.bonsai.layout", ".\workflows\hardware\**\*.bonsai.layout", ".\api\*.yml", ".\api\.manifest", ".\_site\", ".\_raw\", ".\_view\", ".\src\onix-bonsai-onix1\artifacts\"
+    $deletePaths = ".\workflows\**\*.svg", ".\workflows\hardware\**\*.svg", ".\workflows\**\*.bonsai.layout", ".\workflows\hardware\**\*.bonsai.layout", ".\api\*.yml", ".\api\.manifest", ".\_site\", ".\_raw\", ".\_view\", ".\src\bonsai-onix1\artifacts\"
     foreach($deletePath in $deletePaths){if (Test-Path $deletePath){Remove-Item $deletePath -Recurse}}
     Write-Output ""
 }
@@ -22,7 +22,7 @@ function lychee($lycheePath)
 {
     Write-Output "`nRunning lychee..."
     Write-Output "------------------------------------------`n"
-    Invoke-Expression "& `"$lycheePath`" --no-progress --base _site --exclude ^https://github\.com.*merge.* --exclude ^https://github\.com.*apiSpec.* --exclude ^https://github\.com/open-ephys/onix1-bonsai-docs/blob/.* '_site/**/*.html' --max-retries 0 --max-concurrency 32 --cache --max-cache-age 1d"
+    Invoke-Expression "& `"$lycheePath`" --no-progress --base _site --exclude ^https://github\.com.*merge.* --exclude ^https://github\.com.*apiSpec.* --exclude ^https://github\.com/open-ephys/bonsai-onix1-docs/blob/.* '_site/**/*.html' --max-retries 0 --max-concurrency 32 --cache --max-cache-age 1d"
     Write-Output "`n"
 }
 

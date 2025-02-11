@@ -3,7 +3,7 @@
 
 # Onix1 Bonsai Docs
 
-Documentation for the [Onix1 Bonsai package](https://github.com/open-ephys/onix-bonsai-onix1).
+Documentation for the [Onix1 Bonsai package](https://github.com/open-ephys/bonsai-onix1).
 
 These docs are built using [docfx](https://dotnet.github.io/docfx/index.html).
 

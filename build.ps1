@@ -1,5 +1,5 @@
 # Build project
-$libPath = ".\src\onix-bonsai-onix1\"
+$libPath = ".\src\bonsai-onix1\"
 dotnet build $libPath --configuration Release
 
 # Export workflow vectors
