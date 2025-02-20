@@ -3,7 +3,12 @@ uid: hs64_load-data
 title: Load Data
 ---
 
-The following python script can be used to load and plot the data produced by the Headstage 64 [example workflow](xref:hs64_workflow).
+The following python script can be used to load and plot the data produced by the Headstage 64
+[example workflow](xref:hs64_workflow). It can also be explored in a Google Colab where example data
+is available and the Python environment builds reliably.
+
+> [!TIP]
+> You will have to change the directory of the data files when using this script for your data.
 
 [!code-python[](../../../workflows/hardware/hs64/load-hs64.py)]
 

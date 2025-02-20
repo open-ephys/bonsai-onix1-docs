@@ -1,127 +1,110 @@
-import os
+# Import necessary packages
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Load data from headstage64 tutorial workflow
-suffix = '0'; # Change to match file names' suffix
-# Change this to the directory of your data. In this example, data's in the same directory as this data loading Python script
-data_directory = os.path.dirname(os.path.realpath(__file__))
-start_t = 1.0 # when to start plotting data (seconds)
-dur = 1.0 # duration of data to plot
+# Parameters
+suffix = 0              # Change to match file names' suffix
+start_t = 2.0           # When to start plotting ephys data (second)
+dur = 5.0               # Duration of ephys data to plot (seconds)
+plot_num_channels = 10  # Number of channels to plot
 
-plt.close('all')
+# Constants
+fs_hz = 30e3
+ephys_uV_multiplier = 0.195
+aux_uV_multiplier = 37.4
+offset = 32768
+num_channels = 64
 
-#%% Metadata
+# Load acqusition session data
 dt = {'names': ('time', 'acq_clk_hz', 'block_read_sz', 'block_write_sz'),
       'formats': ('datetime64[us]', 'u4', 'u4', 'u4')}
-meta = np.genfromtxt(os.path.join(data_directory, f'start-time_{suffix}.csv'), delimiter=',', dtype=dt, skip_header=1)
+meta = np.genfromtxt(f'c:/Users/cshor/Downloads/data/hs64-data/start-time_{suffix}.csv', delimiter=',', dtype=dt, skip_header=1)
 print(f"Recording was started at {meta['time']} GMT")
 
-#%% RHD2164 ephys data
-start_t = 1.0 # when to start plotting data (seconds)
-dur = 1.0 # duration of data to plot
-plot_channel_offset_uV = 1000 # Vertical offset between each channel in the time series
+# Load RHD2164 clock data
+time = np.fromfile(f'c:/Users/cshor/Downloads/data/hs64-data/rhd2164-clock_{suffix}.raw', dtype=np.uint64) / meta['acq_clk_hz']
 
-hs64 = {}
-hs64['time'] = np.fromfile(os.path.join(data_directory, f'rhd2164-clock_{suffix}.raw'), dtype=np.uint64) / meta['acq_clk_hz']
-hs64['ephys'] = np.reshape(np.fromfile(os.path.join(data_directory, f'rhd2164-ephys_{suffix}.raw'), dtype=np.uint16), (-1, 64))
+# Load RHD2164 ephys data
+ephys = np.reshape(np.fromfile(f'c:/Users/cshor/Downloads/data/hs64-data/rhd2164-ephys_{suffix}.raw', dtype=np.uint16), (-1, num_channels))
 
-# Make arrays for plotting
-b = np.bitwise_and(hs64['time'] >= start_t, hs64['time'] < start_t + dur)
-time = hs64['time'][b]
-rhd2164_ephys = hs64['ephys'][b, :].astype(np.double)
+# Truncate data based on start_t & dur
+b = np.bitwise_and(time >= start_t, time < start_t + dur)
+ephys_truncated = ephys[b,:].astype(np.double)
+time_truncated = time[b]
 
-# Convert to uV and offset each channel by some plot_channel_offset_uV 
-bit_depth = 16
-scalar = 0.195
-offset = (2 ** (bit_depth - 1)) * scalar
-rhd2164_ephys = rhd2164_ephys * scalar - offset + np.arange(rhd2164_ephys.shape[1])[None, :] * offset / 4
+# Scale truncated RHD2164 ephys data
+ephys_scaled_truncated = (ephys_truncated - offset) * ephys_uV_multiplier
 
+# Plot RHD2164 ephys data
 fig = plt.figure()
-plt.plot(time, rhd2164_ephys, 'k', linewidth=0.25)
-plt.tick_params(axis='y', which='both', left=False, right=False, labelleft=False) 
-plt.xlabel("time (sec)")
-plt.ylabel("channel")
-plt.title('RHD2164 Ephys Data')
-fig.set_size_inches(5,8)
+fig.suptitle("RHD2164 Ephys Data")
+plt.plot(time_truncated, ephys_scaled_truncated[:,0:plot_num_channels])
+plt.xlabel("Time (seconds)")
+plt.ylabel("Voltage (µV)")
 plt.tight_layout()
 
-#%% RHD2164 aux data
-hs64['aux'] = np.reshape(np.fromfile(os.path.join(data_directory, f'rhd2164-aux_{suffix}.raw'), dtype=np.uint16), (-1, 3))
+# Load RHD2164 aux data
+aux = np.reshape(np.fromfile(f'c:/Users/cshor/Downloads/data/hs64-data/rhd2164-aux_{suffix}.raw', dtype=np.uint16), (-1, 3))
 
-# Make arrays for plotting
-b = np.bitwise_and(hs64['time'] >= start_t, hs64['time'] < start_t + dur)
-time = hs64['time'][b]
-rhd2164_aux = hs64['aux'][b, :].astype(np.double)
+# Truncate RHD2164 aux data
+aux_truncated = aux[b, :].astype(np.double)
 
-# Convert to uV and offset each channel by some plot_channel_offset_uV 
-scalar = 37.4
-rhd2164_aux_wave = (rhd2164_aux - 2 **(bit_depth - 1)) * scalar
+# Scale truncated RHD2164 aux data
+aux_truncated_scaled = (aux_truncated - offset) * aux_uV_multiplier
 
-plt.figure()
-plt.plot(time, rhd2164_aux_wave)
-plt.xlabel("time (sec)")
-plt.ylabel("channel")
-plt.title('RHD2164 Auxiliary Data')
+# Plot RHD2164 aux data
+fig = plt.figure()
+fig.suptitle("RHD2164 Aux Data")
+plt.plot(time_truncated, aux_truncated_scaled)
+plt.xlabel("Time (seconds)")
+plt.ylabel("Voltage (µV)")
+plt.tight_layout()
 
-#%% Bno055
+# Load BNO055 data
 dt = {'names': ('clock', 'euler', 'quat', 'is_quat_id', 'accel', 'grav', 'temp'),
       'formats': ('u8', '(1,3)f8', '(1,4)f8', '?', '(1,3)f8', '(1,3)f8', 'f8')}
-bno055 = np.genfromtxt(os.path.join(data_directory, f'bno055_{suffix}.csv'), delimiter=',', dtype=dt)
+bno055 = np.genfromtxt(f'c:/Users/cshor/Downloads/data/hs64-data/bno055_{suffix}.csv', delimiter=',', dtype=dt)
 
+# Load BNO055 clock data
 bno055_time = bno055['clock'] / meta['acq_clk_hz']
 
-plt.figure()
-
+# Plot BNO055 data
+fig = plt.figure()
+fig.suptitle('BNO055 Data')
 plt.subplot(231)
+
 plt.plot(bno055_time, bno055['euler'].squeeze())
-plt.xlabel("time (sec)")
-plt.ylabel("angle (deg.)")
-plt.ylim(-185, 365)
+plt.xlabel("Time (seconds)")
+plt.ylabel("Angle (degrees)")
 plt.legend(['yaw', 'pitch', 'roll'])
 plt.title('Euler')
 
 plt.subplot(232)
 plt.plot(bno055_time, bno055['quat'].squeeze())
-plt.xlabel("time (sec)")
-plt.ylim(-1.1, 1.1)
+plt.xlabel("Time (seconds)")
 plt.legend(['X', 'Y', 'Z', 'W'])
 plt.title('Quaternion')
 
 plt.subplot(233)
 plt.plot(bno055_time, bno055['accel'].squeeze())
-plt.xlabel("time (sec)")
-plt.ylabel("accel. (m/s^2)")
+plt.xlabel("Time (seconds)")
+plt.ylabel("Acceleration (m/s\u00b2)")
 plt.legend(['X', 'Y', 'Z'])
-plt.title('Lin. Accel.')
+plt.title('Linear Acceleration')
 
 plt.subplot(234)
 plt.plot(bno055_time, bno055['grav'].squeeze())
-plt.xlabel("time (sec)")
-plt.ylabel("accel. (m/s^2)")
+plt.xlabel("Time (seconds)")
+plt.ylabel("Acceleration (m/s\u00b2)")
 plt.legend(['X', 'Y', 'Z'])
-plt.title('Gravity Vec.')
+plt.title('Gravity Vector')
 
 plt.subplot(235)
 plt.plot(bno055_time, bno055['temp'].squeeze())
-plt.xlabel("time (sec)")
-plt.ylabel("temp. (°C)")
-plt.title('Headstage Temp.')
+plt.xlabel("Time (seconds)")
+plt.ylabel("Temperature (°C)")
+plt.title('Headstage Temperature')
 
 plt.tight_layout()
-
-#%% TS4231
-dt = {'names': ('clock', 'position'),
-      'formats': ('u8', '(1,3)f8')}
-ts4231 = np.genfromtxt(os.path.join(data_directory, f'ts4231_{suffix}.csv'), delimiter=',', dtype=dt)
-
-ts4231_time = ts4231['clock'] / meta['acq_clk_hz']
-plt.figure()
-
-plt.plot(ts4231_time, ts4231['position'].squeeze())
-plt.xlabel("time (sec)")
-plt.ylabel("position (units)")
-plt.legend(['x', 'y', 'z'])
-plt.title('Position Data')
 
 plt.show()
