@@ -35,7 +35,7 @@
       "_enableNewTab": true,
       "_enableSearch": true,
       "pdf": false,
-      "_appFooter": "&copy; 2024 Open Ephys and Contributors. Made with <a href=\"https://dotnet.github.io/docfx\">docfx</a>",
+      "_appFooter": "&copy; Open Ephys and Contributors. Made with <a href=\"https://dotnet.github.io/docfx\">docfx</a>",
       "_appFaviconPath": "favicon.png",
       "_appLogoPath": "logo-light-mode.svg"
     },
