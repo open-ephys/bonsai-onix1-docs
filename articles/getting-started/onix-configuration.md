@@ -38,19 +38,11 @@ element](xref:data-elements) named <xref:OpenEphys.Onix1.ContextTask>.
 
 Hardware configuration is performed when `ContextTask` passes through a [configuration
 operator](xref:configure). A configuration operator allows the user to configure hardware by editing
-its properties. There are two types of configuration operators: [device configuration
-operators](xref:device-configure) and [device group configuration operators](xref:configure).
+its properties. There are two types of configuration operators: [Device configuration
+operators](xref:device-configure) and [Device Group configuration operators](xref:configure).
 Device configuration operators allow configuration of a single device contained by a headstage,
-miniscope, or breakout board whereas device group configuration operators allow configuration of all
+miniscope, or breakout board whereas Device Group configuration operators allow configuration of all
 devices contained by a headstage, miniscope, or breakout board.
-<!--We recommend using device group configuration operators for concision and
-ease-of-use, though device operators can be helpful in more advanced workflows that require writing
-to hardware while the workflow is running.
-
-Any number of configuration operators can be chained following a CreateContext operator. If you use
-only device group configuration operators, you'll have between one and three total
-configuration operators: one for the breakout board and one for each port that is connected to a
-headstage or miniscope.  -->
 
 ::: workflow
 ![/workflows/getting-started/configure.bonsai workflow](../../workflows/getting-started/configure.bonsai)
@@ -63,8 +55,6 @@ The data acquisition process is started when ContextTask passes through
 related to data acquisition such as ReadSize and WriteSize. Setting the ReadSize property for a
 particular workflow is a balancing act of minimizing latency of data data transfers from the ONIX
 system and avoiding data accumulation in the ONIX system's hardware buffer.
-
-<!-- TODO: Need a separate tutorial or guide on this -->
 
 ::: workflow
 ![/workflows/getting-started/start-acquisition.bonsai workflow](../../workflows/getting-started/start-acquisition.bonsai)

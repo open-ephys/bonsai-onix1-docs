@@ -2,13 +2,13 @@
   <div class="Important alert alert-info">
     <h5>TIP</h5>
     <p>
-      This is a device configuration operator. <a class="xref" href="configure.html">Aggregate configuration operators</a> are recommended in lieu of <a class="xref" href="device-configure.html">device configuration operators</a> for interfacing with Open Ephys Onix hardware.
+      This is a <a class="xref" href="device-configure.html">Device configuration operator</a>. <a class="xref" href="configure.html">Device Group configuration operators</a> are recommended instead of Device configuration operators for interfacing with Open Ephys Onix hardware.
     </p>
   </div>
 {{/oe.operator.configureDevice}}
 
 <div>
-  <h1 id="{{id}}" data-uid="{{oe.uid}}" class="text-break" style="display: inline-block;">
+  <h1 class="text-break" style="display: inline-block;">
     {{oe.name}}
     {{#sourceurl}}<a class="header-action link-secondary" title="View source" href="{{sourceurl}}"><i class="bi bi-code-slash"></i></a>{{/sourceurl}}
   </h1>
@@ -31,41 +31,33 @@
 
 {{#oe.operator.hub}}
 
-<h3>Configuration</h3>
-
 {{#oe.properties}}
+
+<h3 class="text-break" style="display: inline-block;" id="{{{id}}}">{{{object}}}</h3> 
+
 {{^constituentOperator}}
-
-<p>These are properties of the aggregate operator:</p>
-
-{{#hasProperties}}
-{{>partials/propertyTable}}
-{{/hasProperties}}
-{{^hasProperties}}
-<p>This operator does not have any configuration options.</p>
-{{/hasProperties}}
+<a class="xref" href="~/api/OpenEphys.Onix1.html#device-group">
+  <button class="badge oe-badge-border oe-badge-green">Device Group</button>
+</a>
+<p>These are properties of the {{{oe.name}}} <a class="xref" href="~/api/configure.html">Device Group configuration operator</a>:</p>
 {{/constituentOperator}}
-{{/oe.properties}}
 
-<h3>Devices</h3>
-
-{{#oe.properties}}
 {{#constituentOperator}}
-
-<h4>{{{object}}}</h4>
-
-<p>{{{object}}} is a {{{type}}} operator encapsulated by the {{oe.name}} operator with the following properties:</p>
+<a class="xref" href="~/api/OpenEphys.Onix1.html#device">
+  <button class="badge oe-badge-border oe-badge-purple">Device</button>
+</a>
+<p>{{{object}}} is a {{{type}}} device operator contained by the {{{oe.name}}} operator with the following properties:</p>
+{{/constituentOperator}}
 
 {{#hasProperties}}
 {{>partials/propertyTable}}
 {{/hasProperties}}
-
 {{^hasProperties}}
-<p>This operator does not have any configuration options.</p>
+<p>This operator does not have any properties to set.</p>
 {{/hasProperties}}
 
-{{/constituentOperator}}
 {{/oe.properties}}
+
 {{/oe.operator.hub}}
 
 {{#oe}}
