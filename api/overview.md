@@ -1,63 +1,61 @@
 ---
 uid: OpenEphys.Onix1
-title: OpenEphys.Onix1
+title: Library Reference
 ---
 
-> [!TIP]
-> Quickly access these pages in Bonsai by pressing <kbd>F1</kbd> while an OpenEphys.Onix1 operator
-> is selected in the workflow or Toolbox. 
+[OpenEphys.Onix1](https://github.com/open-ephys/bonsai-onix1) is a Bonsai
+package that exposes a set of Bonsai Operators for control of and data
+acquisition from ONIX hardware. This library reference that documents each of
+the operators available in the package in a standardized format. This reference
+is generated from the [source code](https://github.com/open-ephys/bonsai-onix1).
 
-OpenEphys.Onix1 is a Bonsai package for control of and data acquisition from 
-ONIX hardware. This section of the docs is dedicated to facilitate construction 
-of workflows using OpenEphys.Onix1. It contains helpful information about 
-OpenEphys.Onix1 operators and the data elements they produce. The 
-<xref:OpenEphys.Onix1.Rhs2116DataFrame> page exemplifies this. It contains 
-information to interpret data such as equations for converting electrophysiology 
-signals from the raw ADC values to volts. 
+> [!TIP]
+> You can access the reference for a particular operator from within the Bonsai
+> editor pressing <kbd>F1</kbd> while an OpenEphys.Onix1 operator is selected in
+> the workflow or Toolbox.
 
 ## Property Categories
+The behavior of Bonsai operators is governed by their "Properties".
+Properties can be viewed and changed using Property Editor on the right side of
+the workflow:
 
-### Configuration properties vs Acquisition properties
+![Bonsai property editor](../images/properties-pane.webp){width=650px}
 
-In the OpenEphys.Onix1 package, properties belong to specific categories that
-define when the property effects the hardware. 
+Properties in this library fall into several categories which are useful for
+distinguishing when a property change will be applied to hardware and the scope
+of the property's effect. The following tags are used throughout the
+documentation designate these property categories:
 
 <span class="badge oe-badge-border oe-badge-yellow"
 id="configuration">Configuration</span> properties have an effect on hardware
 when a workflow is started and are used to initialize the hardware state. If
 they are changed while a workflow is running, they will not have an effect until
 the workflow is restarted. For example, CreateContext's
-<xref:OpenEphys.Onix1.CreateContext.Index> Configuration property is used to 
-specify the hardware prior to starting a recording, and editing this property 
+<xref:OpenEphys.Onix1.CreateContext.Index> Configuration property is used to
+specify the hardware prior to starting a recording, and editing this property
 has no effect until the workflow is started or restarted.
 
 <span class="badge oe-badge-border oe-badge-blue"
 id="acquisition">Acquisition</span> properties have an immediate effect on
-hardware when the workflow is running. For example, 
-Headstage64ElectricalStimulatorTrigger's 
+hardware when the workflow is running. For example, the
 <xref:OpenEphys.Onix1.Headstage64ElectricalStimulatorTrigger.InterPulseInterval>
-property allows dynamically configuring the duration between electrical 
+property allows dynamically configuring the duration between electrical
 stimulation pulses. Along with its other Acquisition properties, the entire
 electrical stimulation pattern can be modulated in real-time while the workflow
 is running.
 
-### Device Group properties vs Device properties
-
-Properties are additionally categorized by whether they effect a group of devices
-or a single device.
-
 <span class="badge oe-badge-border oe-badge-green" id="device-group">Device
 Group</span> properties are only available through [Device Group configuration
 operators](xref:configure). These properties are used to configure a group of
-devices. For example, ConfigureNeuropixelsV2eHeadstage's 
-<xref:OpenEphys.Onix1.ConfigureHeadstageNeuropixelsV2e.Port> property 
+devices. For example, ConfigureNeuropixelsV2eHeadstage's
+<xref:OpenEphys.Onix1.ConfigureHeadstageNeuropixelsV2e.Port> property
 configures the port name for all devices on the NeuropixelsV2e Headstage (which
-in turn automatically configures each device's address). 
+in turn automatically configures each device's address).
 
 <span class="badge oe-badge-border oe-badge-purple" id="device">Device</span>
 properties are available through [Device configuration
 operators](xref:device-configure) and Device Group configuration operators which
-typically combine multiple individual devices. These properties are used to 
-configure a single device. For example, ConfigureBreakoutBoard's 
+typically combine multiple individual devices. These properties are used to
+configure a single device. For example, ConfigureBreakoutBoard's
 <xref:OpenEphys.Onix1.ConfigureBreakoutBoard.AnalogIO> properties configure the
 Breakout Board's Analog I/O device.
