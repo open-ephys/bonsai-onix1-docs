@@ -15,7 +15,7 @@
   {{#oe.enum}}
   <tr>
     <td style="white-space: no-wrap">
-        <code>
+        <code id={{{id}}}>
           {{{field&value}}}
         </code>
       </td>
