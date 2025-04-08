@@ -23,7 +23,7 @@
         "exclude": ["api/overview.md"]
       }
     ],
-    "resource": ["logo-light-mode.svg", "logo-dark-mode.svg", "favicon.png", "images/**", "workflows/**"],
+    "resource": ["onix-logo.svg", "favicon.png", "images/**", "workflows/**"],
     "output": "_site",
     "overwrite": [
       {
@@ -37,7 +37,7 @@
       "pdf": false,
       "_appFooter": "&copy; Open Ephys and Contributors. Made with <a href=\"https://dotnet.github.io/docfx\">docfx</a>",
       "_appFaviconPath": "favicon.png",
-      "_appLogoPath": "logo-light-mode.svg"
+      "_appLogoPath": "onix-logo.svg"
     },
     "markdownEngineName": "markdig",
     "markdownEngineProperties": {

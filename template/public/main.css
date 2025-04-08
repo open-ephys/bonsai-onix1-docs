@@ -35,82 +35,42 @@
   border: 0px hidden transparent;
 }
 
-/* div .tableFormat td .term {
-  margin: 0;
-  padding: 0;
-  border: 0 hidden; 
-  border-collapse: collapse; 
-} */
-
-/* .inputs-and-outputs > .table {
-  border: 0px hidden transparent;
-  table-layout: fixed;
-}
-
-.inputs-and-outputs > .table > .thead, tbody, tfoot, tr, td, th {
-  border: 0px hidden transparent;
-  margin: 0;
-  padding: 0;
-} */
-
 figcaption {
-  /* font-size: calc(var(--bs-body-font-size) * 0.9); */
   font-style: italic;
   border: solid 1px var(--bs-border-color); 
   padding: 0.25rem;
 }
 
-/* h1 {
-  font-weight: 500;
-  font-size: calc(2.2rem + 0.8vw);
-}
-
-h2 {
-  font-weight: 480;
-  font-size: calc(2.0rem + 0.6vw);
-}
-
-h3 {
-  font-weight: 460;
-  font-size: calc(1.8rem + 0.4vw);
-}
-
-h4 {
-  font-weight: 440;
-  font-size: calc(1.6rem + 0.2vw);
-}
-
-h5 {
-  font-weight: 420;
-  font-size: 1.4rem;
-}
-
-h6 {
-  font-weight: 400;
-  font-size: 1.2rem;
-} */
-
 /* This is for formatting markdown files specifically */
 
 ol ol, ol ul {
-  margin-bottom: 1rem
+  margin-bottom: 1rem;
 }
 
 ol li div {
-  margin-bottom: 0rem !important
-}
-
-[data-bs-theme=dark] #logo {
-  content:url("../logo-dark-mode.svg");
-}
-
-[data-bs-theme=light] #logo {
-  content:url("../logo-light-mode.svg");
+  margin-bottom: 0rem !important;
 }
 
 /* Avoid syntax highlighting in code blocks that have an equation to convert ADC values to
 voltage. For example, navigate to the api/OpenEphys.Onix1.NeuropixelsV1DataFrame.html page to find
 the following equation: `Electrode Voltage (µV) = 1,171.875 / LFPGain × (ADCSample – 512)` */
+
 .hljs-title {
   color:black
+}
+
+.navbar {
+  background-color: #6B728E;
+}
+
+li.nav-item > a.nav-link, .navbar a.btn {
+  color: rgb(255 255 255 / 65%);
+}
+
+li.nav-item > a.nav-link:hover, .navbar a.btn:hover {
+  color: rgb(255 255 255 / 80%);
+}
+
+li.nav-item > a.nav-link.active {
+  color: rgb(255 255 255 / 100%);
 }
