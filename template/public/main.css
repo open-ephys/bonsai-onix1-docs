@@ -35,24 +35,6 @@
   border: 0px hidden transparent;
 }
 
-/* div .tableFormat td .term {
-  margin: 0;
-  padding: 0;
-  border: 0 hidden; 
-  border-collapse: collapse; 
-} */
-
-/* .inputs-and-outputs > .table {
-  border: 0px hidden transparent;
-  table-layout: fixed;
-}
-
-.inputs-and-outputs > .table > .thead, tbody, tfoot, tr, td, th {
-  border: 0px hidden transparent;
-  margin: 0;
-  padding: 0;
-} */
-
 figcaption {
   font-style: italic;
   border: solid 1px var(--bs-border-color); 
@@ -62,19 +44,100 @@ figcaption {
 /* Format markdown files */
 
 ol ol, ol ul {
-  margin-bottom: 1rem
+  margin-bottom: 1rem;
 }
 
 ol li div {
-  margin-bottom: 0rem !important
+  margin-bottom: 0rem !important;
 }
 
-[data-bs-theme=dark] #logo {
-  content:url("../logo-dark-mode.svg");
+/* Create color palette for badges */
+
+:root, [data-bs-theme=light] {
+  --oe-red-text: color-mix(in srgb, var(--bs-red), black 60%);
+  --oe-red-background: color-mix(in srgb,  var(--bs-red), white 80%);
+  --oe-red-border: color-mix(in srgb, var(--bs-red), white  60%);
+  --oe-orange-text: color-mix(in srgb, var(--bs-orange), black 60%);
+  --oe-orange-background: color-mix(in srgb,  var(--bs-orange), white 80%);
+  --oe-orange-border: color-mix(in srgb, var(--bs-orange), white  60%);
+  --oe-yellow-text: color-mix(in srgb, var(--bs-yellow), black 60%);
+  --oe-yellow-background: color-mix(in srgb,  var(--bs-yellow), white 80%);
+  --oe-yellow-border: color-mix(in srgb, var(--bs-yellow), white  60%);
+  --oe-green-text: color-mix(in srgb, var(--bs-green), black 60%);
+  --oe-green-background: color-mix(in srgb,  var(--bs-green), white 80%);
+  --oe-green-border: color-mix(in srgb, var(--bs-green), white  60%);
+  --oe-blue-text: color-mix(in srgb, var(--bs-blue), black 60%);
+  --oe-blue-background: color-mix(in srgb,  var(--bs-blue), white 80%);
+  --oe-blue-border: color-mix(in srgb, var(--bs-blue), white  60%);
+  --oe-purple-text: color-mix(in srgb, var(--bs-purple), black 60%);
+  --oe-purple-background: color-mix(in srgb,  var(--bs-purple), white 80%);
+  --oe-purple-border: color-mix(in srgb, var(--bs-purple), white  60%);
 }
 
-[data-bs-theme=light] #logo {
-  content:url("../logo-light-mode.svg");
+[data-bs-theme=dark] {
+  color-scheme: dark;
+  --oe-red-text: color-mix(in srgb, var(--bs-red), white 40%);
+  --oe-red-background: color-mix(in srgb,  var(--bs-red), black 80%);
+  --oe-red-border: color-mix(in srgb, var(--bs-red), black  40%);
+  --oe-orange-text: color-mix(in srgb, var(--bs-orange), white 40%);
+  --oe-orange-background: color-mix(in srgb,  var(--bs-orange), black 80%);
+  --oe-orange-border: color-mix(in srgb, var(--bs-orange), black  40%);
+  --oe-yellow-text: color-mix(in srgb, var(--bs-yellow), white 40%);
+  --oe-yellow-background: color-mix(in srgb,  var(--bs-yellow), black 80%);
+  --oe-yellow-border: color-mix(in srgb, var(--bs-yellow), black  40%);
+  --oe-green-text: color-mix(in srgb, var(--bs-green), white 40%);
+  --oe-green-background: color-mix(in srgb,  var(--bs-green), black 80%);
+  --oe-green-border: color-mix(in srgb, var(--bs-green), black  40%);
+  --oe-blue-text: color-mix(in srgb, var(--bs-blue), white 40%);
+  --oe-blue-background: color-mix(in srgb,  var(--bs-blue), black 80%);
+  --oe-blue-border: color-mix(in srgb, var(--bs-blue), black  40%);
+  --oe-purple-text: color-mix(in srgb, var(--bs-purple), white 40%);
+  --oe-purple-background: color-mix(in srgb,  var(--bs-purple), black 80%);
+  --oe-purple-border: color-mix(in srgb, var(--bs-purple), black  40%);
+}
+
+/* Create classes for badges */
+
+.oe-badge-border {
+  border-radius: var(--bs-border-radius-pill);
+  border-width: var(--bs-border-width);
+  border-style: var(--bs-border-style);
+}
+
+.oe-badge-red {
+  color: var(--oe-red-text);
+  background-color: var(--oe-red-background);
+  border-color: var(--oe-red-border);
+}
+
+.oe-badge-orange {
+  color: var(--oe-orange-text);
+  background-color: var(--oe-orange-background);
+  border-color: var(--oe-orange-border);
+}
+
+.oe-badge-yellow {
+  color: var(--oe-yellow-text);
+  background-color: var(--oe-yellow-background);
+  border-color: var(--oe-yellow-border);
+}
+
+.oe-badge-green {
+  color: var(--oe-green-text);
+  background-color: var(--oe-green-background);
+  border-color: var(--oe-green-border);
+}
+
+.oe-badge-blue {
+  color: var(--oe-blue-text);
+  background-color: var(--oe-blue-background);
+  border-color: var(--oe-blue-border);
+}
+
+.oe-badge-purple {
+  color: var(--oe-purple-text);
+  background-color: var(--oe-purple-background);
+  border-color: var(--oe-purple-border);
 }
 
 /* Create color palette for badges */
@@ -169,6 +232,23 @@ ol li div {
 /* Avoid syntax highlighting in code blocks that have an equation to convert ADC values to
 voltage. For example, navigate to the api/OpenEphys.Onix1.NeuropixelsV1DataFrame.html page to find
 the following equation: `Electrode Voltage (µV) = 1,171.875 / LFPGain × (ADCSample – 512)` */
+
 .hljs-title {
   color:black
+}
+
+.navbar {
+  background-color: #6B728E;
+}
+
+li.nav-item > a.nav-link, .navbar a.btn {
+  color: rgb(255 255 255 / 65%);
+}
+
+li.nav-item > a.nav-link:hover, .navbar a.btn:hover {
+  color: rgb(255 255 255 / 80%);
+}
+
+li.nav-item > a.nav-link.active {
+  color: rgb(255 255 255 / 100%);
 }
