@@ -25,8 +25,5 @@ These are the devices available on the Headstage 64:
 > [Headstage 64 Hardware Guide](https://open-ephys.github.io/onix-docs/Hardware%20Guide/Headstages/headstage-64/index.html) 
 > to learn more about the hardware such as weight, dimensions, and proper power voltages.
 
-> [!TIP]
-> Visit the [Headstage 64 Hardware Guide](https://open-ephys.github.io/onix-docs/Hardware%20Guide/Headstages/headstage-64/index.html) to learn more about the hardware such as weight, dimensions, and proper power voltages.
-
 The following pages in the Headstage 64 Guide provide an example workflow and a
 breakdown of its components.
