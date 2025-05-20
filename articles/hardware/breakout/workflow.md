@@ -16,7 +16,8 @@ using the clipboard icon in the top right. This workflow:
 
 > [!IMPORTANT]
 > This workflow takes advantage of the MatrixWriter operator's "UnmanagedType" overload available in
-> Bonsai 2.9+. Update your Bonsai to 2.9+ to run this workflow.
+> Bonsai 2.9+. [Update your Bonsai to 2.9+](https://bonsai-rx.org/docs/articles/installation.html)
+> to run this workflow.
 
 ::: workflow
 ![/workflows/hardware/breakout/breakout.bonsai workflow](../../../workflows/hardware/breakout/breakout.bonsai)
