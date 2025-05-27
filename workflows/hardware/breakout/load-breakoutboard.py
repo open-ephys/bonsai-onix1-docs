@@ -26,7 +26,7 @@ plt.legend(['Ch. 0', 'Ch. 1', 'Ch. 2', 'Ch. 3', 'Ch. 4', 'Ch. 5',
 #%% Digital Inputs
 digital_input = {}
 digital_input['time'] = np.fromfile('digital-clock_' + suffix + '.raw', dtype=np.uint64) / meta['acq_clk_hz']
-digital_input['pins'] = np.fromfile('digital-pins_' + suffix + '.raw', dtype=np.uint16)
+digital_input['pins'] = np.fromfile('digital-pins_' + suffix + '.raw', dtype=np.uint8)
 digital_input['buttons'] = np.fromfile('digital-buttons_' + suffix + '.raw', dtype=np.uint16)
 
 def sort_digital_data(time, digital_data, num_inputs):
