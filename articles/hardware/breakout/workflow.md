@@ -17,6 +17,7 @@ using the clipboard icon in the top right. This workflow:
 > [!IMPORTANT]
 > This workflow takes advantage of the MatrixWriter operator's "UnmanagedType" overload available in
 > Bonsai 2.9+. [Update your Bonsai to 2.9+](https://bonsai-rx.org/docs/articles/installation.html)
+> and [update your to the latest OpenEphys.Onix1](../../getting-started/install-configure-bonsai.md#update-packages)
 > to run this workflow.
 
 ::: workflow
