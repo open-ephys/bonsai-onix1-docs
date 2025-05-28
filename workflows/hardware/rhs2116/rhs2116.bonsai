@@ -55,7 +55,7 @@
           <onix1:DigitalIO>
             <onix1:DeviceName>BreakoutBoard/DigitalIO</onix1:DeviceName>
             <onix1:DeviceAddress>7</onix1:DeviceAddress>
-            <onix1:Enable>false</onix1:Enable>
+            <onix1:Enable>true</onix1:Enable>
           </onix1:DigitalIO>
           <onix1:ClockOutput>
             <onix1:DeviceName>BreakoutBoard/OutputClock</onix1:DeviceName>
