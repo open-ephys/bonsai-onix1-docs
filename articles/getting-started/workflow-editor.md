@@ -115,19 +115,13 @@ help browser is opened. For example, without selecting anything, <kbd>F1</kbd>
 opens the [official Bonsai docs Workflow Editor
 page](https://bonsai-rx.org/docs/articles/editor.html). If a node in the
 workflow or a module in the Toolbox is selected, <kbd>F1</kbd> opens
-documentation about that operator. For example, this is 
-how it looks when the <xref:OpenEphys.Onix1.ConfigureBreakoutBoard> documentation is 
-open in the embedded Documentation browser:
+documentation about that operator. 
 
-
-^^^
+^^^ 
 <video controls style="width:100%">
   <source src="../../images/bonsai-help-panel.webm" type="video/webm">
-</video>
-^^^ This video demonstrates how to copy/paste example workflows from Open Ephys's online documentation by accessing the Documentation Browser pressing <kbd>F1</kbd>. Yellow circles around the cursor indicate left-clicks; red circles around the cursor indicate right-clicks.
-
-The ConfigureBreakoutBoard documentation exists on this website. You can also navigate 
-to it from [here](xref:OpenEphys.Onix1.ConfigureBreakoutBoard).
+</video> 
+^^^ This video demonstrates how to copy/paste example workflows from Open Ephys's online documentation in Bonsai. Pressing <kbd>Ctrl+E</kbd> focuses the Toolbox and pressing <kbd>F1</kbd> while ConfigureBreakoutBoard is selected in the Toolbox opens the [ConfigureBreakoutBoard page](xref:OpenEphys.Onix1.ConfigureBreakoutBoard) on this website. The example workflow can be navigated to from the ConfigureBreakoutBoard page and copied/pasted into the workflow editor. Yellow circles around the cursor indicate left-clicks; red circles around the cursor indicate right-clicks. 
 
 ## Starting the Workflow
 
