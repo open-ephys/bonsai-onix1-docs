@@ -119,7 +119,12 @@ documentation about that operator. For example, this is
 how it looks when the <xref:OpenEphys.Onix1.ConfigureBreakoutBoard> documentation is 
 open in the embedded Documentation browser:
 
-![documentation browser screenshot](../../images/documentation-browser.png){width=80%}
+
+^^^
+<video controls style="width:100%">
+  <source src="../../images/bonsai-help-panel.webm" type="video/webm">
+</video>
+^^^ This video demonstrates how to copy/paste example workflows from Open Ephys's online documentation by accessing the Documentation Browser pressing <kbd>F1</kbd>. Yellow circles around the cursor indicate left-clicks; red circles around the cursor indicate right-clicks.
 
 The ConfigureBreakoutBoard documentation exists on this website. You can also navigate 
 to it from [here](xref:OpenEphys.Onix1.ConfigureBreakoutBoard).
