@@ -26,10 +26,13 @@ when the its internal conditional statement is evaluated is true. `Double` emits
 <xref:System.Double> to <xref:OpenEphys.Onix1.Rhs2116StimulusTrigger> anytime it receives an item in
 its upstream sequence. 
 
-When `Rhs2116StimulusTrigger` receives a double from the upstream sequence, a stimulus waveform is
-triggered. Its DeviceName property is set to "HeadstageRhs2116/StimulusTrigger" to link this
-operator to the Rhs2116s on the Headstage Rhs2116. [Open the Headstage RHS2116
-GUI](xref:rhs2116_gui) to edit the stimulus waveform.
+When `Rhs2116StimulusTrigger` receives a double, a two-part sequence is triggered:
+- A delay indicated by the value of the double in units of microseconds (i.e., if the double is
+  equal to zero, there is no delay)
+- The stimulus waveform as configured in the [Headstage RHS2116 GUI](xref:rhs2116_gui)
+
+`Rhs2116StimulusTrigger`'s DeviceName property is set to "HeadstageRhs2116/StimulusTrigger" to link
+this operator to the Rhs2116 devices on the Headstage Rhs2116.
 
 > [!TIP] 
 > For more details about configuring the Rhs2116 and its stimulation capabilities, read the
