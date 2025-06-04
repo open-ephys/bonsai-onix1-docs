@@ -1,20 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.8.5"
+<WorkflowBuilder Version="2.9.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                 xmlns:wie="clr-namespace:Bonsai.Windows.Input;assembly=Bonsai.Windows.Input"
                  xmlns:onix1="clr-namespace:OpenEphys.Onix1;assembly=OpenEphys.Onix1"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Workflow>
     <Nodes>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="wie:MouseButtonDown">
-          <wie:Filter>Middle</wie:Filter>
+        <Combinator xsi:type="onix1:DigitalInput">
+          <onix1:DeviceName>BreakoutBoard/DigitalIO</onix1:DeviceName>
         </Combinator>
       </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="BooleanProperty">
-          <Value>true</Value>
-        </Combinator>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Buttons</Selector>
+      </Expression>
+      <Expression xsi:type="HasFlag">
+        <Operand xsi:type="WorkflowProperty" TypeArguments="onix1:BreakoutButtonState">
+          <Value>Circle</Value>
+        </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="onix1:Headstage64OpticalStimulatorTrigger">
@@ -35,6 +37,7 @@
     <Edges>
       <Edge From="0" To="1" Label="Source1" />
       <Edge From="1" To="2" Label="Source1" />
+      <Edge From="2" To="3" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>

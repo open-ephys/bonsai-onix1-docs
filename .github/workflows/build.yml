@@ -32,7 +32,7 @@ jobs:
         run: dotnet tool restore
 
       - name: Setup Bonsai
-        working-directory: .bonsai
+        working-directory: src\bonsai-onix1\.bonsai
         run: .\Setup.ps1
 
       - name: Build Documentation

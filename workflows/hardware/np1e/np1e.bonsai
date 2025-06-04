@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.8.5"
+<WorkflowBuilder Version="2.9.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:onix1="clr-namespace:OpenEphys.Onix1;assembly=OpenEphys.Onix1"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
@@ -87,6 +87,9 @@
             <onix1:DeviceAddress>256</onix1:DeviceAddress>
             <onix1:Enable>true</onix1:Enable>
             <onix1:EnableLed>true</onix1:EnableLed>
+            <onix1:InvertPolarity>true</onix1:InvertPolarity>
+            <onix1:GainCalibrationFile />
+            <onix1:AdcCalibrationFile />
             <onix1:ProbeConfiguration>
               <onix1:SpikeAmplifierGain>Gain1000</onix1:SpikeAmplifierGain>
               <onix1:LfpAmplifierGain>Gain50</onix1:LfpAmplifierGain>
@@ -103,7 +106,9 @@
             <onix1:AxisSign>MirrorZ MirrorX</onix1:AxisSign>
           </onix1:Bno055>
           <onix1:Port>PortA</onix1:Port>
-          <onix1:PortVoltage xsi:nil="true" />
+          <onix1:PortVoltage>
+            <onix1:Requested xsi:nil="true" />
+          </onix1:PortVoltage>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -197,7 +202,7 @@
       </Expression>
       <Expression xsi:type="Disable">
         <Builder xsi:type="IncludeWorkflow" Path="OpenEphys.Commutator:AutoCommutator.bonsai">
-          <PortName>COM4</PortName>
+          <PortName>COM5</PortName>
           <Enable>true</Enable>
           <EnableLed>true</EnableLed>
         </Builder>

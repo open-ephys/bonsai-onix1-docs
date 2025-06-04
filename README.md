@@ -43,8 +43,9 @@ Download and install [git](https://git-scm.com/downloads) if it is not installed
     even after installing .NET as described previously in the readme, refer to [this comment](https://github.com/dotnet/core/issues/6095#issuecomment-809006602) for a potential fix. If you follow the instructions described in the comment, make sure you proceed in a terminal or command prompt opened after changing the environment variables.
 1. Set up a local Bonsai environment for automatically exporting SVGs, run Setup.ps1 in PowerShell (or, if not using PowerShell, run Setup.Cmd): 
     ``` console
-    ./.bonsai/Setup.ps1
-    ```    
+    cd .\src\bonsai-onix1\.bonsai\
+    ./Setup.ps1
+    ```
     If the above command yields the following error:
     ``` console
     ./Setup.ps1 : File C:\Users\User\...\bonsai-onix1-docs\Setup.ps1 cannot be loaded because running scripts is      
