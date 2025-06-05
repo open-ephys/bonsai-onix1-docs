@@ -22,7 +22,7 @@ function lychee($lycheePath)
 {
     Write-Output "`nRunning lychee..."
     Write-Output "------------------------------------------`n"
-    Invoke-Expression "& `"$lycheePath`" --no-progress --base _site --exclude ^https://github\.com.*merge.* --exclude ^https://github\.com.*apiSpec.* --exclude ^https://github\.com/open-ephys/bonsai-onix1-docs/blob/.* '_site/**/*.html' --max-retries 0 --max-concurrency 32 --cache --max-cache-age 1d"
+    Invoke-Expression "& `"$lycheePath`" --no-progress --root-dir $(pwd)/_site/ --exclude ^https://github\.com.*merge.* --exclude ^https://github\.com.*apiSpec.* --exclude ^https://github\.com/open-ephys/bonsai-onix1-docs/blob/.* '_site/**/*.html' --max-retries 0 --max-concurrency 32 --cache --max-cache-age 1d"
     Write-Output "`n"
 }
 
