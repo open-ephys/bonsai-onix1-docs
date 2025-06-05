@@ -18,8 +18,9 @@ Default values for the headstage are:
     - This is also known as the **Bank A** `Channel Preset`
 - Setting `AP Gain` to 1000x
 - Setting `LFP gain` to 50x
-- Enabling the `Spike Filter`
-- Setting the `Reference` to *External*
+- Setting `Spike Filter` to `True`
+- Setting `Reference` to *External*
+- Setting `Invert Polarity` to `True`
 
 > [!IMPORTANT]
 > The workflow will not run unless gain calibration and ADC calibration files are provided. Click the `HeadstageNeuropixelsV1e` operator, expand `NeuropixelsV1e` in the properties pane, then choose the appropriate files by selecting either `GainCalibrationFile` or `AdcCalibrationFile` and clicking the <kbd>...</kbd> button.
