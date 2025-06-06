@@ -259,11 +259,28 @@ easily switch between different configurations between recordings.
 To load a [ProbeInterface](#probeinterface) JSON file, navigate to the File drop-down menu and
 select `Channel Configuration → Load Channel Configuration`. This will open a file dialog window;
 browse to the existing JSON file, select it and press `Open` to load the channel configuration. The
-new probe shape will be loaded and drawn, with the enabled electrodes highlighted as usual.
+new probe shape will be loaded and drawn.
 
 > [!NOTE] 
 > When loading a new configuration, the total number of electrodes must match the existing
-> configuration, and the number of enabled electrodes must match.
+> configuration.
+
+Using this menu option, any arbitrary ProbeInterface JSON file can be uploaded, as long as it meets
+the criteria listed in the note; the number of electrodes must equal 32, which is the number of
+electrodes used by the `Rhs2116` headstage. It is recommended to browse the
+[probeinterface_library](https://github.com/SpikeInterface/probeinterface_library) repository to see
+if a file already exists for the probe being utilized. If no probe file exists, it is also possible
+to create a new file by following the [example
+provided](https://probeinterface.readthedocs.io/en/main/examples/ex_01_generate_probe_from_sratch.html)
+by SpikeInterface, exporting the new probe group as a JSON file, and uploading it to the GUI here.
+
+Below are some examples of what different probes might look like when they are uploaded:
+
+![Neuronexus A1x32-Poly3-10mm-50-177](../../../images/rhs2116-gui-tut/probeinterface-neuronexus-a1x32.png){width=200px}
+Neuronexus A1x32-Poly3-10mm-50-177 probe
+
+![Cambridge Neurotech ASSY-116-H7b](../../../images/rhs2116-gui-tut/probeinterface-cambridge-assy-116-H7b.png){width=200px}
+Cambridge Neurotech ASSY-116-H7b
 
 ## Load default configuration
 
