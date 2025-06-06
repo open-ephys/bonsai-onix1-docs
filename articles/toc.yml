@@ -91,6 +91,7 @@
       href: hardware/rhs2116/rhs2116-record.md
     - name: Rhs2116 Stimulation
       href: hardware/rhs2116/rhs2116-stimulate.md
+    - href: hardware/rhs2116/rhs2116-trigger-data.md
     - name: Memory Monitor
       href: hardware/rhs2116/memory-monitor.md
     - href: hardware/rhs2116/load-data.md
