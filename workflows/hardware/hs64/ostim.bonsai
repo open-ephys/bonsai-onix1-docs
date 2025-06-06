@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.8.5"
+<WorkflowBuilder Version="2.9.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:onix1="clr-namespace:OpenEphys.Onix1;assembly=OpenEphys.Onix1"
+                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Workflow>
     <Nodes>
@@ -19,13 +20,16 @@
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:DistinctUntilChanged" />
+      </Expression>
+      <Expression xsi:type="Combinator">
         <Combinator xsi:type="onix1:Headstage64OpticalStimulatorTrigger">
           <onix1:DeviceName>Headstage64/Headstage64OpticalStimulator</onix1:DeviceName>
           <onix1:Enable>true</onix1:Enable>
           <onix1:Delay>0</onix1:Delay>
           <onix1:MaxCurrent>100</onix1:MaxCurrent>
           <onix1:ChannelOneCurrent>50</onix1:ChannelOneCurrent>
-          <onix1:ChannelTwoCurrent>0</onix1:ChannelTwoCurrent>
+          <onix1:ChannelTwoCurrent>50</onix1:ChannelTwoCurrent>
           <onix1:PulseDuration>10</onix1:PulseDuration>
           <onix1:PulsesPerSecond>50</onix1:PulsesPerSecond>
           <onix1:PulsesPerBurst>20</onix1:PulsesPerBurst>
@@ -38,6 +42,7 @@
       <Edge From="0" To="1" Label="Source1" />
       <Edge From="1" To="2" Label="Source1" />
       <Edge From="2" To="3" Label="Source1" />
+      <Edge From="3" To="4" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>

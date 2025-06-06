@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.8.5"
+<WorkflowBuilder Version="2.9.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:onix1="clr-namespace:OpenEphys.Onix1;assembly=OpenEphys.Onix1"
                  xmlns:dsp="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp"
@@ -108,7 +108,9 @@
             <onix1:DeviceAddress>260</onix1:DeviceAddress>
           </onix1:OpticalStimulator>
           <onix1:Port>PortA</onix1:Port>
-          <onix1:PortVoltage xsi:nil="true" />
+          <onix1:PortVoltage>
+            <onix1:Requested xsi:nil="true" />
+          </onix1:PortVoltage>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -167,7 +169,11 @@
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="dsp:SelectChannels" />
+        <Combinator xsi:type="dsp:SelectChannels">
+          <dsp:Channels>
+            <dsp:int>0</dsp:int>
+          </dsp:Channels>
+        </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="dsp:ConvertScale">
