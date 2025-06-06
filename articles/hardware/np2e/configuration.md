@@ -35,6 +35,6 @@ Default values for the headstage are:
 
 > [!TIP] 
 > For additional details on how to manually configure the headstage, such as enabling
-> specific electrodes for recording, or modify AP / LFP gain, check out the <xref:np2e_gui> page.
+> specific electrodes for recording, check out the <xref:np2e_gui> page.
 
 [!INCLUDE [timestamp-info](../../../includes/configuration-timestamp.md)]
