@@ -32,7 +32,7 @@ jobs:
         run: dotnet tool restore
 
       - name: Setup Bonsai
-        working-directory: .bonsai
+        working-directory: src\bonsai-onix1\.bonsai
         run: .\Setup.ps1
 
       - name: Build Documentation
@@ -73,7 +73,7 @@ jobs:
       - name: Check HTML Links After Building
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --verbose --no-progress --base _site --exclude ^https://github\.com.*merge.* --exclude ^https://github\.com.*apiSpec.* --max-retries 0 --max-concurrency 32 --cache --max-cache-age 1d '_site/**/*.html'
+          args: --verbose --no-progress --root-dir "${{ github.workspace }}/public" --exclude ^https://github\.com.*merge.* --exclude ^https://github\.com.*apiSpec.* --max-retries 0 --max-concurrency 32 --cache --max-cache-age 1d '_site/**/*.html'
           fail: true
 
   deploy:

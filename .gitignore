@@ -17,3 +17,11 @@ Packages
 
 ## Lychee cache
 .lycheecache
+
+## Bonsai v2.9.0 saves editor/layout files here
+**/.bonsai/Settings/*
+
+## Saved files from example workflows
+**/*.bin
+**/*.raw
+**/*.csv
