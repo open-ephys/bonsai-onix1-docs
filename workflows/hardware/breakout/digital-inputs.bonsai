@@ -1,47 +1,69 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.8.5"
+<WorkflowBuilder Version="2.9.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:onix1="clr-namespace:OpenEphys.Onix1;assembly=OpenEphys.Onix1"
-                 xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
+                 xmlns:dsp="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Workflow>
     <Nodes>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="onix1:DigitalInput" />
-      </Expression>
-      <Expression xsi:type="io:CsvWriter">
-        <io:FileName>digital-data_.csv</io:FileName>
-        <io:Delimiter>;</io:Delimiter>
-        <io:ListSeparator />
-        <io:Append>false</io:Append>
-        <io:Overwrite>false</io:Overwrite>
-        <io:Suffix>FileCount</io:Suffix>
-        <io:IncludeHeader>false</io:IncludeHeader>
-        <io:Selector>Clock,DigitalInputs,Buttons</io:Selector>
+        <Combinator xsi:type="onix1:DigitalInput">
+          <onix1:DeviceName>BreakoutBoard/DigitalIO</onix1:DeviceName>
+        </Combinator>
       </Expression>
       <Expression xsi:type="MemberSelector">
         <Selector>DigitalInputs</Selector>
       </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="dsp:MatrixWriter">
+          <dsp:Path>digital-pins_.raw</dsp:Path>
+          <dsp:Suffix>FileCount</dsp:Suffix>
+          <dsp:Overwrite>false</dsp:Overwrite>
+          <dsp:Layout>ColumnMajor</dsp:Layout>
+        </Combinator>
+      </Expression>
       <Expression xsi:type="HasFlag">
         <Operand xsi:type="WorkflowProperty" TypeArguments="onix1:DigitalPortState">
-          <Value>Pin1</Value>
+          <Value>Pin0</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="MemberSelector">
         <Selector>Buttons</Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="dsp:MatrixWriter">
+          <dsp:Path>digital-buttons_.raw</dsp:Path>
+          <dsp:Suffix>FileCount</dsp:Suffix>
+          <dsp:Overwrite>false</dsp:Overwrite>
+          <dsp:Layout>ColumnMajor</dsp:Layout>
+        </Combinator>
       </Expression>
       <Expression xsi:type="HasFlag">
         <Operand xsi:type="WorkflowProperty" TypeArguments="onix1:BreakoutButtonState">
           <Value>Triangle X</Value>
         </Operand>
       </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Clock</Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="dsp:MatrixWriter">
+          <dsp:Path>digital-clock_.raw</dsp:Path>
+          <dsp:Suffix>FileCount</dsp:Suffix>
+          <dsp:Overwrite>false</dsp:Overwrite>
+          <dsp:Layout>ColumnMajor</dsp:Layout>
+        </Combinator>
+      </Expression>
     </Nodes>
     <Edges>
       <Edge From="0" To="1" Label="Source1" />
+      <Edge From="0" To="4" Label="Source1" />
+      <Edge From="0" To="7" Label="Source1" />
       <Edge From="1" To="2" Label="Source1" />
-      <Edge From="1" To="4" Label="Source1" />
       <Edge From="2" To="3" Label="Source1" />
       <Edge From="4" To="5" Label="Source1" />
+      <Edge From="5" To="6" Label="Source1" />
+      <Edge From="7" To="8" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>

@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.8.5"
+<WorkflowBuilder Version="2.9.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                 xmlns:onix1="clr-namespace:OpenEphys.Onix1;assembly=OpenEphys.Onix1"
+                 xmlns:p1="clr-namespace:OpenEphys.Onix1;assembly=OpenEphys.Onix1"
                  xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Workflow>
     <Nodes>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="onix1:OutputClockData">
-          <onix1:DeviceName>BreakoutBoard/OutputClock</onix1:DeviceName>
+        <Combinator xsi:type="p1:OutputClockHardwareParameters">
+          <p1:DeviceName>BreakoutBoard/OutputClock</p1:DeviceName>
         </Combinator>
       </Expression>
       <Expression xsi:type="io:CsvWriter">
