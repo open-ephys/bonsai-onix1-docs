@@ -17,10 +17,10 @@
         <Combinator xsi:type="onix1:ConfigureBreakoutBoard">
           <onix1:Name>BreakoutBoard</onix1:Name>
           <onix1:Heartbeat>
-            <onix1:DeviceName>BreakoutBoard/Heartbeat</onix1:DeviceName>
+            <onix1:DeviceName>BreakoutBoard/PersistentHeartbeat</onix1:DeviceName>
             <onix1:DeviceAddress>0</onix1:DeviceAddress>
             <onix1:Enable>true</onix1:Enable>
-            <onix1:BeatsPerSecond>10</onix1:BeatsPerSecond>
+            <onix1:BeatsPerSecond>100</onix1:BeatsPerSecond>
           </onix1:Heartbeat>
           <onix1:AnalogIO>
             <onix1:DeviceName>BreakoutBoard/AnalogIO</onix1:DeviceName>

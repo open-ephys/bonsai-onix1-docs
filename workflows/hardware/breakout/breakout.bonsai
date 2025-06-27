@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.8.5"
+<WorkflowBuilder Version="2.9.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:onix1="clr-namespace:OpenEphys.Onix1;assembly=OpenEphys.Onix1"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
@@ -18,10 +18,9 @@
         <Combinator xsi:type="onix1:ConfigureBreakoutBoard">
           <onix1:Name>BreakoutBoard</onix1:Name>
           <onix1:Heartbeat>
-            <onix1:DeviceName>BreakoutBoard/Heartbeat</onix1:DeviceName>
+            <onix1:DeviceName>BreakoutBoard/PersistentHeartbeat</onix1:DeviceName>
             <onix1:DeviceAddress>0</onix1:DeviceAddress>
-            <onix1:Enable>true</onix1:Enable>
-            <onix1:BeatsPerSecond>10</onix1:BeatsPerSecond>
+            <onix1:BeatsPerSecond>100</onix1:BeatsPerSecond>
           </onix1:Heartbeat>
           <onix1:AnalogIO>
             <onix1:DeviceName>BreakoutBoard/AnalogIO</onix1:DeviceName>
@@ -56,6 +55,8 @@
             <onix1:DeviceName>BreakoutBoard/DigitalIO</onix1:DeviceName>
             <onix1:DeviceAddress>7</onix1:DeviceAddress>
             <onix1:Enable>true</onix1:Enable>
+            <onix1:DeadTime>0</onix1:DeadTime>
+            <onix1:SampleRate xsi:nil="true" />
           </onix1:DigitalIO>
           <onix1:ClockOutput>
             <onix1:DeviceName>BreakoutBoard/OutputClock</onix1:DeviceName>
@@ -248,7 +249,7 @@
         <io:Selector>Clock,HarpTime</io:Selector>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="onix1:OutputClockData">
+        <Combinator xsi:type="onix1:OutputClockHardwareParameters">
           <onix1:DeviceName>BreakoutBoard/OutputClock</onix1:DeviceName>
         </Combinator>
       </Expression>
@@ -269,7 +270,7 @@
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="onix1:HeartbeatData">
-          <onix1:DeviceName>BreakoutBoard/Heartbeat</onix1:DeviceName>
+          <onix1:DeviceName>BreakoutBoard/PersistentHeartbeat</onix1:DeviceName>
         </Combinator>
       </Expression>
       <Expression xsi:type="MemberSelector">

@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.8.5"
+<WorkflowBuilder Version="2.9.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:onix1="clr-namespace:OpenEphys.Onix1;assembly=OpenEphys.Onix1"
+                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
                  xmlns="https://bonsai-rx.org/2018/workflow">
   <Workflow>
     <Nodes>
@@ -15,10 +17,10 @@
         <Combinator xsi:type="onix1:ConfigureBreakoutBoard">
           <onix1:Name>BreakoutBoard</onix1:Name>
           <onix1:Heartbeat>
-            <onix1:DeviceName>BreakoutBoard/Heartbeat</onix1:DeviceName>
+            <onix1:DeviceName>BreakoutBoard/PersistentHeartbeat</onix1:DeviceName>
             <onix1:DeviceAddress>0</onix1:DeviceAddress>
             <onix1:Enable>true</onix1:Enable>
-            <onix1:BeatsPerSecond>10</onix1:BeatsPerSecond>
+            <onix1:BeatsPerSecond>100</onix1:BeatsPerSecond>
           </onix1:Heartbeat>
           <onix1:AnalogIO>
             <onix1:DeviceName>BreakoutBoard/AnalogIO</onix1:DeviceName>
@@ -57,7 +59,7 @@
           <onix1:ClockOutput>
             <onix1:DeviceName>BreakoutBoard/OutputClock</onix1:DeviceName>
             <onix1:DeviceAddress>5</onix1:DeviceAddress>
-            <onix1:ClockGate>false</onix1:ClockGate>
+            <onix1:ClockGate>true</onix1:ClockGate>
             <onix1:Frequency>1000000</onix1:Frequency>
             <onix1:DutyCycle>50</onix1:DutyCycle>
             <onix1:Delay>0</onix1:Delay>
@@ -82,10 +84,23 @@
           <onix1:WriteSize>2048</onix1:WriteSize>
         </Combinator>
       </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:Timestamp" />
+      </Expression>
+      <Expression xsi:type="io:CsvWriter">
+        <io:FileName>start-time_.csv</io:FileName>
+        <io:Append>false</io:Append>
+        <io:Overwrite>false</io:Overwrite>
+        <io:Suffix>FileCount</io:Suffix>
+        <io:IncludeHeader>false</io:IncludeHeader>
+        <io:Selector>Timestamp,Value</io:Selector>
+      </Expression>
     </Nodes>
     <Edges>
       <Edge From="0" To="1" Label="Source1" />
       <Edge From="1" To="2" Label="Source1" />
+      <Edge From="1" To="3" Label="Source1" />
+      <Edge From="3" To="4" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>

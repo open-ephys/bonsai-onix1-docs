@@ -18,10 +18,9 @@
         <Combinator xsi:type="onix1:ConfigureBreakoutBoard">
           <onix1:Name>BreakoutBoard</onix1:Name>
           <onix1:Heartbeat>
-            <onix1:DeviceName>BreakoutBoard/Heartbeat</onix1:DeviceName>
+            <onix1:DeviceName>BreakoutBoard/PersistentHeartbeat</onix1:DeviceName>
             <onix1:DeviceAddress>0</onix1:DeviceAddress>
-            <onix1:Enable>true</onix1:Enable>
-            <onix1:BeatsPerSecond>10</onix1:BeatsPerSecond>
+            <onix1:BeatsPerSecond>100</onix1:BeatsPerSecond>
           </onix1:Heartbeat>
           <onix1:AnalogIO>
             <onix1:DeviceName>BreakoutBoard/AnalogIO</onix1:DeviceName>
@@ -56,6 +55,8 @@
             <onix1:DeviceName>BreakoutBoard/DigitalIO</onix1:DeviceName>
             <onix1:DeviceAddress>7</onix1:DeviceAddress>
             <onix1:Enable>true</onix1:Enable>
+            <onix1:DeadTime>0</onix1:DeadTime>
+            <onix1:SampleRate xsi:nil="true" />
           </onix1:DigitalIO>
           <onix1:ClockOutput>
             <onix1:DeviceName>BreakoutBoard/OutputClock</onix1:DeviceName>
@@ -575,6 +576,17 @@
           <dsp:Layout>ColumnMajor</dsp:Layout>
         </Combinator>
       </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>RecoveryMask</Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="dsp:MatrixWriter">
+          <dsp:Path>rhs2116pair-recovery_.raw</dsp:Path>
+          <dsp:Suffix>FileCount</dsp:Suffix>
+          <dsp:Overwrite>false</dsp:Overwrite>
+          <dsp:Layout>ColumnMajor</dsp:Layout>
+        </Combinator>
+      </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="onix1:Rhs2116TriggerData">
           <onix1:DeviceName>HeadstageRhs2116/StimulusTrigger</onix1:DeviceName>
@@ -612,11 +624,13 @@
       <Edge From="14" To="15" Label="Source1" />
       <Edge From="14" To="17" Label="Source1" />
       <Edge From="14" To="19" Label="Source1" />
+      <Edge From="14" To="21" Label="Source1" />
       <Edge From="15" To="16" Label="Source1" />
       <Edge From="17" To="18" Label="Source1" />
       <Edge From="19" To="20" Label="Source1" />
       <Edge From="21" To="22" Label="Source1" />
       <Edge From="23" To="24" Label="Source1" />
+      <Edge From="25" To="26" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>

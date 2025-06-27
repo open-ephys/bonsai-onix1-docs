@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.8.5"
+<WorkflowBuilder Version="2.9.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:p1="clr-namespace:OpenEphys.Sockets.Bonsai;assembly=OpenEphys.Sockets.Bonsai"
                  xmlns:onix1="clr-namespace:OpenEphys.Onix1;assembly=OpenEphys.Onix1"
@@ -67,7 +67,7 @@
           <onix1:DigitalIO>
             <onix1:DeviceName>BreakoutBoard/DigitalIO</onix1:DeviceName>
             <onix1:DeviceAddress>7</onix1:DeviceAddress>
-            <onix1:Enable>true</onix1:Enable>
+            <onix1:Enable>false</onix1:Enable>
           </onix1:DigitalIO>
           <onix1:ClockOutput>
             <onix1:DeviceName>BreakoutBoard/OutputClock</onix1:DeviceName>
@@ -99,6 +99,7 @@
             <onix1:DeviceAddress>256</onix1:DeviceAddress>
             <onix1:Enable>true</onix1:Enable>
             <onix1:EnableLed>true</onix1:EnableLed>
+            <onix1:InvertPolarity>true</onix1:InvertPolarity>
             <onix1:GainCalibrationFile>C:\Users\Administrador\Desktop\ONIX\DummyCal_Neuropixels probes\NP1.0\18005108221_gainCalValues.csv</onix1:GainCalibrationFile>
             <onix1:AdcCalibrationFile>C:\Users\Administrador\Desktop\ONIX\DummyCal_Neuropixels probes\NP1.0\18005108221_ADCCalibration.csv</onix1:AdcCalibrationFile>
             <onix1:ProbeConfiguration>
@@ -117,7 +118,9 @@
             <onix1:AxisSign>MirrorZ MirrorY</onix1:AxisSign>
           </onix1:Bno055>
           <onix1:Port>PortA</onix1:Port>
-          <onix1:PortVoltage xsi:nil="true" />
+          <onix1:PortVoltage>
+            <onix1:Requested xsi:nil="true" />
+          </onix1:PortVoltage>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
