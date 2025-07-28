@@ -30,39 +30,32 @@ digital_input['time'] = np.fromfile(path + '/digital-clock_' + suffix + '.raw', 
 digital_input['pins'] = np.fromfile(path + '/digital-pins_' + suffix + '.raw', dtype=np.uint8)
 digital_input['buttons'] = np.fromfile(path + '/digital-buttons_' + suffix + '.raw', dtype=np.uint16)
 
-def sort_digital_data(time, digital_data, num_inputs):
-    digital_data_sorted = []
-    for i in range(0, num_inputs):
-        digital_data_sorted.append((time[0], i, (digital_data[0] >> i) & 1))
-    state_previous = digital_data[0]
-    for clock_current, state_current in zip(time[1:], digital_data[1:]):
-        state_delta = state_previous ^ state_current
-        for i in range(0, num_inputs):
-            if (state_delta >> i) & 1:
-                digital_data_sorted.append((clock_current, i, (state_current >> i) & 1))
-        state_previous = state_current
-    dt = np.dtype([('Clock', np.float64), ('Digital Input', np.uint8), ('State', np.bool_)])
-    return np.array(digital_data_sorted, dtype=dt)
+digital_input['pins_b'] = np.unpackbits(digital_input['pins'], bitorder='little').reshape(-1, 8).astype(bool)
+digital_input['buttons_b'] = np.unpackbits(digital_input['buttons'].astype(np.uint8), bitorder='little').reshape(-1, 8).astype(bool)
 
-num_pins = 8
-num_buttons = 12
-pins_data = sort_digital_data(digital_input['time'], digital_input['pins'], num_pins)
-buttons_data = sort_digital_data(digital_input['time'], digital_input['buttons'], num_buttons)
+line_spacing = 1.25
 
-def plot_digital_data(digital_data, num_digital_inputs, legend_labels, plot_title):
-    plt.figure()
-    line_spacing = 1.25
-    for i in range(0, num_digital_inputs):
-        index_mask = digital_data['Digital Input'] == i
-        plt.step(digital_data['Clock'][index_mask], digital_data['State'][index_mask] + line_spacing * i, color="black")
-    plt.ylim(-0.5, num_digital_inputs * line_spacing + 0.5)
-    plt.yticks(np.arange(0.5, num_digital_inputs * line_spacing, line_spacing), legend_labels)
-    plt.title(plot_title)
-    plt.tight_layout()
+# digital pin data
+pins = ['Pin 0', 'Pin 1', 'Pin 2', 'Pin 3', 'Pin 4', 'Pin 5', 'Pin 6', 'Pin 7']
 
-buttons_flags = ['Moon', 'Triangle', 'X', 'Check', 'Circle', 'Square', 'Reserved0', 'Reserved1', 'PortDOn', 'PortCOn', 'PortBOn', 'PortAOn']
-plot_digital_data(pins_data, num_pins, range(0, num_pins), "Pins")
-plot_digital_data(buttons_data, num_buttons, buttons_flags, "Buttons")
+plt.figure()
+for i in range(len(pins)):
+    plt.step(digital_input['time'], digital_input['pins_b'][:,i] + line_spacing * i, color='k')
+plt.ylim(-0.5, len(pins) * line_spacing + 0.5)
+plt.yticks(np.arange(0.5, len(pins) * line_spacing, line_spacing), pins)
+plt.title('Digital I/O Data')
+plt.tight_layout()
+
+#digital button data
+buttons = ['Moon', 'Triangle', 'X', 'Check', 'Circle', 'Square']
+
+plt.figure()
+for i in range(len(buttons)):
+    plt.step(digital_input['time'], digital_input['buttons_b'][:,i] + line_spacing * i, color="k")
+plt.ylim(-0.5, len(buttons) * line_spacing + 0.5)
+plt.yticks(np.arange(0.5, len(buttons) * line_spacing, line_spacing), buttons)
+plt.title('Button Data')
+plt.tight_layout()
 
 plt.show()
 
