@@ -3,19 +3,20 @@ import matplotlib.pyplot as plt
 import csv
 
 # Load data from breakout board tutorial workflow
-suffix = '0'; # Change to match file names' suffix
+path = '' # Set to the directory of your data from the example workflow
+suffix = '0' # Change to match file names' suffix
 plt.close('all')
 
 #%% Metadata
 dt = {'names': ('time', 'acq_clk_hz', 'block_read_sz', 'block_write_sz'),
       'formats': ('datetime64[us]', 'u4', 'u4', 'u4')}
-meta = np.genfromtxt('start-time_' + suffix + '.csv', delimiter=',', dtype=dt)
+meta = np.genfromtxt(path + '/start-time_' + suffix + '.csv', delimiter=',', dtype=dt)
 print(f"Recording was started at {meta['time']} GMT")
 
 #%% Analog Inputs
 analog_input = {}
-analog_input['time'] = np.fromfile('analog-clock_' + suffix + '.raw', dtype=np.uint64) / meta['acq_clk_hz']
-analog_input['data'] = np.reshape(np.fromfile('analog-data_' + suffix + '.raw', dtype=np.float32), (-1, 12))
+analog_input['time'] = np.fromfile(path + '/analog-clock_' + suffix + '.raw', dtype=np.uint64) / meta['acq_clk_hz']
+analog_input['data'] = np.reshape(np.fromfile(path + '/analog-data_' + suffix + '.raw', dtype=np.float32), (-1, 12))
 
 plt.figure()
 plt.plot(analog_input['time'], analog_input['data'])
@@ -29,7 +30,7 @@ digital_input_flags = ['Pin0', 'Pin1', 'Pin2', 'Pin3', 'Pin4', 'Pin5', 'Pin6', '
                        'Moon', 'Triangle', 'X', 'Check', 'Circle', 'Square',
                        'Reserved0', 'Reserved1', 'PortDOn', 'PortCOn', 'PortBOn', 'PortAOn']
 digital_input_data = []
-with open("digital-data_" + suffix + '.csv', 'r') as digital_input_file:
+with open(path + '/digital-data_' + suffix + '.csv', 'r') as digital_input_file:
       digital_input_reader = csv.reader(digital_input_file)
       row = [entry.strip() for entry in next(digital_input_reader)]
       time = int(row[0]) / meta['acq_clk_hz']

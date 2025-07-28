@@ -2,19 +2,20 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Load data from breakout board tutorial workflow
-suffix = '0'; # Change to match file names' suffix
+path = '' # Set to the directory of your data from the example workflow
+suffix = '0' # Change to match file names' suffix
 plt.close('all')
 
 #%% Metadata
 dt = {'names': ('time', 'acq_clk_hz', 'block_read_sz', 'block_write_sz'),
       'formats': ('datetime64[us]', 'u4', 'u4', 'u4')}
-meta = np.genfromtxt('start-time_' + suffix + '.csv', delimiter=',', dtype=dt)
+meta = np.genfromtxt(path + '/start-time_' + suffix + '.csv', delimiter=',', dtype=dt)
 print(f"Recording was started at {meta['time']} GMT")
 
 #%% Analog Inputs
 analog_input = {}
-analog_input['time'] = np.fromfile('analog-clock_' + suffix + '.raw', dtype=np.uint64) / meta['acq_clk_hz']
-analog_input['data'] = np.reshape(np.fromfile('analog-data_' + suffix + '.raw', dtype=np.float32), (-1, 12))
+analog_input['time'] = np.fromfile(path + '/analog-clock_' + suffix + '.raw', dtype=np.uint64) / meta['acq_clk_hz']
+analog_input['data'] = np.reshape(np.fromfile(path + '/analog-data_' + suffix + '.raw', dtype=np.float32), (-1, 12))
 
 plt.figure()
 plt.plot(analog_input['time'], analog_input['data'])
@@ -25,9 +26,9 @@ plt.legend(['Ch. 0', 'Ch. 1', 'Ch. 2', 'Ch. 3', 'Ch. 4', 'Ch. 5',
 
 #%% Digital Inputs
 digital_input = {}
-digital_input['time'] = np.fromfile('digital-clock_' + suffix + '.raw', dtype=np.uint64) / meta['acq_clk_hz']
-digital_input['pins'] = np.fromfile('digital-pins_' + suffix + '.raw', dtype=np.uint8)
-digital_input['buttons'] = np.fromfile('digital-buttons_' + suffix + '.raw', dtype=np.uint16)
+digital_input['time'] = np.fromfile(path + '/digital-clock_' + suffix + '.raw', dtype=np.uint64) / meta['acq_clk_hz']
+digital_input['pins'] = np.fromfile(path + '/digital-pins_' + suffix + '.raw', dtype=np.uint8)
+digital_input['buttons'] = np.fromfile(path + '/digital-buttons_' + suffix + '.raw', dtype=np.uint16)
 
 def sort_digital_data(time, digital_data, num_inputs):
     digital_data_sorted = []
