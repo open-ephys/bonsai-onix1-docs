@@ -86,9 +86,9 @@ The <xref:OpenEphys.Onix1.AnalogInput> operator receives a sequence of
 - `DeviceName` is set to "BreakoutBoard/AnalogIO". This links the `AnalogInput`
   operator to the corresponding configuration operator. 
 
-`Clock`, `AnalogData` are members of `DigitalInputDataFrame` which are each selected by a
+`Clock`, `AnalogData` are members of `AnalogInputDataFrame` which are each selected by a
 [MemberSelector](xref:Bonsai.Expressions.MemberSelectorBuilder) operator. They contain the
-<xref:OpenEphys.Onix1.ContextTask.AcquisitionClockHz>-based sample times, analog sample values,
+<xref:OpenEphys.Onix1.ContextTask.AcquisitionClockHz>-based sample times and analog sample values,
 respectively. The [MatrixWriter](xref:Bonsai.Dsp.MatrixWriter) operators save the selected members
 to files with the following format: `analog-clock_<filecount>.raw` and
 `analog-data_<filecount>.raw`, respectively. 
