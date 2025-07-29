@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Load data from breakout board tutorial workflow
-path = '' # Set to the directory of your data from the example workflow
+path = '.' # Set to the directory of your data from the example workflow
 suffix = '0' # Change to match file names' suffix
 plt.close('all')
 
@@ -21,7 +21,7 @@ plt.figure()
 plt.plot(analog_input['time'], analog_input['data'])
 plt.xlabel("time (sec)")
 plt.ylabel("volts")
-plt.legend(['Ch. 0', 'Ch. 1', 'Ch. 2', 'Ch. 3', 'Ch. 4', 'Ch. 5', 
+plt.legend(['Ch. 0', 'Ch. 1', 'Ch. 2', 'Ch. 3', 'Ch. 4', 'Ch. 5',
             'Ch. 6', 'Ch. 7', 'Ch. 8', 'Ch. 9', 'Ch. 10', 'Ch. 11'])
 
 #%% Digital Inputs
@@ -35,7 +35,7 @@ digital_input['buttons_b'] = np.unpackbits(digital_input['buttons'].astype(np.ui
 
 line_spacing = 1.25
 
-# digital pin data
+# Input pins
 pins = ['Pin 0', 'Pin 1', 'Pin 2', 'Pin 3', 'Pin 4', 'Pin 5', 'Pin 6', 'Pin 7']
 
 plt.figure()
@@ -46,8 +46,8 @@ plt.yticks(np.arange(0.5, len(pins) * line_spacing, line_spacing), pins)
 plt.title('Digital I/O Data')
 plt.tight_layout()
 
-#digital button data
-buttons = ['Moon', 'Triangle', 'X', 'Check', 'Circle', 'Square']
+# User buttons
+buttons = ['☽', '△', 'X', '✓', '⭘', '☐']
 
 plt.figure()
 for i in range(len(buttons)):
