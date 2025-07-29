@@ -47,7 +47,7 @@ plt.title('Digital I/O Data')
 plt.tight_layout()
 
 # User buttons
-buttons = ['☽', '△', 'X', '✓', '⭘', '☐']
+buttons = ['☽', '△', 'X', '✓', 'O', '☐']
 
 plt.figure()
 for i in range(len(buttons)):
