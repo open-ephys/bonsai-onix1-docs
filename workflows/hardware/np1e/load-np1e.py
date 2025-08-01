@@ -33,39 +33,30 @@ print(f'Acquisition clock rate was {meta["acq_clk_hz"] / 1e6 } MHz')
 
 #%% Load Neuropixels 1.0 probe data
 
-np1 = {}
-
-# Load Neuropixels 1.0 AP clock data and convert clock cycles to seconds
-np1['ap_time'] = np.fromfile(os.path.join(data_directory, f'np1-clock_{suffix}.raw'), dtype=np.uint64).astype(np.double) / meta['acq_clk_hz']
-
 # Load and scale Neuropixels 1.0 AP data
 gain_to_uV_ap = sample_gain / ap_gain
 offset_to_uV_ap = -sample_offset * gain_to_uV_ap
-ap_rec = se.read_binary(os.path.join(data_directory, f'np1-spike_{suffix}.raw'),
+rec_ap = se.read_binary(os.path.join(data_directory, f'np1-spike_{suffix}.raw'),
                         sampling_frequency=fs_hz_ap,
                         dtype=np.uint16,
                         num_channels=num_channels,
                         gain_to_uV=gain_to_uV_ap,
                         offset_to_uV=offset_to_uV_ap)
-np1['ap_uV'] = ap_rec.get_traces(return_scaled=True, channel_ids=np.arange(plot_num_channels))
-
-ap_time_mask = np.bitwise_and(np1['ap_time'] >= start_t, np1['ap_time'] < start_t + dur)
-
-# Load Neuropixels 1.0 LFP clock data. The LFP is sampled every at 1/12th the rate of AP data
-np1['lfp_time'] = np1['ap_time'][::12]
+rec_ap.set_times(np.fromfile(os.path.join(data_directory, f'np1-clock_{suffix}.raw'), dtype=np.uint64).astype(np.double) / meta['acq_clk_hz'],
+                 with_warning=False)
+rec_ap_slice = rec_ap.time_slice(start_time=start_t, end_time=start_t+dur)
 
 # Load and scale Neuropixels 1.0 LFP data
 gain_to_uV_lfp = sample_gain / lfp_gain
 offset_to_uV_lfp = -sample_offset * gain_to_uV_lfp
-lfp_rec = se.read_binary(os.path.join(data_directory, f'np1-lfp_{suffix}.raw'),
+rec_lfp = se.read_binary(os.path.join(data_directory, f'np1-lfp_{suffix}.raw'),
                          sampling_frequency=fs_hz_lfp,
                          dtype=np.uint16,
                          num_channels=num_channels,
                          gain_to_uV=gain_to_uV_lfp,
                          offset_to_uV=offset_to_uV_lfp)
-np1['lfp_uV'] = lfp_rec.get_traces(return_scaled=True, channel_ids=np.arange(plot_num_channels))
-
-lfp_time_mask = np.bitwise_and(np1['lfp_time'] >= start_t, np1['lfp_time'] < start_t + dur)
+rec_lfp.set_times(rec_ap.get_times()[::12], with_warning=False)
+rec_lfp_slice = rec_lfp.time_slice(start_time=start_t, end_time=start_t+dur)
 
 #%% Load BNO055 data
 
@@ -84,14 +75,16 @@ fig = plt.figure(figsize=(12, 8))
 
 # Plot scaled Neuropixels 1.0 AP data
 plt.subplot(611)
-plt.plot(np1['ap_time'][ap_time_mask], np1['ap_uV'][ap_time_mask])
+plt.plot(rec_ap_slice.get_times(), 
+         rec_ap_slice.get_traces(return_scaled=True, channel_ids=np.arange(plot_num_channels)))
 plt.xlabel('Time (seconds)')
 plt.ylabel('µV')
 plt.title('AP Band Voltage')
 
 # Plot scaled Neuropixels 1.0 LFP data
 plt.subplot(612)
-plt.plot(np1['lfp_time'][lfp_time_mask], np1['lfp_uV'][lfp_time_mask])
+plt.plot(rec_lfp_slice.get_times(), 
+         rec_lfp_slice.get_traces(return_scaled=True, channel_ids=np.arange(plot_num_channels)))
 plt.xlabel('Time (seconds)')
 plt.ylabel('µV')
 plt.title('LFP Band Voltage')

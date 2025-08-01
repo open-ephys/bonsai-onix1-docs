@@ -30,39 +30,27 @@ print(f'Acquisition clock rate was {meta["acq_clk_hz"] / 1e6 } MHz')
 
 #%% Load Neuropixels 2.0 Probe A data
 
-np2_a = {}
-
-# Load Neuropixels 2.0 probe A time data and convert clock cycles to seconds
-np2_a['time'] = np.fromfile(os.path.join(data_directory, f'np2-a-clock_{suffix}.raw'), dtype=np.uint64).astype(np.double) / meta['acq_clk_hz']
-
-# Load and scale Neuropixels 2.0 probe A ephys data
 rec_a = se.read_binary(os.path.join(data_directory, f'np2-a-ephys_{suffix}.raw'),
                      sampling_frequency=fs_hz,
                      dtype=np.uint16,
                      num_channels=num_channels,
                      gain_to_uV=gain_to_uV,
                      offset_to_uV=offset_to_uV)
-np2_a['ephys_uV'] = rec_a.get_traces(return_scaled=True, channel_ids=np.arange(plot_num_channels))
-
-np2_a_time_mask = np.bitwise_and(np2_a['time'] >= start_t, np2_a['time'] < start_t + dur)
+rec_a.set_times(np.fromfile(os.path.join(data_directory, f'np2-a-clock_{suffix}.raw'), dtype=np.uint64).astype(np.double) / meta['acq_clk_hz'],
+                with_warning=False)
+rec_a_slice = rec_a.time_slice(start_time=start_t, end_time=start_t+dur)
 
 #%% Load Neuropixels 2.0 Probe B data
 
-# np2_b = {}
-
-# Load Neuropixels 2.0 probe B time data and convert clock cycles to seconds
-# np2_b['time'] = np.fromfile(os.path.join(data_directory, f'np2-b-clock_{suffix}.raw'), dtype=np.uint64).astype(np.double) / meta['acq_clk_hz']
-
-# # Load and scale Neuropixels 2.0 probe B ephys data
 # rec_b = se.read_binary(os.path.join(data_directory, f'np2-b-ephys_{suffix}.raw'),
 #                      sampling_frequency=fs_hz,
 #                      dtype=np.uint16,
 #                      num_channels=num_channels,
 #                      gain_to_uV=gain_to_uV,
 #                      offset_to_uV=offset_to_uV)
-# np2_b['data_uV'] = rec_b.get_traces(return_scaled=True, channel_ids=np.arange(plot_num_channels))
-
-# np2_b_time_mask = np.bitwise_and(np2_b['time'] >= start_t, np2_b['time'] < start_t + dur)
+# rec_b.set_times(np.fromfile(os.path.join(data_directory, f'np2-b-clock_{suffix}.raw'), dtype=np.uint64).astype(np.double) / meta['acq_clk_hz'],
+#                 with_warning=False)
+# rec_b_slice = rec_b.time_slice(start_time=start_t, end_time=start_t+dur)
 
 #%% Load BNO055 data
 
@@ -81,14 +69,16 @@ fig = plt.figure(figsize=(12, 8))
 
 # Plot scaled Neuropixels 2.0 probe A data
 plt.subplot(611)
-plt.plot(np2_a['time'][np2_a_time_mask], np2_a['ephys_uV'][np2_a_time_mask])
+plt.plot(rec_a_slice.get_times(), 
+         rec_a_slice.get_traces(return_scaled=True, channel_ids=np.arange(plot_num_channels)))
 plt.xlabel('Time (seconds)')
 plt.ylabel('µV')
 plt.title('Neuropixels 2.0  Probe A')
 
 # Plot scaled Neuropixels 2.0 probe B data
 plt.subplot(612)
-# plt.plot(np2_b['time'][np2_b_time_mask], np2_b['data_uV'][np2_b_time_mask])
+# plt.plot(rec_b_slice.get_times(), 
+#          rec_b_slice.get_traces(return_scaled=True, channel_ids=np.arange(plot_num_channels)))
 plt.xlabel('Time (seconds)')
 plt.ylabel('µV')
 plt.title('Neuropixels 2.0 Probe B')
