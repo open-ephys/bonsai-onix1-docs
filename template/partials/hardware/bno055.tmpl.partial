@@ -49,8 +49,8 @@
       node and click "Enable".
     </li>
     <li>
-      Visit the <a href="https://github.com/open-ephys/wiki/wiki/IMU-Data">IMU Data</a> wiki article 
-      to learn more about how to interpret BNO055 data.
+      Visit the <a href="https://github.com/open-ephys/wiki/wiki/IMU-Data">IMU Data</a> article in the
+      Open Ephys wiki repo to learn more about how to interpret BNO055 data.
     </li>
   </ul>
 </div>
