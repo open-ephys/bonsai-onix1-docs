@@ -40,11 +40,17 @@
 
 <div class="NOTE">
   <h5>NOTE</h5>
-  <p>
-    <code>AutoCommutator</code> is included in the workflow because a commutator is often combined
-    with the {{{hardware}}} and the Breakout Board for freely-moving experiments. However, it is
-    disabled by default so that users without a commutator can run the workflow without additional
-    steps. To enable it, click on the node and press <kbd>Ctrl + Shift + D</kbd> or right-click the
-    node and click "Enable".
-  </p>
+  <ul>
+    <li>
+      <code>AutoCommutator</code> is included in the workflow because a commutator is often combined
+      with the {{{hardware}}} and the Breakout Board for freely-moving experiments. However, it is
+      disabled by default so that users without a commutator can run the workflow without additional
+      steps. To enable it, click on the node and press <kbd>Ctrl + Shift + D</kbd> or right-click the
+      node and click "Enable".
+    </li>
+    <li>
+      Visit the <a href="https://github.com/open-ephys/wiki/wiki/IMU-Data">IMU Data</a> article in the
+      Open Ephys wiki repo to learn more about how to interpret BNO055 data.
+    </li>
+  </ul>
 </div>
