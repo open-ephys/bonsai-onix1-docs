@@ -16,11 +16,14 @@ lfp_gain = 50                                              # Change to the lfp b
 start_t = 3.0                                              # Plot start time (seconds)
 dur = 2.0                                                  # Plot time duration (seconds)
 
+# If the "Invert Polarity" checkbox was unchecked in the configuration GUI when data was collected,
+# set the value below as negative instead of positive
+sample_gain = 1171.875
+
 # Neuropixels 1.0 constants
 fs_hz_ap = 30e3
 fs_hz_lfp = fs_hz_ap / 12
 sample_offset = 512
-sample_gain = 1171.875
 num_channels = 384
 
 #%%  Load acquisition session data

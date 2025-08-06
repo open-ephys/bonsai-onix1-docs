@@ -14,10 +14,13 @@ plot_num_channels = 10                                     # Number of channels 
 start_t = 3.0                                              # Plot start time (seconds)
 dur = 2.0                                                  # Plot time duration (seconds)
 
+# If the "Invert Polarity" checkbox was unchecked in the configuration GUI when data was collected,
+# set the value below as negative instead of positive
+gain_to_uV = 3.05176
+
 # Neuropixels 2.0 constants
 fs_hz = 30e3
-gain_to_uV = 3.05176
-offset_to_uV = -2048 * gain_to_uV
+offset_to_uV = -2048 * gain_to_uV 
 num_channels = 384
 
 #%%  Load acquisition session data
