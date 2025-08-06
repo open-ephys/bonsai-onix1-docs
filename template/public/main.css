@@ -253,19 +253,9 @@ li.nav-item > a.nav-link.active {
   color: rgb(255 255 255 / 100%);
 }
 
-.custom-header {
-  flex-wrap: wrap;
-  height: auto;
-}
-
-.custom-navbar {
-  flex-basis: 100%;
-}
-
 .custom-announcement-banner {
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-basis: 100%;
   background-color: var(--oe-purple-background);
+  border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
 }

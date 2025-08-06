@@ -59,7 +59,7 @@
 
   {{^redirect_url}}
   <body class="tex2jax_ignore" data-layout="{{_layout}}{{layout}}" data-yaml-mime="{{yamlmime}}">
-    <header class="bg-body border-bottom custom-header">
+    <header class="bg-body border-bottom">
       {{^_disableNavbar}}
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
@@ -83,14 +83,14 @@
         </div>
       </nav>
       {{/_disableNavbar}}
-      
-      {{^_disableAnnouncementBanner}}
-      <div class="custom-announcement-banner">
-        {{>partials/announcement-banner}}
-      </div>
-      {{/_disableAnnouncementBanner}}
     </header>
 
+    {{^_disableAnnouncementBanner}}
+    <div class="custom-announcement-banner">
+      {{>partials/announcement-banner}}
+    </div>
+    {{/_disableAnnouncementBanner}}
+      
     <main class="container-xxl">
       {{^_disableToc}}
       <div class="toc-offcanvas">

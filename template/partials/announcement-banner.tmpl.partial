@@ -1,6 +1,6 @@
-<p style="margin:0">
-  <span>&#9888;</span> This documentation supports the latest <a
-  href="https://open-ephys.github.io/onix-docs/Hardware%20Guide/PCIe%20Host/updating-firmware.html">
-  PCIe host firmware</a>, the latest <a href="https://github.com/open-ephys/bonsai-onix1/releases">
-  OpenEphys.Onix1 package</a>, and <a href="https://bonsai-rx.org/docs/articles/installation.html">Bonsai 2.9+</a>.
+<p style="margin:0.1rem">
+  This documentation supports 
+  the latest <a href="https://open-ephys.github.io/onix-docs/Hardware%20Guide/PCIe%20Host/updating-firmware.html">PCIe host firmware</a>, 
+  the latest <a href="https://github.com/open-ephys/bonsai-onix1/releases">OpenEphys.Onix1 package</a>, and 
+  <a href="https://bonsai-rx.org/docs/articles/installation.html">Bonsai 2.9+</a>.
 </p>
