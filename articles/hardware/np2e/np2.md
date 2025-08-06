@@ -20,7 +20,8 @@ press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>, or click `Enable` right-cli
 :::
 
 The <xref:OpenEphys.Onix1.NeuropixelsV2eData> operator generates a sequence of
-<xref:OpenEphys.Onix1.NeuropixelsV2eDataFrame>s using the following properties settings:
+[NeuropixelsV2eDataFrames](xref:OpenEphys.Onix1.NeuropixelsV2eDataFrame) using the following
+properties settings:
 - `BufferSize` is set to 30. Therefore, each frame will contain a [1 x 30 sample] `Clock` vector and a [384 channel x 30
   sample] `AmplifierData` matrix. The Neuropixels 2.0 probe samples at 30 kHz per channel so this corresponds to 1 ms of
   data.

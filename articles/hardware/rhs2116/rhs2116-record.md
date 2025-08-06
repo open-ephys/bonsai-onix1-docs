@@ -21,11 +21,10 @@ settings:
 - The DeviceName property is set to "HeadstageRhs2116/Rhs2116". This links
   `Rhs2116PairData` to the Rhs2116s on the Headstage Rhs2116.
 
-The relevant properties are extracted from the
-<xref:OpenEphys.Onix1.Rhs2116PairDataFrame> by right-clicking the `Rhs2116PairData`
-operator, and choosing the following Output members: Clock, AmplifierData, and
-DcData. The <xref:Bonsai.Dsp.MatrixWriter>s save the selected members to files
-with the following formats: `rhs2116pair-clock_<filecount>.raw`,
+The relevant properties are extracted from the <xref:OpenEphys.Onix1.Rhs2116PairDataFrame> by
+right-clicking the `Rhs2116PairData` operator, and choosing the following Output members: Clock,
+AmplifierData, and DcData. The [MatrixWriters](xref:Bonsai.Dsp.MatrixWriter) save the selected
+members to files with the following formats: `rhs2116pair-clock_<filecount>.raw`,
 `rhs2116pair-ac_<filecount>.raw`, `rhs2116pair-dc_<filecount>.raw`, and
 `rhs2116pair-recovery_<filecount>.raw` respectively.
 

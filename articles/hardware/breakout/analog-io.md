@@ -73,7 +73,8 @@ does exactly this on analog IO channel 0.
 :::
 
 The <xref:OpenEphys.Onix1.AnalogInput> operator receives a sequence of
-<xref:OpenEphys.Onix1.AnalogInputDataFrame>s with the following properties settings:
+[AnalogInputDataFrames](xref:OpenEphys.Onix1.AnalogInputDataFrame) with the following properties
+settings:
 
 - `BufferSize` is set to 50. Therefore, each frame will contain a 50-element
   `Clock` vector and a 12-channel x 50-sample `AnalogData` matrix. The analog inputs are sampled at

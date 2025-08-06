@@ -11,11 +11,11 @@ stimulation functionality by streaming and saving data from the Rhs2116 device.
 :::
 
 The <xref:OpenEphys.Onix1.DigitalInput> operator generates a sequence of
-<xref:OpenEphys.Onix1.DigitalInputDataFrame>s. Although the digital inputs are sampled at 4 Mhz,
-these data frames are only emitted when the port status changes (i.e., when a pin, button, or switch
-is toggled). In the example workflow, the `DigitalInput`'s DeviceName property is
-set to "BreakoutBoard/DigitalInput". This links the `DigitalInput` operator to the Breakout Board's
-digital inputs. 
+[DigitalInputDataFrames](xref:OpenEphys.Onix1.DigitalInputDataFrame). Although the digital inputs
+are sampled at 4 Mhz, these data frames are only emitted when the port status changes (i.e., when a
+pin, button, or switch is toggled). In the example workflow, the `DigitalInput`'s DeviceName
+property is set to "BreakoutBoard/DigitalInput". This links the `DigitalInput` operator to the
+Breakout Board's digital inputs. 
 
 <xref:OpenEphys.Onix1.BreakoutButtonState> is selected from the `DigitalInputDataFrame`. It is an
 enumerator with values that correspond to bit positions of the breakout board's digital port.
