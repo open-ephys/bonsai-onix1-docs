@@ -12,7 +12,8 @@ functionality by streaming and saving probe data.
 :::
 
 The <xref:OpenEphys.Onix1.NeuropixelsV1eData> operator generates a sequence of
-<xref:OpenEphys.Onix1.NeuropixelsV1DataFrame>s using the following properties settings:
+[NeuropixelsV1DataFrames](xref:OpenEphys.Onix1.NeuropixelsV1DataFrame) using the following
+properties settings:
 - `BufferSize` is set to 36. Therefore, each frame will contain a [1 x 36 sample] `Clock` vector, a [384
   channel x 36 sample] `SpikeData` matrix, and a [384 channel x 3 sample] `LfpData` matrix. The Neuropixels 1.0 probe
   samples AP data at 30 kHz per channel (LFP data is sampled at a rate of 1/12 of the rate AP data) so this corresponds

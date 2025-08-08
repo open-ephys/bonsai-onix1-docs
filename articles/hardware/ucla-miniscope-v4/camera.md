@@ -12,7 +12,7 @@ the user to dynamically modifying camera parameters.
 :::
 
 The <xref:OpenEphys.Onix1.UclaMiniscopeV4CameraData> operator generates a sequence of
-<xref:OpenEphys.Onix1.UclaMiniscopeV4CameraFrame>s using the following properties settings:
+[UclaMiniscopeV4CameraFrames](xref:OpenEphys.Onix1.UclaMiniscopeV4CameraFrame) using the following properties settings:
 - `DataType` is set to "U8". This sets the bit depth of each pixel in the image to eight (instead of ten if `DataType`
   is set to "U10")
 - `DeviceName` is set to "UclaMiniscopeV4/UclaMiniscopeV4". This links the `UclaMiniscopeV4CameraData` operator to the
