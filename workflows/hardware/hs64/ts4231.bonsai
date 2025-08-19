@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.8.5"
+<WorkflowBuilder Version="2.9.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:onix1="clr-namespace:OpenEphys.Onix1;assembly=OpenEphys.Onix1"
                  xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
@@ -22,9 +22,70 @@
         </Combinator>
       </Expression>
       <Expression xsi:type="io:CsvWriter">
+        <io:FileName>uncalibrated_ts4231_.csv</io:FileName>
         <io:Append>false</io:Append>
         <io:Overwrite>false</io:Overwrite>
-        <io:Suffix>None</io:Suffix>
+        <io:Suffix>FileCount</io:Suffix>
+        <io:IncludeHeader>false</io:IncludeHeader>
+        <io:Selector>Clock,Position</io:Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="onix1:TS4231V1SpatialTransform">
+          <onix1:SpatialTransform>
+            <onix1:A>
+              <onix1:M11>NaN</onix1:M11>
+              <onix1:M12>NaN</onix1:M12>
+              <onix1:M13>NaN</onix1:M13>
+              <onix1:M14>1</onix1:M14>
+              <onix1:M21>NaN</onix1:M21>
+              <onix1:M22>NaN</onix1:M22>
+              <onix1:M23>NaN</onix1:M23>
+              <onix1:M24>1</onix1:M24>
+              <onix1:M31>NaN</onix1:M31>
+              <onix1:M32>NaN</onix1:M32>
+              <onix1:M33>NaN</onix1:M33>
+              <onix1:M34>1</onix1:M34>
+              <onix1:M41>NaN</onix1:M41>
+              <onix1:M42>NaN</onix1:M42>
+              <onix1:M43>NaN</onix1:M43>
+              <onix1:M44>1</onix1:M44>
+              <onix1:Translation>
+                <onix1:X>NaN</onix1:X>
+                <onix1:Y>NaN</onix1:Y>
+                <onix1:Z>NaN</onix1:Z>
+              </onix1:Translation>
+            </onix1:A>
+            <onix1:B>
+              <onix1:M11>NaN</onix1:M11>
+              <onix1:M12>NaN</onix1:M12>
+              <onix1:M13>NaN</onix1:M13>
+              <onix1:M14>1</onix1:M14>
+              <onix1:M21>NaN</onix1:M21>
+              <onix1:M22>NaN</onix1:M22>
+              <onix1:M23>NaN</onix1:M23>
+              <onix1:M24>1</onix1:M24>
+              <onix1:M31>NaN</onix1:M31>
+              <onix1:M32>NaN</onix1:M32>
+              <onix1:M33>NaN</onix1:M33>
+              <onix1:M34>1</onix1:M34>
+              <onix1:M41>NaN</onix1:M41>
+              <onix1:M42>NaN</onix1:M42>
+              <onix1:M43>NaN</onix1:M43>
+              <onix1:M44>1</onix1:M44>
+              <onix1:Translation>
+                <onix1:X>NaN</onix1:X>
+                <onix1:Y>NaN</onix1:Y>
+                <onix1:Z>NaN</onix1:Z>
+              </onix1:Translation>
+            </onix1:B>
+          </onix1:SpatialTransform>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="io:CsvWriter">
+        <io:FileName>calibrated_ts4231_.csv</io:FileName>
+        <io:Append>false</io:Append>
+        <io:Overwrite>false</io:Overwrite>
+        <io:Suffix>FileCount</io:Suffix>
         <io:IncludeHeader>false</io:IncludeHeader>
         <io:Selector>Clock,Position</io:Selector>
       </Expression>
@@ -35,6 +96,8 @@
     <Edges>
       <Edge From="0" To="1" Label="Source1" />
       <Edge From="1" To="2" Label="Source1" />
+      <Edge From="2" To="3" Label="Source1" />
+      <Edge From="3" To="4" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>
