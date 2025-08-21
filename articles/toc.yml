@@ -7,8 +7,7 @@
   - href: getting-started/onix-acquisition.md
   - href: getting-started/visualize-data.md
 
-- name: Hardware Guides
-  href: hardware/index.md
+- href: hardware/index.md
   expanded: true
   items:
   - href: hardware/breakout/overview.md

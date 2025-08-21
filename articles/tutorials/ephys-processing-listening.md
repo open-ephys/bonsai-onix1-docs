@@ -30,7 +30,7 @@ package.
 > the data element produced by the <xref:OpenEphys.Onix1.Rhd2164Data> operator. The process of
 > navigating the reference to find pertinent information is the same for other ephys headstages that
 > you might want to use to follow along in this tutorial. It also helps to be familiar with the
-> example workflow for your particular hardware available in the <xref:hardware>.
+> example workflow for your particular hardware available in the <xref:data-acq-quick-start>.
 
 ## Get Started in Bonsai
 
