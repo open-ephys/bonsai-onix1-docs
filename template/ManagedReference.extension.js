@@ -133,15 +133,11 @@ exports.preTransform = function (model) {
         ]).filter(modelProperty => !properties.map(property => property.object).includes(modelProperty?.name))
       });
     }
-    else if (operator.configureDevice) {
+    else {
       properties = sortPropertiesData([
         ...extractPropertiesData(model, model.__global._shared),
         ...extractPropertiesFromInheritedMembersData(model, model.__global._shared),
       ]);
-    }
-    else {
-      model._noindex = model.name[0].value + ".html"; 
-      properties = [];
     }
     model.oe = {
       'name': model.name[0].value,
@@ -150,6 +146,9 @@ exports.preTransform = function (model) {
       'operator': operator,
       'properties': properties
     };
+    if (properties == false) {
+      model._noindex = model.name[0].value + ".html"; 
+    }
   }
   else if (model.type === 'enum') {
     model.oe = {
