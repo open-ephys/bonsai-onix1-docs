@@ -18,7 +18,7 @@ export default {
       title: 'Discord'
     }
   ],
-    start: () => {
-        WorkflowContainer.init();
-    }
+  start: () => {
+      WorkflowContainer.init();
+  }
 }

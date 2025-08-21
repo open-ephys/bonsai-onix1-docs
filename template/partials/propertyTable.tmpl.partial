@@ -10,24 +10,24 @@
   <tr>
     <td style = "white-space: nowrap;">
       <code id="{{{id}}}">{{{name}}}</code>
-      {{#acquisition}}
+    {{#acquisition}}
       <div>
         <a class="xref" href="~/api/OpenEphys.Onix1.html#acquisition">
-          <button class="badge oe-badge-border oe-badge-blue">
+          <button class="badge oe-badge-border oe-badge-blue" data-bs-toggle="tooltip" title="Default tooltip">
             Acquisition
           </button>
         </a>
       </div>
-      {{/acquisition}}
-      {{#configuration}}
+    {{/acquisition}}
+    {{#configuration}}
       <div>
-        <a class="xref" href="~/api/OpenEphys.Onix1.html#configuration">
-          <button class="badge oe-badge-border oe-badge-yellow">
+        <a class="xref" href="~/api/OpenEphys.Onix1.htmll#configuration">
+          <button class="badge oe-badge-border oe-badge-yellow" data-bs-toggle="tooltip" title="Default tooltip">
             Configuration 
           </button>
         </a>
       </div>
-      {{/configuration}}
+    {{/configuration}}
     </td>
     <td style = "white-space: nowrap;">
       {{{type}}}
