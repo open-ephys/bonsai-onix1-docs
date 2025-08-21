@@ -4,7 +4,7 @@
     {{#acquisition}}
       <div>
         <a class="xref" href="~/articles/getting-started/property-categories.html#acquisition">
-          <button class="badge bg-primary-subtle border border-primary-subtle text-primary-emphasis rounded-pill" data-bs-toggle="tooltip" data-bs-title="Default tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip">
+          <button class="badge bg-primary-subtle border border-primary-subtle text-primary-emphasis rounded-pill" data-bs-toggle="tooltip" title="Default tooltip">
             acquisition
           </button>
         </a>
@@ -13,7 +13,7 @@
     {{#configuration}}
       <div>
         <a class="xref" href="~/articles/getting-started/property-categories.html#configuration">
-          <button class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill" data-bs-toggle="tooltip" data-bs-title="Default tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip">
+          <button class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill" data-bs-toggle="tooltip" title="Default tooltip">
             configuration 
           </button>
         </a>

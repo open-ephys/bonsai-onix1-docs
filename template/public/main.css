@@ -95,8 +95,3 @@ h6 {
   /* originally font-size: 1rem; */
   font-size: 1.2rem;
 }
-
-.custom-tooltip {
-  --bs-tooltip-color: var(--bs-secondary-text);
-  --bs-tooltip-bg: var(--bs-secondary-bg-subtle);
-}
