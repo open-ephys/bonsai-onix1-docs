@@ -13,7 +13,8 @@
     {{#acquisition}}
       <div>
         <a class="xref" href="~/api/OpenEphys.Onix1.html#acquisition">
-          <button class="badge oe-badge-border oe-badge-blue" data-bs-toggle="tooltip" title="Default tooltip">
+          <button class="badge oe-badge-border oe-badge-blue" data-bs-toggle="tooltip" 
+          title="Configuration properties have an effect on hardware when a workflow is started and are used to initialize the hardware state. If they are changed while a workflow is running, they will not have an effect until the workflow is restarted.">
             Acquisition
           </button>
         </a>
@@ -22,7 +23,8 @@
     {{#configuration}}
       <div>
         <a class="xref" href="~/api/OpenEphys.Onix1.htmll#configuration">
-          <button class="badge oe-badge-border oe-badge-yellow" data-bs-toggle="tooltip" title="Default tooltip">
+          <button class="badge oe-badge-border oe-badge-yellow" data-bs-toggle="tooltip"
+          title="Acquisition properties have an immediate effect on hardware when the workflow is running.">
             Configuration 
           </button>
         </a>
