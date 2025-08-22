@@ -34,6 +34,8 @@
     "globalMetadata": {
       "_enableNewTab": true,
       "_enableSearch": true,
+      "_searchIndexUseMetadata": true,
+      "_searchIndexUseMetadataTitle": false,
       "pdf": false,
       "_appFooter": "&copy; Open Ephys and Contributors. Made with <a href=\"https://dotnet.github.io/docfx\">docfx</a>",
       "_appFaviconPath": "favicon.png",
