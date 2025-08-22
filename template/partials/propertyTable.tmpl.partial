@@ -22,7 +22,7 @@
     {{/acquisition}}
     {{#configuration}}
       <div>
-        <a class="xref" href="~/api/OpenEphys.Onix1.htmll#configuration">
+        <a class="xref" href="~/api/OpenEphys.Onix1.html#configuration">
           <button class="badge oe-badge-border oe-badge-yellow" data-bs-toggle="tooltip"
           title="Acquisition properties have an immediate effect on hardware when the workflow is running.">
             Configuration 
