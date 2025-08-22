@@ -37,14 +37,20 @@
 
 {{^constituentOperator}}
 <a class="xref" href="~/api/OpenEphys.Onix1.html#device-group">
-  <button class="badge oe-badge-border oe-badge-green">Device Group</button>
+  <button class="badge oe-badge-border oe-badge-green" data-bs-toggle="tooltip" 
+  title="Device Group properties are only available through Device Group configuration operators. These properties are used to configure a group of devices.">
+    Device Group
+  </button>
 </a>
 <p>These are properties of the {{{oe.name}}} <a class="xref" href="~/api/configure.html">Device Group configuration operator</a>:</p>
 {{/constituentOperator}}
 
 {{#constituentOperator}}
 <a class="xref" href="~/api/OpenEphys.Onix1.html#device">
-  <button class="badge oe-badge-border oe-badge-purple">Device</button>
+  <button class="badge oe-badge-border oe-badge-purple" data-bs-toggle="tooltip" 
+  title="Device properties are available through Device configuration operators and Device Group configuration operators which typically combine multiple individual devices. These properties are used to configure a single device.">
+    Device
+  </button>
 </a>
 <p>{{{object}}} is a {{{type}}} device operator contained by the {{{oe.name}}} operator with the following properties:</p>
 {{/constituentOperator}}
