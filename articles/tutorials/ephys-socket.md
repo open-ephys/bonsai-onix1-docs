@@ -19,8 +19,8 @@ Open Ephys GUI:
 > - This tutorial uses NeuropixelsV1e Headstage as an example, but the process is
 >   similar for other ephys headstages. In fact, this tutorial can be used to send
 >   data from any Bonsai operator that produces [matrices](xref:OpenCV.Net.Mat).
-> - This tutorial assumes you are familiar with the [hardware guide](xref:hardware) 
->   of the ONIX headstage you intend to use. 
+> - This tutorial assumes you are familiar with the <xref:data-acq-quick-start> 
+>   guide for the ONIX headstage you intend to use. 
 > - A [video summary](#video-summary) of this tutorial is is available at the
 >   bottom of this page.
 
@@ -126,7 +126,7 @@ for "SpikeData" and "LfpServer" for "LfPData".
 > Although the Open Ephys GUI has recording functionality, data acquired using
 > the Bonsai.Onix1 package should be written to disk in Bonsai because it is
 > possible for data to be lost e.g. if the TCP Buffer overflows. You can learn
-> to do this by following the [Hardware Guides](xref:hardware) for your
+> to do this by following the <xref:data-acq-quick-start> guide for your
 > particular hardware. For example, if you are using the NeuropixelsV1e
 > Headstage like the example, you would follow the [NeuropixelsV1e Headstage Hardware
 > Guide](xref:np1e).
