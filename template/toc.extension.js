@@ -87,6 +87,7 @@ exports.preTransform = function (model) {
           }
           else if (model.items[0].items[i].name.includes('ContextTask') || 
           model.items[0].items[i].name.includes('OutputClockParameters') ||
+          model.items[0].items[i].name.includes('DataFrame') ||
           globalModel?.inheritance.some(inherited => inherited.uid === 'OpenEphys.Onix1.DataFrame' || inherited.uid === 'OpenEphys.Onix1.BufferedDataFrame'))
           {
             items[3].items.push(model.items[0].items[i]);

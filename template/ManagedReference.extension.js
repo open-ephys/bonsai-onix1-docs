@@ -146,6 +146,9 @@ exports.preTransform = function (model) {
       'operator': operator,
       'properties': properties
     };
+    if (properties == false) {
+      model._noindex = model.name[0].value + ".html"; 
+    }
   }
   else if (model.type === 'enum') {
     model.oe = {
