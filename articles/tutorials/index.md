@@ -12,6 +12,6 @@ Tutorials include:
   data in Bonsai.
 - [Visualize Data in the Open Ephys GUI](xref:ephys-socket): teaches how to stream ephys data from
   Bonsai to the Open Ephys GUI through an intermediary TCP connection for advanced visualizations.
-- [Calibrate TS4231 Measurements](xref:ts4231-calibration): demonstrates how to convert TS4231
+- [Calibrate TS4231 Measurements](xref:calibrate-ts4231): demonstrates how to convert TS4231
   position coordinates from the TS4231 device reference frame to a reference frame that is more
   intuitive or relevant to the experimental system using the TS4231V1 Position Calibration GUI.
