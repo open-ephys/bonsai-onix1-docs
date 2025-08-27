@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.8.5"
+<WorkflowBuilder Version="2.9.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:onix1="clr-namespace:OpenEphys.Onix1;assembly=OpenEphys.Onix1"
                  xmlns="https://bonsai-rx.org/2018/workflow">
@@ -13,12 +13,11 @@
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="onix1:ConfigureLoadTester">
-          <onix1:DeviceName>LoadTester</onix1:DeviceName>
           <onix1:DeviceAddress>0</onix1:DeviceAddress>
-          <onix1:Enable>true</onix1:Enable>
+          <onix1:Enable>false</onix1:Enable>
           <onix1:ReceivedWords>0</onix1:ReceivedWords>
           <onix1:TransmittedWords>0</onix1:TransmittedWords>
-          <onix1:FramesPerSecond>1000</onix1:FramesPerSecond>
+          <onix1:FramesPerSecond>0</onix1:FramesPerSecond>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
