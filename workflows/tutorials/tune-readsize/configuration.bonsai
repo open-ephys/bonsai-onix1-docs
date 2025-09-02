@@ -16,9 +16,9 @@
           <onix1:DeviceName>Load Tester</onix1:DeviceName>
           <onix1:DeviceAddress>11</onix1:DeviceAddress>
           <onix1:Enable>true</onix1:Enable>
-          <onix1:ReceivedWords>240</onix1:ReceivedWords>
+          <onix1:ReceivedWords>392</onix1:ReceivedWords>
           <onix1:TransmittedWords>100</onix1:TransmittedWords>
-          <onix1:FramesPerSecond>100000</onix1:FramesPerSecond>
+          <onix1:FramesPerSecond>60000</onix1:FramesPerSecond>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
