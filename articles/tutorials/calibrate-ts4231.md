@@ -31,9 +31,11 @@ user-defined coordinate system.
     Open Bonsai and paste this workflow by clicking the Bonsai workflow editor pane and hitting
     <kbd>Ctrl+V</kbd>.
 
-    > [!TIP]
-    > Visit the <xref:hs64_workflow> and <xref:hs64_ts4231> pages to develop a foundation on how to
-    > use Bonsai to acquire data from an Onix headstage that has a TS4231 device.
+    Visit the <xref:hs64_workflow> and <xref:hs64_ts4231> pages to develop a foundation on how to
+    use Bonsai to acquire data from an Onix headstage that has a TS4231 device. The primary
+    difference between this workflow and the example Headstage 64 workflow is that there is
+    transform operator for converting coordinates in the TS4231V1 reference frame to a user defined
+    reference frame.
 
 1.  Before beginning the calibration process, confirm that the lighthouse configuration can measure
     the position of your TS4231 device across the entire desired range. To do this, [start the
@@ -55,7 +57,7 @@ user-defined coordinate system.
     -   Click TS4231V1SpatialTransform node to show its properties in the properties panel.
     -   Click the <kbd>...</kbd> next to the "SpatialTransform" property.
 
-    ![Screenshot of blank TS4231V1 Calibration GUI](../../images/ts4231v1-calibration-gui.png)
+    ![Screenshot of blank TS4231V1 Calibration GUI](../../images/tutorials/calibrate-ts4231/calibration-gui.png)
 
 1.  Mark four points in your behavioral arena. The position coordinates of these four points will be
     measured both in the TS4231 reference frame by the TS4231 device itself and in the user-defined
@@ -72,7 +74,12 @@ user-defined coordinate system.
     > error into the spatial transformation matrix. Balance this consideration with ease of knowing
     > or measuring those coordinates.
 
-    Here is a real-world example of four coordinates chosen in our that we used on our workbench:
+    Here is a real-world example of four coordinates on our workbench that we use to
+    demonstrate the calibration process:
+
+    ![Photo of four calibration points](../../images/tutorials/calibrate-ts4231/calibration-points.webp){width=75%}
+
+    The light red space is an arbitrarily-defined working area for this demo.
 
 1.  For each of the four points defined in the previous step:
 
@@ -83,27 +90,36 @@ user-defined coordinate system.
         the TS4231 device is within range of and unobstructed from the lighthouse transmitter. If
         the TS4231 measurement completes successfully, the corresponding entry in form is
         automatically populated. Otherwise, that entry stays empty. In either case, you will be
-        informed in the "Status Messages" text box.
+        informed in the "Status Messages" text box. If the TS4231 measurement fails, you may have to
+        reorient your Headstage64 or go back to the step in the previous section that describes how
+        to make sure the lighthouse configuration covers the entire area that your TS4231 device
+        will occupy.
 
-    -   Populate the X, Y, and Z entries of the user-defined coordinates in the corresponding row.
+    -   Populate the X, Y, and Z entries of the user-defined coordinates column in the corresponding
+        row.
+
+    > [!TIP]
+    > Be as precise and accurate as possible with both the placement of the TS4231 device and the
+    > manual measurements when performing this calibration step. Consider making a fixture to fix
+    > the orientation of the TS4231 device and help set it in positions that are more easily
+    > measured or easier to figure out using features in the behavioral arena that have known
+    > dimensions.
 
     Once all fields in the Calibration GUI are populated with valid entries, the spatial transform
     matrix is automatically calculated. When the spatial transform matrix is calculated, this will
     be indicated in the GUI's bottom status strip and the spatial transform matrix text box such as
     in the following screenshot: 
     
-    ![Screenshot of TS4231V1 Calibration GUI with calculated matrix](../../images/ts4231v1-calibration-gui_matrix-calculated.png)
+    ![Screenshot of TS4231V1 Calibration GUI with calculated matrix](../../images/tutorials/calibrate-ts4231/calibration-gui_matrix-calculated.png)
 
 1.  When spatial transform is calculated, click OK to proceed. This updates the spatial transform
     matrix used by the TS4231V1SpatialTransform operator. This recalibrated spatial transform matrix
     should be immediately apparent in the TS4231V1SpatialTransform position data visualizer.
     
-    If you are presented with the following confirmation dialog when OK is clicked:
+    If you are presented with the following confirmation, return to the TS4231 Calibration GUI main
+    form to fix the entries that were indicated invalid in the confirmation dialog.
     
-    ![Screenshot of TS4231V1 Calibration GUI confirmation dialog](../../images/ts4231v1-calibration-gui_confirmation-dialog.png)
-
-    return to the TS4231 Calibration GUI main form to fix the entries that were indicated invalid in
-    the confirmation dialog.
+    ![Screenshot of TS4231V1 Calibration GUI confirmation dialog](../../images/tutorials/calibrate-ts4231/calibration-gui_confirmation-dialog.png)
 
 > [!IMPORTANT]
 > After calibration the TS4231V1 spatial transform matrix, it is important to not change the
@@ -113,4 +129,15 @@ user-defined coordinate system.
 ## Verify TS4231 Calibration
 
 After following one of the two methods in the previous section, [visualize](xref:visualize-data) the
-calibrated data and confirm that the transformed data matches your expectations:
+calibrated data and confirm that the transformed data matches your expectations. Inspecting the
+Position visualizer in Bonsai while moving the TS4231 device is a first-order test. To be more
+robust, choose a bunch of points (none of which should be the four calibration points) and check
+that their calibrated coordinates are what you expect.
+
+Below is a animation of the 3D trajectory reconstructed in Python synced with video data for
+demonstration purposes. 
+
+<video controls style="width:100%">
+  <source src="../../images/tutorials/calibrate-ts4231/ts4231-calibration-demo.mp4" type="video/mp4">
+</video>
+
