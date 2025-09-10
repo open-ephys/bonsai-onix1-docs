@@ -285,24 +285,38 @@ The results of our experimentation are as follows:
 These results may differ for your experimental system. For example, your system
 might have different bandwidth requirements (if you are using different devices,
 data is produced at a different rate) or use a computer with different
-performance capabilities (which changes how quickly read operations can occur). 
-For example, here is a similar table made by configuring the Load Tester 
-device to produce data at a rate similar to two 64-channel Intan chips (such
-as what is on the <xref:hs64>):
+performance capabilities (which changes how quickly read operations can occur).
+For example, here is a similar table made by configuring the Load Tester device
+to produce data at a rate similar to a single 64-channel Intan chip (such as
+what is on the <xref:hs64>), ~4.3 MB/s:
 
-![screenshot of ConfigureLoadTester's property editor for two Intan chips](../../images/tutorials/tune-readsize/load-tester-configuration_properties-editor_2x-64ch.webp)
+![screenshot of ConfigureLoadTester's property editor for a single Intan chips](../../images/tutorials/tune-readsize/load-tester-configuration_properties-editor_64ch.webp)
 
-| `ReadSize` | Latency        | Buffer Usage   | Notes                                                                                             |
-|------------|----------------|----------------|---------------------------------------------------------------------------------------------------|
-| 1024 bytes | ~200 μs        | Stable at 0%   | Perfectly adequate if that are no strict low latency requirements, lowest risk of buffer overflow |
-| 512 bytes  | ~80 μs         | Stable near 0% | Balances latency requirements with low risk of buffer overflow                                    |
-| 256 bytes  | Rises steadily | Unstable       | Certain buffer overflow and terrible closed loop performance                                      |
+| `ReadSize` | Latency        | Buffer Usage | Notes                                                                             |
+|------------|----------------|--------------|-----------------------------------------------------------------------------------|
+| 1024 bytes | ~200 μs        | Stable at 0% | Perfectly adequate if that are no strict low latency requirements                 |
+| 512 bytes  | ~110 μs        | Stable at 0% | Lower latency, no risk of buffer overflow                                         |
+| 256 bytes  | ~80 μs         | Stable at 0% | Lowest achievable latency with this setup, still no risk of buffer overflow       |
+| 128 bytes  | -              | -            | Results in error -- 128 bytes is too small for the current hardware configuration |
 
-Additionally, in this tutorial, there was minimal computational load imposed by
+Regarding the last row of the above table, the lowest `ReadSize` possible is
+determined by the size of the largest data frame produced by enabled devices
+(plus some overhead). Even with the lowest possible `ReadSize` value, 256 bytes,
+there is very little risk of overflowing the buffer. The PercentUsed visualizer
+shows that the hardware buffer does not accumulate data:
+
+![](../../images/tutorials/tune-readsize/percent-used_256_lower-payload.png)
+
+These two tables together demonstrates why it is impossible to recommend a
+single correct value for `ReadSize` that is adequate for all experiments. The
+diversity of experiments (in particular, the wide range at which they produce
+data) requires a range of `ReadSize` values.
+
+Last, in this tutorial, there was minimal computational load imposed by
 the workflow itself. In most applications, some processing is performed on the 
-data to generate the feedback signal. Its important to take this into account 
+data to generate the feedback signal. It's important to take this into account 
 when tuning your system and potentially modifying the workflow to perform 
 computations on incoming data in order to account for the effect of 
 computational demand on closed loop performance.
 
-<!-- ## Tuning `ReadSize` with Real-Time Processing -->
+<!-- ## Tuning `ReadSize` with Real-Time Computation -->
