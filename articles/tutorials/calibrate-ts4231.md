@@ -10,6 +10,10 @@ of four points in both the TS4231 device's reference frame and the user-defined 
 calculate a spatial transform matrix which transforms all coordinates measured by the TS4231 to the
 user-defined coordinate system.
 
+^^^
+![crop of figure 3 from "ONIX: a unified open-source platform..."](../../images/tutorials/calibrate-ts4231/ts4231-figure-demo.webp)
+^^^ From figure 3 of [ONIX: a unified open-source platform for multimodal neural recording and perturbation during naturalistic behavior](https://www.nature.com/articles/s41592-024-02521-1), the TS4231 device was used to track a mouse's 3D position over the course of a 7.3-h-long recording.
+
 ## Prerequisites
 
 1.  First, confirm the Lighthouse transmitters are properly mounted according to the [Lighthouse
@@ -80,6 +84,7 @@ user-defined coordinate system.
     ![Photo of four calibration points](../../images/tutorials/calibrate-ts4231/calibration-points.webp){width=75%}
 
     The light red space is an arbitrarily-defined working area for this demo.
+    Units are in cm.
 
 1.  For each of the four points defined in the previous step:
 
