@@ -3,6 +3,8 @@ uid: tune-readsize
 title: Optimizing Closed Loop Performance
 ---
 
+<-- Data between hardware and software is transmitted in buffers, that are xxx. require read and write operations. These take time, overhead. Performance is a tradeoff: smaller chunks of data will get to the host pc faster so we can process them. but if data is processed in small chunks, more operations are needed, creating more overhead. too many read operations increase processing time, negatively impacting performance. I guess this is below more technically once concepts are explained, but still -->
+
 This tutorial shows how to optimize the
 <xref:OpenEphys.Onix1.StartAcquisition>'s
 <xref:OpenEphys.Onix1.StartAcquisition.ReadSize> property for your specific data
@@ -11,6 +13,8 @@ processing. This tutorial provides a method to tune `ReadSize` within the
 context of your particular data sources and computer specifications in order to 
 achieve the fastest possible response times for closed-loop experiments. In most
 situations, sub-200 microsecond closed-loop response times can be achieved.
+
+<-- why don't the write operations matter? i.e. i understand we tune the read to get better read/write (closed-loop) -->
 
 > [!NOTE]
 > Performance will vary based on your computer's capabilities and your results
@@ -21,17 +25,24 @@ situations, sub-200 microsecond closed-loop response times can be achieved.
 > - GPU: NVIDIA GTX 1070 8GB
 > - OS: Windows 11
 
-## Hardware Buffer and ReadSize
+## Data transmission from ONIX Hardware to Host Computer software
+
+<-- this first paragraph is about hardware buffer but the procedure is about what is happening on the host pc. I would introduce the hardware buffer after the procedure. or better yet, give the takeaways first (see below) -->
 
 The ONIX **Hardware Buffer** consists of 2GB of dedicated RAM
 that belongs to the acquisition hardware (it is _not_ RAM in the host computer).
-The hardware buffer temporarily stores data that has not yet been transferred to
+The hardware buffer can be used to temporarily store data that has not yet been transferred to
 the host. When the host software is consuming data optimally, the hardware
 buffer is bypassed entirely and data flows directly from production to the host 
 computer's RAM, minimizing the latency between data collection and processing.
 
-Each time the host software reads data from the hardware, it obtains
-**ReadSize** bytes of data using the following procedure:
+<-- does this minimize? actually below the hw buffer bypass scenario is not the one with lower latencies. It's the one in which the buffer is used properly without overflow (doubt1) -->
+
+Each time the host computer software reads data from the ONIX hardware, it obtains an amount 
+**ReadSize** of bytes of data using the following procedure:
+
+<-- Not sure how much they need to know the exact procedure, perhaps the key takeaways first, then the explanation. -->
+<-- The takeaways should be what is needed to follow the tutorial. The other explanation they might skip through. -->
 
 1. A block of memory that is `ReadSize` bytes long is allocated on the host by 
    the API for the purpose of holding incoming data from ONIX hardware.
@@ -43,8 +54,8 @@ Each time the host software reads data from the hardware, it obtains
    [DMA transfer](https://en.wikipedia.org/wiki/Direct_memory_access). DMA 
    allows data transfer to be performed by ONIX hardware without additional CPU 
    intervention.
-3. The data transfer completes once `ReadSize` bytes have been produced. The 
-   RIFFA driver moves the memory block from kernel mode to user mode so that it 
+3. The data transfer completes once `ReadSize` bytes have been produced.
+4. The RIFFA driver moves the memory block from kernel mode to user mode so that it 
    can be accessed by software. The API function returns with a pointer to the 
    filled buffer.
 
@@ -63,12 +74,14 @@ The key take-away points about this process are:
    this situation. The goal of this tutorial is to allow your system to operate 
    in this regime.
 
+<-- but actually below the hw buffer bypass scenario is not the one with lower latencies. It's the one in which the buffer is used properly without overflow (same doubt1) -->
+
 The size of hardware-to-host data transfers is determined by the
 <xref:OpenEphys.Onix1.StartAcquisition.ReadSize> property of the
-StartAcquisition operator which is in every workflow that uses
+StartAcquisition operator which is in every Bonsai workflow that uses
 <xref:OpenEphys.Onix1> to acquire data from ONIX. Choosing an optimal `ReadSize`
 value balances the tradeoff between latency and overall bandwidth. Smaller
-`ReadSize` values mean that less data is required before the RIFFA driver 
+`ReadSize` values mean that less data is required before the RIFFA driver
 relinquishes control of the buffer to software. This, in effect, means software 
 can start operating on data closer to the time that the data was produced, and 
 thus lower-latency feedback loops can be achieved. However, each data transfer 
@@ -92,12 +105,14 @@ computer and experimental acquisition setup.
 
 Copy the following workflow into the Bonsai workflow editor by hovering over
 workflow image and clicking on the clipboard icon that appears. Open Bonsai and
-paste this workflow by clicking the Bonsai workflow editor pane and hitting
+paste this workflow by clicking the Bonsai workflow editor pane and pressing
 <kbd>Ctrl+V</kbd>.
 
 ::: workflow
 ![SVG of load tester workflow](../../workflows/tutorials/tune-readsize/tune-readsize.bonsai)
 :::
+
+<-- why not use the actual experimental hardware instead of the load tester? -->
 
 ### Hardware Configuration
 The top-row configuration chain includes a
@@ -119,6 +134,8 @@ our closed loop experiment, feedback signals will be generated as a function of
 data acquired from two Neuropixels 2.0 probes, each of which generates a 384
 channel sample at 30 kHz. The overall bandwidth is
 
+<-- explain where the 2 bytes per sample comes from -->
+
 $$
 \begin{equation}
   2\,probes*\frac{384\,chan.}{probe}*\frac{30\,ksamp.}{sec\,chan.}*\frac{2\,bytes}{samp.} \approx 47\,MB/s
@@ -136,9 +153,9 @@ bandwidth as two Neuropixels 2.0 probes with the following settings:
 - `DeviceName` is set to "Load Tester"
 - `Enable` is set to True to enable the LoadTester device.
 - `FramesPerSecond` is then set to 60,000 Hz. The rate at which frames are
-  produced by two probes.
+  produced by two probes, since each is acquired independently.
 - `ReceivedWords` is set to 392 bytes, the size of a single
-  <xref:OpenEphys.Onix1.NeuropixelsV2eDataFrame>.
+  <xref:OpenEphys.Onix1.NeuropixelsV2eDataFrame>, which includes xx extra bytes besides the neuropixels data.
 - `TransmittedWords` is set to 100 bytes. This simulates the amount of data
   required to e.g. send a stimulus waveform.
 
@@ -148,10 +165,16 @@ bandwidth as two Neuropixels 2.0 probes with the following settings:
 > and therefore is not made available through
 > <xref:OpenEphys.Onix1.ConfigureBreakoutBoard> like the rest of the local
 > devices (analog IO, digital IO, etc.)
+<-- so how to find device addresses? -->
+
 
 Next we configure <xref:OpenEphys.Onix1.StartAcquisition>'s
 <xref:OpenEphys.Onix1.StartAcquisition.ReadSize>
-<xref:OpenEphys.Onix1.StartAcquisition.WriteSize> properties. `WriteSize` is set
+<xref:OpenEphys.Onix1.StartAcquisition.WriteSize> properties.
+
+<-- WriteSize also exists. it is this. we set it to xx. because of... -->
+
+`WriteSize` is set
 to 16384 bytes. This defines a readily-available pool of memory for the creation
 of output data frames. A larger size will reduce the frequency of dynamic memory
 allocation system calls but increase the expense of each of those calls. The
@@ -163,6 +186,7 @@ Later in this tutorial, we'll examine the effect of this value on real-time
 performance.
 
 ### Real-time Loop
+
 The bottom half of the workflow is used to stream data back to the load testing
 device from hardware so that it can perform a measurement of round trip latency.
 The <xref:OpenEphys.Onix1.LoadTesterData> operator acquires a sequence of
@@ -218,11 +242,24 @@ nodes:
 
 Since data is produced at about 47MB/s, it takes about 340 μs to produce 16384 
 bytes of data. This means that the data contained in a single `ReadSize` block 
-was generated in the span of approximately 340 μs. Because we are using every 
+was generated in the span of approximately 340 μs.
+
+<-- from here -->
+
+Because we are using every 
 100th sample to generate feedback, the sample that is actually used to trigger 
 an output could be any from that 340 μs span resulting in latencies that are 
-lower then 340 μs. This is reflected in the Histogram1D visualizer. The average
-latency is ~300 μs (in this plot, 1000 corresponds to 1 ms) and can be as low as
+lower then 340 μs. This is reflected in the Histogram1D visualizer.
+
+<-- to here, i think this explains why it is variable, which is a separate point. in my chain of thought i wanted to hear about the 300mus first -->
+
+The average latency is ~300 μs
+
+<-- potentially what the plots are and the three things we will look at (average, variability, y scale) can be explained above before starting the three cases -->
+
+(in this plot, 1000 corresponds to 1 ms) <-- would it be clearer to say: the y axis is in mus ? -->
+
+and can be as low as
 ~60 μs. The long tail in the distribution corresponds to instances when the
 hardware buffer was used or the operating system was busy with other tasks.
 
