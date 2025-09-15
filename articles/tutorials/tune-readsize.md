@@ -236,7 +236,7 @@ Memory Monitor](xref:breakout_memory-monitor) page.
 ### Relevant Visualizers
 
 The desired output of this workflow are the [visualizers](xref:visualize-data)
-for the Histogram1D and PercentUsed nodes. Below is example of each which we
+for the Histogram1D and PercentUsed nodes. Below is an example of each which we
 will explore more in the next section:
 
 ![screenshot of Histogram1D visualizers with `ReadSize` 16384](../../images/tutorials/tune-readsize/histogram1d_16384.webp)
@@ -363,18 +363,16 @@ shows that the hardware buffer does not accumulate data:
 
 ![](../../images/tutorials/tune-readsize/percent-used_256_lower-payload.png)
 
->   [!TIP]
->   -   The only constraint on `ReadSize` is the lower limit as demonstrated in
->       the example of tuning for `ReadSize` for a single 64-channel Intan chip.
->       We only tested `ReadSize` values that are a power of 2, but `ReadSize`
->       can be fine-tuned further to achieve even tighter latencies if
->       necessary.
->   -   **As of OpenEphys.Onix1 0.7.0**: Although `ReadSize` can be set to any
->       value by the user (except the constraint described in the previous
->       bullet point), the ONIX1 Bonsai package rounds this `ReadSize` to the
->       nearest multiple of four and uses that value instead. For example, if
->       you try to set `ReadSize` to 887, the software will use the value 888
->       instead.
+> [!TIP]
+> -   The only constraint on `ReadSize` is the lower limit as demonstrated in
+>     the example of tuning for `ReadSize` for a single 64-channel Intan chip.
+>     We only tested `ReadSize` values that are a power of 2, but `ReadSize` can
+>     be fine-tuned further to achieve even tighter latencies if necessary.
+> -   **As of OpenEphys.Onix1 0.7.0**: Although `ReadSize` can be set to any
+>     value by the user (besides the constraint described in the previous bullet
+>     point), the ONIX1 Bonsai package rounds this `ReadSize` to the nearest
+>     multiple of four and uses that value instead. For example, if you try to
+>     set `ReadSize` to 887, the software will use the value 888 instead.
 
 These two tables together demonstrates why it is impossible to recommend a
 single correct value for `ReadSize` that is adequate for all experiments. The
