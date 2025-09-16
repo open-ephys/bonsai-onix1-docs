@@ -11,7 +11,7 @@ times can be achieved.
 
 > [!NOTE]
 > Performance will vary based on your computer's capabilities and your results
-> might differ those presented below. The computer used to create this tutorial
+> might differ from those presented below. The computer used to create this tutorial
 > has the following specs:
 >
 > - CPU: Intel i9-12900K
@@ -21,8 +21,8 @@ times can be achieved.
 
 ## Data Transmission from ONIX Hardware to Host Computer
 
-ONIX is capable of transferring data directly from production directly to the
-host computer. However, if the host is busy at the moment of when ONIX starts
+ONIX is capable of transferring data directly from production to the
+host computer. However, if the host is busy when ONIX starts
 producing data, ONIX will temporarily store this new data in its hardware buffer
 while it waits for the host to be ready to accept new data. 
 
@@ -32,9 +32,7 @@ Key details about this process:
     <xref:OpenEphys.Onix1.StartAcquisition.ReadSize> property of the
     <xref:OpenEphys.Onix1.StartAcquisition> operator which is in every Bonsai
     workflow that uses <xref:OpenEphys.Onix1> to acquire data from ONIX.
--   The duration of a single read operation does not depend on the value of
-    `ReadSize`. Therefore, increasing `ReadSize` allows the host to read data
-    from ONIX more rapidly.
+-   Increasing `ReadSize` allows the host to read larger chunks of data from ONIX per read operation without significantly increasing the duration of the read operation, therefore increasing the maximum rate at which data can be read.
 -   If the host is busy or cannot perform read operations rapidly enough to keep
     up with the rate at which ONIX produces data, the ONIX hardware buffer will
     start to accumulate excessive data. 
@@ -47,18 +45,18 @@ In other words, smaller `ReadSize` values mean that ONIX needs to produce less
 data before the host can access it. This, in effect, means software can start
 operating on data closer to the time that the data was produced, and thus
 lower-latency feedback loops can be achieved. However, each data transfer incurs
-significant overhead. If `ReadSize` is so low that it takes less time for the
+significant overhead. If `ReadSize` is so small that it takes less time for the
 hardware to produce a `ReadSize` amount of data than the average time it takes
 for the host computer to perform a read operation, the Hardware Buffer will
 accumulate excessive data. This will destroy real-time performance and
 eventually cause the hardware buffer to overflow, terminating acquisition.
 Overall, the goal of this tutorial is to minimize `ReadSize` while also
-minimizing usage of the ONIX hardware buffer buffer. 
+minimizing usage of the ONIX hardware buffer. 
 
 ### More Technical Details
 
 This section is for those that are interested in the underlying technical
-details of data is transferred from ONIX to host computer beyond what is
+details of how data is transferred from ONIX to the host computer beyond what is
 necessary to follow the rest of the tutorial. When the host computer reads data
 from the ONIX hardware, it retrieves a **ReadSize**-bytes sized chunk of data
 using the following procedure:
@@ -81,14 +79,14 @@ using the following procedure:
 
 During this process, memory is allocated only once by the API, and the transfer
 is [zero-copy](https://en.wikipedia.org/wiki/Zero-copy). The API-allocated
-buffer is written to autonomously by ONIX hardware using minimal resources from
+buffer is written autonomously by ONIX hardware using minimal resources from
 the host computer. 
 
 So far, all this occurs on the host-side. Meanwhile, on the ONIX-side:
 
 -   If ONIX produces new data before the host is able to consume the data in the
     API-allocated buffer, this new data is added to the end of the ONIX Hardware
-    Buffer FIFO. The ONIX hardware buffer consists of 2GB of RAM that belongs
+    Buffer FIFO. The ONIX hardware buffer consists of 2GB of RAM that belongs to
     the acquisition hardware (it is _not_ RAM in the host computer) for the sole
     purpose of temporarily storing data that is waiting to be transferred to the
     host. ONIX transfers data from the hardware buffer to the host once the host
@@ -112,7 +110,7 @@ computer and experimental acquisition setup.
 > Bonsai environment and familiarize yourself with using the library to acquire
 > data from ONIX before proceeding.
 
-Copy the following workflow into the Bonsai workflow editor by hovering over
+Copy the following workflow into the Bonsai workflow editor by hovering over the
 workflow image and clicking on the clipboard icon that appears. Open Bonsai and
 paste this workflow by clicking the Bonsai workflow editor pane and pressing
 <kbd>Ctrl+V</kbd>.
@@ -127,7 +125,7 @@ The top-row configuration chain includes a
 <xref:OpenEphys.Onix1.ConfigureLoadTester> operator. This configures ONIX's Load
 Tester Device, which produces and consumes data at user-specified rates for
 testing and tuning the latency between data production and real-time feedback.
-This device is _not a emulator_. It is a real hardware device that produces and
+This device is _not an emulator_. It is a real hardware device that produces and
 consumes data using the selected driver and physical link (e.g. PCIe bus) and
 thus provides accurate measurements of feedback performance for a given host
 computer.
@@ -164,8 +162,7 @@ bandwidth as two Neuropixels 2.0 probes with the following settings:
 -   `FramesPerSecond` is then set to 60,000 Hz. The rate at which frames are
     produced by two probes, since each is acquired independently.
 -   `ReceivedWords` is set to 392 bytes, the size of a single
-    <xref:OpenEphys.Onix1.NeuropixelsV2eDataFrame>, which includes xx extra
-    bytes besides the neuropixels data.
+    <xref:OpenEphys.Onix1.NeuropixelsV2eDataFrame>, excluding the Hub Clock.
 -   `TransmittedWords` is set to 100 bytes. This simulates the amount of data
     required to e.g. send a stimulus waveform.
 
@@ -178,14 +175,15 @@ bandwidth as two Neuropixels 2.0 probes with the following settings:
 > [oni-repl](https://open-ephys.github.io/onix-docs/Software%20Guide/oni-repl/usage.html#repl-commands).
 
 Next we configure <xref:OpenEphys.Onix1.StartAcquisition>'s
-<xref:OpenEphys.Onix1.StartAcquisition.ReadSize>
+<xref:OpenEphys.Onix1.StartAcquisition.ReadSize> and 
 <xref:OpenEphys.Onix1.StartAcquisition.WriteSize> properties.
 
 `WriteSize` is set to 16384 bytes. This defines a readily-available pool of
 memory for the creation of output data frames. Data is written to hardware as
 soon as an output frame has been created, so the effect on real-time performance
-is typically not as large as that of the `ReadSize` property. To start,
-`ReadSize` is also set to 16384. Later in this tutorial, we'll examine the
+is typically not as large as that of the `ReadSize` property.
+
+To start,`ReadSize` is also set to 16384. Later in this tutorial, we'll examine the
 effect of this value on real-time performance.
 
 ### Real-time Loop
@@ -220,7 +218,7 @@ property of subsequent `LoadTesterDataFrames`. In other words, `HubClockDelta`
 indicates the amount of time that has passed since the creation of a frame in
 hardware and the receipt of a feedback signal in hardware based on that frame:
 it is a complete measurement of closed loop latency. This value is converted to
-milliseconds and then <xref:Bonsai.Dsp.Histogram1D> is used to to help visualize
+milliseconds and then <xref:Bonsai.Dsp.Histogram1D> is used to help visualize
 the distribution of closed-loop latencies.
 
 Finally, at the bottom of the workflow, a
@@ -251,15 +249,14 @@ much as possible.
 
 The PercentUsed visualizer shows a time-series of the amount of the hardware
 buffer that is occupied by data as a percentage of the hardware buffer's total
-capacity. The x-axis is timestamps, and the y-axis is percentage. For
-low-latency closed-loop experiments and avoid potential buffer overflow, the
-goal is is to maintain the percentage at or near zero.
+capacity. The x-axis is timestamps, and the y-axis is percentage. To ensure data is available as fast as possible from when it was produced and avoid potential buffer overflow, the
+goal is to maintain the percentage at or near zero.
 
 ### Real-time Latency for Different `ReadSize` Values
 
 #### `ReadSize` = 16384 bytes
 
-Now start the workflow and open the visualizers for the PercentUsed and
+With `ReadSize` set to 16384 bytes, start the workflow and open the visualizers for the PercentUsed and
 Histogram1D nodes:
 
 ![screenshot of Histogram1D visualizers with `ReadSize` 16384](../../images/tutorials/tune-readsize/histogram1d_16384.webp)
@@ -298,7 +295,7 @@ The Histogram1D visualizer shows closed-loop latencies now average about 80
 μs with lower variability. 
 
 The PercentUsed visualizer shows the hardware buffer is still stable at
-around around zero. This means that, even with the increased overhead associated
+around zero. This means that, even with the increased overhead associated
 with a smaller `ReadSize`, the host is reading data rapidly enough to prevent
 excessive accumulation in the hardware buffer. Let's see if we can decrease
 latency even further.
@@ -374,7 +371,7 @@ shows that the hardware buffer does not accumulate data:
 >     multiple of four and uses that value instead. For example, if you try to
 >     set `ReadSize` to 887, the software will use the value 888 instead.
 
-These two tables together demonstrates why it is impossible to recommend a
+These two tables together demonstrate why it is impossible to recommend a
 single correct value for `ReadSize` that is adequate for all experiments. The
 diversity of experiments (in particular, the wide range at which they produce
 data) requires a range of `ReadSize` values.
