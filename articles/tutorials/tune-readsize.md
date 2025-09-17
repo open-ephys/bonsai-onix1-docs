@@ -44,7 +44,7 @@ Key details about this process:
     terminate the acquisition session. `ReadSize` can be increased to avoid this
     situation.
 -   As long as this situation is avoided, decreasing `ReadSize` means that ONIX
-    doesn't needs to produce as much data before the host can access it. This,
+    doesn't need to produce as much data before the host can access it. This,
     in effect, means software can start operating on data closer to the time
     that the data was produced, thus achieving lower-latency feedback-loops.
 
@@ -101,7 +101,7 @@ So far, all this occurs on the host-side. Meanwhile, on the ONIX-side:
     buffer FIFO. The ONIX hardware buffer consists of 2GB of RAM that belongs to
     the acquisition hardware (it is _not_ RAM in the host computer) dedicated to
     temporarily storing data that is waiting to be transferred to the host. Data
-    is removed from front of the hardware buffer and transferred to the host
+    is removed from the front of the hardware buffer and transferred to the host
     once it's ready to accept more data.
 -   If the memory is allocated on the host-side and the data transfer is
     initiated by the host API before any data is produced, ONIX transfers new
