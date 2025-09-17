@@ -57,9 +57,9 @@ performance and eventually cause the hardware buffer to overflow, terminating
 acquisition. The goal of this tutorial is to tune StartAcquisition's `ReadSize`
 so that data flows from production to the software running on the host as
 quickly as possible by minimizing the amount of time that it sits idly in both
-the ONIX hardware buffer and the API-allocated buffer. This provides software
+the ONIX hardware buffer and the host computer's buffer. This provides software
 access to the data as close to when the data was produced as possible which
-helps achieve lower latencies closed-loop feedback.
+helps achieve lower latency closed-loop feedback.
 
 ### Technical Details
 
@@ -195,7 +195,7 @@ memory for the creation of output data frames. Data is written to hardware as
 soon as an output frame has been created, so the effect on real-time performance
 is typically not as large as that of the `ReadSize` property.
 
-To start,`ReadSize` is also set to 16384. Later in this tutorial, we'll examine
+To start, `ReadSize` is also set to 16384. Later in this tutorial, we'll examine
 the effect of this value on real-time performance.
 
 ### Real-time Loop
@@ -390,7 +390,7 @@ diversity of experiments (in particular, the wide range at which they produce
 data) requires a range of `ReadSize` values.
 
 Last, in this tutorial, there was minimal computational load imposed by
-the workflow itself. In most applications, some processing is performed on the
+the data processing workflow itself. In most applications, some processing is performed on the
 data to generate the feedback signal. It's important to take this into account
 when tuning your system and potentially modifying the workflow to perform
 computations on incoming data in order to account for the effect of
