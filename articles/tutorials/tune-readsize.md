@@ -11,8 +11,8 @@ times can be achieved.
 
 > [!NOTE]
 > Performance will vary based on your computer's capabilities and your results
-> might differ from those presented below. The computer used to create this tutorial
-> has the following specs:
+> might differ from those presented below. The computer used to create this
+> tutorial has the following specs:
 >
 > - CPU: Intel i9-12900K
 > - RAM: 64 GB
@@ -389,11 +389,37 @@ single correct value for `ReadSize` that is adequate for all experiments. The
 diversity of experiments (in particular, the wide range at which they produce
 data) requires a range of `ReadSize` values.
 
-Last, in this tutorial, there was minimal computational load imposed by
-the data processing workflow itself. In most applications, some processing is performed on the
-data to generate the feedback signal. It's important to take this into account
-when tuning your system and potentially modifying the workflow to perform
-computations on incoming data in order to account for the effect of
+Last, in this tutorial, there was minimal computational load imposed by the
+workflow used in this tutorial. In most applications, some processing is
+performed on the data to generate the feedback signal. It's important to take
+this into account when tuning your system and potentially modifying the workflow
+to perform computations on incoming data in order to account for the effect of
 computational demand on closed loop performance.
+
+### Measuring Latency in Actual Experiment
+
+After tuning `ReadSize`, it is important to experimentally verify the latencies
+using the actual devices in your experiment. For example, if your feedback
+involves toggling ONIX's digital output (which in turn toggles a stimulation
+device like a [Stimjim](https://github.com/open-ephys/stimjim) or a [RHS2116
+external
+trigger](xref:OpenEphys.Onix1.ConfigureRhs2116Trigger.StimulusTrigger)), loop
+that digital output signal back into one of ONIX's digital inputs. This enables
+you to save when the feedback physically occurred. This can be used to measure
+your feedback latency by taking the difference between the clock count when the
+trigger condition occurred and the clock count when the feedback signal was
+received by ONIX.
+
+You might wonder: why use the LoadTester device if I can measure latency using
+the actual devices that I intend to use in my experiment? The benefit of the
+LoadTester device is that you're able to collect at least tens of thousands of
+latency samples to plot in a histogram in a short amount of time. Trying to use
+digital I/O to take as many latency measurements in a similar amount of time can
+render your latency measurements inaccurate for the actual experiment you intend
+to perform. In particular, toggling digital inputs faster necessarily increases
+the total data throughput of <xref:OpenEphy.Onix1.DigitalInputData>. If the data
+throughput of `DigitalInputData` significantly exceeds what is required for your
+experiment, the latency measurements will not reflect the latencies you will
+experience during the actual experiment. 
 
 <!-- ## Tuning `ReadSize` with Real-Time Computation -->
