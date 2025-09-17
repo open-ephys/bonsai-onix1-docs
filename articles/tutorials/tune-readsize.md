@@ -403,12 +403,12 @@ using the actual devices in your experiment. For example, if your feedback
 involves toggling ONIX's digital output (which in turn toggles a stimulation
 device like a [Stimjim](https://github.com/open-ephys/stimjim) or a [RHS2116
 external
-trigger](xref:OpenEphys.Onix1.ConfigureRhs2116Trigger.StimulusTrigger)), loop
-that digital output signal back into one of ONIX's digital inputs. This enables
-you to save when the feedback physically occurred. This can be used to measure
-your feedback latency by taking the difference between the clock count when the
-trigger condition occurred and the clock count when the feedback signal was
-received by ONIX.
+trigger](xref:OpenEphys.Onix1.ConfigureRhs2116Trigger.TriggerSource)),
+loop that digital output signal back into one of ONIX's digital inputs. This
+enables you to save when the feedback physically occurs. This can be used to
+measure your feedback latency by taking the difference between the clock count
+when the trigger condition occurs and the clock count when the feedback signal
+is received by ONIX.
 
 You might wonder: why use the LoadTester device if I can measure latency using
 the actual devices that I intend to use in my experiment? The benefit of the
@@ -417,7 +417,7 @@ latency samples to plot in a histogram in a short amount of time. Trying to use
 digital I/O to take as many latency measurements in a similar amount of time can
 render your latency measurements inaccurate for the actual experiment you intend
 to perform. In particular, toggling digital inputs faster necessarily increases
-the total data throughput of <xref:OpenEphy.Onix1.DigitalInputData>. If the data
+the total data throughput of <xref:OpenEphys.Onix1.DigitalInput>. If the data
 throughput of `DigitalInputData` significantly exceeds what is required for your
 experiment, the latency measurements will not reflect the latencies you will
 experience during the actual experiment. 
