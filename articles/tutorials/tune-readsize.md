@@ -378,11 +378,23 @@ shows that the hardware buffer does not accumulate data:
 >     the example of tuning for `ReadSize` for a single 64-channel Intan chip.
 >     We only tested `ReadSize` values that are a power of 2, but `ReadSize` can
 >     be fine-tuned further to achieve even tighter latencies if necessary.
-> -   **As of OpenEphys.Onix1 0.7.0**: Although `ReadSize` can be set to any
->     value by the user (besides the constraint described in the previous bullet
->     point), the ONIX1 Bonsai package rounds this `ReadSize` to the nearest
->     multiple of four and uses that value instead. For example, if you try to
->     set `ReadSize` to 887, the software will use the value 888 instead.
+> -   **As of OpenEphys.Onix1 0.7.0:** As long as you stay above the minimum
+>     mentioned in the previous bullet point, `ReadSize` can be set to any value
+>     by the user. The OpenEphys.Onix1 Bonsai package will round this `ReadSize`
+>     to the nearest multiple of four and uses that value instead. For example,
+>     if you try to set `ReadSize` to 887, the software will use the value 888
+>     instead.
+> -   If you are using a data I/O operator that has capacity to produce data at
+>     various rates (like <xref:OpenEphys.Onix1.DigitalInput>), test your chosen
+>     `ReadSize` by configuring the load tester to produce data at the lower and
+>     upper limits that you expect data to be produced during your experiment.
+>     This will help ensure excess data doesn't accumulate in the hardware
+>     buffer and desired closed-loop latencies are maintained throughout the
+>     range of data throughput of these devices.
+> -   Running other processes that demand the CPU's attention might cause
+>     spurious spikes in data accumulation in the hardware buffer. Either reduce
+>     the amount other processes or test that they don't interfere with your
+>     experiment.
 
 These two tables together demonstrate why it is impossible to recommend a
 single correct value for `ReadSize` that is adequate for all experiments. The
@@ -402,24 +414,24 @@ After tuning `ReadSize`, it is important to experimentally verify the latencies
 using the actual devices in your experiment. For example, if your feedback
 involves toggling ONIX's digital output (which in turn toggles a stimulation
 device like a [Stimjim](https://github.com/open-ephys/stimjim) or a [RHS2116
-external
-trigger](xref:OpenEphys.Onix1.ConfigureRhs2116Trigger.TriggerSource)),
-loop that digital output signal back into one of ONIX's digital inputs. This
-enables you to save when the feedback physically occurs. This can be used to
-measure your feedback latency by taking the difference between the clock count
-when the trigger condition occurs and the clock count when the feedback signal
-is received by ONIX.
+external trigger](xref:OpenEphys.Onix1.ConfigureRhs2116Trigger.TriggerSource)),
+you can loop that digital output signal back into one of ONIX's digital inputs
+to measure when the feedback physically occurs. This can be used to measure your
+feedback latency by taking the difference between the clock count when the
+trigger condition occurs and the clock count when the feedback signal is
+received by ONIX.
 
-You might wonder: why use the LoadTester device if I can measure latency using
-the actual devices that I intend to use in my experiment? The benefit of the
-LoadTester device is that you're able to collect at least tens of thousands of
-latency samples to plot in a histogram in a short amount of time. Trying to use
-digital I/O to take as many latency measurements in a similar amount of time can
-render your latency measurements inaccurate for the actual experiment you intend
-to perform. In particular, toggling digital inputs faster necessarily increases
-the total data throughput of <xref:OpenEphys.Onix1.DigitalInput>. If the data
-throughput of `DigitalInputData` significantly exceeds what is required for your
-experiment, the latency measurements will not reflect the latencies you will
-experience during the actual experiment. 
+You might wonder why you'd even use the LoadTester device if you can measure
+latency using the actual devices that you intend to use in your experiment. The
+benefit of the LoadTester device is that you're able to collect at least tens of
+thousands of latency samples to plot in a histogram in a short amount of time.
+Trying to use digital I/O to take as many latency measurements in a similar
+amount of time can render your latency measurements inaccurate for the actual
+experiment you intend to perform. In particular, toggling digital inputs faster
+necessarily increases the total data throughput of
+`DigitalInput`. If the data throughput of
+`DigitalInput` significantly exceeds what is required for your experiment,
+the latency measurements will not reflect the latencies you will experience
+during the actual experiment. 
 
 <!-- ## Tuning `ReadSize` with Real-Time Computation -->
