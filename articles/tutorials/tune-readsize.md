@@ -21,24 +21,30 @@ times can be achieved.
 
 ## Hardware Buffer and ReadSize
 
-The ONIX **Hardware Buffer** consists of 2GB of dedicated RAM
-that belongs to the acquisition hardware (it is _not_ RAM in the host computer).
-The hardware buffer temporarily stores data that has not yet been transferred to
-the host. When the host software is consuming data optimally, the hardware
-buffer is bypassed entirely and data flows directly from production to the
-host RAM, minimizing the latency between data collection and processing.
+Data is transferred in `ReadSize`-bytes chunks from ONIX to the host computer.
+This `ReadSize` value can be set by the user. If `ReadSize` is so small that
+ONIX produces `ReadSize` bytes of data faster than the host computer can perform
+a read operation, newly produced data is streamed to ONIX's hardware buffer
+instead of directly to the host's RAM. If this happens too much, closed-loop
+feedback performance suffers and the likelihood of hardware buffer overflow
+increases. However, if `ReadSize` is so large that it takes a long time for ONIX
+to produce a `ReadSize` amount of data, a single `ReadSize`-chunk contains data
+from a larger span of time. This increases the average closed-loop latency. The
+goal is to set a `ReadSize` that balances these consideration. The rest of this
+section describes ONIX-to-host data transfers in greater technical detail to
+help better understand this balancing act.
 
-Each time the host software reads data from the hardware, it obtains
-**ReadSize** bytes of data  using the following procedure:
+Each time the host software reads data from the hardware, it obtains `ReadSize`
+bytes of data using the following procedure:
 
-1. A block of memory that is `ReadSize` bytes long is allocated by the API
+1. A block of memory that is `ReadSize` bytes long is allocated by the API.
 2. A pointer to that memory is provided to the kernel driver, which locks it
-   into kernel mode and initiates a [DMA
-   transfer](https://en.wikipedia.org/wiki/Direct_memory_access) from the
-   hardware.
-3. The transfer is performed by the ONIX hardware without CPU intervention and
-   completes once `ReadSize` bytes have been produced.
-4. Upon transfer completion, the buffer is passed back to user mode and the API
+   into kernel mode wherein ONIX can directly access that that block of memory.
+   The kernel drive initiates a [DMA transfer](https://en.wikipedia.org/wiki/Direct_memory_access).
+3. The transfer is performed by ONIX hardware without additional CPU
+   intervention and completes once `ReadSize` bytes have been transferred.
+4. Upon transfer completion, the buffer is passed from kernel mode back to user
+   mode which relinquishes control of the memory block to software. The API
    function returns with a pointer to the filled buffer.
 
 There are a couple of things to note about this process:
@@ -50,25 +56,37 @@ There are a couple of things to note about this process:
    of data that is transferred each time the API reads data from the hardware.
 2. If the buffer is allocated and the transfer initiated by the host API before
    data is produced by the hardware, the data is transferred directly into the
-   buffer and completely bypasses the Hardware Buffer. In this case, hardware is
-   literally streaming data to the software buffer _the moment it is produced_.
-   It is physically impossible to achieve lower latencies than this situation.
-   The goal of this tutorial is to allow your system to operate in this regime.
+   buffer. In this case, hardware is literally streaming data to the software
+   buffer _the moment it is produced_. With the constraint that the entire
+   buffer must be filled with `ReadSize` bytes before software can access it, it
+   is physically impossible to achieve lower latencies than this. The goal of
+   this tutorial is to allow your system to operate in this regime.
+3. If ONIX is produces data while data is being transferred to or waiting to be
+   consumed by the host, this stream of new data is redirected to the ONIX
+   `Hardware Buffer`. The ONIX hardware buffer consists of 2GB of dedicated RAM
+   that belongs to the acquisition hardware (it is _not_ RAM in the host
+   computer). The hardware buffer temporarily stores data that has not yet been
+   transferred to the host.     
 
 The size of hardware to host data transfers is determined by the
 <xref:OpenEphys.Onix1.StartAcquisition.ReadSize> property of the
-StartAcquisition operator, which is necessary for every workflow that uses
-<xref:OpenEphys.Onix1> to acquire data from ONIX. Choosing an optimal `ReadSize`
-value balances the tradeoff between latency and overall bandwidth. Smaller
-`ReadSize` values mean that less data needs to accumulate before the kernel
-driver relinquishes control of the buffer to software. This, in effect, means
-less time needs to pass before software can start operating on data, and thus
-lower-latency feedback loops can be achieved. However, because each transfer
-requires calls to the kernel driver, they incur significant overhead. If
-`ReadSize` is so low that the average time it takes to perform a data transfer
-is longer than the time it takes the hardware to produce data, data will
-accumulate in the Hardware Buffer. This will destroy real-time performance and
-eventually cause the hardware buffer to overflow, terminating acquisition.
+<xref:OpenEphys.Onix1.StartAcquisition> operator, which is included in every
+workflow that uses <xref:OpenEphys.Onix1> to acquire data from ONIX. Choosing an
+optimal `ReadSize` value balances the tradeoff between latency and overall
+bandwidth. Smaller `ReadSize` values mean that less data needs to accumulate
+before the kernel driver relinquishes control of the buffer to software. This,
+in effect, means less time needs to pass before software can start operating on
+data, and thus lower-latency feedback loops can be achieved. However, because
+each transfer requires calls to the kernel driver, they incur significant
+overhead. If `ReadSize` is so small that the average time it takes to perform a
+data transfer is longer than the time it takes the hardware to produce a
+`ReadSize` amount of data, data will accumulate in the Hardware Buffer. This
+will destroy real-time performance and eventually cause the hardware buffer to
+overflow, terminating acquisition. Larger `ReadSize` values mean that more data
+needs to accumulate before the kernel driver relinquishes control of the buffer
+to software. This means more time needs to pass before software can start
+operating on data. This increases average latency but reduces the risk of
+accumulating data in the ONIX hardware buffer.
 
 ## Tuning `ReadSize` to Optimize Closed Loop Performance
 
