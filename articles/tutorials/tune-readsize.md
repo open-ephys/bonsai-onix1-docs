@@ -19,96 +19,56 @@ times can be achieved.
 > - GPU: NVIDIA GTX 1070 8GB
 > - OS: Windows 11
 
-## Data Transmission from ONIX Hardware to Host Computer
+## Hardware Buffer and ReadSize
 
-ONIX is capable of transferring data directly from production to the
-host computer. However, if the host is busy when ONIX starts
-producing data, ONIX will temporarily store this new data in its hardware buffer
-while it waits for the host to be ready to accept new data. 
+The ONIX **Hardware Buffer** consists of 2GB of dedicated RAM
+that belongs to the acquisition hardware (it is _not_ RAM in the host computer).
+The hardware buffer temporarily stores data that has not yet been transferred to
+the host. When the host software is consuming data optimally, the hardware
+buffer is bypassed entirely and data flows directly from production to the
+host RAM, minimizing the latency between data collection and processing.
 
-Key details about this process:
+Each time the host software reads data from the hardware, it obtains
+**ReadSize** bytes of data  using the following procedure:
 
--   The size of hardware-to-host data transfers is determined by the
-    <xref:OpenEphys.Onix1.StartAcquisition.ReadSize> property of the
-    <xref:OpenEphys.Onix1.StartAcquisition> operator which is in every Bonsai
-    workflow that uses <xref:OpenEphys.Onix1> to acquire data from ONIX.
--   Increasing `ReadSize` allows the host to read larger chunks of data from
-    ONIX per read operation without significantly increasing the duration of the
-    read operation, therefore increasing the maximum rate at which data can be
-    read.
--   If the host is busy or cannot perform read operations rapidly enough to keep
-    up with the rate at which ONIX produces data, the ONIX hardware buffer will
-    start to accumulate excessive data. 
--   Accumulation of excess data in the hardware buffer collapses real-time
-    performance and risks hardware buffer overflow which would prematurely
-    terminate the acquisition session. `ReadSize` can be increased to avoid this
-    situation.
--   As long as this situation is avoided, decreasing `ReadSize` means that ONIX
-    doesn't need to produce as much data before the host can access it. This,
-    in effect, means software can start operating on data closer to the time
-    that the data was produced, thus achieving lower-latency feedback-loops.
+1. A block of memory that is `ReadSize` bytes long is allocated by the API
+2. A pointer to that memory is provided to the kernel driver, which locks it
+   into kernel mode and initiates a [DMA
+   transfer](https://en.wikipedia.org/wiki/Direct_memory_access) from the
+   hardware.
+3. The transfer is performed by the ONIX hardware without CPU intervention and
+   completes once `ReadSize` bytes have been produced.
+4. Upon transfer completion, the buffer is passed back to user mode and the API
+   function returns with a pointer to the filled buffer.
 
-In other words, a small `ReadSize` can help the host access data sooner to when
-that data was created. However, each data transfer incurs overhead. If
-`ReadSize` is so small that ONIX produces a `ReadSize` amount of data faster
-than the average time it takes the host computer to perform a read operation,
-the hardware buffer will accumulate excessive data. This will destroy real-time
-performance and eventually cause the hardware buffer to overflow, terminating
-acquisition. The goal of this tutorial is to tune StartAcquisition's `ReadSize`
-so that data flows from production to the software running on the host as
-quickly as possible by minimizing the amount of time that it sits idly in both
-the ONIX hardware buffer and the host computer's buffer. This provides software
-access to the data as close to when the data was produced as possible which
-helps achieve lower latency closed-loop feedback.
+There are a couple of things to note about this process:
 
-### Technical Details
+1. Memory is allocated only once by the API, and the transfer is
+   [zero-copy](https://en.wikipedia.org/wiki/Zero-copy). ONIX hardware writes
+   directly into the API-allocated buffer autonomously without using the host
+   computer's resources. Within this process, `ReadSize` determines the amount
+   of data that is transferred each time the API reads data from the hardware.
+2. If the buffer is allocated and the transfer initiated by the host API before
+   data is produced by the hardware, the data is transferred directly into the
+   buffer and completely bypasses the Hardware Buffer. In this case, hardware is
+   literally streaming data to the software buffer _the moment it is produced_.
+   It is physically impossible to achieve lower latencies than this situation.
+   The goal of this tutorial is to allow your system to operate in this regime.
 
-> [!NOTE]
-> This section explains more in-depth how data is transferred from ONIX to the
-> host computer. Although these details provide additional context about ONIX,
-> they are more technical and are not required for following the rest of the
-> tutorial.
-
-When the host computer reads data from the ONIX
-hardware, it retrieves a **ReadSize**-bytes sized chunk of data using the
-following procedure:
-
-1.  A `ReadSize`-bytes long block of memory is allocated on the host computer's
-    RAM by the host API for the purpose of holding incoming data from ONIX. 
-1.  A pointer to that memory is provided to the
-    [RIFFA](https://open-ephys.github.io/ONI/v1.0/api/liboni/driver-translators/riffa.html)
-    driver (the PCIe backend/kernel driver for the ONIX system) which moves the
-    allocated memory block into a more privileged state known as kernel mode so
-    that it can initiate a [DMA
-    transfer](https://en.wikipedia.org/wiki/Direct_memory_access). DMA allows
-    data transfer to be performed by ONIX hardware without additional CPU
-    intervention.
-1.  The data transfer completes once this block of data has been populated with
-    `ReadSize` bytes of data from ONIX.
-1.  The RIFFA driver moves the memory block from kernel mode to user mode so
-    that it can be accessed by software. The API function returns with a pointer
-    to the filled buffer.
-
-During this process, memory is allocated only once by the API, and the transfer
-is [zero-copy](https://en.wikipedia.org/wiki/Zero-copy). The API-allocated
-buffer is written autonomously by ONIX hardware using minimal resources from
-the host computer. 
-
-So far, all this occurs on the host-side. Meanwhile, on the ONIX-side:
-
--   If ONIX produces new data before the host is able to consume the data in the
-    API-allocated buffer, this new data is added to the back of ONIX hardware
-    buffer FIFO. The ONIX hardware buffer consists of 2GB of RAM that belongs to
-    the acquisition hardware (it is _not_ RAM in the host computer) dedicated to
-    temporarily storing data that is waiting to be transferred to the host. Data
-    is removed from the front of the hardware buffer and transferred to the host
-    once it's ready to accept more data.
--   If the memory is allocated on the host-side and the data transfer is
-    initiated by the host API before any data is produced, ONIX transfers new
-    data directly to the host bypassing the hardware buffer. In this case, ONIX
-    is literally streaming data to the host _the moment it is produced_. This
-    data becomes available for reading by the host once ONIX transfers the full
-    `ReadSize` bytes. 
+The size of hardware to host data transfers is determined by the
+<xref:OpenEphys.Onix1.StartAcquisition.ReadSize> property of the
+StartAcquisition operator, which is necessary for every workflow that uses
+<xref:OpenEphys.Onix1> to acquire data from ONIX. Choosing an optimal `ReadSize`
+value balances the tradeoff between latency and overall bandwidth. Smaller
+`ReadSize` values mean that less data needs to accumulate before the kernel
+driver relinquishes control of the buffer to software. This, in effect, means
+less time needs to pass before software can start operating on data, and thus
+lower-latency feedback loops can be achieved. However, because each transfer
+requires calls to the kernel driver, they incur significant overhead. If
+`ReadSize` is so low that the average time it takes to perform a data transfer
+is longer than the time it takes the hardware to produce data, data will
+accumulate in the Hardware Buffer. This will destroy real-time performance and
+eventually cause the hardware buffer to overflow, terminating acquisition.
 
 ## Tuning `ReadSize` to Optimize Closed Loop Performance
 
