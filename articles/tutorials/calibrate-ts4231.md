@@ -1,6 +1,6 @@
 ---
 uid: calibrate-ts4231
-title: Calibrate TS4231 Data
+title: Calibrate Positional Tracking Data
 ---
 
 This tutorial shows how to transform XYZ position coordinates measured by a TS4231 device which are
@@ -25,20 +25,20 @@ user-defined coordinate system.
     packages](xref:install-configure-bonsai#package-installation) or [check for
     updates](xref:install-configure-bonsai#update-packages) if they're already installed. 
 
-1.  Copy the following workflow into the Bonsai workflow editor by hovering over
+1.  Copy the following workflow into the Bonsai workflow editor by hovering over the
     workflow image and clicking on the clipboard icon that appears.
 
     ::: workflow
     ![SVG of copyable TS4231 calibration workflow](../../workflows/tutorials/calibrate-ts4231/calibrate-ts4231.bonsai)
     :::
 
-    Open Bonsai and paste this workflow by clicking the Bonsai workflow editor pane and hitting
+    Open Bonsai and paste this workflow by clicking the Bonsai workflow editor pane and pressing
     <kbd>Ctrl+V</kbd>.
 
     Visit the <xref:hs64_workflow> and <xref:hs64_ts4231> pages to develop a foundation on how to
-    use Bonsai to acquire data from an Onix headstage that has a TS4231 device. The primary
-    difference between this workflow and the example Headstage 64 workflow is that there is
-    transform operator for converting coordinates in the TS4231V1 reference frame to a user defined
+    use Bonsai to acquire data from an ONIX headstage that has a TS4231 device. The primary
+    difference between this workflow and the example Headstage 64 workflow is that in this one there is
+    a transform operator for converting coordinates in the TS4231V1 reference frame to a user defined
     reference frame.
 
 1.  Before beginning the calibration process, confirm that the lighthouse configuration can measure
@@ -54,7 +54,7 @@ user-defined coordinate system.
 
 ## TS4231 Spatial Data Calibration
 
-1.  open the TS4231V1 Position Calibration GUI. 
+1.  Open the TS4231V1 Position Calibration GUI. 
 
     -   Start the workflow. 
     -   Open the <xref:OpenEphys.Onix1.TS4231V1SpatialTransform> Position visualizer.
@@ -66,19 +66,19 @@ user-defined coordinate system.
 1.  Mark four points in your behavioral arena. The position coordinates of these four points will be
     measured both in the TS4231 reference frame by the TS4231 device itself and in the user-defined
     reference frame (if they are not already known, for example, using some features in the behavioral
-    arena with known dimensions). Here is a simple way to choose the four coordinates:
+    arena with known dimensions). Here is a simple way to choose the four points:
 
-    1.  the user-defined origin
-    2.  a point in the behavioral arena along the user-defined X-axis
-    3.  a point in the behavioral arena along the user-defined Y-axis
-    4.  a point in the behavioral arena along the user-defined Z-axis
+    1.  The user-defined origin
+    2.  A point in the behavioral arena along the user-defined X-axis
+    3.  A point in the behavioral arena along the user-defined Y-axis
+    4.  A point in the behavioral arena along the user-defined Z-axis
 
     > [!TIP]
     > Choosing the furthest extent along the X, Y, & Z axes minimizes the propagation of measurement
     > error into the spatial transformation matrix. Balance this consideration with ease of knowing
     > or measuring those coordinates.
 
-    Here is a real-world example of four coordinates on our workbench that we use to
+    Here is a real-world example of four sets of coordinates on our workbench that we use to
     demonstrate the calibration process:
 
     ![Photo of four calibration points](../../images/tutorials/calibrate-ts4231/calibration-points.webp){width=75%}
@@ -117,7 +117,7 @@ user-defined coordinate system.
     
     ![Screenshot of TS4231V1 Calibration GUI with calculated matrix](../../images/tutorials/calibrate-ts4231/calibration-gui_matrix-calculated.png)
 
-1.  When spatial transform is calculated, click OK to proceed. This updates the spatial transform
+1.  After the spatial transform is calculated, click OK to proceed. This updates the spatial transform
     matrix used by the TS4231V1SpatialTransform operator. This recalibrated spatial transform matrix
     should be immediately apparent in the TS4231V1SpatialTransform position data visualizer.
     
@@ -127,7 +127,7 @@ user-defined coordinate system.
     ![Screenshot of TS4231V1 Calibration GUI confirmation dialog](../../images/tutorials/calibrate-ts4231/calibration-gui_confirmation-dialog.png)
 
 > [!IMPORTANT]
-> After calibration the TS4231V1 spatial transform matrix, it is important to not change the
+> After calibrating the TS4231V1 spatial transform matrix, it is important to not change the
 > TS4231PositionData operator's P/Q property values or move the lighthouse base stations or else
 > the calibrated spatial transform matrix will no longer be accurate. 
 
@@ -139,7 +139,7 @@ Position visualizer in Bonsai while moving the TS4231 device is a first-order te
 robust, choose a bunch of points (none of which should be the four calibration points) and check
 that their calibrated coordinates are what you expect.
 
-Below is a animation of the 3D trajectory reconstructed in Python synced with video data for
+Below is an animation of the 3D trajectory reconstructed in Python synced with video data for
 demonstration purposes. 
 
 <video controls style="width:100%">
