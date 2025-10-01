@@ -6,8 +6,8 @@ title: Calibrate Positional Tracking Data
 This tutorial shows how to transform XYZ position coordinates measured by a TS4231 device which are
 originally in the device's reference frame to coordinates that are in a reference frame that is more
 intuitive or relevant to the experiment. This is performed by determining the position coordinates
-of four points in both the TS4231 device's reference frame and the user-defined reference frame. to
-calculate a spatial transform matrix which transforms all coordinates measured by the TS4231 to the
+of four points in both the TS4231 device's reference frame and the user-defined reference frame to
+calculate a spatial transform matrix which transforms all coordinates measured by the TS4231 device to the
 user-defined coordinate system.
 
 ^^^
