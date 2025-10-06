@@ -14,17 +14,15 @@ user-defined coordinate system.
 ![crop of figure 3 from "ONIX: a unified open-source platform..."](../../images/tutorials/calibrate-ts4231/ts4231-figure-demo.webp)
 ^^^ From figure 3 of [ONIX: a unified open-source platform for multimodal neural recording and perturbation during naturalistic behavior](https://www.nature.com/articles/s41592-024-02521-1), the TS4231 device was used to track a mouse's 3D position over the course of a 7.3-h-long recording.
 
-## Prerequisites
+## Setup
 
 1.  First, confirm the Lighthouse transmitters are properly mounted according to the [Lighthouse
     Setup Guide](https://open-ephys.github.io/onix-docs/Hardware%20Guide/Lighthouses/setup.html) in
     the ONIX Hardware docs.
-
 1.  Follow the [Getting Started](xref:getting-started) guide to set up and familiarize yourself with
     Bonsai. In particular, [download the necessary Bonsai
     packages](xref:install-configure-bonsai#package-installation) or [check for
     updates](xref:install-configure-bonsai#update-packages) if they're already installed. 
-
 1.  Copy the following workflow into the Bonsai workflow editor by hovering over the
     workflow image and clicking on the clipboard icon that appears.
 
@@ -37,10 +35,9 @@ user-defined coordinate system.
 
     Visit the <xref:hs64_workflow> and <xref:hs64_ts4231> pages to develop a foundation on how to
     use Bonsai to acquire data from an ONIX headstage that has a TS4231 device. The primary
-    difference between this workflow and the example Headstage 64 workflow is that in this one there is
+    difference between this workflow and the example Headstage 64 workflow is that this one has
     a transform operator for converting coordinates in the TS4231V1 reference frame to a user defined
     reference frame.
-
 1.  Before beginning the calibration process, confirm that the lighthouse configuration can measure
     the position of your TS4231 device across the entire desired range. To do this, [start the
     workflow](xref:workflow-editor#starting-the-workflow) and confirm that the
@@ -89,7 +86,6 @@ user-defined coordinate system.
 1.  For each of the four points defined in the previous step:
 
     -   Choose a row in the TS4231V1 Calibration GUI to correspond to that point. 
-    
     -   Place your TS4231 device at that point and click the <kbd>Measure</kbd> button in the
         corresponding row. The GUI will start taking measurements from the TS4231 device as long as
         the TS4231 device is within range of and unobstructed from the lighthouse transmitter. If
@@ -99,16 +95,14 @@ user-defined coordinate system.
         reorient your Headstage64 or go back to the step in the previous section that describes how
         to make sure the lighthouse configuration covers the entire area that your TS4231 device
         will occupy.
-
     -   Populate the X, Y, and Z entries of the user-defined coordinates column in the corresponding
         row.
 
     > [!TIP]
-    > Be as precise and accurate as possible with both the placement of the TS4231 device and the
-    > manual measurements when performing this calibration step. Consider making a fixture to fix
-    > the orientation of the TS4231 device and help set it in positions that are more easily
-    > measured or easier to figure out using features in the behavioral arena that have known
-    > dimensions.
+    > Be as precise and accurate as possible with both the placement of the
+    > TS4231 device and the manual measurements. Consider making a fixture to
+    > fix the orientation of the TS4231 device and help set it in positions that
+    > are more easily measured.
 
     Once all fields in the Calibration GUI are populated with valid entries, the spatial transform
     matrix is automatically calculated. When the spatial transform matrix is calculated, this will
@@ -145,4 +139,5 @@ demonstration purposes.
 <video controls style="width:100%">
   <source src="../../images/tutorials/calibrate-ts4231/ts4231-calibration-demo.mp4" type="video/mp4">
 </video>
+
 
