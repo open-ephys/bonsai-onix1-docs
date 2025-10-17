@@ -26,7 +26,7 @@ This configuration GUI can be accessed by double-clicking on the `ConfigureHeads
 operator. 
 
 <p align="center">
-  <img src="../../../images/rhs2116-gui-tut/bonsai-where-to-click.png">
+  <img src="../../../images/rhs2116-gui-tut/bonsai-where-to-click.png" width=750px>
 </p>
 
 ### Stimulus parameters
@@ -34,10 +34,10 @@ operator.
 The GUI accepts values for stimulation waveform parameters in metric units (e.g., milliseconds and
 microamps). In the backend, the GUI converts metric units into units that can be written to the
 hardware. Because the conversion between metric values and converted values is not always exact, the
-GUI might automatically update the metric value initially input by the user to a metric value that
+GUI might automatically update the metric value initially input to a metric value that
 more accurately represents the converted value that will be written to hardware. This update is
-visually displayed in the same text box where the user initially input their values and happens when
-the focus moves away from the active text box (e.g., the user presses <kbd>Tab</kbd> or clicks
+visually displayed in the same text box you will initially input their values, and happens when
+the focus moves away from the active text box (e.g., by pressing <kbd>Tab</kbd> or clicking
 somewhere outside of the text box).
 
 Below is a table describing the various stimulus parameters that can be applied to each channel
@@ -73,7 +73,7 @@ Upon first opening the GUI, the main window will be blank if no stimulus paramet
 defined. The window should look something like this:
 
 <p align="center">
-  <img src="../../../images/rhs2116-gui-tut/gui-no-waveforms.png">
+  <img src="../../../images/rhs2116-gui-tut/no-waveforms.png" width=750px>
 </p>
 
 ### Selecting channels
@@ -94,14 +94,15 @@ When channels are selected, they will be highlighted by a green circle around th
 and the corresponding waveforms will be plotted in the main window; any channels that are
 not selected will not be plotted.
 
-### Zoom and pan limits
+### Zoom
 
 When zooming in and out, there are limits in both directions. The probe can only be zoomed out to
 the point that the entire probe is visible within the panel and no more. Similarly, while zooming in
 the probe will not zoom in past a certain point. 
 
-In addition to the absolute zoom limits, the panel will automatically shift the probe to ensure it
-is always in view. This is handled each time the probe is zoomed or panned.
+There are no limits to where you can pan the probe, meaning that it is possible to lose track of the
+probe. If it is ever needed to get the probe back in the center of the plot, press on the <kbd>Reset
+Zoom</kbd> button.
 
 ## Define Stimuli
 
@@ -118,15 +119,15 @@ only plot the selected channels in the main window. In the example below, channe
 are selected.
 
 <p align="center">
-  <img src="../../../images/rhs2116-gui-tut/channel-selection-7-8-23-24.png">
+  <img src="../../../images/rhs2116-gui-tut/select-channels.png" width=750px>
 </p>
 
 Enter the [stimulus parameters](#stimulus-parameters) that you want to apply to the currently
-selected channel(s). Note that the value initially input by the user might update when the focus
-moves away from the current text box (e.g., the user presses <kbd>Tab</kbd> or clicks somewhere
-outside of the text box) to reflect the actual value that will be written based on the resolutions
-listed above. In the example below, we can see that the table listed below as well shows the typed
-values compared to the actual values list.
+selected channel(s). Note that the value might update when the focus moves away from the current
+text box (e.g., pressing <kbd>Tab</kbd> or clicking somewhere outside of the text box); this change
+reflects the value that will be written to the device based on the resolutions listed above. In the
+example below, we can see that the table listed below shows the typed values compared to the actual
+values list.
 
 | Parameter | Requested Value | Listed Value |
 | --- | --- | --- |
@@ -137,7 +138,7 @@ values compared to the actual values list.
 | `Inter-Stimulus [ms]` | 100 | 99.99 |
 
 <p align="center">
-  <img src="../../../images/rhs2116-gui-tut/define-stimuli-a.png">
+  <img src="../../../images/rhs2116-gui-tut/define-stimuli.png" width=750px>
 </p>
 
 > [!TIP]
@@ -146,10 +147,12 @@ values compared to the actual values list.
 > applied.
 
 The selected settings can be applied to the selected channels by pressing <kbd>Apply</kbd>, and the
-waveforms will be plotted in the main window as shown below.
+waveforms will be plotted in the main window as shown below. The waveforms are ordered from top to
+bottom, with the top waveform corresponding to channel 0, and the bottom waveform corresponding to
+channel 31.
 
 <p align="center">
-  <img src="../../../images/rhs2116-gui-tut/waveforms-7-8-23-24-a.png">
+  <img src="../../../images/rhs2116-gui-tut/waveforms.png" width=750px>
 </p>
 
 To see the values that will be written to the hardware, click on the `Table` tab in the top left,
@@ -159,7 +162,7 @@ channels parameters will be reflected in this window. An example of what the emp
 when no parameters have been set is below.
 
 <p align="center">
-  <img src="../../../images/rhs2116-gui-tut/table.png">
+  <img src="../../../images/rhs2116-gui-tut/table.png" width=750px>
 </p>
 
 ### Reading current parameters
@@ -168,22 +171,14 @@ To easily copy settings from one channel to another, or to see what the current 
 channel prior to updating then settings, click on a single channel in the channel selection window,
 or click-and-drag until a single channel is selected, and then press on the <kbd>Read</kbd> button
 in the bottom right. If more than one channel is selected, or no channels are selected, a window
-will pop up prompting the user to select a single channel.
+will pop up prompting you to select a single channel.
 
-To test this, select a channel that has not been configured yet and press <kbd>Read</kbd>. The
-parameter fields will be populated with zeroes as shown in the image below:
-
-<p align="center">
-  <img src="../../../images/rhs2116-gui-tut/define-stimuli-read-defaults.png">
-</p>
-
-Now select a channel that has been configured and press <kbd>Read</kbd> to read that channel's
-current parameters. For example, if one of the channels that was configured in the [Applying
-parameters](#applying-parameters) section above is selected, the image below shows the result of the
-operation:
+Select a channel that has been configured and press <kbd>Read</kbd> to read that channel's
+current parameters. For example, if you are using the workflow provided in this documentation, you
+should see the following parameters after selecting channel 7 and reading the parameters:
 
 <p align="center">
-  <img src="../../../images/rhs2116-gui-tut/define-stimuli-read-applied-parameters.png">
+  <img src="../../../images/rhs2116-gui-tut/read-parameters.png" width=750px>
 </p>
 
 ### Clearing current parameters
