@@ -25,8 +25,21 @@ effect. From the GUI, you can:
 - Configure the [Bno055](xref:OpenEphys.Onix1.ConfigurePolledBno055)
     - Enable and disable the <xref:OpenEphys.Onix1.PolledBno055Data> stream
 
+### Opening the GUI
+
 The configuration dialog is accessible by double-clicking on the
 <xref:OpenEphys.Onix1.ConfigureHeadstageNeuropixelsV1e> operator.
+
+To open the headstage configuration GUI, double-click the `ConfigureHeadstageNeuropixelsV1e`
+operator.
+
+![Open the GUI](../../..//images/neuropixelsv1e-gui-tut/where-to-click.png)
+
+Once opened, if the calibration files have not been selected the window should look like the image
+below. To view the probe, follow the steps below to [choose calibration
+files](#choosing-probe-calibration-files).
+
+![Headstage Configuration GUI](../../..//images/neuropixelsv1e-gui-tut/headstage-configuration-dialog.png)
 
 ### Channel constraints
 
@@ -82,18 +95,7 @@ saved to a [JSON file](#save-probeinterface-file). Conversely, an existing JSON 
 the default configuration is needed, it can be [loaded again](#load-default-configuration) at any
 time.
 
-## Open Headstage Configuration GUI
-
-To open the headstage configuration GUI, double-click the `ConfigureHeadstageNeuropixelsV1e`
-operator.
-
-![Open the GUI](../../..//images/neuropixelsv1e-gui-tut/bonsai-editor-where-to-click.png)
-
-Once opened, if the calibration files have not been selected the window should look like the image
-below. To view the probe, follow the steps below to [choose calibration
-files](#choosing-probe-calibration-files).
-
-![Probe Configuration GUI](../../..//images/neuropixelsv1e-gui-tut/headstage-configuration-dialog.png)
+## Neuropixels V1 Probe Configuration
 
 ### Choosing probe calibration files
 
@@ -233,7 +235,7 @@ choose electrodes.
 - Mouse Controls
     - Mouse wheel zooms in/out towards the cursor
     - Left-click and drag will select electrodes within the drawn rectangle
-    - Left-click on an electrode will select that electrode
+    - Left-click on an electrode will toggle that electrode
     - Left-click in empty space will clear the selected electrodes
     - Middle-click and drag will pan the electrodes
 - Scroll bar
@@ -244,16 +246,19 @@ choose electrodes.
         - Placing the cursor either above or below the marker and clicking
         - Using the mouse wheel to scroll up or down while the cursor is over the scroll bar
 
-### Zoom and pan limits
+### Reset Zoom
 
-When zooming in and out, note that there are limits in both directions. The probe can only be zoomed
-out to the point that the entire probe is visible within the panel and no more. Similarly, while
-zooming in the probe will not zoom in past a certain point. 
+When zooming in and out, there are limits in both directions. The probe can only be zoomed out to
+the point that the entire probe is visible within the panel, and similarly the probe will not zoom
+in past a certain point. 
 
-In addition to the absolute zoom limits, the panel will automatically shift the probe to ensure it
-is always in view. This is handled each time the probe is zoomed or panned.
+There are no restrictions when panning the probe, meaning that it is possible to move the probe to
+where it is out of view, and difficult to find. To reset the view at any time, click on the `Reset
+Zoom` button to fully zoom out the panel.
 
-To reset the view at any time, click on the `Reset Zoom` button to fully zoom out the panel.
+<p align="center">
+  <img src="../../../images/neuropixelsv1e-gui-tut/reset-zoom.png">
+</p>
 
 ### Manually enabling electrodes
 
@@ -264,7 +269,7 @@ To select, as described [above](#maneuvering-along-the-probe), either click-and-
 the desired electrodes, or select individual electrodes by clicking on them one-by-one. Once the
 electrodes to enable are selected, click on the `Enable Selected Electrodes` button in the right
 panel. At this point the selected electrodes should turn blue, indicating that they are now enabled.
-It is important to note that when electrodes are enabled, a number of previously enabled electrodes
+It is important to note that when electrodes are enabled, some previously enabled electrodes
 will be disabled due to channel constraints. For more information, read the [Channel
 constraints](#channel-constraints) section above.
 
@@ -274,9 +279,7 @@ Presets` drop-down changes from `BankA` to `None`. Then, once the selected elect
 preset, it is automatically changed back to `BankA`.
 
 <div>
-  <video width="650" height="365" controls muted loop>
-    <source src="../../../images/neuropixelsv1e-gui-tut/headstage-configuration-enable-electrodes.webm">
-  </video>
+  <img src="../../../images/neuropixelsv1e-gui-tut/headstage-configuration-enable-electrodes.gif">
 </div>
 
 ### Loading and saving channel configurations
@@ -317,7 +320,7 @@ To load the default channel configuration at any time, navigate to the File drop
 choose `NeuropixelsV1e → Load Default Channel Configuration`. This will load the default
 configuration, with the `BankA` channel preset selected.
 
-### Configure Bno055
+## Configure Bno055
 
 At the headstage level, there is another device tab listed for a
 [Bno055](xref:OpenEphys.Onix1.PolledBno055Data). From this tab, the device can be enabled or
