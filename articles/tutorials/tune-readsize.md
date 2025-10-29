@@ -359,7 +359,7 @@ shows that the hardware buffer does not accumulate data:
 > -   **As of OpenEphys.Onix1 0.7.0:** As long as you stay above the minimum
 >     mentioned in the previous bullet point, `ReadSize` can be set to any value
 >     by the user. The OpenEphys.Onix1 Bonsai package will round this `ReadSize`
->     to the nearest multiple of four and uses that value instead. For example,
+>     up to the next multiple of four and uses that value instead. For example,
 >     if you try to set `ReadSize` to 887, the software will use the value 888
 >     instead.
 > -   If you are using a data I/O operator that has capacity to produce data at
