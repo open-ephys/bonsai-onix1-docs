@@ -11,13 +11,7 @@ train of pulses following a press of the ◯ key on the breakout board.
 ![/workflows/hardware/hs64/ostim.bonsai workflow](../../../workflows/hardware/hs64/ostim.bonsai)
 :::
 
-The <xref:OpenEphys.Onix1.DigitalInput> operator generates a sequence of
-[DigitalInputDataFrames](xref:OpenEphys.Onix1.DigitalInputDataFrame). Although
-the digital inputs are sampled at 4 Mhz, these data frames are only emitted when
-the port status changes (i.e., when a pin, button, or switch is toggled). In the
-Headstage 64 example workflow, the `DigitalInput`'s `DeviceName` property is
-set to "BreakoutBoard/DigitalInput". This links the `DigitalInput` operator to
-the corresponding configuration operator. 
+[!INCLUDE [<digital-io-info>](<../../../includes/breakout-digital-io.md>)]
 
 <xref:OpenEphys.Onix1.BreakoutButtonState> is selected from the
 `DigitalInputDataFrame`. It is an enumerator with values that correspond to bit

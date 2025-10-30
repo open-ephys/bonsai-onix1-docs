@@ -5,28 +5,22 @@ title: Headstage 64 GPO Trigger
 
 The following excerpt from the Headstage 64 [example
 workflow](xref:hs64_workflow) demonstrates triggering a stimulus following a
-press of the X key on the breakout board. The GPO trigger uses a pin on the
-headstage to trigger stimulus more instantaneously than other trigger methods
-that write to a register on the hardware which takes more time. However, this
-trigger operator does not provide stimulus feedback as discussed in
-<xref:hs64_stimulator-data> nor is it capable of distinguishing between applying
-optical or electrical stimulus. If you want to use the GPO trigger to only
-trigger electrical stimulus, the electrical stimulator should be the only
-stimulator device armed on the headstage. If you want to use the GPO trigger to
-only trigger optical stimulus, the optical stimulator should be the only
-stimulator device armed on the headstage. 
+press of the X key on the breakout board. The GPO trigger toggles a pin on the
+headstage to trigger stimulus more instantaneously than writing to a register
+which is how other Headstage 64 operators trigger stimulus.
+
+> [!NOTE]
+> If you want to use the GPO trigger to only trigger electrical stimulus, the
+> electrical stimulator should be the only stimulator device armed on the
+> headstage. If you want to use the GPO trigger to only trigger optical
+> stimulus, the optical stimulator should be the only stimulator device armed on
+> the headstage. 
 
 ::: workflow
 ![/workflows/hardware/hs64/gpo-trigger.bonsai workflow](../../../workflows/hardware/hs64/gpo-trigger.bonsai)
 :::
 
-The <xref:OpenEphys.Onix1.DigitalInput> operator generates a sequence of
-[DigitalInputDataFrames](xref:OpenEphys.Onix1.DigitalInputDataFrame). Although
-the digital inputs are sampled at 4 Mhz, these data frames are only emitted when
-the port status changes (i.e., when a pin, button, or switch is toggled). In the
-Breakout Board example workflow, the `DigitalInput`'s `DeviceName` property is
-set to "BreakoutBoard/DigitalInput". This links the `DigitalInput` operator to
-the corresponding configuration operator. 
+[!INCLUDE [<digital-io-info>](<../../../includes/breakout-digital-io.md>)]
 
 <xref:OpenEphys.Onix1.BreakoutButtonState> is selected from the
 `DigitalInputDataFrame`. It is an enumerator with values that correspond to bit
