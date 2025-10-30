@@ -14,15 +14,16 @@ functionality by responding to button presses and saves digital inputs data.
 :::
 
 The <xref:OpenEphys.Onix1.DigitalInput> operator generates a sequence of
-[DigitalInputDataFrames](xref:OpenEphys.Onix1.DigitalInputDataFrame). In this workflow, digital inputs
-are configured to be asynchronous. This means that although the digital inputs
-are sampled in hardware at 4 Mhz, data frames are only emitted when the port
-status changes (i.e., when a pin, button, or switch is toggled). Digital inputs
-can also be
+[DigitalInputDataFrames](xref:OpenEphys.Onix1.DigitalInputDataFrame). In this
+workflow, digital inputs are configured to be asynchronous. This means that
+although the digital inputs are sampled in hardware at 4 Mhz, data frames are
+only emitted when the port status changes (i.e., when a pin, button, or switch
+is toggled) when the `SampleRate` is left blank such as is done in this example
+workflow. Digital inputs can also be
 [configured](xref:OpenEphys.Onix1.ConfigureBreakoutBoard#OpenEphys_Onix1_ConfigureBreakoutBoard_DigitalIO)
 to be sampled at regular intervals. The digital input ports on the Breakout
-Board use 3.3V logic levels but are also 5V tolerant. In the Breakout
-Board example workflow, the `DigitalInput`'s `DeviceName` property is set to
+Board use 3.3V logic levels but are also 5V tolerant. In the Breakout Board
+example workflow, the `DigitalInput`'s `DeviceName` property is set to
 "BreakoutBoard/DigitalInput". This links the `DigitalInput` operator to the
 corresponding configuration operator.
 
