@@ -29,7 +29,7 @@ documentation designate these property categories:
 | Category | Description |
 |----------|-------------|
 | <span class="badge oe-badge-border oe-badge-yellow" id="configuration">Configuration</span> | Configuration properties have an effect on hardware when a workflow is started and are used to initialize the hardware state. If they are changed while a workflow is running, they will not have an effect until the workflow is restarted. For example, CreateContext's <xref:OpenEphys.Onix1.CreateContext.Index> Configuration property is used to specify the hardware prior to starting a recording, and editing this property has no effect until the workflow is started or restarted. |
-| <span class="badge oe-badge-border oe-badge-blue" id="acquisition">Acquisition</span> | Acquisition properties have an immediate effect on hardware when the workflow is running. For example, the <xref:OpenEphys.Onix1.Headstage64ElectricalStimulatorTrigger.InterPulseInterval> property allows dynamically configuring the duration between electrical stimulation pulses. Along with its other Acquisition properties, the entire electrical stimulation pattern can be modulated in real-time while the workflow is running. |
+| <span class="badge oe-badge-border oe-badge-blue" id="acquisition">Acquisition</span> | Acquisition properties have an immediate effect on hardware when the workflow is running. For example, the <xref:OpenEphys.Onix1.ConfigureHeadstage64ElectricalStimulator.InterPulseInterval> property allows dynamically configuring the duration between electrical stimulation pulses. Along with its other Acquisition properties, the entire electrical stimulation pattern can be modulated in real-time while the workflow is running. |
 
 ### Device Group and Device Properties
 
