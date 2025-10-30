@@ -5,7 +5,7 @@ title: Headstage 64 GPO Trigger
 
 The following excerpt from the Headstage 64 [example
 workflow](xref:hs64_workflow) demonstrates triggering a stimulus following a
-press of the □ key on the breakout board. The GPO trigger uses a pin on the
+press of the X key on the breakout board. The GPO trigger uses a pin on the
 headstage to trigger stimulus more instantaneously than other trigger methods
 that write to a register on the hardware which takes more time. However, this
 trigger operator does not provide stimulus feedback as discussed in
