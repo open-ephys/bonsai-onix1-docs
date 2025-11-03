@@ -69,7 +69,7 @@ There are two ways to access the interface for the `ElectricalStimulator` device
 
 Whichever method is used to open the interface, the descriptions below will be the same for both.
 However, if method 2 is used, the other devices are not available from the same window; the
-`ElectricalStimulator` window must be closed so that another device (or the headstage) can be
+`ElectricalStimulator` window must be closed so that another device (or the headstage) GUI can be
 opened. If any changes are made while the device-specific window is opened that you want to save, be
 sure to [save the settings](#saving-settings).
 
@@ -99,16 +99,16 @@ location, and the length of each segment corresponds to the amplitude/time axes.
 The parameters in the `Define Stimuli` box on the right are used to fully define a stimulus waveform
 that will be delivered by the `ElectricalStimulator`. The waveform is defined by pulses, bursts, and
 trains:
-- Each pulse has three components (Phase one, inter-phase, and phase two) with a current and duration, plus a period which defines the time
-  between successive phase one components.
+- Each pulse has three components (Phase one, inter-phase, and phase two) with a current and
+  duration, plus a period which defines the time between the start of successive pulses.
 - Each burst can consist of one or more pulses, with an inter-burst interval defining the
   amount of time to wait between successive bursts.
 - Each train can consist of one or more bursts, with a delay from the onset of the stimulus waveform
   before the first train is delivered.
 
 To set the value for each parameter, select the text box and type in the requested value. Values
-cannot be outside of the realm of reality, such as defining a negative duration or a negative count.
-Invalid values will default to 0.
+must represent physically possible stimulation parameters; for example, duration and count cannot be
+negative. Invalid values will default to 0.
 
 When setting parameters, using the <kbd>Tab</kbd> key will move the cursor focus to the next
 available text box, reading from right-to-left and top-to-bottom.
@@ -148,7 +148,7 @@ There are two ways to access the interface for the `OpticalStimulator` device:
 
 Whichever method is used to open the interface, the descriptions below will be the same for both.
 However, if method 2 is used, the other devices are not available from the same window; the
-`OpticalStimulator` window must be closed so that another device (or the headstage) can be
+`OpticalStimulator` window must be closed so that another device (or the headstage) GUI can be
 opened. If any changes are made while the device-specific window is opened that you want to save, be
 sure to [save the settings](#saving-settings).
 
@@ -159,8 +159,8 @@ Maneuvering along the waveform is the same as the section [above](#interacting-w
 The parameters in the `Define Stimuli` box on the right are used to fully define a stimulus waveform
 that will be delivered by the `OpticalStimulator`. The waveform is defined by channels, pulses, bursts, and
 trains:
-- Each channel can independently control its amplitude as a percentage of a shared current value,
-  but the remaining parameters are shared across both channels.
+- Each channel can independently control its amplitude as a percentage of a common current value,
+  while all remaining parameters are common across both channels.
 - Each pulse consists of a channel-specific current and a duration, plus a period which defines the
   time between successive pulses.
 - Each burst can consist of one or more pulses, with an inter-burst interval defining the
