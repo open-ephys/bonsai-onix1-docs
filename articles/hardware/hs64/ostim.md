@@ -7,11 +7,26 @@ The following excerpt from the Headstage64 [example
 workflow](xref:hs64_workflow) demonstrates optical stimulation by triggering a
 train of pulses following a press of the ◯ key on the breakout board.
 
+> [!NOTE]
+> Only one (electrical or optical) stimulator can armed at a time. If both
+> stimulators are armed, the electrical stimulator takes precedence, e.g.
+> the electrical stimulator stays armed and the optical stimulator is
+> automatically disarmed by the headstage firmware. If you want to interleave
+> optical stimulation and electrical stimulation, you must coordinate the
+> stimulators to be dynamically armed and disarmed.
+
 ::: workflow
 ![/workflows/hardware/hs64/ostim.bonsai workflow](../../../workflows/hardware/hs64/ostim.bonsai)
 :::
 
-[!INCLUDE [<digital-io-info>](<../../../includes/breakout-digital-io.md>)]
+The <xref:OpenEphys.Onix1.DigitalInput> operator generates a sequence of
+[DigitalInputDataFrames](xref:OpenEphys.Onix1.DigitalInputDataFrame). Although
+the digital inputs are sampled at 4 Mhz, these data frames are only emitted when
+the port status changes (i.e., when a pin, button, or switch is toggled) when
+`DigitalInput`'s `SampleRate` property is left blank such as is done in the
+example workflow. The `DigitalInput`'s `DeviceName` property is set to
+"BreakoutBoard/DigitalInput". This links the `DigitalInput` operator to the
+corresponding configuration operator. 
 
 <xref:OpenEphys.Onix1.BreakoutButtonState> is selected from the
 `DigitalInputDataFrame`. It is an enumerator with values that correspond to bit
@@ -20,19 +35,18 @@ positions of the breakout board's digital port. When this type is connected to a
 property's dropdown menu. Because `HasFlags`'s `Value` is set to "Circle", its
 output is "True" when the selected `BreakoutButtonState` bit field contains the
 "Circle" flag. The <xref:Bonsai.Reactive.DistinctUntilChanged> operator only
-allows passes an item in its input sequence if it's different from the previous
-item in the input sequence. The <xref:Bonsai.Reactive.Condition> operator only
-passes an item in its input sequence if `Condition`'s internal logic is "True".
-In this case, `Condition` has no internal logic (which can be inspected by
-selecting the node and pressing <kbd>Ctrl+Enter</kbd>), so it uses the value of
-the Boolean in its input sequence to decide whether or not to pass a value. The
-<xref:Bonsai.Expressions.DoubleProperty> operator emits a value determined by
-its `Value` property whenever it receives an item in its input sequence. This
-value is used to determine the delay between triggering the stimulus and
-delivery of the stimulus. When `Double`'s `Value` property is set to zero, there
-is no such delay.
+passes an item in its input sequence if it's different from the previous item in
+the input sequence. The <xref:Bonsai.Reactive.Condition> operator only passes an
+item in its input sequence if `Condition`'s internal logic is "True". In this
+case, `Condition` has no internal logic (which can be inspected by selecting the
+node and pressing <kbd>Ctrl+Enter</kbd>), so it uses the value of the Boolean in
+its input sequence to decide whether or not to pass through an item in its input
+sequence to its output sequence. 
 
-When the <xref:OpenEphys.Onix1.Headstage64OpticalStimulatorTrigger> operator
-receives a "True" value in its input sequence, a stimulus waveform is triggered.
-The waveform can be modified by editing the `Headstage64OpticalStimulatorTrig`
-operator's properties.
+The <xref:Bonsai.Expressions.DoubleProperty>
+operator emits a <xref:System.Double> determined by `Double`'s `Value` property
+whenever it receives an item in its input sequence. Each double in the input
+sequence received by <xref:OpenEphys.Onix1.Headstage64OpticalStimulatorTrigger>
+triggers an optical stimulus. The value of the double determines the delay
+between triggering the stimulus and delivery of the stimulus. When `Double`'s
+`Value` property is set to zero, there is no delay.
