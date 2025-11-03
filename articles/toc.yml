@@ -63,6 +63,8 @@
       href: hardware/hs64/workflow.md
     - name: Configuration
       href: hardware/hs64/configuration.md
+    - name: Headstage64 GUI
+      href: hardware/hs64/gui.md
     - name: Port Status
       href: hardware/hs64/port-status.md
     - name: Rhd2164 Electrophysiology Data
