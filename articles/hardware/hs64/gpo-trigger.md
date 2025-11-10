@@ -33,14 +33,12 @@ example workflow. The `DigitalInput`'s `DeviceName` property is set to
 "BreakoutBoard/DigitalInput". This links the `DigitalInput` operator to the
 corresponding configuration operator. 
 
-<xref:OpenEphys.Onix1.BreakoutButtonState> is selected from the
-`DigitalInputDataFrame`. It is an enumerator with values that correspond to bit
-positions of the breakout board's digital port. When this type is connected to a
-`HasFlags` operator, the enumerated values appear in the `HasFlags`'s `Value`
-property's dropdown menu. Because `HasFlags`'s `Value` is set to "Square", its
-output is "True" when the selected `BreakoutButtonState` bit field contains the
-"Square" flag. The <xref:Bonsai.Reactive.DistinctUntilChanged> operator only
-passes an item in its input sequence if it's different from the previous item in
-the input sequence. When the <xref:OpenEphys.Onix1.Headstage64GpoTrigger>
-operator receives a "True" value in its input sequence, a stimulus waveform is
-triggered.
+[Buttons](xref:OpenEphys.Onix1.BreakoutButtonState) is selected from the
+`DigitalInputDataFrame` and passed to a `HasFlags` operator, which filters the
+sequence based on which button is pressed using the `Value` property's dropdown
+menu. In this case, `HasFlags`'s `Value` is set to "Square", so its output is
+"True" when an item its input sequence contains a "Square" flag. The
+<xref:Bonsai.Reactive.DistinctUntilChanged> operator only passes an item in its
+input sequence if it's different from the previous item in the input sequence.
+When the <xref:OpenEphys.Onix1.Headstage64GpoTrigger> operator receives a "True"
+value in its input sequence, a stimulus waveform is triggered.

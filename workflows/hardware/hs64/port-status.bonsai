@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.8.5"
+<WorkflowBuilder Version="2.9.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:onix1="clr-namespace:OpenEphys.Onix1;assembly=OpenEphys.Onix1"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
@@ -9,7 +9,7 @@
     <Nodes>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="onix1:PortStatus">
-          <onix1:DeviceName>Headstage64/PortController</onix1:DeviceName>
+          <onix1:DeviceName>Headstage64/Headstage64PortController</onix1:DeviceName>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -20,7 +20,7 @@
         <io:Append>false</io:Append>
         <io:Overwrite>false</io:Overwrite>
         <io:Suffix>FileCount</io:Suffix>
-        <io:IncludeHeader>false</io:IncludeHeader>
+        <io:IncludeHeader>true</io:IncludeHeader>
         <io:Selector>Timestamp,Value.Clock,Value.StatusCode</io:Selector>
       </Expression>
     </Nodes>

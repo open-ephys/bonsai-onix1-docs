@@ -22,7 +22,7 @@ electrical stimulus is delivered. In the Headstage 64 example workflow, the
 "Headstage64/Headstage64ElectricalStimulator". This links the
 `Headstage64ElectricalStimulatorData` operator to the corresponding
 configuration operator. Frames from this operators are saved to a file named
-"estim_.csv" using a <xref:Bonsai.IO.CsvWriter>.
+`estim_<filecount>.csv` using a <xref:Bonsai.IO.CsvWriter>.
 
 The <xref:OpenEphys.Onix1.Headstage64OpticalStimulatorData> operator generates a
 sequence of
@@ -33,6 +33,6 @@ stimulus is delivered. In the Headstage 64 example workflow, the
 `Headstage64OpticalStimulatorData`'s `DeviceName` property is set to
 "Headstage64/Headstage64OpticalStimulator". This links the
 `Headstage64OpticalStimulatorData` operator to the corresponding configuration
-operator. Frames from this operators are saved to a file named "ostim_.csv"
+operator. Frames from this operators are saved to a file named `ostim_<filecount>.csv`
 using a `CsvWriter`.
 
