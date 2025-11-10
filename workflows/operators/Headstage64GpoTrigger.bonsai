@@ -16,7 +16,7 @@
       </Expression>
       <Expression xsi:type="HasFlag">
         <Operand xsi:type="WorkflowProperty" TypeArguments="onix1:BreakoutButtonState">
-          <Value>Circle</Value>
+          <Value>Square</Value>
         </Operand>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -36,13 +36,8 @@
         </Workflow>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="DoubleProperty">
-          <Value>0</Value>
-        </Combinator>
-      </Expression>
-      <Expression xsi:type="Combinator">
-        <Combinator xsi:type="onix1:Headstage64OpticalStimulatorTrigger">
-          <onix1:DeviceName>Headstage64/Headstage64OpticalStimulator</onix1:DeviceName>
+        <Combinator xsi:type="onix1:Headstage64GpoTrigger">
+          <onix1:DeviceName>Headstage64/Headstage64PortController</onix1:DeviceName>
         </Combinator>
       </Expression>
     </Nodes>
@@ -52,7 +47,6 @@
       <Edge From="2" To="3" Label="Source1" />
       <Edge From="3" To="4" Label="Source1" />
       <Edge From="4" To="5" Label="Source1" />
-      <Edge From="5" To="6" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>

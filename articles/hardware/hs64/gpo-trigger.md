@@ -1,11 +1,16 @@
 ---
-uid: hs64_estim
-title: Headstage 64 Electrical Stimulation
+uid: hs64_gpo-trigger
+title: Headstage 64 GPO Trigger
 ---
 
 The following excerpt from the Headstage 64 [example
-workflow](xref:hs64_workflow) demonstrates electrical stimulation by triggering
-a train of pulses following a press of the △ key on the breakout board.
+workflow](xref:hs64_workflow) demonstrates triggering a stimulus following a
+press of the X key on the breakout board. The GPO trigger toggles a pin on the
+headstage to trigger stimulus which occurs more instantaneously than writing to
+a register on the headstage which is how the
+<xref:OpenEphys.Onix1.Headstage64ElectricalStimulatorTrigger> and
+<xref:OpenEphys.Onix1.Headstage64OpticalStimulatorTrigger> operators trigger
+stimuli.
 
 > [!NOTE]
 > Only one (electrical or optical) stimulator can armed at a time. If both
@@ -16,7 +21,7 @@ a train of pulses following a press of the △ key on the breakout board.
 > stimulators to be dynamically armed and disarmed.
 
 ::: workflow
-![/workflows/hardware/hs64/estim.bonsai workflow](../../../workflows/hardware/hs64/estim.bonsai)
+![/workflows/hardware/hs64/gpo-trigger.bonsai workflow](../../../workflows/hardware/hs64/gpo-trigger.bonsai)
 :::
 
 The <xref:OpenEphys.Onix1.DigitalInput> operator generates a sequence of
@@ -31,22 +36,9 @@ corresponding configuration operator.
 [Buttons](xref:OpenEphys.Onix1.BreakoutButtonState) is selected from the
 `DigitalInputDataFrame` and passed to a `HasFlags` operator, which filters the
 sequence based on which button is pressed using the `Value` property's dropdown
-menu. In this case, `HasFlags`'s `Value` is set to "Triangle", so its output is
-"True" when an item its input sequence contains a "Triangle" flag. The
+menu. In this case, `HasFlags`'s `Value` is set to "Square", so its output is
+"True" when an item its input sequence contains a "Square" flag. The
 <xref:Bonsai.Reactive.DistinctUntilChanged> operator only passes an item in its
 input sequence if it's different from the previous item in the input sequence.
-The <xref:Bonsai.Reactive.Condition> operator only passes an item in its input
-sequence if `Condition`'s internal logic is "True". In this case, `Condition`
-has no internal logic (which can be inspected by selecting the node and pressing
-<kbd>Ctrl+Enter</kbd>), so it uses the value of the Boolean in its input
-sequence to decide whether or not to pass through an item in its input sequence
-to its output sequence. 
-
-The <xref:Bonsai.Expressions.DoubleProperty> operator emits a
-<xref:System.Double> determined by `Double`'s `Value` property whenever it
-receives an item in its input sequence. Each double in the input sequence
-received by <xref:OpenEphys.Onix1.Headstage64ElectricalStimulatorTrigger>
-triggers an electrical stimulus waveform. The value of the double determines the
-delay in microseconds, executed on the hardware, between triggering the stimulus
-and delivery of the stimulus. When `Double`'s `Value` property is set to zero,
-there is no delay.
+When the <xref:OpenEphys.Onix1.Headstage64GpoTrigger> operator receives a "True"
+value in its input sequence, a stimulus waveform is triggered.
