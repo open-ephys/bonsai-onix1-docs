@@ -73,19 +73,6 @@ ONIX hardware. There are three major reasons for this:
 
    By targeting Bonsai, ONIX can be used seamlessly with these third party tools.
 
-> [!NOTE]
-> We put a lot of effort into
-> making these docs useful for everyone. If you have suggestions for making
-> them even better, please contribute by either [raising an
-> issue](https://github.com/bonsai-rx/docs/issues) or following the links saying
-> **Edit this page**. We welcome all constructive feedback. As always, our goals
-> are better performing tools, less redundant development, and more reproducible
-> science.
->
-> In addition to this library, we are currently developing ONIX support for the
-[Open Ephys GUI](https://open-ephys.org/gui/). 
-
-
 [^1]: Although physical data sources are asynchronous (e.g. a Neuropixels probe
 runs on a distinct clock and produces data at a distinct rate compared to the
 camera sensor on a Miniscope), all data is hardware-timestamped on a common
@@ -96,3 +83,11 @@ Vision](https://github.com/bonsai-rx/vimba),
 [Ximea](https://github.com/bonsai-rx/ximea),
 [Basler](https://github.com/bonsai-rx/pylon),
 [Excelitas](https://github.com/bonsai-rx/pco), etc.
+
+> [!NOTE]
+> We put a lot of effort into
+> making these docs useful for everyone. If you have suggestions for making
+> them even better, please contribute by either [raising an
+> issue](https://github.com/open-ephys/bonsai-onix1-docs/issues). We welcome all constructive feedback. As always, our goals
+> are better performing tools, less redundant development, and more reproducible
+> science.
