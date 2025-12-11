@@ -91,3 +91,7 @@ Vision](https://github.com/bonsai-rx/vimba),
 > issue](https://github.com/open-ephys/bonsai-onix1-docs/issues). We welcome all constructive feedback. As always, our goals
 > are better performing tools, less redundant development, and more reproducible
 > science.
+
+### Open Ephys GUI Support
+
+A plugin for ONIX is available in the Open Ephys GUI. You can read about the [differences between both pieces of software](https://open-ephys.github.io/onix-docs/Software%20Guide/index.html#software-comparison). The Open Ephys GUI has limited support of ONIX capabilities, you can find a summary of the devices supported in the Open Ephys GUI in the [ONIX Source plugin docs](https://open-ephys.github.io/gui-docs/User-Manual/Plugins/Onix-Source.html#onix-support).
