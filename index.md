@@ -85,13 +85,11 @@ Vision](https://github.com/bonsai-rx/vimba),
 [Excelitas](https://github.com/bonsai-rx/pco), etc.
 
 > [!NOTE]
-> We put a lot of effort into
-> making these docs useful for everyone. If you have suggestions for making
-> them even better, please contribute by either [raising an
-> issue](https://github.com/open-ephys/bonsai-onix1-docs/issues). We welcome all constructive feedback. As always, our goals
-> are better performing tools, less redundant development, and more reproducible
-> science.
+> If you have suggestions for improving these docs, please contribute by
+> [raising an issue](https://github.com/open-ephys/bonsai-onix1-docs/issues). We
+> welcome all constructive feedback. As always, our goals are better performing
+> tools, less redundant development, and more reproducible science.
 
 ### Open Ephys GUI Support
 
-A plugin for ONIX is available in the Open Ephys GUI. You can read about the [differences between both pieces of software](https://open-ephys.github.io/onix-docs/Software%20Guide/index.html#software-comparison). The Open Ephys GUI has limited support of ONIX capabilities, you can find a summary of the devices supported in the Open Ephys GUI in the [ONIX Source plugin docs](https://open-ephys.github.io/gui-docs/User-Manual/Plugins/Onix-Source.html#onix-support).
+The [Open Ephys GUI](https://open-ephys.github.io/gui-docs/) can also be used to interface with ONIX without Bonsai and the OpenEphys.Onix1 package. To understand the differences between both options, see our [comparison of Bonsai and the Open Ephys GUI](https://open-ephys.github.io/onix-docs/Software%20Guide/index.html#software-comparison). The Open Ephys GUI uses the [ONIX Source plugin](https://open-ephys.github.io/gui-docs/User-Manual/Plugins/Onix-Source.html) to acquire ONIX data. [Onix Source supports a subset of the ONIX features](https://open-ephys.github.io/gui-docs/User-Manual/Plugins/Onix-Source.html#onix-support) available in the OpenEphys.Onix1 package.
