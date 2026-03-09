@@ -61,12 +61,11 @@ There are a couple of things to note about this process:
    buffer must be filled with `ReadSize` bytes before software can access it, it
    is physically impossible to achieve lower latencies than this. The goal of
    this tutorial is to allow your system to operate in this regime.
-3. If ONIX is produces data while data is being transferred to or waiting to be
-   consumed by the host, this stream of new data is redirected to the ONIX
-   `Hardware Buffer`. The ONIX hardware buffer consists of 2GB of dedicated RAM
-   that belongs to the acquisition hardware (it is _not_ RAM in the host
-   computer). The hardware buffer temporarily stores data that has not yet been
-   transferred to the host.     
+3. If ONIX produces data faster than it is transferred to and consumed by the
+   host, this stream of new data is redirected to the ONIX `Hardware Buffer`.
+   The ONIX hardware buffer consists of 2GB of dedicated RAM that belongs to the
+   acquisition hardware (it is _not_ RAM in the host computer). The hardware
+   buffer temporarily stores data that has not yet been transferred to the host.     
 
 The size of hardware to host data transfers is determined by the
 <xref:OpenEphys.Onix1.StartAcquisition.ReadSize> property of the
@@ -81,12 +80,14 @@ each transfer requires calls to the kernel driver, they incur significant
 overhead. If `ReadSize` is so small that the average time it takes to perform a
 data transfer is longer than the time it takes the hardware to produce a
 `ReadSize` amount of data, data will accumulate in the Hardware Buffer. This
-will destroy real-time performance and eventually cause the hardware buffer to
-overflow, terminating acquisition. Larger `ReadSize` values mean that more data
-needs to accumulate before the kernel driver relinquishes control of the buffer
-to software. This means more time needs to pass before software can start
-operating on data. This increases average latency but reduces the risk of
-accumulating data in the ONIX hardware buffer.
+will destroy real-time performance and risks overflowing the hardware buffer,
+terminating acquisition. Larger `ReadSize` values mean that more data needs to
+accumulate before the kernel driver relinquishes control of the buffer to
+software. This means more time needs to pass before software can start operating
+on data. This increases average latency but reduces the risk of accumulating
+data in the ONIX hardware because transferring the same amount of data at a
+larger `ReadSize` incurs less overhead in the form of calls to the kernel
+driver.
 
 ## Tuning `ReadSize` to Optimize Closed Loop Performance
 
