@@ -23,7 +23,7 @@ times can be achieved.
 
 Data is transferred in chunks containing `ReadSize`-bytes from ONIX to the host computer.
 This `ReadSize` value can be set by the user. If `ReadSize` is so small that
-ONIX produces `ReadSize` bytes of data faster than the host computer can perform
+ONIX produces that amount of data faster than the host computer can perform
 a read operation, newly produced data is streamed to ONIX's hardware buffer
 instead of directly to the host's RAM. If this happens too much, closed-loop
 feedback performance suffers and the likelihood of hardware buffer overflow
