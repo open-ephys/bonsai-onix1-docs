@@ -21,16 +21,16 @@ times can be achieved.
 
 ## Hardware Buffer and ReadSize
 
-Data is transferred in `ReadSize`-bytes chunks from ONIX to the host computer.
+Data is transferred in chunks containing `ReadSize`-bytes from ONIX to the host computer.
 This `ReadSize` value can be set by the user. If `ReadSize` is so small that
 ONIX produces `ReadSize` bytes of data faster than the host computer can perform
 a read operation, newly produced data is streamed to ONIX's hardware buffer
 instead of directly to the host's RAM. If this happens too much, closed-loop
 feedback performance suffers and the likelihood of hardware buffer overflow
 increases. However, if `ReadSize` is so large that it takes a long time for ONIX
-to produce a `ReadSize` amount of data, a single `ReadSize`-chunk contains data
-from a larger span of time. This increases the average closed-loop latency. The
-goal is to set a `ReadSize` that balances these consideration. The rest of this
+to produce that amount of data, a single `ReadSize` chunk of data
+spans a larger period of time. This increases the average closed-loop latency. The
+goal is to set a `ReadSize` that balances these considerations. The rest of this
 section describes ONIX-to-host data transfers in greater technical detail to
 help better understand this balancing act.
 
@@ -361,7 +361,7 @@ shows that the hardware buffer does not accumulate data:
 >     mentioned in the previous bullet point, `ReadSize` can be set to any value
 >     by the user. The OpenEphys.Onix1 Bonsai package will round this `ReadSize`
 >     up to the next multiple of four and uses that value instead. For example,
->     if you try to set `ReadSize` to 887, the software will use the value 888
+>     if you try to set `ReadSize` to 885, the software will use the value 888
 >     instead.
 > -   If you are using a data I/O operator that has capacity to produce data at
 >     various rates (like <xref:OpenEphys.Onix1.DigitalInput>), test your chosen
