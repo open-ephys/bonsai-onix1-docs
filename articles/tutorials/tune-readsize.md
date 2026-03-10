@@ -413,4 +413,3 @@ necessarily increases the total data throughput of
 the latency measurements will not reflect the latencies you will experience
 during the actual experiment. 
 
-<!-- ## Tuning `ReadSize` with Real-Time Computation -->
