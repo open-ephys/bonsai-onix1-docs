@@ -80,5 +80,5 @@ For example, the MatVisualizer allows configuration of:
 
 ## Next Steps
 
-Find and run an example workflow for your particular hardware in the <xref:hardware>. After that,
+Find and run an example workflow for your particular hardware in the <xref:data-acq-quick-start>. After that,
 check out the <xref:tutorials>.

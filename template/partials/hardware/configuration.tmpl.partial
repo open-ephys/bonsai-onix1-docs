@@ -61,8 +61,10 @@
   {{{blockReadSize}}} bytes, meaning data collection will wait until {{{blockReadSize}}} bytes of
   data have been produced by the hardware. At {{{dataRate}}} MB/s the hardware will produce
   {{{blockReadSize}}} bytes every ~{{{timeUntilFullBuffer}}}. This is a hard bound on the latency of
-  the system. If lower latencies were required, the hardware would need to produce data more quickly
-  or the ReadSize property value would need to be reduced. 
+  the system. If lower latencies are required, the hardware would need to produce data more quickly
+  or the ReadSize property value would need to be reduced. To learn about the process of tuning ReadSize, 
+  check out the 
+  <a class="xref" href="~/articles/tutorials/tune-readsize.html">Tune ReadSize</a> tutorial.
 </p>
 
 <p>

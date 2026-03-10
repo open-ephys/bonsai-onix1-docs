@@ -208,7 +208,7 @@
       <Expression xsi:type="Disable">
         <Builder xsi:type="Combinator">
           <Combinator xsi:type="dsp:MatrixWriter">
-            <dsp:Path>np2-b-amp_.raw</dsp:Path>
+            <dsp:Path>np2-b-ephys_.raw</dsp:Path>
             <dsp:Suffix>FileCount</dsp:Suffix>
             <dsp:Overwrite>false</dsp:Overwrite>
             <dsp:Layout>ColumnMajor</dsp:Layout>

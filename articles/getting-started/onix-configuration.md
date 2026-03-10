@@ -54,7 +54,8 @@ The data acquisition process is started when ContextTask passes through
 <xref:OpenEphys.Onix1.StartAcquisition>. StartAcquisition allows the user to set parameters that are
 related to data acquisition such as ReadSize and WriteSize. Setting the ReadSize property for a
 particular workflow is a balancing act of minimizing latency of data data transfers from the ONIX
-system and avoiding data accumulation in the ONIX system's hardware buffer.
+system and avoiding data accumulation in the ONIX system's hardware buffer. To learn about the
+process of tuning ReadSize, check out the <xref:tune-readsize> tutorial.
 
 ::: workflow
 ![/workflows/getting-started/start-acquisition.bonsai workflow](../../workflows/getting-started/start-acquisition.bonsai)

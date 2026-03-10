@@ -16,13 +16,8 @@ jobs:
         with:
           submodules: true
 
-      - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 8.x
-
       - name: Install DocLinkChecker
-        run: dotnet tool install DocLinkChecker --version 1.19.0
+        run: dotnet tool install DocLinkChecker --version 1.37.0
 
       # Check for missing / broken links in the *.md files prior to building the website
       - name: Check Documentation Links

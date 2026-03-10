@@ -3,13 +3,13 @@
   "isRoot": true,
   "tools": {
     "docfx": {
-      "version": "2.77.0",
+      "version": "2.78.3",
       "commands": [
         "docfx"
       ]
     },
     "doclinkchecker": {
-      "version": "1.19.0",
+      "version": "1.37.0",
       "commands": [
         "DocLinkChecker"
       ]
