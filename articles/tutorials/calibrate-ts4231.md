@@ -49,6 +49,13 @@ user-defined coordinate system.
     range of the Lighthouse base station transmitters. Remedying this might require modifying the
     lighthouse configuration or reducing the size of your arena.
 
+    > [!TIP] 
+    > The simple linear transform that this tutorial accomplishes fails to
+    > consider non-linearities that the lighthouses exhibit at large distances.
+    > For accurate calibration using the linear transform node in this tutorial,
+    > the size of the arena might need to be constrained. More advanced
+    > calibration methods can be more accurate over larger spaces.
+
 ## TS4231 Spatial Data Calibration
 
 1.  Open the TS4231V1 Position Calibration GUI. 
@@ -62,8 +69,7 @@ user-defined coordinate system.
 
 1.  Mark four points in your behavioral arena. The position coordinates of these four points will be
     measured both in the TS4231 reference frame by the TS4231 device itself and in the user-defined
-    reference frame (if they are not already known, for example, using some features in the behavioral
-    arena with known dimensions). Here is a simple way to choose the four points:
+    reference frame. Here is a simple way to choose the four points:
 
     1.  The user-defined origin
     2.  A point in the behavioral arena along the user-defined X-axis
@@ -71,9 +77,8 @@ user-defined coordinate system.
     4.  A point in the behavioral arena along the user-defined Z-axis
 
     > [!TIP]
-    > Choosing the furthest extent along the X, Y, & Z axes minimizes the propagation of measurement
-    > error into the spatial transformation matrix. Balance this consideration with ease of knowing
-    > or measuring those coordinates.
+    > Choosing the furthest extent along the X, Y, & Z axes minimizes the
+    > propagation of measurement error into the spatial transformation matrix.
 
     Here is a real-world example of four sets of coordinates on our workbench that we use to
     demonstrate the calibration process:
@@ -86,17 +91,18 @@ user-defined coordinate system.
 1.  For each of the four points defined in the previous step:
 
     -   Choose a row in the TS4231V1 Calibration GUI to correspond to that point. 
-    -   Place your TS4231 device at that point and click the <kbd>Measure</kbd> button in the
-        corresponding row. The GUI will start taking measurements from the TS4231 device as long as
-        the TS4231 device is within range of and unobstructed from the lighthouse transmitter. If
-        the TS4231 measurement completes successfully, the corresponding entry in form is
-        automatically populated. Otherwise, that entry stays empty. In either case, you will be
-        informed in the "Status Messages" text box. If the TS4231 measurement fails, you may have to
-        reorient your Headstage64 or go back to the step in the previous section that describes how
-        to make sure the lighthouse configuration covers the entire area that your TS4231 device
-        will occupy.
-    -   Populate the X, Y, and Z entries of the user-defined coordinates column in the corresponding
-        row.
+    -   Place your TS4231 device at that point and click the <kbd>Measure</kbd>
+        button in the corresponding row. The GUI will start taking measurements
+        from the TS4231 device as long as the TS4231 device is within range of
+        and unobstructed from the lighthouse transmitter. If the TS4231
+        measurement completes successfully, the corresponding entry in form is
+        automatically populated. Otherwise, that entry stays empty. In either
+        case, you will be informed in the "Status Messages" text box. If the
+        TS4231 measurement fails, return the step in the previous section that
+        describes how to make sure the lighthouse configuration covers the
+        entire area that your TS4231 device will occupy.
+    -   Populate the X, Y, and Z entries of the user-defined coordinates column
+        in the corresponding row.
 
     > [!TIP]
     > Be as precise and accurate as possible with both the placement of the
@@ -127,11 +133,12 @@ user-defined coordinate system.
 
 ## Verify TS4231 Calibration
 
-After following one of the two methods in the previous section, [visualize](xref:visualize-data) the
-calibrated data and confirm that the transformed data matches your expectations. Inspecting the
-Position visualizer in Bonsai while moving the TS4231 device is a first-order test. To be more
-robust, choose a bunch of points (none of which should be the four calibration points) and check
-that their calibrated coordinates are what you expect.
+After following one of the two methods in the previous section,
+[visualize](xref:visualize-data) the calibrated data and confirm that the
+transformed data matches your expectations. Inspecting the Position visualizer
+in Bonsai while moving the TS4231 device is a first-order test. Choose several
+points (none of which should be the four calibration points) and check that
+their calibrated coordinates are what you expect.
 
 Below is an animation of the 3D trajectory reconstructed in Python synced with video data for
 demonstration purposes. 
