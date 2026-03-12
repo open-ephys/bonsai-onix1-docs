@@ -34,10 +34,7 @@ user-defined coordinate system.
     <kbd>Ctrl+V</kbd>.
 
     Visit the <xref:hs64_workflow> and <xref:hs64_ts4231> pages to develop a foundation on how to
-    use Bonsai to acquire data from an ONIX headstage that has a TS4231 device. The primary
-    difference between this workflow and the example Headstage 64 workflow is that this one has
-    a transform operator for converting coordinates in the TS4231V1 reference frame to a user defined
-    reference frame.
+    use Bonsai to acquire data from an ONIX headstage that has a TS4231 device. 
 1.  Before beginning the calibration process, confirm that the lighthouse configuration can measure
     the position of your TS4231 device across the entire desired range. To do this, [start the
     workflow](xref:workflow-editor#starting-the-workflow) and confirm that the
@@ -50,7 +47,7 @@ user-defined coordinate system.
     lighthouse configuration or reducing the size of your arena.
 
     > [!TIP] 
-    > The simple linear transform that this tutorial accomplishes fails to
+    > The simple linear transform that this tutorial implements fails to
     > consider non-linearities that the lighthouses exhibit at large distances.
     > For accurate calibration using the linear transform node in this tutorial,
     > the size of the arena might need to be constrained. More advanced
@@ -95,10 +92,10 @@ user-defined coordinate system.
         button in the corresponding row. The GUI will start taking measurements
         from the TS4231 device as long as the TS4231 device is within range of
         and unobstructed from the lighthouse transmitter. If the TS4231
-        measurement completes successfully, the corresponding entry in form is
+        measurement completes successfully, the corresponding entry in the form is
         automatically populated. Otherwise, that entry stays empty. In either
-        case, you will be informed in the "Status Messages" text box. If the
-        TS4231 measurement fails, return the step in the previous section that
+        case, you will be informed of the result in the "Status Messages" text box. If the
+        TS4231 measurement fails, return to the step in the previous section that
         describes how to make sure the lighthouse configuration covers the
         entire area that your TS4231 device will occupy.
     -   Populate the X, Y, and Z entries of the user-defined coordinates column
@@ -133,7 +130,7 @@ user-defined coordinate system.
 
 ## Verify TS4231 Calibration
 
-After following one of the two methods in the previous section,
+After following the previous section,
 [visualize](xref:visualize-data) the calibrated data and confirm that the
 transformed data matches your expectations. Inspecting the Position visualizer
 in Bonsai while moving the TS4231 device is a first-order test. Choose several

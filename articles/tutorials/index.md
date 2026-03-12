@@ -4,7 +4,7 @@ title: Tutorials
 ---
 
 This section contains tutorials that demonstrate how to make the most of
-th OpenEphys.Onix1 Bonsai package by combining ONIX with third party software tools.
+the `OpenEphys.Onix1` Bonsai package by combining ONIX with third party software tools.
 
 Tutorials include:
 
