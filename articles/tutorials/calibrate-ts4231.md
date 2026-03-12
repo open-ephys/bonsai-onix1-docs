@@ -58,8 +58,8 @@ user-defined coordinate system.
 1.  Open the TS4231V1 Position Calibration GUI. 
 
     -   Start the workflow. 
-    -   Open the <xref:OpenEphys.Onix1.TS4231V1SpatialTransform> Position visualizer.
-    -   Click TS4231V1SpatialTransform node to show its properties in the properties panel.
+    -   Open the <xref:OpenEphys.Onix1.TS4231V1LinearTransform> Position visualizer.
+    -   Click TS4231V1LinearTransform node to show its properties in the properties panel.
     -   Click the <kbd>...</kbd> next to the "SpatialTransform" property.
 
     ![Screenshot of blank TS4231V1 Calibration GUI](../../images/tutorials/calibrate-ts4231/calibration-gui.png)
@@ -115,8 +115,8 @@ user-defined coordinate system.
     ![Screenshot of TS4231V1 Calibration GUI with calculated matrix](../../images/tutorials/calibrate-ts4231/calibration-gui_matrix-calculated.png)
 
 1.  After the spatial transform is calculated, click OK to proceed. This updates the spatial transform
-    matrix used by the TS4231V1SpatialTransform operator. This recalibrated spatial transform matrix
-    should be immediately apparent in the TS4231V1SpatialTransform position data visualizer.
+    matrix used by the TS4231V1LinearTransform operator. This recalibrated spatial transform matrix
+    should be immediately apparent in the TS4231V1LinearTransform position data visualizer.
     
     If you are presented with the following confirmation, return to the TS4231 Calibration GUI main
     form to fix the entries that were indicated invalid in the confirmation dialog.

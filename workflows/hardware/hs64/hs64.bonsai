@@ -211,7 +211,7 @@
         <io:Selector>Clock,Position</io:Selector>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="onix1:TS4231V1SpatialTransform">
+        <Combinator xsi:type="onix1:TS4231V1LinearTransform">
           <onix1:SpatialTransform>
             <onix1:A>
               <onix1:M11>NaN</onix1:M11>
