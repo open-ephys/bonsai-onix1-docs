@@ -30,8 +30,8 @@
         <io:Selector>Clock,Position</io:Selector>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="onix1:TS4231V1SpatialTransform">
-          <onix1:SpatialTransform>
+        <Combinator xsi:type="onix1:TS4231V1LinearTransform">
+          <onix1:LinearTransform>
             <onix1:A>
               <onix1:M11>NaN</onix1:M11>
               <onix1:M12>NaN</onix1:M12>
@@ -78,7 +78,7 @@
                 <onix1:Z>NaN</onix1:Z>
               </onix1:Translation>
             </onix1:B>
-          </onix1:SpatialTransform>
+          </onix1:LinearTransform>
         </Combinator>
       </Expression>
       <Expression xsi:type="io:CsvWriter">
