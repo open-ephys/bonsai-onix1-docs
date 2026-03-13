@@ -17,9 +17,11 @@ effect. From the GUI, you can:
 
 - Configure `Probe A` and `Probe B` independently
     - Choose the probe calibration file
-    - Change the [reference](xref:OpenEphys.Onix1.NeuropixelsV2QuadShankReference) for all electrodes
-    - Choose to invert the polarity of the data
+    - Change the reference for all electrodes
     - Choose pre-defined channel presets or manually define within a constrained set of possible combinations
+    - Choose to invert the polarity of the data
+    - Choose the probe type
+        - Currently this library supports quad-shank and single-shank 2.0 probes
     - Easily visualize which electrodes are enabled
 - Enable and disable the [Bno055](xref:OpenEphys.Onix1.PolledBno055Data) stream
 
@@ -39,9 +41,6 @@ below. To view the probe, follow the steps [below](#choosing-a-probe-calibration
   <img src="../../../images/neuropixelsv2e-gui-tut/headstage-configuration-dialog.png">
 </p>
 
-> [!TIP]
-> The controls shown for this GUI are the same as the ones shown for the `NeuropixelsV2e Headstage Configuration` below.
-
 ### Channel constraints
 
 For `NeuropixelsV2e`, there will always be 384 channels enabled across the entire probe. Therefore,
@@ -58,7 +57,7 @@ enabled.
 
 In addition to the absolute number of channels, there are other restrictions in place regarding
 which combinations of electrodes can be enabled at any given time. Specifically, in the
-<xref:OpenEphys.Onix1.NeuropixelsV2QuadShankElectrode> there is a `Channel` property which defines
+<xref:OpenEphys.Onix1.NeuropixelsV2Electrode> there is a `Channel` property which defines
 the channel index of an electrode. Across the entire probe, no two electrodes that share the same
 `Channel` can be simultaneously enabled. 
 
@@ -68,13 +67,13 @@ electrodes are selected. If two (or more) electrodes are selected that share a `
 highest indexed electrode is the only one that will be enabled.
 
 > [!NOTE]
-> Due to these constraints, it is possible that a desired combination of electrodes is not feasible.
+> Due to these constraints, some combinations of electrodes are not possible.
 
 ### Keeping or discarding configuration settings
 
-While the GUI is open, any changes to the configuration settings can be freely modified and will not
-affect the configuration unless <kbd>OK</kbd> is pressed. This includes all aspects of the
-configuration, such as which electrodes are enabled, the chosen reference channel, and the probe
+While the GUI is open, configuration settings can be freely modified and will not affect the
+configuration unless <kbd>OK</kbd> is pressed. This includes all aspects of the configuration, such
+as the probe type, which electrodes are enabled, the chosen reference channel, and the probe
 calibration file.
 
 > [!NOTE]
@@ -120,7 +119,7 @@ Whichever method is used to open the GUI, the descriptions below will be the sam
 However, if method 2 is used, other devices are not available from the same window; the
 `Probe Configuration` window must be closed so that another device (or the headstage) GUI can be
 opened. If any changes are made while the device-specific window is opened that you want to save, be
-sure to [save the settings](#saving-settings).
+sure to [save the settings](#keeping-or-discarding-configuration-settings).
 
 ### Choosing a probe calibration file
 
@@ -143,7 +142,7 @@ selected. Note that the `Gain Correction` textbox and the `Gain Calibration SN: 
 automatically filled in with values found in the calibration file.
 
 <p align="center">
-  <img src="../../../images/neuropixelsv2e-gui-tut/headstage-files-selected.png">
+  <img src="../../../images/neuropixelsv2e-gui-tut/headstage-file-selected.png">
 </p>
 
 ### Selecting channel reference
@@ -166,12 +165,15 @@ combinations defined [above](#channel-constraints).
   <img src="../../../images/neuropixelsv2e-gui-tut/headstage-channel-presets.png">
 </p>
 
-Channel presets follow one of these patterns:
+Channel presets available for quad-shank probes:
 - Shank N Bank [A | B | C | D]
     - Enables all electrodes in the chosen bank on shank N
-    - To learn more about the banks along each shank, check out the <xref:OpenEphys.Onix1.NeuropixelsV2QuadShankBank> page.
+    - To learn more about the banks along each shank, check out the <xref:OpenEphys.Onix1.NeuropixelsV2Bank> page.
 - All Shanks N_M
     - Enables all electrodes starting at shank index N up to shank index M across all four shanks
+
+Channel presets available for single-shank probes:
+- Bank [A | B | C | D]
 
 If electrodes are manually enabled, the `Channel Presets` dropdown will change to **None**,
 indicating that a channel preset is no longer selected.
@@ -186,14 +188,25 @@ the data again, matching the data recorded by the Open Ephys GUI or other hardwa
   <img src="../../../images/neuropixelsv2e-gui-tut/headstage-invert-polarity.png">
 </p>
 
+### Selecting probe type
+
+A dropdown menu allows you choose between a
+[quad-shank](xref:OpenEphys.Onix1.NeuropixelsV2QuadShankProbeConfiguration) probe, and a
+[single-shank](xref:OpenEphys.Onix1.NeuropixelsV2SingleShankProbeConfiguration) probe. 
+
+<p align="center">
+  <img src="../../../images/neuropixelsv2e-gui-tut/headstage-choose-probe-type.png">
+</p>
+
 > [!NOTE]
-> Even though the option to invert the polarity appears in each probe tab, the option applies to
-> both probes at the same time. Therefore, if the option is unchecked in one tab, it will
-> automatically be unchecked in the other tab.
+> Switching to a new probe type will reset the calibration file, reference, electrode selection, and
+> invert polarity option. The selections are not discarded immediately, and can be retrieved by
+> selecting the previous probe type. However, if the probe type is changed, and then the GUI is closed
+> by pressing <kbd>OK</kbd>, all previous probe group settings will be lost.
 
 ### Maneuvering along the probe
 
-Once a GUI has been [opened](#open-probe-configuration-gui) and a probe calibration file has been
+Once a GUI has been [opened](#neuropixels-v2-probe-configuration) and a probe calibration file has been
 [selected](#choosing-a-probe-calibration-file), the main panel on the left will be populated with a
 `NeuropixelsV2e` probe. Below are the buttons used to navigate within this panel to view and choose
 electrodes.
@@ -241,9 +254,11 @@ constraints](#channel-constraints) section above.
 
 The short video below shows how to select, clear selection, enable selected electrodes, and
 translate using the scroll bar. Note that once electrodes are manually enabled, the `Channel
-Presets` drop-down changes from `Shank0BankA` to `None`. Then, once the selected electrodes match
-the preset, it is automatically changed back to `Shank0BankA`.
+Presets` drop-down changes to `None`. Then, once the selected electrodes match the preset, it is
+automatically changed back to `Shank0BankA`.
 
+> [!TODO]
+> Redo this GIF before merging to main, so it contains all new functionalities and file menus
 <div>
   <img src="../../../images/neuropixelsv2e-gui-tut/headstage-configuration-enable-electrodes.gif">
 </div>
@@ -252,7 +267,7 @@ the preset, it is automatically changed back to `Shank0BankA`.
 
 When the GUI is first opened and after a probe calibration file has been specified, the default
 [ProbeInterface](#probeinterface) configuration is loaded and drawn in the main panel. In this case,
-the default configuration is for a quad-shank `NeuropixelsV2e` probe, with the `Shank0BankA` channel
+the default configuration is for a quad-shank `Neuropixels 2.0` probe, with the `Shank0BankA` channel
 preset selected. To load a new configuration, load the default configuration, or save the current
 configuration, go to the File drop-down menu (see below) and choose the relevant option.
 
