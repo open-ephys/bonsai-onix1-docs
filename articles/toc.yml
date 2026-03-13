@@ -75,6 +75,8 @@
       href: hardware/hs64/estim.md
     - name: Optical Stimulation
       href: hardware/hs64/ostim.md
+    - name: GPO Trigger
+      href: hardware/hs64/gpo-trigger.md
     - name: Memory Monitor
       href: hardware/hs64/memory-monitor.md
     - href: hardware/hs64/load-data.md
