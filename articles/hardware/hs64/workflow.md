@@ -11,7 +11,7 @@ The example workflow below can by copy/pasted into the Bonsai editor using the c
 - Applies electrical stimulation triggered by pressing the breakout board's △ key.
 - Applies optical stimulation triggered by pressing the breakout board's ◯ key.
 - Applies either electrical or optical stimulation triggered by pressing the
-  breakout board's 
+  breakout board's □ key.
 - Monitors memory usage data.
 
 ::: workflow
