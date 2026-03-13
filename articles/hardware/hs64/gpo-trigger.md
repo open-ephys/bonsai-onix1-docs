@@ -13,8 +13,10 @@ a register on the headstage which is how the
 stimuli.
 
 > [!NOTE] 
-> If both stimulators are enabled, the electrical stimulator takes precedence 
-> and no optical stimulus is sent.
+> If both stimulators are armed when the GPO is triggered, both optical stimulus
+> and electrical stimulus are delivered. If you want to use GPO to trigger both
+> types of stimulus independently, you must dynamically arm and disarm the
+> respective stimulator.
 
 ::: workflow
 ![/workflows/hardware/hs64/gpo-trigger.bonsai workflow](../../../workflows/hardware/hs64/gpo-trigger.bonsai)
