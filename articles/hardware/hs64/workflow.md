@@ -10,6 +10,8 @@ The example workflow below can by copy/pasted into the Bonsai editor using the c
 - Automatically commutates the tether if there is a proper commutator connection. 
 - Applies electrical stimulation triggered by pressing the breakout board's △ key.
 - Applies optical stimulation triggered by pressing the breakout board's ◯ key.
+- Applies either electrical or optical stimulation triggered by pressing the
+  breakout board's 
 - Monitors memory usage data.
 
 ::: workflow
