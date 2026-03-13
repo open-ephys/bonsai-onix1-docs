@@ -27,11 +27,5 @@ menu. In this case, `HasFlags`'s `Value` is set to "Triangle", so its output is
 "True" when an item its input sequence contains a "Triangle" flag. The
 <xref:Bonsai.Reactive.DistinctUntilChanged> operator only passes an item in its
 input sequence if it's different from the previous item in the input sequence.
-The <xref:Bonsai.Reactive.Condition> operator only passes an item in its input
-sequence if `Condition`'s internal logic is "True". In this case, `Condition`
-has no internal logic (which can be inspected by selecting the node and pressing
-<kbd>Ctrl+Enter</kbd>), so it uses the value of the Boolean in its input
-sequence to decide whether or not to pass through an item in its input sequence
-to its output sequence. When the
-<xref:OpenEphys.Onix1.Headstage64ElectricalStimulatorTrigger> operator receives
-a "True" value in its input sequence, a stimulus waveform is triggered.
+When the <xref:OpenEphys.Onix1.Headstage64ElectricalStimulatorTrigger> operator
+receives a "True" value in its input sequence, a stimulus waveform is triggered.

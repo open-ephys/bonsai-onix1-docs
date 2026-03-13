@@ -14,10 +14,11 @@ train of pulses following a press of the ◯ key on the breakout board.
 The <xref:OpenEphys.Onix1.DigitalInput> operator generates a sequence of
 [DigitalInputDataFrames](xref:OpenEphys.Onix1.DigitalInputDataFrame). Although
 the digital inputs are sampled at 4 Mhz, these data frames are only emitted when
-the port status changes (i.e., when a pin, button, or switch is toggled). In the
-Breakout Board example workflow, the `DigitalInput`'s `DeviceName` property is
-set to "BreakoutBoard/DigitalInput". This links the `DigitalInput` operator to
-the corresponding configuration operator. 
+the port status changes (i.e., when a pin, button, or switch is toggled) when
+`DigitalInput`'s `SampleRate` property is left blank such as is done in the
+example workflow. The `DigitalInput`'s `DeviceName` property is set to
+"BreakoutBoard/DigitalInput". This links the `DigitalInput` operator to the
+corresponding configuration operator. 
 
 [Buttons](xref:OpenEphys.Onix1.BreakoutButtonState) is selected from the
 `DigitalInputDataFrame` and passed to a `HasFlags` operator, which filters the
@@ -26,11 +27,5 @@ menu. In this case, `HasFlags`'s `Value` is set to "Circle", so its output is
 "True" when an item its input sequence contains a "Circle" flag. The
 <xref:Bonsai.Reactive.DistinctUntilChanged> operator only passes an item in its
 input sequence if it's different from the previous item in the input sequence.
-The <xref:Bonsai.Reactive.Condition> operator only passes an item in its input
-sequence if `Condition`'s internal logic is "True". In this case, `Condition`
-has no internal logic (which can be inspected by selecting the node and pressing
-<kbd>Ctrl+Enter</kbd>), so it uses the value of the Boolean in its input
-sequence to decide whether or not to pass through an item in its input sequence
-to its output sequence. When the
-<xref:OpenEphys.Onix1.Headstage64OpticalStimulatorTrigger> operator receives a
-"True" value in its input sequence, a stimulus waveform is triggered.
+When the <xref:OpenEphys.Onix1.Headstage64OpticalStimulatorTrigger> operator
+receives a "True" value in its input sequence, a stimulus waveform is triggered.

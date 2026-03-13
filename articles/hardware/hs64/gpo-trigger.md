@@ -7,7 +7,7 @@ The following excerpt from the Headstage 64 [example
 workflow](xref:hs64_workflow) demonstrates triggering a stimulus following a
 press of the □ key on the breakout board. The GPO trigger toggles a pin on the
 headstage to trigger stimulus which occurs more instantaneously than writing to
-a register on the headstage which is how the
+a register on the headstage's FPGA which is how the
 <xref:OpenEphys.Onix1.Headstage64ElectricalStimulatorTrigger> and
 <xref:OpenEphys.Onix1.Headstage64OpticalStimulatorTrigger> operators trigger
 stimuli.
