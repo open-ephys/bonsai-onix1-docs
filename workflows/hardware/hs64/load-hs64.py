@@ -90,16 +90,6 @@ ax.set_yticks(1000 * np.arange(plot_num_channels))
 ax.set_yticklabels(np.arange(plot_num_channels))
 ax.set_title('RHD2164 Ephys Data')
 
-for stim_clock, stim_origin in zip(estim['clock'], estim['origin']):
-    stim_sec = stim_clock / meta['acq_clk_hz']
-    line_color = 'k' if stim_origin == 'Register' else 'r'
-    ax.axvline(x=stim_sec, color=line_color, alpha=0.25, ls='-')
-    
-for stim_clock, stim_origin in zip(ostim['clock'], ostim['origin']):
-    stim_sec = stim_clock / meta['acq_clk_hz']
-    line_color = 'k' if stim_origin == 'Register' else 'r'
-    ax.axvline(x=stim_sec, color=line_color, alpha=0.25, ls='--')
-
 scale_bar_length = 1000  # µV
 scale_bar_x = ax.get_xlim()[0]
 scale_bar_y = ax.get_ylim()[0]
