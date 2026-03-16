@@ -69,3 +69,12 @@ three systems are used, they would have `Index` values of 0, 1, and 2. etc.
 
 Now that you can stream data into Bonsai from ONIX hardware, the next step is
 visualize the data.
+
+## Minimum Version Check
+
+If you start a workflow and are presented with an exception such as this:
+
+![Exception showing an attempt to acquire from device with unsupported gateware version](../../images/unsupported-version.png)
+
+you must revert to a software version
+that supports the indicated version of the gateware. 
