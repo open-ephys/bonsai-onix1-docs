@@ -25,6 +25,10 @@ The example workflow below can by copy/pasted into the Bonsai editor using the c
 ![/workflows/hardware/np2e/np2e.bonsai workflow](../../../workflows/hardware/np2e/np2e.bonsai)
 :::
 
+> [!TIP]
+> It is possible to test the headstage connection without any probes connected by disabling the
+> [data nodes](xref:OpenEphys.Onix1.NeuropixelsV2eData).
+
 The following pages in the NeuropixelsV2e Headstage Guide provide a breakdown of the above example workflow.
 
 > [!NOTE]
