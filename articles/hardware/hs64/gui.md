@@ -73,6 +73,13 @@ However, if method 2 is used, the other devices are not available from the same 
 opened. If any changes are made while the device-specific window is opened that you want to save, be
 sure to [save the settings](#saving-settings).
 
+An alternative view of the properties can be found by clicking on the `Properties` tab, which will
+show a property grid similar to what is shown by the Bonsai editor.
+
+<p align="center">
+  <img src="../../../images/hs64-gui-tut/estim-properties.png">
+</p>
+
 ### Interacting with the stimulus waveform
 
 When the interface is first opened, it will display the current settings specified for the device on
@@ -151,6 +158,13 @@ However, if method 2 is used, the other devices are not available from the same 
 `OpticalStimulator` window must be closed so that another device (or the headstage) GUI can be
 opened. If any changes are made while the device-specific window is opened that you want to save, be
 sure to [save the settings](#saving-settings).
+
+An alternative view of the properties can be found by clicking on the `Properties` tab, which will
+show a property grid similar to what is shown by the Bonsai editor.
+
+<p align="center">
+  <img src="../../../images/hs64-gui-tut/ostim-properties.png">
+</p>
 
 Maneuvering along the waveform is the same as the section [above](#interacting-with-the-stimulus-waveform).
 

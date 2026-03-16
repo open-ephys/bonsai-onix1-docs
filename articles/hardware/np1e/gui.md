@@ -99,6 +99,13 @@ time.
 
 ## Neuropixels V1 Probe Configuration
 
+An alternative view of the properties can be found by clicking on the `Properties` tab, which will
+show a property grid similar to what is shown by the Bonsai editor.
+
+<p align="center">
+  <img src="../../../images/neuropixelsv1e-gui-tut/headstage-properties.png" width="350" height="800">
+</p>
+
 ### Choosing probe calibration files
 
 Upon opening the GUI for the first time, if no probe calibration files were set in the Bonsai

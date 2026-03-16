@@ -160,6 +160,13 @@ when no parameters have been set is below.
   <img src="../../../images/rhs2116-gui-tut/table.png" width=500px>
 </p>
 
+An alternative view of the properties can be found by clicking on the `Properties` tab, which will
+show a property grid similar to what is shown by the Bonsai editor.
+
+<p align="center">
+  <img src="../../../images/rhs2116-gui-tut/headstage-properties.png" width="400" height="700">
+</p>
+
 ### Reading current parameters
 
 To easily copy settings from one channel to another, or to see what the current settings are on a
