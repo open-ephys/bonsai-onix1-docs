@@ -72,9 +72,9 @@ visualize the data.
 
 ## Minimum Version Check
 
-If you start a workflow and are presented an exception such as this:
+If you start a workflow and are presented with an exception such as this:
 
 ![Exception showing an attempt to acquire from device with unsupported gateware version](../../images/unsupported-version.png)
 
-you must either update the gateware on your hardware or revert to a software
+you must revert to a software version
 that supports the indicated version of the gateware. 
