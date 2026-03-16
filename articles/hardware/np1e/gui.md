@@ -94,7 +94,7 @@ specifications](https://probeinterface.readthedocs.io/en/main/format_spec.html) 
 
 When opening the GUI, there is a default probe configuration that is loaded and drawn, which can be
 saved to a [JSON file](#save-probeinterface-file). Conversely, an existing JSON file can be
-[loaded](#load-probeinterface-file) to update the current channel configuration. If for any reason
+[loaded](#open-probeinterface-file) to update the current channel configuration. If for any reason
 the default configuration is needed, it can be [loaded again](#load-default-configuration) at any
 time.
 
@@ -313,7 +313,7 @@ with the entire filepath.
 
 Whenever changes are made to the ProbeInterface configuration, an asterisk will appear on the tab or
 title of the window to indicate that some changes to the electrode configuration are unsaved. To
-save the file, go to the file menu option`File → Save` or press <kbd>Ctrl + S</kbd>. 
+save the file, go to the file menu option `File → Save` or press <kbd>Ctrl + S</kbd>. 
 
 - If there is not a filename already selected, this will open a file dialog window to save a new
   file. Choose a folder location and a name for the file, then hit `Save`.

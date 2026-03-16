@@ -6,7 +6,7 @@ title: Load Data
 The following python script can be used to load and plot the data produced by the NeuropixelsV2e
 Headstage [example workflow](xref:np2e).
 
-If the [OrderByDepth](#np2e_np2) property is set to `False`, then channels will be ordered by channel
+If the [OrderByDepth](xref:np2e_np2) property is set to `False`, then channels will be ordered by channel
 number (i.e., from 0 to 383). If it is set to `True`, then channels will be ordered by the
 electrode depth.
 

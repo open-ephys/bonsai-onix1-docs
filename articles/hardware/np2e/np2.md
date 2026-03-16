@@ -13,7 +13,7 @@ The following excerpt from the NeuropixelsV2e Headstage [example workflow](xref:
 functionality by streaming data and saves Neuropixels 2.0 probe data. The second chain is disabled by default, assuming
 that only one probe is connected to the headstage. If two probes are connected, the second `NeuropixelsV2eData` chain
 can be enabled to stream data from both probes simultaneously. To enable, select all nodes in the disabled chain and
-press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>, or click `Enable` right-clicking the selected nodes.
+press <kbd>Ctrl + Shift + D</kbd>, or click `Enable` right-clicking the selected nodes.
 
 ::: workflow
 ![/workflows/hardware/np2e/np2.bonsai workflow](../../../workflows/hardware/np2e/np2.bonsai)
@@ -33,7 +33,7 @@ properties settings:
   their electrode depth. Channels are ordered first by their Y-value, and if two electrodes share a
   Y-value then they are ordered by their X-value. This means that Channel 0 is now the bottom-left
   most electrode, regardless of what its normal channel number is. For a visualization of the
-  electrode depth, check out the [GUI page](#xref:np2e_gui) to see how the current electrode
+  electrode depth, check out the [GUI page](xref:np2e_gui) to see how the current electrode
   configuration is set up.
 
 The relevant members are selected from the `NeuropixelsV2eDataFrame` by right-clicking the `NeuropixelsV2eData`
