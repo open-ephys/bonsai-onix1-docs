@@ -126,6 +126,7 @@ user-defined coordinate system.
 > [!IMPORTANT]
 > After calibrating the TS4231V1 spatial transform matrix, it is important to not change the
 > TS4231PositionData operator's P/Q property values or move the lighthouse base stations or else
+> TS4231PositionData operator's P/Q property values or move the lighthouse base stations. If anything is changed,
 > the calibrated spatial transform matrix will no longer be accurate. 
 
 ## Verify TS4231 Calibration
