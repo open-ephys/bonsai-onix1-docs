@@ -13,7 +13,7 @@
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="onix1:ConfigurePersistentHeartbeat">
-          <onix1:DeviceName>BreakoutBoard/Heartbeat</onix1:DeviceName>
+          <onix1:DeviceName>BreakoutBoard/PersistentHeartbeat</onix1:DeviceName>
           <onix1:DeviceAddress>0</onix1:DeviceAddress>
           <onix1:BeatsPerSecond>100</onix1:BeatsPerSecond>
         </Combinator>

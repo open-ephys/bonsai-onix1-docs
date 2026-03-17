@@ -70,7 +70,7 @@ bno055_time_mask = np.bitwise_and(bno055_time >= 0 if start_t is None else start
 # Load TS4231 data
 dt = {'names': ('clock', 'position'),
       'formats': ('u8', '(1,3)f8')}
-ts4231 = np.genfromtxt(data_directory / f'ts4231_{suffix}.csv', delimiter=',', dtype=dt)
+ts4231 = np.genfromtxt(data_directory / f'ts4231v1-calibrated_{suffix}.csv', delimiter=',', dtype=dt)
 
 # Convert clock cycles to seconds
 ts4231_time = ts4231['clock'] / meta['acq_clk_hz']
@@ -82,7 +82,7 @@ ts4231_time_mask = np.bitwise_and(ts4231_time >= 0 if start_t is None else start
 fig, ax = plt.subplots(1, 1)
 
 col_indices = np.arange(plot_num_channels)[np.newaxis, :]
-offset_uV = rec_ephys_slice.get_traces(return_scaled=True, channel_ids=np.arange(plot_num_channels)) + 1000 * col_indices
+offset_uV = rec_ephys_slice.get_traces(return_in_uV=True, channel_ids=np.arange(plot_num_channels)) + 1000 * col_indices
 ax.plot(rec_ephys_slice.get_times(), offset_uV)
 ax.set_xlabel('Time (seconds)')
 ax.set_ylabel('Channel Number')
@@ -105,15 +105,13 @@ ax.plot([scale_bar_x, scale_bar_x],
 fig.set_size_inches((8,8))
 fig.tight_layout()
 
-fig = plt.figure(figsize=(12, 10))
-
 #%% Plot BNO055, TS4231V1, and RHD2164 aux data
 
 fig, axes = plt.subplots(6, 1, sharex=True)
 
 # Plot RHD2164 aux data
 axes[0].plot(rec_aux_slice.get_times(), 
-             rec_aux_slice.get_traces(return_scaled=True, channel_ids=np.arange(num_channels_aux)))
+             rec_aux_slice.get_traces(return_in_uV=True, channel_ids=np.arange(num_channels_aux)))
 axes[0].set_xlabel('Time (seconds)')
 axes[0].set_ylabel('Voltage (V)')
 axes[0].set_title('RHD2164 Aux Data')
@@ -127,7 +125,7 @@ axes[1].legend(['Yaw', 'Pitch', 'Roll'],loc='lower right')
 
 axes[2].plot(bno055_time[bno055_time_mask], bno055['quat'].squeeze()[bno055_time_mask])
 axes[2].set_xlabel('Time (seconds)')
-axes[2].set_title('Quaternions')
+axes[2].set_title('Quaternion')
 axes[2].legend(['X', 'Y', 'Z', 'W'],loc='lower right')
 
 axes[3].plot(bno055_time[bno055_time_mask], bno055['accel'].squeeze()[bno055_time_mask])

@@ -22,7 +22,7 @@
         </Combinator>
       </Expression>
       <Expression xsi:type="io:CsvWriter">
-        <io:FileName>uncalibrated_ts4231_.csv</io:FileName>
+        <io:FileName>ts4231v1-uncalibrated_.csv</io:FileName>
         <io:Append>false</io:Append>
         <io:Overwrite>false</io:Overwrite>
         <io:Suffix>FileCount</io:Suffix>
@@ -31,7 +31,7 @@
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="onix1:TS4231V1LinearTransform">
-          <onix1:SpatialTransform>
+          <onix1:LinearTransform>
             <onix1:A>
               <onix1:M11>NaN</onix1:M11>
               <onix1:M12>NaN</onix1:M12>
@@ -78,11 +78,11 @@
                 <onix1:Z>NaN</onix1:Z>
               </onix1:Translation>
             </onix1:B>
-          </onix1:SpatialTransform>
+          </onix1:LinearTransform>
         </Combinator>
       </Expression>
       <Expression xsi:type="io:CsvWriter">
-        <io:FileName>calibrated_ts4231_.csv</io:FileName>
+        <io:FileName>ts4231v1-calibrated_.csv</io:FileName>
         <io:Append>false</io:Append>
         <io:Overwrite>false</io:Overwrite>
         <io:Suffix>FileCount</io:Suffix>
