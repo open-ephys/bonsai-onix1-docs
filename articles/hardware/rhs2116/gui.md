@@ -62,10 +62,9 @@ The `Rhs2116Headstage` GUI uses the
 and electrodes visually. For more information on the ProbeInterface JSON format, check out their
 [format specifications](https://probeinterface.readthedocs.io/en/main/format_spec.html) page. 
 
-When opening the GUI, there is a default probe configuration that is loaded and drawn which can be
-saved to a [JSON file](#save-probeinterface-file). Conversely, an existing ProbeInterface JSON file
-can be [loaded](#load-probeinterface-file) to update the current channel configuration. If the
-default configuration is needed, it can be [loaded again](#load-default-configuration) at any time.
+When opening the GUI, there is a default probe configuration that is loaded and drawn. If you wish
+to upload the ProbeInterface file for the physical probe used, it can be
+[imported](#import-probeinterface-file) and drawn to better visualize where the stimulation will occur.
 
 ## Using the Channel Selection Window
 
@@ -133,9 +132,14 @@ values list.
 | --- | --- | --- |
 | `Delay [ms]` | 5 | 5.00 |
 | `Inter-Pulse [ms]` | 0 | 0.00 |
-| `Anodic Amplitude [µA]` | 0.1 | 0.1 |
+| `Anodic Amplitude [µA]` | 1000 | 1000 |
 | `Anodic Pulse Width [ms]` | 23 | 22.99 |
 | `Inter-Stimulus [ms]` | 100 | 99.99 |
+
+The selected settings can be applied to the selected channels by pressing <kbd>Apply</kbd>, and the
+waveforms will be plotted in the main window as shown below. The waveforms are ordered from top to
+bottom, with the top waveform corresponding to channel 0, and the bottom waveform corresponding to
+channel 31.
 
 <p align="center">
   <img src="../../../images/rhs2116-gui-tut/define-stimuli.png" width=750px>
@@ -146,15 +150,6 @@ values list.
 > parameters by only writing in the applicable text box. Any boxes without input will not be
 > applied.
 
-The selected settings can be applied to the selected channels by pressing <kbd>Apply</kbd>, and the
-waveforms will be plotted in the main window as shown below. The waveforms are ordered from top to
-bottom, with the top waveform corresponding to channel 0, and the bottom waveform corresponding to
-channel 31.
-
-<p align="center">
-  <img src="../../../images/rhs2116-gui-tut/waveforms.png" width=750px>
-</p>
-
 To see the values that will be written to the hardware, click on the `Table` tab in the top left,
 next to the `Stimulus Waveform` tab. This will open up a table that displays all 32 channels, and
 the value in steps and samples that could be written to the hardware. Any changes made to the
@@ -162,7 +157,7 @@ channels parameters will be reflected in this window. An example of what the emp
 when no parameters have been set is below.
 
 <p align="center">
-  <img src="../../../images/rhs2116-gui-tut/table.png" width=750px>
+  <img src="../../../images/rhs2116-gui-tut/table.png" width=500px>
 </p>
 
 ### Reading current parameters
@@ -175,7 +170,7 @@ will pop up prompting you to select a single channel.
 
 Select a channel that has been configured and press <kbd>Read</kbd> to read that channel's
 current parameters. For example, if you are using the workflow provided in this documentation, you
-should see the following parameters after selecting channel 7 and reading the parameters:
+should see the following parameters after selecting channel 8 and reading the parameters:
 
 <p align="center">
   <img src="../../../images/rhs2116-gui-tut/read-parameters.png" width=750px>
@@ -240,19 +235,21 @@ settings are invalid), they also *will not* be saved even if <kbd>Ok</kbd> is pr
 will pop up warning that the settings will not be saved, giving the opportunity to continue editing
 and correct any settings that need modification.
 
-## Save ProbeInterface file
+### Open stimulus waveform
 
-To save a [ProbeInterface](#probeinterface) JSON file fully describing the probe, including which
-electrodes are currently enabled, go to the File drop-down menu, and select `Channel Configuration →
-Save Channel Configuration`. This will open a file dialog window to save the new JSON file. Choose a
-folder location and a name for the file, then hit `Save`. This will export the current channel
-configuration. This is a useful way to save any manually enabled electrodes as a backup, or to
-easily switch between different configurations between recordings.
+If a previous waveform file was [saved](#save-stimulus-waveform), it can be loaded via the menu
+strip to immediately load all channel parameters simultaneously. Navigate to `File → Open Stimulus
+Waveform`, which will open up a dialog where you can select an existing file with stimulus waveform data.
 
-## Load ProbeInterface file
+### Save stimulus waveform
 
-To load a [ProbeInterface](#probeinterface) JSON file, navigate to the File drop-down menu and
-select `Channel Configuration → Load Channel Configuration`. This will open a file dialog window;
+To save the current waveform to a file, select the `File → Save Stimulus Waveform` menu item to open
+a dialog where you can choose a location to save the stimulus waveform.
+
+## Import ProbeInterface file
+
+To import a [ProbeInterface](#probeinterface) JSON file, navigate to the drop-down menu and
+select `File → Import Probe Configuration`. This will open a file dialog window;
 browse to the existing JSON file, select it and press `Open` to load the channel configuration. The
 new probe shape will be loaded and drawn.
 
@@ -268,17 +265,3 @@ if a file already exists for the probe being utilized. If no probe file exists, 
 to create a new file by following the [example
 provided](https://probeinterface.readthedocs.io/en/main/examples/ex_01_generate_probe_from_sratch.html)
 by SpikeInterface, exporting the new probe group as a JSON file, and uploading it to the GUI here.
-
-Below are some examples of what different probes might look like when they are uploaded:
-
-![Neuronexus A1x32-Poly3-10mm-50-177](../../../images/rhs2116-gui-tut/probeinterface-neuronexus-a1x32.png){width=200px}
-Neuronexus A1x32-Poly3-10mm-50-177 probe
-
-![Cambridge Neurotech ASSY-116-H7b](../../../images/rhs2116-gui-tut/probeinterface-cambridge-assy-116-H7b.png){width=200px}
-Cambridge Neurotech ASSY-116-H7b
-
-## Load default configuration
-
-To load the default channel configuration at any time, navigate to the File drop-down menu and
-choose `Channel Configuration → Load Default Channel Configuration`. This will load the default
-configuration, with the default orientation as described above.
