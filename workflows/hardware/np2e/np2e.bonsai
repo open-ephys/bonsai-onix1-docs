@@ -91,6 +91,7 @@
               <onix1:InvertPolarity>true</onix1:InvertPolarity>
               <onix1:GainCalibrationFileName />
               <onix1:Reference>External</onix1:Reference>
+              <onix1:ProbeInterfaceFileName />
             </onix1:ConfigurationA>
             <onix1:ConfigurationB xsi:type="onix1:NeuropixelsV2QuadShankProbeConfiguration">
               <onix1:InvertPolarity>true</onix1:InvertPolarity>

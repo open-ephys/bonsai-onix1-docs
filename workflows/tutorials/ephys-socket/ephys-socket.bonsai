@@ -30,9 +30,9 @@
         <Combinator xsi:type="onix1:ConfigureBreakoutBoard">
           <onix1:Name>BreakoutBoard</onix1:Name>
           <onix1:Heartbeat>
-            <onix1:DeviceName>BreakoutBoard/Heartbeat</onix1:DeviceName>
+            <onix1:DeviceName>BreakoutBoard/PersistentHeartbeat</onix1:DeviceName>
             <onix1:DeviceAddress>0</onix1:DeviceAddress>
-            <onix1:BeatsPerSecond>10</onix1:BeatsPerSecond>
+            <onix1:BeatsPerSecond>100</onix1:BeatsPerSecond>
           </onix1:Heartbeat>
           <onix1:AnalogIO>
             <onix1:DeviceName>BreakoutBoard/AnalogIO</onix1:DeviceName>
@@ -81,7 +81,7 @@
           <onix1:HarpInput>
             <onix1:DeviceName>BreakoutBoard/HarpSyncInput</onix1:DeviceName>
             <onix1:DeviceAddress>12</onix1:DeviceAddress>
-            <onix1:Enable>true</onix1:Enable>
+            <onix1:Enable>false</onix1:Enable>
             <onix1:Source>Breakout</onix1:Source>
           </onix1:HarpInput>
           <onix1:MemoryMonitor>
@@ -105,6 +105,9 @@
               <onix1:LfpAmplifierGain>Gain50</onix1:LfpAmplifierGain>
               <onix1:Reference>External</onix1:Reference>
               <onix1:SpikeFilter>true</onix1:SpikeFilter>
+              <onix1:GainCalibrationFileName>C:\Brandon-temp\19051023592\19051023592_gainCalValues.csv</onix1:GainCalibrationFileName>
+              <onix1:AdcCalibrationFileName>C:\Brandon-temp\19051023592\19051023592_ADCCalibration.csv</onix1:AdcCalibrationFileName>
+              <onix1:ProbeInterfaceFileName>C:\Users\brandon\Desktop\cris\probeinterface-files\pi_configuration-v1e.json</onix1:ProbeInterfaceFileName>
               <onix1:InvertPolarity>false</onix1:InvertPolarity>
             </onix1:ProbeConfiguration>
           </onix1:NeuropixelsV1e>
