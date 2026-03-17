@@ -21,7 +21,7 @@ effect. From the GUI, you can:
     - Choose to invert the polarity of the data
     - Choose the probe type
         - Currently this library supports quad-shank and single-shank 2.0 probes
-    - Choose the ProbeInterface configuration file
+    - Choose and edit the ProbeInterface configuration file
         - Choose pre-defined channel presets or manually define within a constrained set of possible combinations
         - Easily visualize which electrodes are enabled
 - Enable and disable the [Bno055](xref:OpenEphys.Onix1.PolledBno055Data) stream
@@ -72,11 +72,10 @@ highest indexed electrode is the only one that will be enabled.
 
 ### Keeping or discarding configuration settings
 
-While the GUI is open, configuration settings can be freely modified and will not affect the
-configuration unless <kbd>OK</kbd> is pressed. This includes all aspects of the configuration, such
-as the probe type, which electrodes are enabled, the chosen reference channel, and the probe
-calibration file. However, the electrode configuration as described below can be saved independently
-of the other configuration settings.
+While the GUI is open, any changes to the configuration settings can be freely modified. Most
+changes will not be saved unless <kbd>OK</kbd> is pressed. This includes the chosen reference
+channel and probe calibration file. However, the electrode configuration as described
+[below](#save-probeinterface-file) can be saved independently of the other configuration settings.
 
 > [!NOTE]
 > The hardware is not actually configured until the workflow starts.
