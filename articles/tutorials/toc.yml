@@ -1,5 +1,7 @@
 - href: index.md
+  expanded: true
   items: 
     - href: ephys-processing-listening.md
     - href: ephys-socket.md
     - href: tune-readsize.md
+    - href: calibrate-ts4231.md
