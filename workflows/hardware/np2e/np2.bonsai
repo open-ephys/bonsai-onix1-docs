@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.8.5"
+<WorkflowBuilder Version="2.9.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:onix1="clr-namespace:OpenEphys.Onix1;assembly=OpenEphys.Onix1"
                  xmlns:dsp="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp"
@@ -11,6 +11,7 @@
           <onix1:DeviceName>HeadstageNeuropixelsV2e/NeuropixelsV2e</onix1:DeviceName>
           <onix1:BufferSize>30</onix1:BufferSize>
           <onix1:ProbeIndex>ProbeA</onix1:ProbeIndex>
+          <onix1:OrderByDepth>false</onix1:OrderByDepth>
         </Combinator>
       </Expression>
       <Expression xsi:type="MemberSelector">
@@ -41,6 +42,7 @@
             <onix1:DeviceName>HeadstageNeuropixelsV2e/NeuropixelsV2e</onix1:DeviceName>
             <onix1:BufferSize>30</onix1:BufferSize>
             <onix1:ProbeIndex>ProbeB</onix1:ProbeIndex>
+            <onix1:OrderByDepth>false</onix1:OrderByDepth>
           </Combinator>
         </Builder>
       </Expression>

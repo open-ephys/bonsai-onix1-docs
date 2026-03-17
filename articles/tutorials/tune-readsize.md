@@ -359,9 +359,9 @@ shows that the hardware buffer does not accumulate data:
 >     be fine-tuned further to achieve even tighter latencies if necessary.
 > -   As long as you stay above the minimum mentioned in the previous bullet
 >     point, `ReadSize` can be set to any value by the user. The OpenEphys.Onix1
->     Bonsai package will round this `ReadSize` to the nearest multiple of four
+>     Bonsai package will round this `ReadSize` up to the nearest multiple of four
 >     and uses that value instead. For example, if you try to set `ReadSize` to
->     887, the software will use the value 888 instead.
+>     885, the software will use the value 888 instead.
 > -   If you are using a data I/O operator that has capacity to produce data at
 >     various rates (like <xref:OpenEphys.Onix1.DigitalInput>), test your chosen
 >     `ReadSize` by configuring the load tester to produce data at the lower and
