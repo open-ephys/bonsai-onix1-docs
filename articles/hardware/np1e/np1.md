@@ -25,7 +25,7 @@ properties settings:
   their electrode depth. Channels are ordered first by their Y-value, and if two electrodes share a
   Y-value then they are ordered by their X-value. This means that Channel 0 is now the bottom-left
   most electrode, regardless of what its normal channel number is. For a visualization of the
-  electrode depth, check out the [GUI page](#xref:np1e_gui) to see how the current electrode
+  electrode depth, check out the [GUI page](xref:np1e_gui) to see how the current electrode
   configuration is set up.
 
 Given the settings above, each frame will contain a [1 x 36 sample] `Clock` vector, a [384 channel x 36 sample]
