@@ -27,9 +27,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="2.0485264"
-     inkscape:cx="41.981397"
-     inkscape:cy="267.26529"
+     inkscape:zoom="1.0242632"
+     inkscape:cx="17.573608"
+     inkscape:cy="304.12105"
      inkscape:window-width="1920"
      inkscape:window-height="1057"
      inkscape:window-x="1912"
@@ -85,6 +85,6 @@
        x="147.19836"
        y="67.68055"
        clip-path="url(#clipPath4)"
-       inkscape:path-effect="#path-effect5"
        sodipodi:type="rect"
-       d="m 147.19836,67.68055 h 66.64547 v 146.20673 h -66.64547 z" /></g></svg>
+       d="m 147.19836,67.68055 h 66.64547 v 146.20673 h -66.64547 z"
+       inkscape:path-effect="#path-effect5" /></g></svg>

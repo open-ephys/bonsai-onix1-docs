@@ -240,7 +240,7 @@ where it is out of view, and difficult to find. To reset the view at any time, c
 Zoom` button to fully zoom out the panel.
 
 <p align="center">
-  <img src="../../../images/neuropixelsv2e-gui-tut/reset-zoom.png" width="900" height="850">
+  <img src="../../../images/neuropixelsv2e-gui-tut/reset-zoom.png" width="900" height="700">
 </p>
 
 ### Manually enabling electrodes
