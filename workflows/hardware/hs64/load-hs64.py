@@ -8,7 +8,7 @@ from pathlib import Path
 #%% Set parameters for loading data
 
 suffix = 0                    # Change to match filenames' suffix
-data_directory = Path('C:/Users/brandon/Desktop/cris/repos/bonsai-onix1-docs/workflows/hardware/hs64')   # Change to match files' directory
+data_directory = Path('./')   # Change to match files' directory
 plot_num_channels = 10        # Number of channels to plot
 start_t = None                # Plot start time (seconds) "None" starts the plot at the first sample in the recording
 end_t = None                  # Plot time duration (seconds) "None" ends the plot at the last sample in the recording

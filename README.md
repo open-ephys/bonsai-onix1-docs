@@ -97,7 +97,7 @@ The above set of commands can also be run using the `docfx-utils.ps1` Powershell
 To run the next command, install [Lychee](https://github.com/lycheeverse/lychee?tab=readme-ov-file) by following [these instructions](https://github.com/lycheeverse/lychee?tab=readme-ov-file#installation). If you are use Windows and download a Lychee executable, amend the below command according to the location and version of your Lychee executable, and run it.
 
 ``` console
-<lychee/installation/directory>/lychee-v<x.xx.x>-windows-x86_64.exe --no-progress --base _site --exclude ^https://github\.com.*merge.* --exclude ^https://github\.com.*apiSpec.* --exclude ^https://github\.com/open-ephys/onix1-bonsai-docs/blob/.*/#L1 '_site/**/*.html' --max-retries 0 --max-concurrency 32 --cache --max-cache-age 1d
+<lychee/installation/directory>/lychee-windows-x86_64.exe --no-progress --root-dir _site --exclude ^https://github\.com.*merge.* --exclude ^https://github\.com.*apiSpec.* --exclude ^https://github\.com/open-ephys/onix1-bonsai-docs/blob/.* '_site/**/*.html' --max-retries 0 --max-concurrency 32 --cache --max-cache-age 1d
 ```
 
 If you use a different operating systems and a different methods of installation, the above command might require additional amendments. 
