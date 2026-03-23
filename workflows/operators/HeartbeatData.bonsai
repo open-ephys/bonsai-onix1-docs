@@ -7,7 +7,7 @@
     <Nodes>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="onix1:HeartbeatData">
-          <onix1:DeviceName>BreakoutBoard/Heartbeat</onix1:DeviceName>
+          <onix1:DeviceName>BreakoutBoard/PersistentHeartbeat</onix1:DeviceName>
         </Combinator>
       </Expression>
       <Expression xsi:type="MemberSelector">

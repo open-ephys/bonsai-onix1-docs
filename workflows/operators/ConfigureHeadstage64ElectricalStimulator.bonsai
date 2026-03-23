@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.8.1"
+<WorkflowBuilder Version="2.9.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:onix1="clr-namespace:OpenEphys.Onix1;assembly=OpenEphys.Onix1"
                  xmlns="https://bonsai-rx.org/2018/workflow">
@@ -15,6 +15,18 @@
         <Combinator xsi:type="onix1:ConfigureHeadstage64ElectricalStimulator">
           <onix1:DeviceName>Headstage64/ElectricalStimulator</onix1:DeviceName>
           <onix1:DeviceAddress>259</onix1:DeviceAddress>
+          <onix1:Arm>false</onix1:Arm>
+          <onix1:TriggerDelay>0</onix1:TriggerDelay>
+          <onix1:PhaseOneCurrent>0</onix1:PhaseOneCurrent>
+          <onix1:InterPhaseCurrent>0</onix1:InterPhaseCurrent>
+          <onix1:PhaseTwoCurrent>0</onix1:PhaseTwoCurrent>
+          <onix1:PhaseOneDuration>0</onix1:PhaseOneDuration>
+          <onix1:InterPhaseInterval>0</onix1:InterPhaseInterval>
+          <onix1:PhaseTwoDuration>0</onix1:PhaseTwoDuration>
+          <onix1:InterPulseInterval>0</onix1:InterPulseInterval>
+          <onix1:InterBurstInterval>0</onix1:InterBurstInterval>
+          <onix1:BurstPulseCount>0</onix1:BurstPulseCount>
+          <onix1:TrainBurstCount>0</onix1:TrainBurstCount>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">

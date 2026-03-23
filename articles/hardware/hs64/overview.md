@@ -19,6 +19,8 @@ These are the devices available on the Headstage 64:
     - The stimulation waveform is highly configurable via the <xref:OpenEphys.Onix1.Headstage64ElectricalStimulatorTrigger>'s properties.
 - [Optical Stimulation](xref:hs64_ostim): Two current sources with 800mA upper limit
     - The stimulation waveform is highly configurable via the <xref:OpenEphys.Onix1.Headstage64OpticalStimulatorTrigger>'s properties.
+- [Gpo Trigger](xref:hs64_gpo-trigger): Trigger an optical or an electrical
+  stimulus based on which devices are enabled.
 
 > [!TIP]
 > Visit the 

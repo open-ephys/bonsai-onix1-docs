@@ -26,7 +26,7 @@ This configuration GUI can be accessed by double-clicking on the `ConfigureHeads
 operator. 
 
 <p align="center">
-  <img src="../../../images/rhs2116-gui-tut/bonsai-where-to-click.png">
+  <img src="../../../images/rhs2116-gui-tut/bonsai-where-to-click.png" width=750px>
 </p>
 
 ### Stimulus parameters
@@ -34,10 +34,10 @@ operator.
 The GUI accepts values for stimulation waveform parameters in metric units (e.g., milliseconds and
 microamps). In the backend, the GUI converts metric units into units that can be written to the
 hardware. Because the conversion between metric values and converted values is not always exact, the
-GUI might automatically update the metric value initially input by the user to a metric value that
+GUI might automatically update the metric value initially input to a metric value that
 more accurately represents the converted value that will be written to hardware. This update is
-visually displayed in the same text box where the user initially input their values and happens when
-the focus moves away from the active text box (e.g., the user presses <kbd>Tab</kbd> or clicks
+visually displayed in the same text box you will initially input their values, and happens when
+the focus moves away from the active text box (e.g., by pressing <kbd>Tab</kbd> or clicking
 somewhere outside of the text box).
 
 Below is a table describing the various stimulus parameters that can be applied to each channel
@@ -62,10 +62,9 @@ The `Rhs2116Headstage` GUI uses the
 and electrodes visually. For more information on the ProbeInterface JSON format, check out their
 [format specifications](https://probeinterface.readthedocs.io/en/main/format_spec.html) page. 
 
-When opening the GUI, there is a default probe configuration that is loaded and drawn which can be
-saved to a [JSON file](#save-probeinterface-file). Conversely, an existing ProbeInterface JSON file
-can be [loaded](#load-probeinterface-file) to update the current channel configuration. If the
-default configuration is needed, it can be [loaded again](#load-default-configuration) at any time.
+When opening the GUI, there is a default probe configuration that is loaded and drawn. If you wish
+to upload the ProbeInterface file for the physical probe used, it can be
+[imported](#import-probeinterface-file) and drawn to better visualize where the stimulation will occur.
 
 ## Using the Channel Selection Window
 
@@ -73,7 +72,7 @@ Upon first opening the GUI, the main window will be blank if no stimulus paramet
 defined. The window should look something like this:
 
 <p align="center">
-  <img src="../../../images/rhs2116-gui-tut/gui-no-waveforms.png">
+  <img src="../../../images/rhs2116-gui-tut/no-waveforms.png" width=750px>
 </p>
 
 ### Selecting channels
@@ -94,14 +93,15 @@ When channels are selected, they will be highlighted by a green circle around th
 and the corresponding waveforms will be plotted in the main window; any channels that are
 not selected will not be plotted.
 
-### Zoom and pan limits
+### Zoom
 
 When zooming in and out, there are limits in both directions. The probe can only be zoomed out to
 the point that the entire probe is visible within the panel and no more. Similarly, while zooming in
 the probe will not zoom in past a certain point. 
 
-In addition to the absolute zoom limits, the panel will automatically shift the probe to ensure it
-is always in view. This is handled each time the probe is zoomed or panned.
+There are no limits to where you can pan the probe, meaning that it is possible to lose track of the
+probe. If it is ever needed to get the probe back in the center of the plot, press on the <kbd>Reset
+Zoom</kbd> button.
 
 ## Define Stimuli
 
@@ -118,39 +118,37 @@ only plot the selected channels in the main window. In the example below, channe
 are selected.
 
 <p align="center">
-  <img src="../../../images/rhs2116-gui-tut/channel-selection-7-8-23-24.png">
+  <img src="../../../images/rhs2116-gui-tut/select-channels.png" width=750px>
 </p>
 
 Enter the [stimulus parameters](#stimulus-parameters) that you want to apply to the currently
-selected channel(s). Note that the value initially input by the user might update when the focus
-moves away from the current text box (e.g., the user presses <kbd>Tab</kbd> or clicks somewhere
-outside of the text box) to reflect the actual value that will be written based on the resolutions
-listed above. In the example below, we can see that the table listed below as well shows the typed
-values compared to the actual values list.
+selected channel(s). Note that the value might update when the focus moves away from the current
+text box (e.g., pressing <kbd>Tab</kbd> or clicking somewhere outside of the text box); this change
+reflects the value that will be written to the device based on the resolutions listed above. In the
+example below, we can see that the table listed below shows the typed values compared to the actual
+values list.
 
 | Parameter | Requested Value | Listed Value |
 | --- | --- | --- |
 | `Delay [ms]` | 5 | 5.00 |
 | `Inter-Pulse [ms]` | 0 | 0.00 |
-| `Anodic Amplitude [µA]` | 0.1 | 0.1 |
+| `Anodic Amplitude [µA]` | 1000 | 1000 |
 | `Anodic Pulse Width [ms]` | 23 | 22.99 |
 | `Inter-Stimulus [ms]` | 100 | 99.99 |
 
+The selected settings can be applied to the selected channels by pressing <kbd>Apply</kbd>, and the
+waveforms will be plotted in the main window as shown below. The waveforms are ordered from top to
+bottom, with the top waveform corresponding to channel 0, and the bottom waveform corresponding to
+channel 31.
+
 <p align="center">
-  <img src="../../../images/rhs2116-gui-tut/define-stimuli-a.png">
+  <img src="../../../images/rhs2116-gui-tut/define-stimuli.png" width=750px>
 </p>
 
 > [!TIP]
 > If a channel already has stimulus parameters applied to it, it is easy to change individual
 > parameters by only writing in the applicable text box. Any boxes without input will not be
 > applied.
-
-The selected settings can be applied to the selected channels by pressing <kbd>Apply</kbd>, and the
-waveforms will be plotted in the main window as shown below.
-
-<p align="center">
-  <img src="../../../images/rhs2116-gui-tut/waveforms-7-8-23-24-a.png">
-</p>
 
 To see the values that will be written to the hardware, click on the `Table` tab in the top left,
 next to the `Stimulus Waveform` tab. This will open up a table that displays all 32 channels, and
@@ -159,7 +157,14 @@ channels parameters will be reflected in this window. An example of what the emp
 when no parameters have been set is below.
 
 <p align="center">
-  <img src="../../../images/rhs2116-gui-tut/table.png">
+  <img src="../../../images/rhs2116-gui-tut/table.png" width=500px>
+</p>
+
+An alternative view of the properties can be found by clicking on the `Properties` tab, which will
+show a property grid similar to what is shown by the Bonsai editor.
+
+<p align="center">
+  <img src="../../../images/rhs2116-gui-tut/headstage-properties.png" width="400" height="700">
 </p>
 
 ### Reading current parameters
@@ -168,22 +173,14 @@ To easily copy settings from one channel to another, or to see what the current 
 channel prior to updating then settings, click on a single channel in the channel selection window,
 or click-and-drag until a single channel is selected, and then press on the <kbd>Read</kbd> button
 in the bottom right. If more than one channel is selected, or no channels are selected, a window
-will pop up prompting the user to select a single channel.
+will pop up prompting you to select a single channel.
 
-To test this, select a channel that has not been configured yet and press <kbd>Read</kbd>. The
-parameter fields will be populated with zeroes as shown in the image below:
-
-<p align="center">
-  <img src="../../../images/rhs2116-gui-tut/define-stimuli-read-defaults.png">
-</p>
-
-Now select a channel that has been configured and press <kbd>Read</kbd> to read that channel's
-current parameters. For example, if one of the channels that was configured in the [Applying
-parameters](#applying-parameters) section above is selected, the image below shows the result of the
-operation:
+Select a channel that has been configured and press <kbd>Read</kbd> to read that channel's
+current parameters. For example, if you are using the workflow provided in this documentation, you
+should see the following parameters after selecting channel 8 and reading the parameters:
 
 <p align="center">
-  <img src="../../../images/rhs2116-gui-tut/define-stimuli-read-applied-parameters.png">
+  <img src="../../../images/rhs2116-gui-tut/read-parameters.png" width=750px>
 </p>
 
 ### Clearing current parameters
@@ -245,19 +242,21 @@ settings are invalid), they also *will not* be saved even if <kbd>Ok</kbd> is pr
 will pop up warning that the settings will not be saved, giving the opportunity to continue editing
 and correct any settings that need modification.
 
-## Save ProbeInterface file
+### Open stimulus waveform
 
-To save a [ProbeInterface](#probeinterface) JSON file fully describing the probe, including which
-electrodes are currently enabled, go to the File drop-down menu, and select `Channel Configuration →
-Save Channel Configuration`. This will open a file dialog window to save the new JSON file. Choose a
-folder location and a name for the file, then hit `Save`. This will export the current channel
-configuration. This is a useful way to save any manually enabled electrodes as a backup, or to
-easily switch between different configurations between recordings.
+If a previous waveform file was [saved](#save-stimulus-waveform), it can be loaded via the menu
+strip to immediately load all channel parameters simultaneously. Navigate to `File → Open Stimulus
+Waveform`, which will open up a dialog where you can select an existing file with stimulus waveform data.
 
-## Load ProbeInterface file
+### Save stimulus waveform
 
-To load a [ProbeInterface](#probeinterface) JSON file, navigate to the File drop-down menu and
-select `Channel Configuration → Load Channel Configuration`. This will open a file dialog window;
+To save the current waveform to a file, select the `File → Save Stimulus Waveform` menu item to open
+a dialog where you can choose a location to save the stimulus waveform.
+
+## Import ProbeInterface file
+
+To import a [ProbeInterface](#probeinterface) JSON file, navigate to the drop-down menu and
+select `File → Import Probe Configuration`. This will open a file dialog window;
 browse to the existing JSON file, select it and press `Open` to load the channel configuration. The
 new probe shape will be loaded and drawn.
 
@@ -273,17 +272,3 @@ if a file already exists for the probe being utilized. If no probe file exists, 
 to create a new file by following the [example
 provided](https://probeinterface.readthedocs.io/en/main/examples/ex_01_generate_probe_from_sratch.html)
 by SpikeInterface, exporting the new probe group as a JSON file, and uploading it to the GUI here.
-
-Below are some examples of what different probes might look like when they are uploaded:
-
-![Neuronexus A1x32-Poly3-10mm-50-177](../../../images/rhs2116-gui-tut/probeinterface-neuronexus-a1x32.png){width=200px}
-Neuronexus A1x32-Poly3-10mm-50-177 probe
-
-![Cambridge Neurotech ASSY-116-H7b](../../../images/rhs2116-gui-tut/probeinterface-cambridge-assy-116-H7b.png){width=200px}
-Cambridge Neurotech ASSY-116-H7b
-
-## Load default configuration
-
-To load the default channel configuration at any time, navigate to the File drop-down menu and
-choose `Channel Configuration → Load Default Channel Configuration`. This will load the default
-configuration, with the default orientation as described above.

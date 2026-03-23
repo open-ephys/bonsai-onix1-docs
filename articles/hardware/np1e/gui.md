@@ -20,13 +20,27 @@ effect. From the GUI, you can:
     - Enable or disable the AP-band spike filter
     - Choose to invert the polarity of the data
     - Change the [reference](xref:OpenEphys.Onix1.NeuropixelsV1ReferenceSource) for all electrodes
-    - Choose pre-defined channel presets or manually define within a constrained set of possible combinations
-    - Easily visualize which electrodes are enabled
+    - Choose and edit the ProbeInterface configuration file
+        - Choose pre-defined channel presets or manually define within a constrained set of possible combinations
+        - Easily visualize which electrodes are enabled
 - Configure the [Bno055](xref:OpenEphys.Onix1.ConfigurePolledBno055)
     - Enable and disable the <xref:OpenEphys.Onix1.PolledBno055Data> stream
 
+### Opening the GUI
+
 The configuration dialog is accessible by double-clicking on the
 <xref:OpenEphys.Onix1.ConfigureHeadstageNeuropixelsV1e> operator.
+
+To open the headstage configuration GUI, double-click the `ConfigureHeadstageNeuropixelsV1e`
+operator.
+
+![Open the GUI](../../..//images/neuropixelsv1e-gui-tut/where-to-click.png)
+
+Once opened, if the calibration files have not been selected the window should look like the image
+below. To view the probe, follow the steps below to [choose calibration
+files](#choosing-probe-calibration-files).
+
+![Headstage Configuration GUI](../../..//images/neuropixelsv1e-gui-tut/headstage-configuration-dialog.png)
 
 ### Channel constraints
 
@@ -58,42 +72,39 @@ highest indexed electrode is the only one that will be enabled.
 
 ### Keeping or discarding configuration settings
 
-While the GUI is open, any changes to the configuration settings can be freely modified and will not
-affect the configuration unless `Okay` is pressed. This includes all aspects of the configuration,
-such as which electrodes are enabled, the chosen reference channel, and the probe calibration file.
+While the GUI is open, any changes to the configuration settings can be freely modified. Most
+changes will not be saved unless <kbd>OK</kbd> is pressed. This includes the chosen reference
+channel and probe calibration file. However, the electrode configuration as described
+[below](#save-probeinterface-file) can be saved independently of the other configuration settings.
 
 > [!NOTE]
 > The hardware is not actually configured until the workflow starts.
 
 If the window is closed any other way (such as by pressing `Cancel`, or pressing the <kbd>X</kbd> to
-close the window), then any changes made *will not* be saved.
+close the window), then any configuration changes made *will not* be saved.
 
 ### ProbeInterface
 
 The `HeadstageNeuropixelsV1e` GUI uses
-[ProbeInterface](https://probeinterface.readthedocs.io/en/main/index.html) as the format to draw the
-probes and electrodes visually. For more information on ProbeInterface and the resulting JSON file,
-check out their [format
+[ProbeInterface](https://probeinterface.readthedocs.io/en/main/index.html) as the format to save and
+draw the probes and electrodes visually. For more information on ProbeInterface and the resulting
+JSON file, check out their [format
 specifications](https://probeinterface.readthedocs.io/en/main/format_spec.html) page. 
 
 When opening the GUI, there is a default probe configuration that is loaded and drawn, which can be
 saved to a [JSON file](#save-probeinterface-file). Conversely, an existing JSON file can be
-[loaded](#load-probeinterface-file) to update the current channel configuration. If for any reason
+[loaded](#open-probeinterface-file) to update the current channel configuration. If for any reason
 the default configuration is needed, it can be [loaded again](#load-default-configuration) at any
 time.
 
-## Open Headstage Configuration GUI
+## Neuropixels V1 Probe Configuration
 
-To open the headstage configuration GUI, double-click the `ConfigureHeadstageNeuropixelsV1e`
-operator.
+An alternative view of the properties can be found by clicking on the `Properties` tab, which will
+show a property grid similar to what is shown by the Bonsai editor.
 
-![Open the GUI](../../..//images/neuropixelsv1e-gui-tut/bonsai-editor-where-to-click.png)
-
-Once opened, if the calibration files have not been selected the window should look like the image
-below. To view the probe, follow the steps below to [choose calibration
-files](#choosing-probe-calibration-files).
-
-![Probe Configuration GUI](../../..//images/neuropixelsv1e-gui-tut/headstage-configuration-dialog.png)
+<p align="center">
+  <img src="../../../images/neuropixelsv1e-gui-tut/headstage-properties.png" width="350" height="800">
+</p>
 
 ### Choosing probe calibration files
 
@@ -105,7 +116,7 @@ calibration file can be searched for and selected. Once the file is selected, pr
 <kbd>Enter</kbd>. This will populate the text box with the filepath to the calibration file.
 
 <p align="center">
-  <img src="../../../images/neuropixelsv1e-gui-tut/headstage-adc-calibration-choose-file.png">
+  <img src="../../../images/neuropixelsv1e-gui-tut/headstage-adc-calibration-choose-file.png" width="400" height="850">
 </p>
 
 This process is then repeated for the gain calibration file; click on the <kbd>...</kbd> button to
@@ -113,7 +124,7 @@ the right of the empty text box under `Gain Calibration File` (see below). This 
 dialog, where the gain calibration file can be searched for and selected. 
 
 <p align="center">
-  <img src="../../../images/neuropixelsv1e-gui-tut/headstage-gain-calibration-choose-file.png">
+  <img src="../../../images/neuropixelsv1e-gui-tut/headstage-gain-calibration-choose-file.png" width="400" height="850">
 </p>
 
 > [!NOTE] 
@@ -127,9 +138,10 @@ the configuration GUI that has been opened after both calibration files have bee
 
 ### Status strip
 
-Towards the bottom of the GUI, there is a status strip that reports the serial number found in the
-selected calibration files. Next to the reported serial numbers is a status symbol indicating if
-there any potential issues. Below is a list of possible states the status strip will display:
+Towards the bottom of the GUI, there is a status strip that reports the current ProbeInterface file
+and the serial number found in the selected calibration files. Next to the reported serial numbers
+is a status symbol indicating if there any potential issues. Below is a list of possible states the
+status strip will display for serial numbers:
 
 | Symbol | Reason |
 | :---: | :---: |
@@ -155,7 +167,7 @@ has been selected and is valid, the gain correction that will be applied is disp
 underneath the dropdown menu and is updated based on the current gain selected.
 
 <p align="center">
-  <img src="../../../images/neuropixelsv1e-gui-tut/headstage-ap-correction.png">
+  <img src="../../../images/neuropixelsv1e-gui-tut/headstage-ap-correction.png" width="400" height="850">
 </p>
 
 ### Selecting LFP gain
@@ -166,7 +178,7 @@ has been selected and is valid, the gain correction that will be applied is disp
 underneath the dropdown menu and is updated based on the current gain selected.
 
 <p align="center">
-  <img src="../../../images/neuropixelsv1e-gui-tut/headstage-lfp-correction.png">
+  <img src="../../../images/neuropixelsv1e-gui-tut/headstage-lfp-correction.png" width="400" height="850">
 </p>
 
 ### Enabling spike filter
@@ -176,7 +188,7 @@ A checkbox allows enabling or disabling of the spike-band filter. If enabled, th
 be activated.
 
 <p align="center">
-  <img src="../../../images/neuropixelsv1e-gui-tut/headstage-spike-filter.png">
+  <img src="../../../images/neuropixelsv1e-gui-tut/headstage-spike-filter.png" width="400" height="850">
 </p>
 
 ### Inverting the polarity of ephys data
@@ -186,7 +198,7 @@ default, as Neuropixels hardware inverts neural data; therefore, leaving this op
 the data again, matching the data recorded by the Open Ephys GUI or other hardware sources.
 
 <p align="center">
-  <img src="../../../images/neuropixelsv1e-gui-tut/headstage-invert-polarity.png">
+  <img src="../../../images/neuropixelsv1e-gui-tut/headstage-invert-polarity.png" width="400" height="850">
 </p>
 
 ### Selecting channel reference
@@ -196,7 +208,7 @@ all channels. For possible values and a brief description of what they correspon
 [references page](xref:OpenEphys.Onix1.NeuropixelsV1ReferenceSource).
 
 <p align="center">
-  <img src="../../../images/neuropixelsv1e-gui-tut/headstage-reference.png">
+  <img src="../../../images/neuropixelsv1e-gui-tut/headstage-reference.png" width="400" height="850">
 </p>
 
 ### Channel presets
@@ -206,7 +218,7 @@ dropdown. These presets are defined to work within the constraints of `Neuropixe
 combinations defined [above](#channel-constraints).
 
 <p align="center">
-  <img src="../../../images/neuropixelsv1e-gui-tut/headstage-channel-presets.png">
+  <img src="../../../images/neuropixelsv1e-gui-tut/headstage-channel-presets.png" width="400" height="850">
 </p>
 
 Below is a list of available channel presets:
@@ -225,7 +237,7 @@ indicating that a channel preset is no longer selected.
 
 ### Maneuvering along the probe
 
-Once a GUI has been [opened](#open-headstage-configuration-gui) and a probe calibration file has
+Once a GUI has been [opened](#opening-the-gui) and a probe calibration file has
 been [selected](#choosing-probe-calibration-files), the main panel on the left will be populated
 with a `NeuropixelsV1e` probe. Below are the buttons used to navigate within this panel to view and
 choose electrodes.
@@ -233,7 +245,7 @@ choose electrodes.
 - Mouse Controls
     - Mouse wheel zooms in/out towards the cursor
     - Left-click and drag will select electrodes within the drawn rectangle
-    - Left-click on an electrode will select that electrode
+    - Left-click on an electrode will toggle that electrode
     - Left-click in empty space will clear the selected electrodes
     - Middle-click and drag will pan the electrodes
 - Scroll bar
@@ -244,16 +256,19 @@ choose electrodes.
         - Placing the cursor either above or below the marker and clicking
         - Using the mouse wheel to scroll up or down while the cursor is over the scroll bar
 
-### Zoom and pan limits
+### Reset zoom
 
-When zooming in and out, note that there are limits in both directions. The probe can only be zoomed
-out to the point that the entire probe is visible within the panel and no more. Similarly, while
-zooming in the probe will not zoom in past a certain point. 
+When zooming in and out, there are limits in both directions. The probe can only be zoomed out to
+the point that the entire probe is visible within the panel, and similarly the probe will not zoom
+in past a certain point. 
 
-In addition to the absolute zoom limits, the panel will automatically shift the probe to ensure it
-is always in view. This is handled each time the probe is zoomed or panned.
+There are no restrictions when panning the probe, meaning that it is possible to move the probe to
+where it is out of view, and difficult to find. To reset the view at any time, click on the `Reset
+Zoom` button to fully zoom out the panel.
 
-To reset the view at any time, click on the `Reset Zoom` button to fully zoom out the panel.
+<p align="center">
+  <img src="../../../images/neuropixelsv1e-gui-tut/reset-zoom.png">
+</p>
 
 ### Manually enabling electrodes
 
@@ -264,7 +279,7 @@ To select, as described [above](#maneuvering-along-the-probe), either click-and-
 the desired electrodes, or select individual electrodes by clicking on them one-by-one. Once the
 electrodes to enable are selected, click on the `Enable Selected Electrodes` button in the right
 panel. At this point the selected electrodes should turn blue, indicating that they are now enabled.
-It is important to note that when electrodes are enabled, a number of previously enabled electrodes
+It is important to note that when electrodes are enabled, some previously enabled electrodes
 will be disabled due to channel constraints. For more information, read the [Channel
 constraints](#channel-constraints) section above.
 
@@ -274,12 +289,10 @@ Presets` drop-down changes from `BankA` to `None`. Then, once the selected elect
 preset, it is automatically changed back to `BankA`.
 
 <div>
-  <video width="650" height="365" controls muted loop>
-    <source src="../../../images/neuropixelsv1e-gui-tut/headstage-configuration-enable-electrodes.webm">
-  </video>
+  <img src="../../../images/neuropixelsv1e-gui-tut/headstage-configuration-enable-electrodes.gif">
 </div>
 
-### Loading and saving channel configurations
+## Loading and saving channel configurations
 
 When the GUI is first opened and after a probe calibration file has been specified, the default
 [ProbeInterface](#probeinterface) configuration is loaded and drawn in the main panel. In this case,
@@ -291,33 +304,51 @@ configuration, go to the File drop-down menu (see below) and choose the relevant
   <img src="../../../images/neuropixelsv1e-gui-tut/headstage-configuration-file-menu.png">
 </p>
 
-#### Save ProbeInterface file
+### Open ProbeInterface file
 
-To save a [ProbeInterface](#probeinterface) JSON file fully describing the probe, including which
-electrodes are currently enabled, go to the File drop-down menu, and select `NeuropixelsV1e → Save
-Channel Configuration`. This will open a file dialog window to save the new JSON file. Choose a
-folder location and a name for the file, then hit `Save`. This will export the current channel
-configuration. This is a useful way to save any manually enabled electrodes as a backup, or to
-easily switch between different configurations between recordings.
+To open a file, navigate to the file menu option `File → Open` or press <kbd>Ctrl + O</kbd>. This
+will open a file dialog window; browse to the existing JSON file, select it and press `Open` to view
+ the channel configuration. The new probe will be loaded and drawn, with the enabled electrodes
+highlighted.
 
-#### Load ProbeInterface file
+The `ProbeInterface File` section of the status bar will update to display the filename that was
+selected. To view the entire filepath for the file, hover over the filename to display a tooltip
+with the entire filepath.
 
-To load a [ProbeInterface](#probeinterface) JSON file, navigate to the File drop-down menu and
-select `NeuropixelsV1e → Load Channel Configuration`. This will open a file dialog window; browse to
-the existing JSON file, select it and press `Open` to load the channel configuration. The new probe
-shape will be loaded and drawn, with the enabled electrodes highlighted as usual.
+### Save ProbeInterface file
 
-> [!NOTE] 
-> When loading a new configuration, the total number of electrodes must match the existing
-> configuration, and the number of enabled electrodes must match.
+Whenever changes are made to the ProbeInterface configuration, an asterisk will appear on the tab or
+title of the window to indicate that some changes to the electrode configuration are unsaved. To
+save the file, go to the file menu option `File → Save` or press <kbd>Ctrl + S</kbd>. 
 
-#### Load default configuration
+- If there is not a filename already selected, this will open a file dialog window to save a new
+  file. Choose a folder location and a name for the file, then hit `Save`.
+- If a filename is already selected, then the file will be immediately saved to the current
+  filepath, overwriting the channel configuration.
+  - If you do not want to overwrite the channel configuration, you can instead use `File → Save As`
+    or <kbd>Ctrl + Shift + S</kbd> to save the current electrode configuration to a new filepath.
 
-To load the default channel configuration at any time, navigate to the File drop-down menu and
-choose `NeuropixelsV1e → Load Default Channel Configuration`. This will load the default
-configuration, with the `BankA` channel preset selected.
+If there are unsaved changes to the electrode configuration, pressing <kbd>Cancel</kbd> will discard
+all unsaved changes. If the electrode configuration is first saved to a file, and then
+<kbd>Cancel</kbd> is pressed, the changes are still saved in the file; however, other probe
+configuration properties such as the ProbeInterface file name or the reference used, will be
+discarded. When <kbd>OK</kbd> is pressed and there are unsaved changes, a prompt will appear
+confirming if you would like to save, save as, or cancel closing the dialog.
 
-### Configure Bno055
+### Import configuration
+
+Instead of opening a file and updating the ProbeInterface filename, you can instead choose to import
+another configuration by going to `File → Import Configuration`. This will open up a Load File
+dialog, where you can select an existing ProbeInterface file that will be imported without modifying
+the current filename.
+
+### Load default configuration
+
+To load the default channel configuration at any time, navigate to the drop-down menu and choose
+`File → Load Default Configuration`. This will load the default configuration, with the `BankA`
+channel preset selected.
+
+## Configure Bno055
 
 At the headstage level, there is another device tab listed for a
 [Bno055](xref:OpenEphys.Onix1.PolledBno055Data). From this tab, the device can be enabled or
