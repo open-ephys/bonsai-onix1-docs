@@ -57,14 +57,15 @@ plt.yticks(np.arange(0.5, len(buttons) * line_spacing, line_spacing), buttons)
 plt.title('Button Data')
 plt.tight_layout()
 
-plt.show()
-
 #%% Hardware FIFO buffer use
 dt = {'names': ('clock', 'bytes', 'percent'),
       'formats': ('u8', 'u4', 'f8')}
-memory_use = np.genfromtxt('memory-use_' + suffix + '.csv', delimiter=',', dtype=dt)
+memory_use = np.genfromtxt(path + '/memory-use_' + suffix + '.csv', delimiter=',', dtype=dt)
 
 plt.figure()
 plt.plot(memory_use['clock'] / meta['acq_clk_hz'], memory_use['percent'])
 plt.xlabel("time (sec)")
 plt.ylabel("FIFO used (%)")
+plt.title("Percent Hardware Buffer Used")
+
+plt.show()
