@@ -12,15 +12,21 @@ workflowLocation: workflow
 
 ## Configuring the Breakout Board and Headstage 64
 
-The `ConfigureBreakoutBoard` operator configures the Onix Breakout Board. In the Headstage 64 example tutorial, it is
-configured to enable digital inputs to serve as a trigger for the Headstage 64's electrical and optical stimulation and
-to enable monitoring of the percentage of memory occupied. This is accomplished by leaving all of the
-`ConfigureBreakoutBoard` properties set to their default values except its `Memory Monitor` `Enable` property is set to
-`True`. 
+The `ConfigureBreakoutBoard` operator configures the Onix Breakout Board. In the
+Headstage 64 example tutorial, it is configured to enable digital inputs to
+serve as a trigger for the Headstage 64's electrical and optical stimulation and
+to enable monitoring of the percentage of memory occupied. This is accomplished
+by leaving all of the `ConfigureBreakoutBoard` properties set to their default
+values except its `Memory Monitor` `Enable` property is set to `True`. 
 
-The `ConfigureHeadstage64` operator is used to configure the Headstage 64. In the Headstage 64 example tutorial, it is
-configured to enable streaming of electrophysiology data from a Rhd2164 amplifier, orientation data from the on-board
-Bno055 IMU, and position data from the Ts4231. This is accomplished in the Headstage 64 example workflow by leaving all
-of the `ConfigureHeadstage64` properties set to their default values.
+The `ConfigureHeadstage64` operator is used to configure the Headstage 64. In
+the Headstage 64 example tutorial, it is configured to enable streaming of
+electrophysiology data from a Rhd2164 amplifier, orientation data from the
+on-board Bno055 IMU, and position data from the Ts4231. This is accomplished in
+the Headstage 64 example workflow by leaving all of the `ConfigureHeadstage64`
+properties set to their default values.
+
+You can modify the stimuli waveforms by double-clicking the
+`ConfigureHeadstage64` node while the workflow is stopped.
 
 [!INCLUDE [timestamp-info](../../../includes/configuration-timestamp.md)]

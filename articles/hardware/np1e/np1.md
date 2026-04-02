@@ -20,6 +20,13 @@ properties settings:
   to 1.2 ms of data.
 - `DeviceName` is set to "HeadstageNeuropixelsV1e/NeuropixelsV1e". This links the `NeuropixelsV1eData` operator to the
   corresponding configuration operator.
+- `OrderByDepth` is set to `False`. When it is set to `False`, channels are ordered based on their
+  channel number (i.e., from 0 to 383). If it is set to `True`, then channels will be ordered by
+  their electrode depth. Channels are ordered first by their Y-value, and if two electrodes share a
+  Y-value then they are ordered by their X-value. This means that Channel 0 is now the bottom-left
+  most electrode, regardless of what its normal channel number is. For a visualization of the
+  electrode depth, check out the [GUI page](xref:np1e_gui) to see how the current electrode
+  configuration is set up.
 
 Given the settings above, each frame will contain a [1 x 36 sample] `Clock` vector, a [384 channel x 36 sample]
 `SpikeData` matrix, and a [384 channel x 3 sample] `LfpData` matrix. This corresponds to 1.2 ms of data per data

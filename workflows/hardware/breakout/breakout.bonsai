@@ -284,6 +284,14 @@
           <onix1:DeviceName>BreakoutBoard/MemoryMonitor</onix1:DeviceName>
         </Combinator>
       </Expression>
+      <Expression xsi:type="io:CsvWriter">
+        <io:FileName>memory-use_.csv</io:FileName>
+        <io:Append>false</io:Append>
+        <io:Overwrite>false</io:Overwrite>
+        <io:Suffix>FileCount</io:Suffix>
+        <io:IncludeHeader>false</io:IncludeHeader>
+        <io:Selector>Clock,BytesUsed,PercentUsed</io:Selector>
+      </Expression>
       <Expression xsi:type="MemberSelector">
         <Selector>PercentUsed</Selector>
       </Expression>
@@ -321,7 +329,8 @@
       <Edge From="26" To="27" Label="Source1" />
       <Edge From="28" To="29" Label="Source1" />
       <Edge From="30" To="31" Label="Source1" />
-      <Edge From="32" To="33" Label="Source1" />
+      <Edge From="31" To="32" Label="Source1" />
+      <Edge From="33" To="34" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>

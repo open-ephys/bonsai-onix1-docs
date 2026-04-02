@@ -24,7 +24,7 @@ emits `HeartbeatDataFrames` at a regular interval defined during
 <xref:breakout_configuration> using the
 <xref:OpenEphys.Onix1.ConfigureBreakoutBoard>'s `Heartbeat BeatsPerSecond`
 property (in our case 100 Hz, which is the minimum allowable frequency). The
-`HeartbeatData`'s `DeviceName` property is set to "BreakoutBoard/Heartbeat".
+`HeartbeatData`'s `DeviceName` property is set to "BreakoutBoard/PersistentHeartbeat".
 This links the `HeartbeatData` operator to the corresponding configuration
 operator. The [MemberSelector](xref:Bonsai.Expressions.MemberSelectorBuilder)
 operator selects the `Clock` member from the `HeartbeatDataFrame` so the user
