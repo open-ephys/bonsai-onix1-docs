@@ -46,7 +46,7 @@ At this point, the visualizer should open when the workflow is started.
 > that:
 > - The device from which you are trying to read is enabled.
 > - Events are occurring for event-based devices. Event-based devices only produce data upon certain
->   events whereas other operators always producing data. For example, the
+>   events whereas other operators always produce data. For example, the
 >   <xref:OpenEphys.Onix1.DigitalInput> operator only produces data when the digital port status
 >   changes state so it is event-based.
 

@@ -57,7 +57,7 @@ Construct a [top-level hardware configuration chain](xref:onix-configuration):
     <xref:OpenEphys.Onix1.ConfigureHeadstage64>.
 1.  Confirm that the device that streams electrophysiology data is enabled. The
     [Rhd2164](https://intantech.com/products_RHD2000.html) device (an Intan ephys acquisition
-    acquisition chip) on the headstage 64 is the only device used in this tutorial, so you can
+    chip) on the headstage 64 is the only device used in this tutorial, so you can
     disable other devices on the headstage and on the breakout board.
 
 ## Stream Ephys Data into Bonsai
@@ -68,7 +68,7 @@ Place the relevant operators to stream electrophysiology data from your headstag
 ![/workflows/tutorials/ephys-process-listen/ephys-data.bonsai workflow](../../workflows/tutorials/ephys-process-listen/ephys-data.bonsai)
 :::
 
-1.  We placed the <xref:OpenEphys.Onix1.Rhd2164Data> place into the workflow because the device on
+1.  We placed the <xref:OpenEphys.Onix1.Rhd2164Data> operator into the workflow because the device on
     headstage 64 that streams electrophysiology data is the Rhd2164 Intan amplifier. 
 1.  Select the relevant member from the data frames that `Rhd2164Data` produces. In this example, the
     relevant member is AmplifierData. To do this, right-click `Rhd2164Data`, hover over the

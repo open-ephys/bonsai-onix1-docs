@@ -18,7 +18,7 @@ reading it back from the analog IO port. It also saves analog input data.
 :::
 
 The `RampGenerator` operator generates a sequence of single precision floating point values which
-comprises ~1Hz sawtooth waveform from -10 to 10. The <xref:OpenEphys.Onix1.AnalogOutput> updates the
+comprises a ~1Hz sawtooth waveform from -10 to 10. The <xref:OpenEphys.Onix1.AnalogOutput> updates the
 analog output port upon receiving a value in the upstream sequence. In the Breakout Board example
 workflow:
 
@@ -42,20 +42,20 @@ when the node is selected:
 
 > [!Tip]
 > To understand how the <code>RampGenerator</code> works, double click each
-> nodes in the workflow while its running to visualize how data is transformed
-> as it flows through each operator. Additionally, the <kdb>F1</kdb> key can be
-> pressed while a node is selected ot bring up its documentation.
+> node in the workflow while it's running to visualize how data is transformed
+> as it flows through each operator. Additionally, the <kbd>F1</kbd> key can be
+> pressed while a node is selected to bring up its documentation.
 > <figure>
 >   <video width="100%" loop="true" controls="true"><source src="../../../images/hardware/breakout/analog-io.mp4" type="video/mp4"/></video>
 >   <figcaption>
->     This video shows how Bonsai how to examine the data flowing through
->     different elements of workflow as it operates. The "AnalogOutput" window
+>     This video shows how to examine the data flowing through
+>     different elements of the workflow as it operates. The "AnalogOutput" window
 >     shows the values that are being used by the <code>AnalogOutput</code>
 >     operator to update the analog IO port. 12 signals are produced, one for each
 >     channel.  However, only analog channel 0 is actually updated because it's
 >     the only channel configured as output by the <code>BreakoutBoard</code>
 >     operator. The "AnalogData" window shows the voltages at the various pins of
->     the analog IO port. They are being read by the the ADCs on the breakout
+>     the analog IO port. They are being read by the ADCs on the breakout
 >     board and produced in Bonsai by the <code>AnalogInput</code> operator. This
 >     confirms that only analog channel 0 is outputting the sawtooth waveform.
 >   </figcaption>
@@ -83,7 +83,7 @@ settings:
   impose a significant effect on processing latency. The buffer will be filled essentially every
   time hardware is accessed and propagated instantly.
 - `DataType` is set to `Volts`. This means that samples will be represented as
-  units of units of voltage in a single-precision floating point type.
+  units of voltage in a single-precision floating point type.
 - `DeviceName` is set to "BreakoutBoard/AnalogIO". This links the `AnalogInput`
   operator to the corresponding configuration operator. 
 

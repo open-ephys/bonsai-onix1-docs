@@ -28,11 +28,8 @@ effect. From the GUI, you can:
 
 ### Opening the GUI
 
-The configuration dialog is accessible by double-clicking on the
+To open the headstage configuration GUI, double-click the
 <xref:OpenEphys.Onix1.ConfigureHeadstageNeuropixelsV1e> operator.
-
-To open the headstage configuration GUI, double-click the `ConfigureHeadstageNeuropixelsV1e`
-operator.
 
 ![Open the GUI](../../..//images/neuropixelsv1e-gui-tut/where-to-click.png)
 
@@ -353,7 +350,7 @@ channel preset selected.
 At the headstage level, there is another device tab listed for a
 [Bno055](xref:OpenEphys.Onix1.PolledBno055Data). From this tab, the device can be enabled or
 disabled by selecting the appropriate value from the drop-down menu next to `Enable`. While other
-properties are displayed here, they have no affect on the underlying device configuration; only
+properties are displayed here, they have no effect on the underlying device configuration; only
 changes to the `Enable` property will be respected.
 
 ![Headstage Configuration GUI with Bno055](../../../images/neuropixelsv1e-gui-tut/headstage-bno055.png)

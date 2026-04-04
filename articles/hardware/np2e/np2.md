@@ -39,4 +39,4 @@ properties settings:
 The relevant members are selected from the `NeuropixelsV2eDataFrame` by right-clicking the `NeuropixelsV2eData`
 operator and choosing the following Output members: `Clock`, and `AmplifierData`. The
 [MatrixWriter](xref:Bonsai.Dsp.MatrixWriter) operators save the selected members to
-files with the following format: `np2-a-clock_<filecount>.raw` and `np2-a-amp<filecount>.raw`, respectively.
+files with the following format: `np2-a-clock_<filecount>.raw` and `np2-a-amp_<filecount>.raw`, respectively.

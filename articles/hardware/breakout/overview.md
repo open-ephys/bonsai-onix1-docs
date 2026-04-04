@@ -22,7 +22,7 @@ features:
     - Periodic signal from host with adjustable beat frequency.
 1. [Memory Monitor](xref:breakout_memory-monitor)
     - Diagnostic device for monitoring hardware first-in, first-out memory use.
-    - Used for tune real-time feedback loops for minimal latency.
+    - Used to tune real-time feedback loops for minimal latency.
     - Note: _disabled by default_.
 
 ![Image of Breakout Board schematic with call outs](../../../images/breakout-edited-callouts.png)

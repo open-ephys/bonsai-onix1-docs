@@ -17,7 +17,7 @@ These are the devices available on the UCLA Miniscope v4:
 > [!TIP]
 > Visit the [UCLA Miniscope v4 Hardware Guide](https://open-ephys.github.io/miniscope-docs/ucla-miniscope-v4/index.html) to learn more about the hardware such as weight, dimensions, and proper power voltages.
 
-The example workflow below can by copy/pasted into the Bonsai editor using the clipboard icon in the top right. This workflow:
+The example workflow below can be copy/pasted into the Bonsai editor using the clipboard icon in the top right. This workflow:
 - Captures image data from the UCLA Miniscope v4 Camera System and saves it to disk.
 - Captures orientation data from the Bno055 IMU and saves it to disk.
 - Monitors the UCLA Miniscope v4 port status.

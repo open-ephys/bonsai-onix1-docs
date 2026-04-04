@@ -21,7 +21,7 @@ Open Ephys GUI:
 >   data from any Bonsai operator that produces [matrices](xref:OpenCV.Net.Mat).
 > - This tutorial assumes you are familiar with the <xref:data-acq-quick-start> 
 >   guide for the ONIX headstage you intend to use. 
-> - A [video summary](#video-summary) of this tutorial is is available at the
+> - A [video summary](#video-summary) of this tutorial is available at the
 >   bottom of this page.
 
 ## Transmit Ephys Data to a TCP Server in Bonsai
@@ -54,7 +54,7 @@ set their properties:
 - **Port**: choose a unique [port
   number](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers). We
   will use this port number to establish the connection with the Open Ephys GUI.
-  This mut be unique for each datastream that you wish to send. We used 9001 for
+  This must be unique for each datastream that you wish to send. We used 9001 for
   our spike data and 9002 for LFP data.
 
 > [!IMPORTANT]
@@ -179,7 +179,7 @@ In this tutorial we used the following values:
 > available on the <xref:OpenEphys.Onix1.NeuropixelsV1DataFrame> page. 
 
 After configuring `Ephys Socket` processor, press the "Connect" button to
-establish a connection with the `LfpServer` running in Bonsai.
+establish a connection with the `SpikeServer` running in Bonsai.
 
 ![cropped screenshot of port 9001 signal chain](../../images/ephys-socket-tut/port-9001-signal-chain.webp)
 

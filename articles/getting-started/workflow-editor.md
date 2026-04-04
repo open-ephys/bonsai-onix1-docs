@@ -8,8 +8,8 @@ This page describes how to use it.
 
 ## Opening the Workflow Editor
 To open the workflow editor, either open a previously saved .bonsai file or
-start Bonsai and click the **New File** button. Alteratively, you can select a
-file from the the list of recently opened files on the right side of the start
+start Bonsai and click the **New File** button. Alternatively, you can select a
+file from the list of recently opened files on the right side of the start
 up menu.
 
 ![Open a new file in Bonsai](../../images/bonsai-splash-page-new-file.png){width=650px}

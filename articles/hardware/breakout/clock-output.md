@@ -25,7 +25,7 @@ exposure). The output clock has the following physical properties:
 These can all be configured using the <xref:OpenEphys.Onix1.ConfigureBreakoutBoard> operator.
 In the example workflow, the output clock is configured to produce a 1 MHz, 50%
 duty cycle clock whose start time, phase, and frequency is hardware synchronized
-with with the ONIX [Acquisition
+with the ONIX [Acquisition
 Clock](xref:OpenEphys.Onix1.ContextTask.AcquisitionClockHz).
 
 Because the clock is generated using a simple frequency divider, not all

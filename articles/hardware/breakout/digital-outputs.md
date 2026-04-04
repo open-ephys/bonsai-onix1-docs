@@ -28,10 +28,10 @@ sequence. The [Accumulate](xref:Bonsai.Reactive.Accumulate) operator
 increments a value by the values of items in its upstream sequence. The `Accumulate` operator emits
 this value when an item is received from the upstream sequence.
 
-The <xref:OpenEphys.Onix1.DigitalOutput> operator updates the digital output part when sends data in
-the sequence computed by the upstream operators to update the digital output port. The digital
+The <xref:OpenEphys.Onix1.DigitalOutput> operator sends data from the sequence computed by the
+upstream operators to update the digital output port. The digital
 outputs are updated when an item is received from the upstream sequence. Although `Accumulate`
 produces a 32-bit integer that counts from 0 to 2147483647, the `DigitalOutput` operator only uses
 the lower 8-bits to update the digital output state. In the Breakout Board example workflow, the
-`DigitalOutput`'s `DeviceName` property to "BreakoutBoard/DigitalOutput". This links the
+`DigitalOutput`'s `DeviceName` property is set to "BreakoutBoard/DigitalOutput". This links the
 `DigitalOutput` operator to the corresponding configuration operator.
