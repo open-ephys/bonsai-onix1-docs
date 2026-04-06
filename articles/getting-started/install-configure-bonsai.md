@@ -8,9 +8,9 @@ title: Installation
 To download Bonsai, select between the portable download and the installer download
 [here](https://bonsai-rx.org/docs/articles/installation.html).
 
-*   The **Portable** download (.zip) installs a sand-boxed version of Bonsai. Portable environments
-    enable users to switch between different environments to prevent package conflicts or use
-    different versions of packages.
+*   The **Portable** download (.zip) installs a sand-boxed version of Bonsai.
+    Portable environments enable users to switch between different environments
+    to prevent package conflicts and use different versions of packages.
     *   To install from the **Portable** download, extract the downloaded file. You can start the
         portable Bonsai by running the `Bonsai.exe` that is inside the extracted folder.
 *   The **Installer** download (.exe) installs Bonsai and all its dependencies globally.

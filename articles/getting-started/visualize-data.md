@@ -42,13 +42,15 @@ Select the visualizer you would like to use for visualizing data:
 At this point, the visualizer should open when the workflow is started.
 
 > [!NOTE]
-> Data will only be visualized if the operator is producing data. If you can't see any data, check
-> that:
+> If you don't see data in the visualizer, check that:
 > - The device from which you are trying to read is enabled.
-> - Events are occurring for event-based devices. Event-based devices only produce data upon certain
->   events whereas other operators always produce data. For example, the
->   <xref:OpenEphys.Onix1.DigitalInput> operator only produces data when the digital port status
->   changes state so it is event-based.
+> - The conditions required for the operator to produce data are met. Some
+>   operators only produce data in response to external events, rather than at a
+>   fixed rate. For example, the <xref:OpenEphys.Onix1.DigitalInput> operator,
+>   when no sample rate is configured, only produces data when the digital port
+>   status changes state. Similarly, the
+>   <xref:OpenEphys.Onix1.TS4231V1PositionData> operator only produces data when
+>   the TS4231 receivers are within range of the lighthouse transmitters.
 
 > [!TIP]
 > Visualizers can be selected while the workflow is running which is helpful for more quickly trying
