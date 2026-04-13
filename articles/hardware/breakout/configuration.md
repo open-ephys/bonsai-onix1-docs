@@ -38,7 +38,7 @@ demonstrates how properties were edited for the example workflow:
   </figcaption>
 </figure>
 
-Namely, the following properties were changed form their default values in the
+Namely, the following properties were changed from their default values in the
 breakout board example workflow:
 
 - The `BreakoutBoard`'s `AnalogIO Direction0` property is set to `Output`.

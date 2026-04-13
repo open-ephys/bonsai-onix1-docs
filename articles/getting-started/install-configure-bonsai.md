@@ -8,9 +8,9 @@ title: Installation
 To download Bonsai, select between the portable download and the installer download
 [here](https://bonsai-rx.org/docs/articles/installation.html).
 
-*   The **Portable** download (.zip) installs a sand-boxed version of Bonsai. Portable environments
-    enable users to switch between different environments to prevent package conflicts or user
-    different versions of packages.
+*   The **Portable** download (.zip) installs a sand-boxed version of Bonsai.
+    Portable environments enable users to switch between different environments
+    to prevent package conflicts and use different versions of packages.
     *   To install from the **Portable** download, extract the downloaded file. You can start the
         portable Bonsai by running the `Bonsai.exe` that is inside the extracted folder.
 *   The **Installer** download (.exe) installs Bonsai and all its dependencies globally.
@@ -36,7 +36,7 @@ The Bonsai package manager can be accessed from Bonsai's landing window or its w
 
 ### Install Packages
 
-The following packages are required to run the workflows in this documentation are:
+The following packages are required to run the workflows in this documentation:
 
 * `OpenEphys.Onix1.Design`: An extension of the `OpenEphys.Onix1` library that includes graphical user interfaces (GUIs). Installing OpenEphys.Onix1.Design automatically installs `OpenEphys.Onix1` as a dependency.
 * `Bonsai.StarterPack`: the "standard library" for Bonsai that contains tools that are used in almost every workflow.
@@ -81,11 +81,11 @@ Sometimes it is helpful to uninstall packages. Open the package manager and:
 1.  Set `Package source` to `All`.
 1.  Leave the search bar blank if you want to see all installed packages.\
     Alternatively, if you want to uninstall a particular package, you may type that package's name in the search bar.
-1.  Click a package and click `Uninstall` to uninstall a packages.
+1.  Click a package and click `Uninstall`.
 
 ![Bonsai Uninstall Screenshot](../../images/bonsai-uninstall-Bonsai.OpenEphys.webp){width=650px}
 
 ## Next Step
 
-Now that Bonsai and pertinent packages are installed, the next step it to learn how to use the
+Now that Bonsai and pertinent packages are installed, the next step is to learn how to use the
 workflow editor to place operators from these newly acquired packages into a workflow.

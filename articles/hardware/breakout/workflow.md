@@ -4,7 +4,7 @@ title: Breakout Board Example Workflow
 ---
 
 In the following example workflow, we will explore all of the breakout board's
-functionality. The workflow below can by copy/pasted into the Bonsai editor
+functionality. The workflow below can be copy/pasted into the Bonsai editor
 using the clipboard icon in the top right. This workflow:
 
 - Captures data from the breakout board's analog and digital inputs and streams them to disk.

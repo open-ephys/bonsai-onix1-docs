@@ -88,7 +88,7 @@ All of these example workflows should contain:
       run
 - Memory monitor graph. 
     - Select the `PercentUsed` member so the user can monitor memory usage
-    - Writing to CSV is not necessary (maybe it'ss helpful for them if need to troubleshoot something, but otherwise
+    - Writing to CSV is not necessary (maybe it's helpful for them if they need to troubleshoot something, but otherwise
         irrelevant)
 
 > [!NOTE]

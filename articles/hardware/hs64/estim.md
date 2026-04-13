@@ -24,7 +24,7 @@ corresponding configuration operator.
 `DigitalInputDataFrame` and passed to a `HasFlags` operator, which filters the
 sequence based on which button is pressed using the `Value` property's dropdown
 menu. In this case, `HasFlags`'s `Value` is set to "Triangle", so its output is
-"True" when an item its input sequence contains a "Triangle" flag. The
+"True" when an item in its input sequence contains a "Triangle" flag. The
 <xref:Bonsai.Reactive.DistinctUntilChanged> operator only passes an item in its
 input sequence if it's different from the previous item in the input sequence.
 When the <xref:OpenEphys.Onix1.Headstage64ElectricalStimulatorTrigger> operator

@@ -5,7 +5,7 @@ title: UCLA Miniscope v4 Camera Data
 
 The following excerpt from the UCLA Miniscope v4 [example workflow](xref:ucla-miniscope-v4) demonstrates the UCLA
 Miniscope v4 camera-related functionality by streaming and saving data from the UCLA Miniscope v4 camera and allowing
-the user to dynamically modifying camera parameters.
+the user to dynamically modify camera parameters.
 
 ::: workflow
 ![/workflows/hardware/ucla-miniscope-v4/camera.bonsai workflow](../../../workflows/hardware/ucla-miniscope-v4/camera.bonsai)
@@ -20,9 +20,9 @@ The <xref:OpenEphys.Onix1.UclaMiniscopeV4CameraData> operator generates a sequen
 
 The relevant members are selected from the `UclaMiniscopeV4CameraFrame` by right-clicking the
 `UclaMiniscopeV4CameraData` operator and choosing the following Output members: `Camera`, and `Clock`. The
-[VideoWriter](xref:Bonsai.Vision.VideoWriter) saves the `Camera` to a files with the following format:
+[VideoWriter](xref:Bonsai.Vision.VideoWriter) saves the `Camera` to a file with the following format:
 `ucla-miniscope-v4-video_.avi` with "DIB " FourCC. The [MatrixWriter](xref:Bonsai.Dsp.MatrixWriter) saves the `Clock` to a
-files with the following format: `ucla-miniscope-v4-clock_.raw`.
+file with the following format: `ucla-miniscope-v4-clock_.raw`.
 
 > [!NOTE]
 > - If you edit the FourCC property yourself and want to use "DIB ", take care to include a space as the fourth character.

@@ -12,7 +12,7 @@ system. This page covers this process.
 Every workflow in Bonsai that is meant to work with ONIX hardware should contain a hardware
 configuration chain in its first row which comprises of the following steps:
 
-1) Creating a `ONI Context` for communicating ONIX hardware
+1) Creating an `ONI Context` for communicating with ONIX hardware
 2) Writing properties to hardware
 3) Starting acquisition
 
@@ -53,7 +53,7 @@ devices contained by a headstage, miniscope, or breakout board.
 The data acquisition process is started when ContextTask passes through
 <xref:OpenEphys.Onix1.StartAcquisition>. StartAcquisition allows the user to set parameters that are
 related to data acquisition such as ReadSize and WriteSize. Setting the ReadSize property for a
-particular workflow is a balancing act of minimizing latency of data data transfers from the ONIX
+particular workflow is a balancing act of minimizing latency of data transfers from the ONIX
 system and avoiding data accumulation in the ONIX system's hardware buffer. To learn about the
 process of tuning ReadSize, check out the <xref:tune-readsize> tutorial.
 

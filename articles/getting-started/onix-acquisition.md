@@ -45,9 +45,9 @@ After this, the disambiguated source can be selected for each data operator
 ![Select a source for a Data operator](../../images/select-alternative-data-sources.png){width=650px}
 
 
-In the following workflow workflow, the `Name` property of each
+In the following workflow, the `Name` property of each
 <xref:OpenEphys.Onix1.ConfigureHeadstageNeuropixelsV2e> has been changed from
-"HeadstageNeuropixelsV2e" to "HS-NPX-AB" and "HS-NPX-B". The `DeviceName` of
+"HeadstageNeuropixelsV2e" to "HS-NPX-A" and "HS-NPX-B". The `DeviceName` of
 each of the <xref:OpenEphys.Onix1.PolledBno055Data> operators has been set to
 "HS-NPX-A/PolledBno055" and "HS-NPX-B/PolledBno055" from the dropdown so each
 operator will take data from a different headstage.

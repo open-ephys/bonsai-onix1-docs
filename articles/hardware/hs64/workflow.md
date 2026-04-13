@@ -3,7 +3,7 @@ uid: hs64_workflow
 title: Headstage 64 Example Workflow
 ---
 
-The example workflow below can by copy/pasted into the Bonsai editor using the clipboard icon in the top right. This workflow:
+The example workflow below can be copy/pasted into the Bonsai editor using the clipboard icon in the top right. This workflow:
 - Captures electrophysiology data from passive probes via the RHD2164 amplifier and saves it to disk.
 - Captures orientation data from the Bno055 IMU and saves it to disk.
 - Monitors the Headstage 64 port status.

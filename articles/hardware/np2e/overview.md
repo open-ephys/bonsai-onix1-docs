@@ -15,7 +15,7 @@ These are the devices available on the NeuropixelsV2e Headstage:
 > [!TIP]
 > Visit the [NeuropixelsV2e Headstage Hardware Guide](https://open-ephys.github.io/onix-docs/Hardware%20Guide/Headstages/headstage-neuropix-2e.html) to learn more about the hardware such as weight, dimensions, and proper power voltages.
 
-The example workflow below can by copy/pasted into the Bonsai editor using the clipboard icon in the top right. This workflow:
+The example workflow below can be copy/pasted into the Bonsai editor using the clipboard icon in the top right. This workflow:
 - Captures electrophysiology data from the Neuropixels 2.0 probe(s) and saves it to disk.
 - Captures orientation data from the Bno055 IMU and saves it to disk.
 - Monitors the NeuropixelsV2e Headstage port status

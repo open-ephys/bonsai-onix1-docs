@@ -10,12 +10,12 @@ save data about the Rhs2116 stimulus.
 ![/workflows/hardware/rhs2116/rhs2116-trigger-data.bonsai workflow](../../../workflows/hardware/rhs2116/rhs2116-trigger-data.bonsai) 
 :::
 
-The <xref: OpenEphys.Onix1.Rhs2116TriggerData> operator generates a sequence of 
+The <xref:OpenEphys.Onix1.Rhs2116TriggerData> operator generates a sequence of 
 [Rhs2116TriggerDataFrames](xref:OpenEphys.Onix1.Rhs2116TriggerDataFrame). Its DeviceName property is set to
 "HeadstageRhs2116/StimulusTrigger" which links `Rhs2116TriggerData` to the stimulus devices on the
 RHS2116 Headstage.
 
-The <xref: Bonsai.IO.CsvWriter> operator selects Clock, Delay, Status, and Origin members from the
+The <xref:Bonsai.IO.CsvWriter> operator selects Clock, Delay, Status, and Origin members from the
 `Rhs2116TriggerDataFrame` to write to a file with a name of the following format:
 `rhs2116trigger_<filecount>.csv`. These members are selected using the `CsvWriter`'s `Selector`
 property. They contain the following information:

@@ -83,7 +83,7 @@ git submodule update --recursive --remote
 
 ## Before Pushing
 
-The following three commands are run remotely by remote GitHub Actions serve upon pushing to a branch. The branch will not be able to merge to main unless all three commands complete successfully without any errors. Confirm that they can complete successfully without errors locally before committing and pushing. Otherwise, the branch becomes cluttered with potentially several attempts to pass the link-check process. Run: 
+The following three commands are run remotely by remote GitHub Actions servers upon pushing to a branch. The branch will not be able to merge to main unless all three commands complete successfully without any errors. Confirm that they can complete successfully without errors locally before committing and pushing. Otherwise, the branch becomes cluttered with potentially several attempts to pass the link-check process. Run: 
 
 ``` console
 .\build.ps1 --logLevel Suggestion --warningsAsErrors
@@ -94,13 +94,13 @@ If the above command fails because "you must install or update .NET", follow the
 
 The above set of commands can also be run using the `docfx-utils.ps1` Powershell script. Specifically, run `./docfx-utils.ps1 -d` in the repo's root directory to run DocLinkChecker, and run `./docfx-utils.ps1 -b` to build the site. 
 
-To run the next command, install [Lychee](https://github.com/lycheeverse/lychee?tab=readme-ov-file) by following [these instructions](https://github.com/lycheeverse/lychee?tab=readme-ov-file#installation). If you are use Windows and download a Lychee executable, amend the below command according to the location and version of your Lychee executable, and run it.
+To run the next command, install [Lychee](https://github.com/lycheeverse/lychee?tab=readme-ov-file) by following [these instructions](https://github.com/lycheeverse/lychee?tab=readme-ov-file#installation). If you are using Windows and download a Lychee executable, amend the below command according to the location and version of your Lychee executable, and run it.
 
 ``` console
 <lychee/installation/directory>/lychee-windows-x86_64.exe --no-progress --root-dir _site --exclude ^https://github\.com.*merge.* --exclude ^https://github\.com.*apiSpec.* --exclude ^https://github\.com/open-ephys/onix1-bonsai-docs/blob/.* '_site/**/*.html' --max-retries 0 --max-concurrency 32 --cache --max-cache-age 1d
 ```
 
-If you use a different operating systems and a different methods of installation, the above command might require additional amendments. 
+If you use a different operating system and a different method of installation, the above command might require additional amendments. 
 
 The above command can also be run using the `docfx-utils.ps1` Powershell script. Specifically, run `./docfx-utils.ps1 -l <path/to/lychee.exe>` in the repo's root directory. 
 
@@ -129,7 +129,7 @@ Running `dotnet docfx` runs both the `dotnet docfx metadata` command and the `do
 
 ### metadata
 
-The metadata command generates a .yml files containing metadata from the source code. These files contain information about class members, class inheritance, enum fields, etc. and \<xml\> comments from the source code. The input files for the `metadata` command are specified in `metadata.src` of the `docfx.json` file, and the output directory of the `metadata` command is specified in `metadata.dest` of the `docfx.json` file. 
+The metadata command generates .yml files containing metadata from the source code. These files contain information about class members, class inheritance, enum fields, etc. and \<xml\> comments from the source code. The input files for the `metadata` command are specified in `metadata.src` of the `docfx.json` file, and the output directory of the `metadata` command is specified in `metadata.dest` of the `docfx.json` file. 
 
 ### build
 
