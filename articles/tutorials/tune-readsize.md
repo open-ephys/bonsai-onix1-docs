@@ -3,11 +3,16 @@ uid: tune-readsize
 title: Optimizing Closed Loop Performance
 ---
 
-This tutorial shows how to retrieve data from the ONIX hardware as quickly as
-possible for experiments with strict low-latency closed-loop requirements by
-tuning the workflow for your particular data sources and computer
-specifications. In most situations, sub-200 microsecond closed-loop response
-times can be achieved.
+Every data acquisition system involves a fundamental tradeoff between latency
+and throughput. Processing data in small chunks reduces buffering delays but
+increases processing overhead, limiting overall bandwidth. Conversely,
+processing data in large chunks reduces overhead and increases throughput, but
+requires waiting for buffers to fill, which raises latency. This tutorial
+explains how to tune your hardware to best balance this tradeoff for your
+specific hardware configuration, processing pipeline, and host computer
+capabilities for experiments with strict low-latency closed-loop requirements.
+In most situations, sub-200 microsecond closed-loop response times can be
+achieved.
 
 > [!NOTE]
 > Performance will vary based on your computer's capabilities and your results
@@ -19,21 +24,7 @@ times can be achieved.
 > - GPU: NVIDIA GTX 1070 8GB
 > - OS: Windows 11
 
-## Hardware Buffer and ReadSize
-
-Data is transferred in chunks containing `ReadSize`-bytes from ONIX to the host computer.
-This `ReadSize` value can be set by the user. If `ReadSize` is so small that
-ONIX produces that amount of data faster than the host computer can perform
-a read operation, newly produced data is streamed to ONIX's hardware buffer
-instead of directly to the host's RAM. If this happens too much, closed-loop
-feedback performance suffers and the likelihood of hardware buffer overflow
-increases. However, if `ReadSize` is so large that it takes a long time for ONIX
-to produce that amount of data, a single `ReadSize` chunk of data
-spans a larger period of time. This increases the average closed-loop latency. The
-goal is to set a `ReadSize` that balances these considerations. The rest of this
-section describes ONIX-to-host data transfers in greater technical detail to
-help better understand this balancing act.
-
+## Technical background: the hardware buffer and `ReadSize` (Optional)
 Each time the host software reads data from the hardware, it obtains `ReadSize`
 bytes of data using the following procedure:
 
@@ -65,7 +56,7 @@ There are a couple of things to note about this process:
    host, this stream of new data is redirected to the ONIX `Hardware Buffer`.
    The ONIX hardware buffer consists of 2GB of dedicated RAM that belongs to the
    acquisition hardware (it is _not_ RAM in the host computer). The hardware
-   buffer temporarily stores data that has not yet been transferred to the host.     
+   buffer temporarily stores data that has not yet been transferred to the host.
 
 The size of hardware to host data transfers is determined by the
 <xref:OpenEphys.Onix1.StartAcquisition.ReadSize> property of the
@@ -139,7 +130,7 @@ $$
 $$
 
 To understand how we came up with this calculation, visit the
-<xref:data-elements> page. 
+<xref:data-elements> page.
 
 We'll setup `ConfigureLoadTester` to produce data at the same frequency and
 bandwidth as two Neuropixels 2.0 probes with the following settings:
@@ -162,11 +153,11 @@ bandwidth as two Neuropixels 2.0 probes with the following settings:
 > <xref:OpenEphys.Onix1.ConfigureLoadTester> is used for diagnostics and testing
 > and therefore is not made available through
 > <xref:OpenEphys.Onix1.ConfigureBreakoutBoard> like the rest of the local
-> devices (analog IO, digital IO, etc.). The device address can be found using 
+> devices (analog IO, digital IO, etc.). The device address can be found using
 > [oni-repl](https://open-ephys.github.io/onix-docs/Software%20Guide/oni-repl/usage.html#repl-commands).
 
 Next we configure <xref:OpenEphys.Onix1.StartAcquisition>'s
-<xref:OpenEphys.Onix1.StartAcquisition.ReadSize> and 
+<xref:OpenEphys.Onix1.StartAcquisition.ReadSize> and
 <xref:OpenEphys.Onix1.StartAcquisition.WriteSize> properties.
 
 `WriteSize` is set to 16384 bytes. This defines a readily-available pool of
@@ -236,7 +227,7 @@ latencies. The x-axis is in units of μs, and the y-axis represents the number o
 samples in a particular bin. The histogram is configured to have 1000 bins
 between 0 and 1000 μs. For low-latency closed-loop experiments, the goal is to
 concentrate the distribution of closed-loop feedback latencies towards 0 μs as
-much as possible. 
+much as possible.
 
 The PercentUsed visualizer shows a time-series of the amount of the hardware
 buffer that is occupied by data as a percentage of the hardware buffer's total
@@ -263,13 +254,13 @@ are using every 100th sample to generate feedback, the sample that is actually
 used to trigger LoadTesterLoopback could be any from that 340 μs span resulting
 in a range of latencies. The long tail in the distribution corresponds to
 instances when the hardware buffer was used or the CPU was busy with other
-tasks. 
+tasks.
 
 The PercentUsed visualizer shows that the percent of the hardware buffer being
 used remains close to zero. This indicates minimal usage of the hardware buffer,
 and that the host is safely reading data faster than the ONIX produces that
 data. For experiments without hard real-time constraints, this latency is
-perfectly acceptable. 
+perfectly acceptable.
 
 For experiments with harder real-time constraints, let's see how much lower we
 can get the closed-loop latency.
@@ -284,7 +275,7 @@ property so it only updates when a workflow starts), and open the same visualize
 ![screenshot of PercentUsed visualizers with `ReadSize` 2048](../../images/tutorials/tune-readsize/percent-used_2048.webp)
 
 The Histogram1D visualizer shows closed-loop latencies now average about 80
-μs with lower variability. 
+μs with lower variability.
 
 The PercentUsed visualizer shows the hardware buffer is still stable at
 around zero. This means that, even with the increased overhead associated
@@ -410,5 +401,4 @@ necessarily increases the total data throughput of
 `DigitalInput`. If the data throughput of
 `DigitalInput` significantly exceeds what is required for your experiment,
 the latency measurements will not reflect the latencies you will experience
-during the actual experiment. 
-
+during the actual experiment.
