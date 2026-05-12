@@ -9,52 +9,53 @@ exports.preTransform = function (model) {
     if (!namespace.name.startsWith('OpenEphys.Onix1')) continue;
     if (namespace.name.includes('Design')) continue;
     if (!namespace.items) continue;
+    const suffix = namespace.name === 'OpenEphys.Onix1' ? '' : '-' + namespace.name.split('.').pop().toLowerCase();
     let items = [
       {
         'name': 'Core Operators',
-        'href' : 'core.html',
-        'topicHref': 'core.html',
-        'topicUid': 'core',
+        'href' : `core${suffix}.html`,
+        'topicHref': `core${suffix}.html`,
+        'topicUid': `core${suffix}`,
         'items': []
       },
       {
         'name': 'Configuration Operators',
-        'href' : 'configure.html',
-        'topicHref': 'configure.html',
-        'topicUid': 'configure',
+        'href' : `configure${suffix}.html`,
+        'topicHref': `configure${suffix}.html`,
+        'topicUid': `configure${suffix}`,
         'items': []
       },
       {
         'name': 'Data I/O Operators',
-        'href' : 'dataio.html',
-        'topicHref': 'dataio.html',
-        'topicUid': 'dataio',
+        'href' : `dataio${suffix}.html`,
+        'topicHref': `dataio${suffix}.html`,
+        'topicUid': `dataio${suffix}`,
         'items': []
       },
       {
         'name': 'Data Elements',
-        'href' : 'data-elements.html',
-        'topicHref': 'data-elements.html',
-        'topicUid': 'data-elements',
+        'href' : `data-elements${suffix}.html`,
+        'topicHref': `data-elements${suffix}.html`,
+        'topicUid': `data-elements${suffix}`,
         'items': []
       },
       {
         'name': 'Other',
-        'topicUid': 'other',
+        'topicUid': `other${suffix}`,
         'items':
         [
           {
             'name': 'Device Configuration Operators',
-            'href' : 'device-configure.html',
-            'topicHref': 'device-configure.html',
-            'topicUid': 'device-configure',
+            'href' : `device-configure${suffix}.html`,
+            'topicHref': `device-configure${suffix}.html`,
+            'topicUid': `device-configure${suffix}`,
             'items': []
           },
           {
             'name': 'Constants',
-            'href' : 'constants.html',
-            'topicHref': 'constants.html',
-            'topicUid': 'constants',
+            'href' : `constants${suffix}.html`,
+            'topicHref': `constants${suffix}.html`,
+            'topicUid': `constants${suffix}`,
             'items': []
           }
         ]
