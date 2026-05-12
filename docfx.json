@@ -9,6 +9,17 @@
       "dest": "api",
       "filter": "filter.yml",
       "enumSortOrder": "declaringOrder"
+    },
+    {
+      "src": [
+        {
+          "files": ["Bonsai.System.dll"],
+          "src": "_external-stage"
+        }
+      ],
+      "dest": "_external-api",
+      "filter": "filter.external.yml",
+      "enumSortOrder": "declaringOrder"
     }
   ],
   "build": {
