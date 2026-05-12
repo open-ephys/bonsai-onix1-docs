@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.9.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:onix1="clr-namespace:OpenEphys.Onix1;assembly=OpenEphys.Onix1"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="onix1:CreateContext">
+          <onix1:Driver>riffa</onix1:Driver>
+          <onix1:Index>0</onix1:Index>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="onix1:ConfigureHeadstageNeuropixelsV2Rhd2000e">
+          <onix1:Name>HeadstageNeuropixelsV2Rhd2000e</onix1:Name>
+          <onix1:NeuropixelsV2>
+            <onix1:DeviceName>HeadstageNeuropixelsV2Rhd2000e/NeuropixelsV2</onix1:DeviceName>
+            <onix1:DeviceAddress>256</onix1:DeviceAddress>
+            <onix1:Enable>true</onix1:Enable>
+            <onix1:ProbeConfiguration>
+              <onix1:InvertPolarity>true</onix1:InvertPolarity>
+              <onix1:Reference>External</onix1:Reference>
+            </onix1:ProbeConfiguration>
+          </onix1:NeuropixelsV2>
+          <onix1:Rhd2000>
+            <onix1:DeviceName>HeadstageNeuropixelsV2Rhd2000e/Rhd2000PsbDecoder</onix1:DeviceName>
+            <onix1:DeviceAddress>257</onix1:DeviceAddress>
+            <onix1:SamplesPerSecond>
+              <onix1:Value>30</onix1:Value>
+            </onix1:SamplesPerSecond>
+            <onix1:DspCutoff>Off</onix1:DspCutoff>
+            <onix1:AnalogLowCutoff>Low100mHz</onix1:AnalogLowCutoff>
+            <onix1:AnalogHighCutoff>High10000Hz</onix1:AnalogHighCutoff>
+            <onix1:Enable>true</onix1:Enable>
+            <onix1:ThermistorAmplifierGain>x10</onix1:ThermistorAmplifierGain>
+          </onix1:Rhd2000>
+          <onix1:Bno055>
+            <onix1:DeviceName>HeadstageNeuropixelsV2Rhd2000e/PolledBno055</onix1:DeviceName>
+            <onix1:DeviceAddress>258</onix1:DeviceAddress>
+            <onix1:Enable>true</onix1:Enable>
+            <onix1:AxisMap>YZX</onix1:AxisMap>
+            <onix1:AxisSign>MirrorY MirrorX</onix1:AxisSign>
+          </onix1:Bno055>
+          <onix1:Port>PortA</onix1:Port>
+          <onix1:PortVoltage>
+            <onix1:Requested xsi:nil="true" />
+          </onix1:PortVoltage>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="onix1:StartAcquisition">
+          <onix1:ReadSize>8192</onix1:ReadSize>
+          <onix1:WriteSize>2048</onix1:WriteSize>
+        </Combinator>
+      </Expression>
+    </Nodes>
+    <Edges>
+      <Edge From="0" To="1" Label="Source1" />
+      <Edge From="1" To="2" Label="Source1" />
+    </Edges>
+  </Workflow>
+</WorkflowBuilder>
