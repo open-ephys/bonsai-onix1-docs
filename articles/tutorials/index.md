@@ -17,4 +17,5 @@ Tutorials include:
   intuitive or relevant to the experimental system using the TS4231V1 Position Calibration GUI.
 - [Writing Data with DataFrameWriter](xref:data-frame-writer): explains how to add the
   `DataFrameWriter` operator to an acquisition workflow to save data in the Apache Arrow file
-  format, including guidance on compression and how to load the resulting files in Python.
+  format which supports efficient random access and partial loading of large datasets. This tutorial
+  also includes guidance on compression and how to load the resulting files in Python. 
