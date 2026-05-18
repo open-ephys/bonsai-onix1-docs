@@ -100,8 +100,13 @@ pandas if you have not already. Once python is installed, run the following comm
 python packages:
 
 ```
-pip install pyarrow pandas
+pip install pyarrow pandas matplotlib
 ```
+
+To run `matplotlib`, you will also need to install a backend to plot and interact with the figures.
+See their documentation page
+[here](https://matplotlib.org/stable/users/explain/figure/backends.html) for more details on how to
+install and connect to different backends.
 
 ### Memory-Mapped Loading (Recommended)
 
@@ -217,7 +222,7 @@ import matplotlib.pyplot as plt
 
 dt = {'names': ('time', 'acq_clk_hz', 'block_read_sz', 'block_write_sz'),
       'formats': ('datetime64[us]', 'u4', 'u4', 'u4')}
-meta = np.genfromtxt("start-time_0.csv", delimiter=',', dtype=dt, skip_header=1)
+meta = np.genfromtxt("start-time_0.csv", delimiter=',', dtype=dt)
 acq_clk_hz = meta['acq_clk_hz']
 
 with pa.memory_map("memory-monitor_0.arrow", "r") as source:
@@ -258,7 +263,7 @@ import matplotlib.pyplot as plt
 
 dt = {'names': ('time', 'acq_clk_hz', 'block_read_sz', 'block_write_sz'),
       'formats': ('datetime64[us]', 'u4', 'u4', 'u4')}
-meta = np.genfromtxt("start-time_0.csv", delimiter=',', dtype=dt, skip_header=1)
+meta = np.genfromtxt("start-time_0.csv", delimiter=',', dtype=dt)
 acq_clk_hz = meta['acq_clk_hz']
 
 with pa.memory_map("memory-monitor_0.arrow", "r") as source:

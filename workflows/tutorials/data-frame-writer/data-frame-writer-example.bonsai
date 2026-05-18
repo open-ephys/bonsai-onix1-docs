@@ -94,7 +94,7 @@
         <io:Append>false</io:Append>
         <io:Overwrite>false</io:Overwrite>
         <io:Suffix>FileCount</io:Suffix>
-        <io:IncludeHeader>false</io:IncludeHeader>
+        <io:IncludeHeader>true</io:IncludeHeader>
         <io:Selector>Timestamp,Value</io:Selector>
       </Expression>
       <Expression xsi:type="Combinator">
