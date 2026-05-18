@@ -15,3 +15,7 @@ Tutorials include:
 - [Calibrate TS4231 Measurements](xref:calibrate-ts4231): demonstrates how to convert TS4231
   position coordinates from the TS4231 device reference frame to a reference frame that is more
   intuitive or relevant to the experimental system using the TS4231V1 Position Calibration GUI.
+- [Writing Data with DataFrameWriter](xref:data-frame-writer): explains how to add the
+  `DataFrameWriter` operator to an acquisition workflow to save data in the Apache Arrow file
+  format which supports efficient random access and partial loading of large datasets. This tutorial
+  also includes guidance on compression and how to load the resulting files in Python. 
