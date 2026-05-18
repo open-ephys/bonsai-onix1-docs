@@ -144,7 +144,7 @@ bandwidth as two Neuropixels 2.0 probes with the following settings:
 -   `FramesPerSecond` is then set to 60,000 Hz. The rate at which frames are
     produced by two probes, since each is acquired independently.
 -   `ReceivedWords` is set to 392 bytes, the size of a single
-    <xref:OpenEphys.Onix1.NeuropixelsV2eDataFrame> including its clock members.
+    <xref:OpenEphys.Onix1.NeuropixelsV2DataFrame> including its clock members.
 -   `TransmittedWords` is set to 100 bytes. This simulates the amount of data
     required to e.g. send a stimulus waveform.
 

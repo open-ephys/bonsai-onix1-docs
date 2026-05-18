@@ -1,0 +1,7 @@
+apiRules:
+- include:
+    uidRegex: ^Bonsai\.IO\.FileSink(\.|$)
+- include:
+    uidRegex: ^Bonsai\.IO\.PathSuffix(\.|$)
+- exclude:
+    uidRegex: .*

@@ -26,7 +26,7 @@ package.
 > [!TIP]
 > This tutorial uses the Headstage 64. To find pertinent information for processing data produced by
 > the Intan Rhd2164 ephys device on the Headstage 64 (such as the numbers used to convert DAC data
-> to units of voltage), navigate to <xref:OpenEphys.Onix1.Rhd2164DataFrame> which is the page for
+> to units of voltage), navigate to <xref:OpenEphys.Onix1.Rhd2000DataFrame> which is the page for
 > the data element produced by the <xref:OpenEphys.Onix1.Rhd2164Data> operator. The process of
 > navigating the reference to find pertinent information is the same for other ephys headstages that
 > you might want to use to follow along in this tutorial. It also helps to be familiar with the

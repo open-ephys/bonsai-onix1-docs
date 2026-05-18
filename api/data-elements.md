@@ -36,7 +36,7 @@ be used to calculate the rate of data produced by the devices enabled in your
 experiment. For example, the <xref:OpenEphys.Onix1.NeuropixelsV2eData> operator
 (which outputs the data from a single Neuropixels 2.0 probe device) produces a
 sequence of
-[NeuropixelsV2eDataFrames](xref:OpenEphys.Onix1.NeuropixelsV2eDataFrame). Using
+[NeuropixelsV2DataFrames](xref:OpenEphys.Onix1.NeuropixelsV2DataFrame). Using
 the fact that each sample comprises of a Clock property (8 bytes), a HubClock
 property (8 bytes), and an AmplifierData property (384*2 bytes), this device's
 data rate is: 
