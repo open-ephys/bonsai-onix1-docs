@@ -22,12 +22,17 @@ data is typically analyzed; that is, operating on all values from a single chann
 rather than row by row. Each file contains a schema that describes its columns and a sequence of
 record batches, which are fixed-size groups of rows. Unlike CSV files, Arrow files preserve native
 data types (e.g., 16-bit integers, 64-bit floating point), which eliminates the need for manual type
-conversion when loading data. See the [code snippets](#loading-data-in-python) below to see how to
-preserve data types during conversion between different formats.
+conversion when loading data.
 
 Arrow files are readable by [PyArrow](https://arrow.apache.org/docs/python/index.html) and any
 library built on top of it, including [pandas](https://pandas.pydata.org/),
 [numpy](https://numpy.org/) and [Polars](https://pola.rs/), among others.
+
+> [!NOTE]
+> Not all scientific libraries support the Arrow format natively. Libraries such as
+> [SpikeInterface](https://spikeinterface.readthedocs.io/) do not yet have Arrow integration. For
+> workflows that depend on those libraries, you will need to convert the data to another format (e.g.,
+> NumPy arrays or CSV) before passing it downstream.
 
 ## Adding DataFrameWriter to a Workflow
 
@@ -49,8 +54,9 @@ Check out the <xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> page to see
 ## How Data Is Written
 
 `DataFrameWriter` does not write one row to disk per incoming frame. Instead, it accumulates frames
-into an in-memory buffer and writes them to disk as a single record batch. The buffer is flushed
-when it reaches its target size or after at most five seconds, whichever comes first. 
+into an in-memory buffer and writes them to disk as a single record batch. The target buffer size is
+determined automatically by the data frame type and is not user-configurable. The buffer is flushed
+when it reaches that size or after at most five seconds, whichever comes first.
 
 This batching strategy keeps disk I/O efficient without placing any special requirements on your
 workflow structure.
@@ -95,18 +101,12 @@ uncompressed files.
 
 ### Installation
 
-To follow along with the examples in this tutorial, you will need to install python, pyarrow, and
-pandas if you have not already. Once python is installed, run the following command to install the
-python packages:
+To follow along with the examples in this section, you will need Python, PyArrow, and pandas. Once
+Python is installed, run the following command to install the required packages:
 
 ```
-pip install pyarrow pandas matplotlib
+pip install pyarrow pandas
 ```
-
-To run `matplotlib`, you will also need to install a backend to plot and interact with the figures.
-See their documentation page
-[here](https://matplotlib.org/stable/users/explain/figure/backends.html) for more details on how to
-install and connect to different backends.
 
 ### Memory-Mapped Loading (Recommended)
 
@@ -138,15 +138,16 @@ with pa.memory_map("memory-monitor_0.arrow", "r") as source:
             # Process individual batch
 ```
 
-It is also possible to load a range of record batches into a table, to maintain consistency with any
-processing pipelines:
+It is also possible to load a specific range of record batches into a table to
+analyze a fixed time window without loading the full recording. Make sure the range does not exceed
+`reader.num_record_batches`:
 
 ```python
 import pyarrow as pa
 
 with pa.memory_map("memory-monitor_0.arrow", "r") as source:
     with pa.ipc.open_file(source) as reader:
-        indices = range(10) # Ensure the range chosen is less than the total number of record batches
+        indices = range(10)
         table = pa.Table.from_batches(reader.get_batch(i) for i in indices)
 ```
 
@@ -186,17 +187,158 @@ into RAM regardless of how large it is. It also does not expose batch-level acce
 way to read only a portion of the recording without first loading the whole thing. For large or long
 recordings, the memory-mapped approach described above is preferable.
 
+## Converting to Other Formats
+
+For libraries that do not support Arrow natively, you can convert the data after loading it with
+PyArrow.
+
+> [!NOTE]
+> The examples below call `reader.read_all()`, which loads the entire file into RAM before
+> conversion begins. For large recordings, replace `reader.read_all()` with a batch loop using
+> `reader.get_batch(i)` and process or write each batch incrementally to keep memory usage bounded.
+
+### Exporting to NumPy
+
+Individual columns can be extracted as NumPy arrays using `.to_numpy()`:
+
+```python
+import pyarrow as pa
+import numpy as np
+
+with pa.memory_map("memory-monitor_0.arrow", "r") as source:
+    with pa.ipc.open_file(source) as reader:
+        table = reader.read_all()
+
+percent_used = table["PercentUsed"].to_numpy()
+clock = table["Clock"].to_numpy()
+```
+
+### Exporting to CSV
+
+PyArrow can write an entire table to a CSV file using `pyarrow.csv.write_csv()`:
+
+```python
+import pyarrow as pa
+import pyarrow.csv as pa_csv
+
+with pa.memory_map("memory-monitor_0.arrow", "r") as source:
+    with pa.ipc.open_file(source) as reader:
+        table = reader.read_all()
+
+pa_csv.write_csv(table, "memory-monitor_0.csv")
+```
+
+> [!NOTE]
+> CSV files do not preserve native data types. Integers and floats are written as text and must be
+> parsed back into the correct types when loaded by the downstream library.
+
+## Loading Corrupted Files
+
+If a power outage or other unforeseen event occurs during recording and leaves the file in a state
+where it cannot be opened by the example scripts above, the following scripts can be used to
+manually open the file and scan through it.
+
+### Loading file with invalid footer
+
+This script leverages the fact that Arrow has two different IPC file formats: File, which nominally
+includes a footer with metadata indicating where in the file each record batch resides, and Stream,
+which provides no information about past or future record batches. By opening the file as a stream,
+we can sequentially read through each record batch and save it to another file which will
+automatically rebuild the footer metadata when the file is closed, allowing the example scripts
+above to operate on the fixed file.
+
+```python
+import pyarrow as pa
+
+input_path = r"./path/to/corrupted_file.arrow"
+output_path = r"./path/to/fixed_file.arrow"
+
+MAGIC_LENGTH = 8
+
+with pa.memory_map(input_path, 'r') as f:
+    magic = f.read(8)
+    if len(magic) != MAGIC_LENGTH or magic != b'ARROW1\x00\x00':
+        raise ValueError('Not an Arrow file.')
+
+    with pa.ipc.open_stream(f) as reader:
+        schema = reader.schema
+        num_batches = 0
+
+        with pa.ipc.new_file(output_path, schema) as writer:
+            while True:
+                try:
+                    batch = reader.read_next_batch()
+                    writer.write_batch(batch)
+                    num_batches += 1
+                except StopIteration:
+                    print(f"Read {num_batches} batches from corrupted file.")
+                    break
+                except (pa.ArrowInvalid, OSError) as e:
+                    print(f"Stopped reading at batch {num_batches}: {e}")
+                    break
+                
+    print(f"Recovered {num_batches} batches from {input_path}, saved to {output_path}")
+```
+
+### Loading file with corrupted batches
+
+This script reads an Arrow file with an intact footer that has been corrupted in some other way
+(invalid buffers, corrupted headers, etc.) and writes all valid batches to a new file. Note that
+this will discard any batches that have an error without attempting to correct the error, leading to
+skips in the data. The `Clock` column can be inspected afterward to identify gaps where batches were
+skipped.
+
+```python
+import pyarrow as pa
+
+input_path = r"./path/to/corrupted_file.arrow"
+output_path = r"./path/to/fixed_file.arrow"
+
+MAGIC_LENGTH = 8
+
+with pa.memory_map(input_path, 'r') as f:
+    magic = f.read(8)
+    if len(magic) != MAGIC_LENGTH or magic != b'ARROW1\x00\x00':
+        raise ValueError('Not an Arrow file.')
+
+    with pa.ipc.open_file(f) as reader:
+        schema = reader.schema
+        num_batches = 0
+
+        with pa.ipc.new_file(output_path, schema) as writer:
+            for i in range(reader.num_record_batches):
+                try:
+                    batch = reader.get_record_batch(i)
+                    writer.write_batch(batch)
+                    num_batches += 1
+                except (pa.ArrowInvalid, OSError) as e:
+                    print(f"Skipped batch {i}: {e}")
+                
+    print(f"Recovered {num_batches} batches from {input_path}, saved to {output_path}")
+```
+
 ## Plotting Data in Python
 
-This section shows how to plot data saved from a `MemoryMonitor` device. Its schema contains four
-columns: `Clock`, `HubClock`, `PercentUsed`, and `BytesUsed`. The `Clock` column records the raw
+The examples in this section also require `matplotlib`. Install it alongside the packages above if
+you have not already:
+
+```
+pip install matplotlib
+```
+
+To render and interact with figures, you will also need a matplotlib backend. See the [matplotlib
+backend documentation](https://matplotlib.org/stable/users/explain/figure/backends.html) for
+installation instructions.
+
+This section shows how to plot data saved from a `MemoryMonitor` device. The MemoryMonitor schema contains columns including `Clock`, `PercentUsed`, and `BytesUsed`. The `Clock` column records the raw
 acquisition clock count and must be divided by the acquisition clock rate to produce a time value in
 seconds.
 
 ### Reading the Acquisition Clock Rate
 
-The acquisition clock rate is written to a `start-time_<suffix>.csv` file whenever the example
-acquisition workflow runs. Load it with NumPy before plotting:
+The example workflow shown [above](#adding-dataframewriter-to-a-workflow) writes acquisition
+metadata, including the clock rate, to a `start-time_<suffix>.csv` file each time it runs. Load
+it with NumPy before plotting:
 
 ```python
 import numpy as np
