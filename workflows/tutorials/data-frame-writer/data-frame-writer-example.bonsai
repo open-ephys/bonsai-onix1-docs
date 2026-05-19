@@ -94,7 +94,7 @@
         <io:Append>false</io:Append>
         <io:Overwrite>false</io:Overwrite>
         <io:Suffix>FileCount</io:Suffix>
-        <io:IncludeHeader>true</io:IncludeHeader>
+        <io:IncludeHeader>false</io:IncludeHeader>
         <io:Selector>Timestamp,Value</io:Selector>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -110,6 +110,7 @@
           <p1:Suffix>FileCount</p1:Suffix>
           <p1:Buffered>true</p1:Buffered>
           <p1:Overwrite>false</p1:Overwrite>
+          <p1:EnableCompression>false</p1:EnableCompression>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -123,6 +124,7 @@
           <p1:Suffix>FileCount</p1:Suffix>
           <p1:Buffered>true</p1:Buffered>
           <p1:Overwrite>false</p1:Overwrite>
+          <p1:EnableCompression>false</p1:EnableCompression>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
@@ -136,6 +138,7 @@
           <p1:Suffix>FileCount</p1:Suffix>
           <p1:Buffered>true</p1:Buffered>
           <p1:Overwrite>false</p1:Overwrite>
+          <p1:EnableCompression>false</p1:EnableCompression>
         </Combinator>
       </Expression>
     </Nodes>

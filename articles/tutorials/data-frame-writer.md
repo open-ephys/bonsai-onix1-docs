@@ -1,6 +1,6 @@
 ---
 uid: data-frame-writer
-title: Writing Data with DataFrameWriter
+title: Working with DataFrameWriter to Save and Load Files
 ---
 
 The <xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> operator provides a straightforward way to
@@ -32,7 +32,7 @@ library built on top of it, including [pandas](https://pandas.pydata.org/),
 > Not all scientific libraries support the Arrow format natively. Libraries such as
 > [SpikeInterface](https://spikeinterface.readthedocs.io/) do not yet have Arrow integration. For
 > workflows that depend on those libraries, you will need to convert the data to another format (e.g.,
-> NumPy arrays or CSV) before passing it downstream.
+> NumPy arrays) before passing it downstream.
 
 ## Adding DataFrameWriter to a Workflow
 
@@ -44,7 +44,7 @@ You can use multiple `DataFrameWriter` nodes in the same workflow, placing one p
 node a descriptive `FileName` so recordings are easy to identify after the fact.
 
 ::: workflow
-![/workflows/tutorials/data-frame-writer/data-frame-writer-example workflow](../../workflows/tutorials/data-frame-writer/data-frame-writer-example.bonsai)
+![workflow for testing DataFrameWriter with Breakout Board data](../../workflows/tutorials/data-frame-writer/data-frame-writer-example.bonsai)
 :::
 
 ### Operator Properties
@@ -55,8 +55,8 @@ Check out the <xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> page to see
 
 `DataFrameWriter` does not write one row to disk per incoming frame. Instead, it accumulates frames
 into an in-memory buffer and writes them to disk as a single record batch. The target buffer size is
-determined automatically by the data frame type and is not user-configurable. The buffer is flushed
-when it reaches that size or after at most five seconds, whichever comes first.
+determined automatically by the data frame type and is not user-configurable. The data in the buffer
+is written to disk when it reaches that size or after at most five seconds, whichever comes first.
 
 This batching strategy keeps disk I/O efficient without placing any special requirements on your
 workflow structure.
@@ -151,6 +151,11 @@ with pa.memory_map("memory-monitor_0.arrow", "r") as source:
         table = pa.Table.from_batches(reader.get_batch(i) for i in indices)
 ```
 
+## Converting to Other Formats
+
+PyArrow can convert Arrow tables into several other formats for use with different libraries and
+workflows.
+
 ### Converting to a pandas DataFrame
 
 If your analysis uses pandas, you can convert an Arrow Table to a DataFrame by calling `.to_pandas()`:
@@ -187,19 +192,11 @@ into RAM regardless of how large it is. It also does not expose batch-level acce
 way to read only a portion of the recording without first loading the whole thing. For large or long
 recordings, the memory-mapped approach described above is preferable.
 
-## Converting to Other Formats
-
-For libraries that do not support Arrow natively, you can convert the data after loading it with
-PyArrow.
-
-> [!NOTE]
-> The examples below call `reader.read_all()`, which loads the entire file into RAM before
-> conversion begins. For large recordings, replace `reader.read_all()` with a batch loop using
-> `reader.get_batch(i)` and process or write each batch incrementally to keep memory usage bounded.
-
 ### Exporting to NumPy
 
-Individual columns can be extracted as NumPy arrays using `.to_numpy()`:
+Individual columns can be extracted as NumPy arrays using `.to_numpy()`. For large recordings,
+replace `reader.read_all()` with a batch loop using `reader.get_batch(i)` and process each batch
+incrementally to avoid loading the entire file into RAM at once.
 
 ```python
 import pyarrow as pa
@@ -213,25 +210,6 @@ percent_used = table["PercentUsed"].to_numpy()
 clock = table["Clock"].to_numpy()
 ```
 
-### Exporting to CSV
-
-PyArrow can write an entire table to a CSV file using `pyarrow.csv.write_csv()`:
-
-```python
-import pyarrow as pa
-import pyarrow.csv as pa_csv
-
-with pa.memory_map("memory-monitor_0.arrow", "r") as source:
-    with pa.ipc.open_file(source) as reader:
-        table = reader.read_all()
-
-pa_csv.write_csv(table, "memory-monitor_0.csv")
-```
-
-> [!NOTE]
-> CSV files do not preserve native data types. Integers and floats are written as text and must be
-> parsed back into the correct types when loaded by the downstream library.
-
 ## Loading Corrupted Files
 
 If a power outage or other unforeseen event occurs during recording and leaves the file in a state
@@ -240,12 +218,12 @@ manually open the file and scan through it.
 
 ### Loading file with invalid footer
 
-This script leverages the fact that Arrow has two different IPC file formats: File, which nominally
-includes a footer with metadata indicating where in the file each record batch resides, and Stream,
-which provides no information about past or future record batches. By opening the file as a stream,
-we can sequentially read through each record batch and save it to another file which will
-automatically rebuild the footer metadata when the file is closed, allowing the example scripts
-above to operate on the fixed file.
+If recording is interrupted, the file may be missing the footer that Arrow uses to index record
+batches, causing PyArrow to raise `ArrowInvalid: Not an Arrow file` when you try to open it. This
+script works around the missing footer by opening the file as an Arrow Stream rather than an Arrow
+File. The Stream format reads record batches sequentially without relying on the footer, so all
+batches written before the interruption can still be recovered. The recovered batches are then
+written to a new file, which automatically generates a valid footer on close.
 
 ```python
 import pyarrow as pa
@@ -253,11 +231,9 @@ import pyarrow as pa
 input_path = r"./path/to/corrupted_file.arrow"
 output_path = r"./path/to/fixed_file.arrow"
 
-MAGIC_LENGTH = 8
-
 with pa.memory_map(input_path, 'r') as f:
     magic = f.read(8)
-    if len(magic) != MAGIC_LENGTH or magic != b'ARROW1\x00\x00':
+    if magic != b'ARROW1\x00\x00':
         raise ValueError('Not an Arrow file.')
 
     with pa.ipc.open_stream(f) as reader:
@@ -283,10 +259,13 @@ with pa.memory_map(input_path, 'r') as f:
 ### Loading file with corrupted batches
 
 This script reads an Arrow file with an intact footer that has been corrupted in some other way
-(invalid buffers, corrupted headers, etc.) and writes all valid batches to a new file. Note that
-this will discard any batches that have an error without attempting to correct the error, leading to
-skips in the data. The `Clock` column can be inspected afterward to identify gaps where batches were
-skipped.
+(invalid buffers, corrupted headers, etc.) and writes all valid batches to a new file. One error
+that indicates the buffers or headers have been corrupted is `ArrowInvalid: Unexpected empty message
+in IPC file format`.
+
+Note that this script will discard any batches that have an error without attempting
+to correct the error, leading to skips in the data. The `Clock` column can be inspected afterward to
+identify gaps where batches were skipped.
 
 ```python
 import pyarrow as pa
@@ -294,11 +273,9 @@ import pyarrow as pa
 input_path = r"./path/to/corrupted_file.arrow"
 output_path = r"./path/to/fixed_file.arrow"
 
-MAGIC_LENGTH = 8
-
 with pa.memory_map(input_path, 'r') as f:
     magic = f.read(8)
-    if len(magic) != MAGIC_LENGTH or magic != b'ARROW1\x00\x00':
+    if magic != b'ARROW1\x00\x00':
         raise ValueError('Not an Arrow file.')
 
     with pa.ipc.open_file(f) as reader:
@@ -314,6 +291,47 @@ with pa.memory_map(input_path, 'r') as f:
                 except (pa.ArrowInvalid, OSError) as e:
                     print(f"Skipped batch {i}: {e}")
                 
+        print(f"Recovered {num_batches} out of {reader.num_record_batches} batches from {input_path}, saved to {output_path}")
+```
+
+### Handling compressed data
+
+If the data was originally saved with compression and you want to re-save the recovered data with
+compression, pass an `IpcWriteOptions` object to `pa.ipc.new_file()`. The example below applies
+Zstandard (Zstd) compression, which is the same algorithm used by `DataFrameWriter` when
+`EnableCompression` is `True`. The change is the same for both recovery scripts above; this example
+uses the [invalid footer](#loading-file-with-invalid-footer) script:
+
+```python
+import pyarrow as pa
+
+input_path = r"./path/to/corrupted_file.arrow"
+output_path = r"./path/to/fixed_file.arrow"
+
+with pa.memory_map(input_path, 'r') as f:
+    magic = f.read(8)
+    if magic != b'ARROW1\x00\x00':
+        raise ValueError('Not an Arrow file.')
+
+    with pa.ipc.open_stream(f) as reader:
+        schema = reader.schema
+        num_batches = 0
+
+        options = pa.ipc.IpcWriteOptions(compression="zstd")
+
+        with pa.ipc.new_file(output_path, schema, options=options) as writer:
+            while True:
+                try:
+                    batch = reader.read_next_batch()
+                    writer.write_batch(batch)
+                    num_batches += 1
+                except StopIteration:
+                    print(f"Read {num_batches} batches from corrupted file.")
+                    break
+                except (pa.ArrowInvalid, OSError) as e:
+                    print(f"Stopped reading at batch {num_batches}: {e}")
+                    break
+
     print(f"Recovered {num_batches} batches from {input_path}, saved to {output_path}")
 ```
 
