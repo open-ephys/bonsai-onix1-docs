@@ -3,6 +3,8 @@ uid: hs64_estim
 title: Headstage 64 Electrical Stimulation
 ---
 
+[!INCLUDE [stimulator version warning](../../../includes/hs64-v1-estim-admonition.md)]
+
 The following excerpt from the Headstage 64 [example
 workflow](xref:hs64_workflow) demonstrates electrical stimulation by triggering
 a train of pulses following a press of the △ key on the breakout board.

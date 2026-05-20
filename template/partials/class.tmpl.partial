@@ -17,6 +17,8 @@
   {{/oe.operator.type}}
 </div>
 
+{{{conceptual}}}
+
 <div>{{{oe.description}}}</div>
 
 {{#oe.operator.workflow}}

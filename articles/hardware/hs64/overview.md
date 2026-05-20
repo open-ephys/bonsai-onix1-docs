@@ -3,6 +3,8 @@ uid: hs64
 title: Headstage 64
 ---
 
+[!INCLUDE [stimulator version warning](../../../includes/hs64-v1-stim-admonition.md)]
+
 These are the devices available on the Headstage 64:
 
 - [Rhd2164](xref:hs64_rhd2164):
