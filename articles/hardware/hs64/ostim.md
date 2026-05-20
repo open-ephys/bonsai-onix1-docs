@@ -3,8 +3,6 @@ uid: hs64_ostim
 title: Headstage 64 Optical Stimulation
 ---
 
-[!INCLUDE [stimulator version warning](../../../includes/hs64-v1-stim-admonition.md)]
-
 The following excerpt from the Headstage64 [example
 workflow](xref:hs64_workflow) demonstrates optical stimulation by triggering a
 train of pulses following a press of the ◯ key on the breakout board.
@@ -31,3 +29,9 @@ menu. In this case, `HasFlags`'s `Value` is set to "Circle", so its output is
 input sequence if it's different from the previous item in the input sequence.
 When the <xref:OpenEphys.Onix1.Headstage64OpticalStimulatorTrigger> operator
 receives a "True" value in its input sequence, a stimulus waveform is triggered.
+
+> [!IMPORTANT]
+> Headstages manufactured before approximately September/October 2024 have an optical
+> stimulator that behaves differently from those in later headstages. See the
+> <xref:OpenEphys.Onix1.Headstage64OpticalStimulatorTrigger> reference page for
+> details.

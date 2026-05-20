@@ -17,8 +17,6 @@
   {{/oe.operator.type}}
 </div>
 
-{{{conceptual}}}
-
 <div>{{{oe.description}}}</div>
 
 {{#oe.operator.workflow}}
@@ -28,6 +26,8 @@
 {{>partials/diagram}}
 {{/oe.operator}}
 {{/oe.operator.workflow}}
+
+{{{conceptual}}}
 
 <h2>Properties</h2>
 
