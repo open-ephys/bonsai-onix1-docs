@@ -10,10 +10,10 @@ while the workflow is running. Read below for more details about how to visualiz
 ## Select data member(s)
 
 Some data types, such as [ONIX data frames](xref:data-elements), are composed of
-multiple grouped data elements. Its often useful to be able to select certain
+multiple grouped data elements. It's often useful to be able to select certain
 data features from composed types either for downstream processing or
-visulization. To select data members in the Bonsai Editor:
-    1. Right-click the a node.
+visualization. To select data members in the Bonsai Editor:
+    1. Right-click the node.
     1. Hover the cursor over the "Output" option that appears in the context menu.
     1. Click the inner data member you would like to select.
 
@@ -29,8 +29,8 @@ member from the output of any operator in the editor.
 > Member selection is useful when an operator's output type doesn't have type
 > visualizers that allow users to inspect the data in a meaningful capacity.
 > This is often the case for [data source operators](xref:datasource) which
-> produce [data frames](xref:data-elements) that which typically contain a bunch
-> of different data features.
+> produce [data frames](xref:data-elements) that typically contain multiple
+> different data features.
 
 ## Select visualizers
 

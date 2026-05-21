@@ -3,13 +3,12 @@ uid: data-frame-writer
 title: Using DataFrameWriter to Save Data
 ---
 
-The <xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> operator provides an
-easy and efficient way to write [ONIX data](xref:data-elements) to disk using
-the [Apache Arrow IPC file
-format](https://arrow.apache.org/docs/format/Intro.html). IPC (Inter-Process Communication) is the Arrow project's name for its standard binary file format, a format that is
-columnar, self-describing, and supported by many scientific computing
-environments. This tutorial explains how to use `DataFrameWriter` in an
-acquisition workflow, configure its properties (including optional
+The <xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> operator provides an easy and efficient
+way to write [ONIX data](xref:data-elements) to disk using the [Apache Arrow IPC file
+format](https://arrow.apache.org/docs/format/Intro.html). IPC (Inter-Process Communication) is the
+Arrow project's name for its standard binary file format, a format that is columnar,
+self-describing, and supported by many scientific computing environments. This tutorial explains how
+to use `DataFrameWriter` in an acquisition workflow, configure its properties (including optional
 compression), and efficiently load the resulting files in Python.
 
 > [!NOTE]
@@ -35,7 +34,7 @@ first rearranging or copying the contents of the file after it has been loaded
 into memory. Additionally, each file is self-describing: it contains a schema
 that enumerates the data columns within each [record
 batch](https://arrow.apache.org/docs/format/Glossary.html#term-record-batch),
-which is a fixed-size group of rows with a data table. An arrow file consists of
+which is a fixed-size group of rows with a data table. An Arrow file consists of
 a schema followed by potentially many record batches. Unlike plain text data
 formats (e.g. CSV files produced by
 [CsvWriter](https://bonsai-rx.org/docs/api/Bonsai.IO.CsvWriter.html)) or flat
@@ -123,12 +122,12 @@ exceptionally good at compressing small batches of data, like the record
 batches. For typical neural data, enabling compression can substantially
 reduce file sizes.
 
-### When to Enable Compression
+### When to enable compression
 
 Enable compression when storage space is a constraint and the additional CPU
 load during acquisition is acceptable. Compression runs on the same machine that
 is acquiring data, so it competes with the rest of your acquisition pipeline for
-CPU resources (although enabling [Buffering](#dataFrameWriter-properties) can
+CPU resources (although enabling the `Buffered` [property](#dataframewriter-properties) can
 alleviate this). For most workloads this overhead is negligible, but for very
 high-bandwidth configurations (e.g., multiple Neuropixels probes) or when
 running other computationally intensive processing in the same workflow,
@@ -143,7 +142,7 @@ benchmark your system before relying on compression in long recordings.
 > the [closed-loop performance tutorial](xref:tune-readsize) for more information
 > on real-time optimization.
 
-### Loading Compressed Files
+### Loading compressed files
 
 You do not need to know whether a file is compressed or not in order to load
 it. PyArrow reads the compression metadata stored in each record batch header
@@ -165,7 +164,7 @@ In Python, Arrow files can be read using
 scientific analysis libraries such as [pandas](https://pandas.pydata.org/),
 [numpy](https://numpy.org/) and [Polars](https://pola.rs/), use PyArrow
 internally to support loading Arrow files into their environment. In this
-section, we will demonstrate file loading using both both PyArrow and Pandas.
+section, we will demonstrate file loading using both PyArrow and Pandas.
 
 ### Installation
 
@@ -177,7 +176,7 @@ install the required packages:
 pip install pyarrow pandas
 ```
 
-### Memory-Mapped Loading (Recommended)
+### Memory-mapped loading
 
 The most efficient way to read Arrow files in Python is to open the file as a memory map and pass it
 to `pyarrow.ipc.open_file()`. With this approach, PyArrow maps the file into the process's virtual
@@ -245,7 +244,7 @@ with pa.memory_map("memory-monitor_0.arrow", "r") as source:
 > maintain memory mapping across boundaries, but it is not guaranteed. Keep this in mind when
 > working with long recordings on machines with limited memory.
 
-### Using pandas Directly
+### Using pandas directly
 It is also possible to load an Arrow file directly with Pandas using
 [`pandas.read_feather()`](https://pandas.pydata.org/docs/reference/api/pandas.read_feather.html),
 which accepts Arrow IPC files directly because [Feather v2](https://arrow.apache.org/docs/python/feather.html#feather-file-format) and Arrow IPC share the same binary format.
@@ -437,7 +436,7 @@ This section shows how to plot data saved from a `MemoryMonitor` device. The Mem
 acquisition clock count and must be divided by the acquisition clock rate to produce a time value in
 seconds.
 
-### Reading the Acquisition Clock Rate
+### Reading the acquisition clock rate
 
 The example workflow shown [above](#adding-dataframewriter-to-a-workflow) writes acquisition
 metadata, including the clock rate, to a `start-time_<suffix>.csv` file each time it runs. Load
@@ -452,7 +451,7 @@ meta = np.genfromtxt("start-time_0.csv", delimiter=',', dtype=dt)
 acq_clk_hz = meta['acq_clk_hz']
 ```
 
-### Plotting Directly from a PyArrow Table
+### Plotting directly from a PyArrow table
 
 PyArrow column arrays implement the [Python array
 protocol](https://arrow.apache.org/docs/python/numpy.html), so most plotting libraries, including
