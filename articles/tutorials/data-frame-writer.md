@@ -279,6 +279,52 @@ percent_used = table["PercentUsed"].to_numpy()
 clock = table["Clock"].to_numpy()
 ```
 
+## Devices with Mismatched Sample Rates
+
+Some ONIX devices produce data at different rates, leading to channels that have more or fewer
+samples. A prominent example is the <xref:OpenEphys.Onix1.NeuropixelsV1DataFrame> LFP data stream.
+The probe's LFP band is sampled at 2.5 kHz while the AP band is sampled at 30 kHz, a ratio of 12:1.
+To ensure that the Arrow record batch contains the same number of samples across channels, data
+streams that are subsampled are encoded using [run-end
+encoding](https://arrow.apache.org/docs/format/Intro.html#run-end-encoded-layout). This encoding
+stores each repeated value once alongside a run length rather than writing it out explicitly. This
+allows for smaller file sizes. When decoded (for example, by calling `.to_numpy()`) each LFP
+sample expands to 12 consecutive rows. The `Clock` column increments normally across all rows, but
+only one in every 12 rows contains a new LFP measurement.
+
+### Removing repeated samples
+
+The script below uses a user-provided sample rate ratio to build a boolean mask that selects only
+the rows containing new data. The same mask is applied to the `Clock` column so that the timestamps
+remain consistent with the subsampled data.
+
+```python
+import pyarrow as pa
+import pyarrow.compute
+import numpy as np
+
+with pa.memory_map("npix-v1e-lfp_0.arrow", "r") as source:
+    with pa.ipc.open_file(source) as reader:
+        table = reader.read_all()
+
+data_cols = [name for name in table.schema.names if "LfpData" in name]
+data = np.column_stack([table[col].to_numpy() for col in data_cols])
+clock = table["Clock"].to_numpy()
+
+ratio = 12 # Ratio of sample rates: 30 kHz / 2.5 kHz for Neuropixels V1e LFP data
+
+mask = np.zeros(len(clock), dtype=bool)
+mask[::ratio] = True
+
+data_unique = data[mask]    # shape: (num_unique_samples, num_channels)
+clock_unique = clock[mask]  # timestamps of the unique samples
+```
+
+After applying the mask, `data_unique` and `clock_unique` contain only the distinct samples at the
+true LFP rate (2.5 kHz for NeuropixelsV1e). Divide `clock_unique` by the acquisition clock rate,
+loaded from the `start-time_<suffix>.csv` file, to convert clock counts to seconds. See the [loading
+section](#reading-the-acquisition-clock-rate) below on how to extract the acquisition clock rate.
+
 ## Loading and Recovering Corrupted Files
 
 If a power outage or other unforeseen event occurs during recording and leaves the file in a state
