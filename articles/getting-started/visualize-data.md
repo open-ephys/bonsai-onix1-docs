@@ -9,24 +9,28 @@ while the workflow is running. Read below for more details about how to visualiz
 
 ## Select data member(s)
 
-Some operators, such as [ONIX data I/O operators](xref:dataio), require selecting members from their
-output to visualize their data:
-    1.  Right-click the node that corresponds to the data I/O operator that streams data you'd like to
-        visualize.
+Some data types, such as [ONIX data frames](xref:data-elements), are composed of
+multiple grouped data elements. Its often useful to be able to select certain
+data features from composed types either for downstream processing or
+visulization. To select data members in the Bonsai Editor:
+    1. Right-click the a node.
     1. Hover the cursor over the "Output" option that appears in the context menu.
-    1. Click the member you would like to visualize from the list of members.
+    1. Click the inner data member you would like to select.
 
-This populates the workflow with a <xref:Bonsai.Expressions.MemberSelectorBuilder> operator that
-selects the single member from the data frame produced by the data I/O operator.
+Under the hood, this action produces a
+<xref:Bonsai.Expressions.MemberSelectorBuilder> operator that selects a single
+member from the output of any operator in the editor.
 
 <video controls>
   <source src="../../images/select-member.mp4" type="video/mp4">
 </video>
 
 > [!NOTE]
-> Member selection is required when an operator's output type doesn't have type visualizers that
-> allow users to inspect the data in a meaningful capacity. This is true for [ONIX data I/O
-> operators](xref:dataio) which typically produce [data frames](xref:data-elements).
+> Member selection is useful when an operator's output type doesn't have type
+> visualizers that allow users to inspect the data in a meaningful capacity.
+> This is often the case for [data source operators](xref:datasource) which
+> produce [data frames](xref:data-elements) that which typically contain a bunch
+> of different data features.
 
 ## Select visualizers
 
