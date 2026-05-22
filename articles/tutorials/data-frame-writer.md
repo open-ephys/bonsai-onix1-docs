@@ -279,18 +279,19 @@ percent_used = table["PercentUsed"].to_numpy()
 clock = table["Clock"].to_numpy()
 ```
 
-## Devices with Mismatched Sample Rates
+## Devices that Produce Data at Different Sample Rates
 
-Some ONIX devices produce data at different rates, leading to channels that have more or fewer
-samples. A prominent example is the <xref:OpenEphys.Onix1.NeuropixelsV1DataFrame> LFP data stream.
-The probe's LFP band is sampled at 2.5 kHz while the AP band is sampled at 30 kHz, a ratio of 12:1.
-To ensure that the Arrow record batch contains the same number of samples across channels, data
-streams that are subsampled are encoded using [run-end
-encoding](https://arrow.apache.org/docs/format/Intro.html#run-end-encoded-layout). This encoding
-stores each repeated value once alongside a run length rather than writing it out explicitly. This
-allows for smaller file sizes. When decoded (for example, by calling `.to_numpy()`) each LFP
-sample expands to 12 consecutive rows. The `Clock` column increments normally across all rows, but
-only one in every 12 rows contains a new LFP measurement.
+Some ONIX devices produce data at different sample rates. For example, the
+<xref:OpenEphys.Onix1.NeuropixelsV1eData> produces
+[NeuropixelsV1eDataFrames](xref:OpenEphys.Onix1.NeuropixelsV1eDataFrame) which
+combine 30 kHz spike data and 2.5 kHz LFP data. When these data frames are saved
+with DataFrameWriter, all channels in the resulting Arrow file share the same
+number of rows. The slower stream, LFP data, is stored using [run-end
+encoding](https://arrow.apache.org/docs/format/Intro.html#run-end-encoded-layout),
+where each sample is written once alongside a run length rather than being
+repeated explicitly, resulting in smaller file sizes. When decoded (for example,
+by calling `.to_numpy()`), each LFP sample expands to 12 consecutive rows with
+the same value, reflecting the 12:1 ratio between spike and LFP sample rates.
 
 ### Removing repeated samples
 
