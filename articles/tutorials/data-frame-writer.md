@@ -284,7 +284,7 @@ clock = table["Clock"].to_numpy()
 
 Some ONIX devices produce data at different sample rates. For example, the
 <xref:OpenEphys.Onix1.NeuropixelsV1eData> produces
-[NeuropixelsV1eDataFrames](xref:OpenEphys.Onix1.NeuropixelsV1eDataFrame) which
+[NeuropixelsV1DataFrames](xref:OpenEphys.Onix1.NeuropixelsV1DataFrame) which
 combine 30 kHz spike data and 2.5 kHz LFP data. When these data frames are saved
 with DataFrameWriter, all channels in the resulting Arrow file share the same
 number of rows. The slower stream, LFP data, is stored using [run-end
