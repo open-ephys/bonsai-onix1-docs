@@ -16,7 +16,7 @@ compression), and efficiently load the resulting files in Python.
 > 
 > - [Python](https://arrow.apache.org/docs/python/index.html)
 >   - With [NumPy](https://arrow.apache.org/docs/python/numpy.html) integration
->   - With [Pandas](https://arrow.apache.org/docs/python/pandas.html)  integration
+>   - With [Pandas](https://arrow.apache.org/docs/python/pandas.html) integration
 >   - With [Polars](https://pola.rs/) integration
 > - [R](https://arrow.apache.org/docs/r/)
 > - [Julia](https://arrow.apache.org/julia/stable/)
@@ -48,8 +48,8 @@ prior knowledge of the data layout in order to be loaded correctly.
 > [SpikeInterface](https://spikeinterface.readthedocs.io/) does not yet have
 > Arrow integration. For workflows that depend on those libraries, you will need
 > to convert the data to another format (e.g., NumPy arrays) before passing it
-> to SpikeInterface for processing. We are presently working towards
-> SpikeInterface integration.
+> to SpikeInterface for processing. We are presently working towards a more
+> direct SpikeInterface integration.
 
 ## Adding DataFrameWriter to a Workflow
 
@@ -116,10 +116,10 @@ requirements on your workflow structure.
 
 Setting `EnableCompression` to `True` instructs `DataFrameWriter` to compress
 each record batch using the [Zstandard](https://facebook.github.io/zstd/) codec
-before writing it to disk. Zstandard is a general-purpose compression algorithm
-that offers a good balance between compression ratio and speed and is
-exceptionally good at compressing small batches of data, like the record
-batches. For typical neural data, enabling compression can substantially
+before writing it to disk. Zstandard is an open-source general-purpose
+compression algorithm that offers a good balance between compression ratio and
+speed and is exceptionally good at compressing small batches of data, like the
+record batches. For typical neural data, enabling compression can substantially
 reduce file sizes.
 
 ### When to enable compression
@@ -135,7 +135,7 @@ benchmark your system before relying on compression in long recordings.
 
 > [!TIP] 
 > A practical way to evaluate the impact of compression on your specific
-> setup is to use a a <xref:OpenEphys.Onix1.MemoryMonitorData> operator to
+> setup is to use a <xref:OpenEphys.Onix1.MemoryMonitorData> operator to
 > examine the state of the hardware buffer when `EnableCompression` is set to
 > True or False. If the `PercentUsed` value remains near zero in both cases,
 > compression is not impacting the real-time performance in your workflow. See
@@ -245,6 +245,7 @@ with pa.memory_map("memory-monitor_0.arrow", "r") as source:
 > working with long recordings on machines with limited memory.
 
 ### Using pandas directly
+
 It is also possible to load an Arrow file directly with Pandas using
 [`pandas.read_feather()`](https://pandas.pydata.org/docs/reference/api/pandas.read_feather.html),
 which accepts Arrow IPC files directly because [Feather v2](https://arrow.apache.org/docs/python/feather.html#feather-file-format) and Arrow IPC share the same binary format.
