@@ -14,8 +14,8 @@ uid: OpenEphys.Onix1.Headstage64OpticalStimulatorTrigger
 > transition date and you want to use the optical stimulator, you can confirm
 > whether you have an older or newer headstage by observing the trigger behavior
 > on the headstage's Intan chip's auxiliary input, to which the electrical
-> stimulus signal is hard-wired. The optical stimulator does not have a
-> direct read-back path, but the trigger behavior is the same for both
-> stimulators. If you have an older headstage and require the specific
-> trigger/stimulus behavior of a newer headstage, [contact
+> stimulus signal is hard-wired. The optical stimulator does not have a direct
+> read-back path, but the trigger behavior is the same for both stimulators. If
+> your headstage exhibits the older trigger/stimulus behavior and you
+> specifically require the newer behavior, [contact
 > us](https://open-ephys.org/contact).

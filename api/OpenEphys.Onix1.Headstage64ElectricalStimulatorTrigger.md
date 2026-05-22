@@ -11,6 +11,6 @@ uid: OpenEphys.Onix1.Headstage64ElectricalStimulatorTrigger
 > transition date and you want to use the electrical stimulator, you can confirm
 > whether you have an older or newer headstage by observing the trigger behavior
 > on the headstage's Intan chip's auxiliary input, to which the stimulus
-> signal is hard-wired. If you have an older headstage and require the specific
-> trigger behavior of a newer headstage, [contact
+> signal is hard-wired. If your headstage exhibits the older trigger behavior
+> and you specifically require the newer behavior, [contact
 > us](https://open-ephys.org/contact).
