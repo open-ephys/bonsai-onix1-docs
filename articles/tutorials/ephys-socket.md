@@ -90,7 +90,7 @@ Construct an ONIX [hardware configuration chain](xref:onix-configuration):
 
 ### Stream Ephys Data
 
-Place the relevant [data I/O operators](xref:dataio) to stream electrophysiology
+Place the relevant [data source operators](xref:datasource) to stream electrophysiology
 data from your headstage:
 
 ::: workflow
