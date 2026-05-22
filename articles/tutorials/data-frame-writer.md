@@ -291,10 +291,11 @@ combine 30 kHz spike data and 2.5 kHz LFP data. When these data frames are saved
 with DataFrameWriter, all channels in the resulting Arrow file share the same
 number of rows. The slower stream, LFP data, is stored using [run-end
 encoding](https://arrow.apache.org/docs/format/Intro.html#run-end-encoded-layout),
-where each sample is written once alongside a run length rather than being
-repeated explicitly, resulting in smaller file sizes. When decoded (for example,
-by calling `.to_numpy()`), each LFP sample expands to 12 consecutive rows with
-the same value, reflecting the 12:1 ratio between spike and LFP sample rates.
+where each distinct value is written once along with the index at which that run
+ends, rather than repeating the value for every row, resulting in smaller file
+sizes. When decoded (for example, by calling `.to_numpy()`), each LFP sample
+expands to 12 consecutive rows with the same value, reflecting the 12:1 ratio
+between spike and LFP sample rates.
 
 ### Removing repeated samples
 
