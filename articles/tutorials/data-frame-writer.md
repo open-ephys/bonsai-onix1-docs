@@ -3,13 +3,16 @@ uid: data-frame-writer
 title: Using DataFrameWriter to Save Data
 ---
 
-The <xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> operator provides an easy and efficient
-way to write [ONIX data](xref:data-elements) to disk using the [Apache Arrow IPC file
-format](https://arrow.apache.org/docs/format/Intro.html). IPC (Inter-Process Communication) is the
-Arrow project's name for its standard binary file format, a format that is columnar,
-self-describing, and supported by many scientific computing environments. This tutorial explains how
-to use `DataFrameWriter` in an acquisition workflow, configure its properties (including optional
-compression), and efficiently load the resulting files in Python.
+The <xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> operator provides an
+easy and efficient way to write [ONIX data](xref:data-elements) to disk using
+the [Apache Arrow file format](https://arrow.apache.org/docs/format/Intro.html).
+Apache Arrow stores data in a column-oriented binary layout where values from
+each channel or signal are packed contiguously on disk. Each file also embeds a
+schema containing column names, data types, and structure, so no separate
+metadata file is needed to read it correctly. This tutorial explains how to use
+`DataFrameWriter` in an acquisition workflow, configure its properties
+(including optional compression), and efficiently load the resulting Arrow files
+in Python.
 
 > [!NOTE]
 > Arrow is supported by many scientific computing environments. For instance:
