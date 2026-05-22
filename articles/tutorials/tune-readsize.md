@@ -24,7 +24,7 @@ achieved.
 > - GPU: NVIDIA GTX 1070 8GB
 > - OS: Windows 11
 
-## Technical background: the hardware buffer and `ReadSize` (Optional)
+## Optional technical background: the hardware buffer and `ReadSize`
 Each time the host software reads data from the hardware, it obtains `ReadSize`
 bytes of data using the following procedure:
 

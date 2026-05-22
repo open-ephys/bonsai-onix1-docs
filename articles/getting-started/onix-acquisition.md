@@ -9,13 +9,14 @@ section covers their use.
 
 ## Acquire Data
 
-Streaming data into Bonsai requires at least one [data I/O operator](xref:dataio).
+Streaming data from ONIX hardware into Bonsai requires at least one [data source
+operator](xref:datasource).
 
-### Set up data I/O operator(s)
+### Set up data source operator(s)
 
-Place a data I/O operator and set its DeviceName property for every device from which you would like
+Place a data source operator and set its DeviceName property for every device from which you would like
 to stream. Setting the DeviceName property will tell the operator from which device to stream data.
-This is referred to linking the data I/O operator to the device. Take this workflow for example:
+This is referred to linking the data source operator to the device. Take this workflow for example:
 
 ::: workflow
 ![Workflow with data operator](../../workflows/getting-started/polled-bno055.bonsai)
@@ -28,7 +29,7 @@ AnalogIO device on the breakout board.
 
 ### Multiple headstages/miniscopes
 
-Linking the data I/O operator to devices when using two identical headstages or
+Linking the data source operator to devices when using two identical headstages or
 miniscopes involves an additional step: renaming a configuration operator.
 Suppose you want to stream orientation data from two Neuropixels 2.0 Headstages
 through using two <xref:OpenEphys.Onix1.PolledBno055Data> operators. By default,

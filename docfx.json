@@ -31,14 +31,20 @@
     "content": [ 
       {
         "files": ["articles/**.{md,yml}", "api/**.{md,yml}", "toc.yml", "index.md"],
-        "exclude": ["api/overview.md"]
+        "exclude": [
+          "api/overview.md",
+          "api/dataframewriter-overview.md"
+        ]
       }
     ],
     "resource": ["onix-logo.svg", "favicon.png", "images/**", "workflows/**"],
     "output": "_site",
     "overwrite": [
       {
-        "files": ["api/overview.md"]
+        "files": [
+          "api/overview.md",
+          "api/dataframewriter-overview.md"
+        ]
       }
     ],
     "template": ["default", "modern", "template", "docfx-tools/template"],

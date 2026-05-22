@@ -5,7 +5,7 @@ title: Data Elements
 
 Data elements are produced by <xref:OpenEphys.Onix1> Bonsai operators. These
 pages contain information data elements that can help interpret and load data
-produced by <xref:dataio>.
+produced by <xref:datasource>.
 
 In general, a data element comprises of properties which together contain
 timestamped data from a particular device. For example,
