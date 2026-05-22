@@ -31,7 +31,7 @@ When the <xref:OpenEphys.Onix1.Headstage64OpticalStimulatorTrigger> operator
 receives a "True" value in its input sequence, a stimulus waveform is triggered.
 
 > [!IMPORTANT]
-> Headstages manufactured before approximately September/October 2024 have an optical
-> stimulator that behaves differently from those in later headstages. See the
+> Headstages manufactured before October 2024 have an optical stimulator that
+> behaves differently from those in later headstages. See the
 > <xref:OpenEphys.Onix1.Headstage64OpticalStimulatorTrigger> reference page for
 > details.
