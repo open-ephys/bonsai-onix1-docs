@@ -3,11 +3,11 @@ uid: onix-acquisition
 title: Data Acquisition
 ---
 
-Data produced by ONIX hardware is captured using data input
-operators and sent to hardware using data output operators, respectively. This
-section covers their use.
+Data flows into a Bonsai workflow from ONIX hardware through [data source
+operators](xref:datasource), and back out to the hardware through [data sink
+operators](xref:datasink). This section covers how to use them.
 
-## Acquire Data
+## Acquiring Data
 
 Streaming data from ONIX hardware into Bonsai requires at least one [data source
 operator](xref:datasource).
@@ -68,14 +68,14 @@ three systems are used, they would have `Index` values of 0, 1, and 2. etc.
 ![/workflows/getting-started/multiple-breakout.bonsai workflow](../../workflows/getting-started/multiple-breakout.bonsai)
 :::
 
-Now that you can stream data into Bonsai from ONIX hardware, the next step is
+Now that you can stream data into Bonsai from ONIX hardware, the next step is to
 visualize the data.
 
-## Minimum Version Check
+<!-- ## Minimum Version Check
 
 If you start a workflow and are presented with an exception such as this:
 
 ![Exception showing an attempt to acquire from device with unsupported gateware version](../../images/unsupported-version.png)
 
 you must revert to a software version
-that supports the indicated version of the gateware. 
+that supports the indicated version of the gateware. -->

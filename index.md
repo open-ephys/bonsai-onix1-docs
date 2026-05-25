@@ -3,15 +3,15 @@ uid: index
 title: OpenEphys.Onix1
 ---
 
-`OpenEphys.Onix1` is a [Bonsai](https://bonsai-rx.org/) library that can be used to control the [ONIX PCIe Acquisition System](https://open-ephys.org/onix/oeps-9006). It provides:
+`OpenEphys.Onix1` is a [Bonsai](https://bonsai-rx.org/) library for the [ONIX
+PCIe Acquisition System](https://open-ephys.org/onix/oeps-9006). It supports:
 
-* Support for a variety of tools such as [Neuropixels (all
-  variants)](https://www.neuropixels.org/),
+- [Neuropixels (all variants)](https://www.neuropixels.org/),
   [Miniscopes](https://open-ephys.org/miniscope-v4/miniscope-v4), [Intan-based
-  headstages](https://open-ephys.org/onix/oeps-7741), and more
-* Automatic hardware synchronization of all data streams.
-* Torque-free commutation of ultra-thin (down to ~0.2mm diameter) tethers
-* High performance closed-loop performance (100 usec feedback loop times)
+  headstages](https://open-ephys.org/onix/oeps-7741), and more.
+- Automatic hardware synchronization across all data streams.
+- Torque-free commutation of ultra-thin (down to ~0.2 mm diameter) tethers.
+- High-performance closed-loop feedback (~100 µs loop times).
 
 <br>
 <div class="quick-links">
@@ -24,72 +24,39 @@ title: OpenEphys.Onix1
 </div>
 <br>
 
-### Why Bonsai?
+Bonsai is built on [Reactive Extensions](https://reactivex.io/) (Rx), which
+models every data source as an observable sequence of
+events. This fits ONIX recordings naturally: a Neuropixels probe, a Miniscope
+camera, and a behavioral controller each run at different rates and produce data
+asynchronously, and Rx lets you combine, filter, and react to those streams
+without writing any threading or buffering code. All ONIX streams share a common
+hardware clock, so alignment across devices is automatic. For closed-loop
+experiments, the same reactive model lets you compose stimulus delivery directly
+from incoming data, with loop times around 100 µs.
 
-ONIX is built on the [ONI standard](https://open-ephys.github.io/ONI/), which is software
-agnostic. Bonsai is the first software target pursued by the Open Ephys team for
-ONIX hardware. There are three major reasons for this:
+Bonsai is actively developed and maintained as an open-source project, with a
+growing community of neuroscience labs and an expanding package ecosystem.
+`OpenEphys.Onix1` can be used alongside:
 
-1. **Performance.** ONIX is a universal interface for neural recording instruments. It can
-   capture data produced by neural probes, cameras, high-speed ADCs, etc. In
-   general terms, ONIX can capture data from arbitrary mixtures of
-   asynchronous[^1] data sources. Bonsai provides an extremely powerful,
-   open-source software platform for elegantly collecting, combining, and
-   processing data from essentially any data source regardless of its sample
-   rate, sample regularity, packet size, and bandwidth. Bonsai accomplishes this
-   task in a fundamental manner: it explicitly models each data source as an
-   ordered temporal sequence with a start and end called an
-   [Observable](https://reactivex.io/documentation/observable.html). This is
-   analogous to how, for instance,
-   [Numpy](https://numpy.org/doc/stable/index.html) explicitly models fixed-size
-   multi-dimensional arrays as
-   [ndarrays](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray).
-   And, just like Numpy offers an extensive linear algebra toolkit
-   to operate on these arrays, Bonsai offers an analogous
-   [toolkit](https://reactivex.io/documentation/operators.html)
-   for operating on temporal sequences of data. Because Bonsai was created around this core
-   data model and operator library, it makes capturing, processing, and combining data
-   sequences from different hardware sources natural in Bonsai, whereas it is
-   bug prone and difficult in other software options.
-1. **Code quality.** Open Ephys has been developing open source hardware and
-   software for the Neuroscience community for over a decade. In terms of code
-   quality, Bonsai is excellent. Bonsai uses a modern language and build system,
-   has integrated package management, and an extremely clean, featureful, and well
-   maintained API. Given that Bonsai's development model perfectly aligns with our
-   values, we are very proud to be able to contribute to its growth in the
-   Neuroscience community.
-1. **Third party integration.** Bonsai provides support for
-   hundreds of pieces of open- and closed-source hardware and software that are
-   used extensively in neuroscience research. For instance:
-
-    - The classic Open Ephys [acquisition system](https://open-ephys.org/acquisition-system)
-    - [Ucla Miniscope ecosystem](https://open-ephys.github.io/miniscope-docs/index.html)
-    - [National Instruments](https://bonsai-rx.org/daqmx/articles/intro.html) acquisition boards
-    - Virtually every machine-vision and sCMOS camera[^2]
-    - [Sanworks Bpod](https://sanworks.github.io/Bpod_Wiki/)
-    - [Harp](https://harp-tech.org/index.html)
-    - [Deeplabcut](https://github.com/bonsai-rx/deeplabcut) & [Sleap](https://github.com/bonsai-rx/sleap)
-    - And much more
-
-   By targeting Bonsai, ONIX can be used seamlessly with these third party tools.
-
-[^1]: Although physical data sources are asynchronous (e.g. a Neuropixels probe
-runs on a distinct clock and produces data at a distinct rate compared to the
-camera sensor on a Miniscope), all data is hardware-timestamped on a common
-clock. No post-hoc data alignment is required.
-
-[^2]: [Flir](https://github.com/bonsai-rx/spinnaker), [Allied
-Vision](https://github.com/bonsai-rx/vimba),
-[Ximea](https://github.com/bonsai-rx/ximea),
-[Basler](https://github.com/bonsai-rx/pylon),
-[Excelitas](https://github.com/bonsai-rx/pco), etc.
+- The Open Ephys [acquisition system](https://open-ephys.org/acquisition-system)
+- [Arduino boards](https://github.com/bonsai-rx/arduino)
+- [National Instruments](https://bonsai-rx.org/daqmx/articles/intro.html) DAQ boards
+- Machine-vision cameras ([Flir](https://github.com/bonsai-rx/spinnaker),
+  [Basler](https://github.com/bonsai-rx/pylon),
+  [Allied Vision](https://github.com/bonsai-rx/vimba),
+  [Ximea](https://github.com/bonsai-rx/ximea), and more)
+- [Harp](https://harp-tech.org/index.html) behavioral devices
+- [Sanworks Bpod](https://sanworks.github.io/Bpod_Wiki/)
+- Pose estimation via [DeepLabCut](https://github.com/bonsai-rx/deeplabcut) and
+  [SLEAP](https://github.com/bonsai-rx/sleap)
+- The [UCLA Miniscope ecosystem](https://open-ephys.github.io/miniscope-docs/index.html)
 
 > [!NOTE]
-> If you have suggestions for improving these docs, please contribute by
-> [raising an issue](https://github.com/open-ephys/bonsai-onix1-docs/issues). We
-> welcome all constructive feedback. As always, our goals are better performing
-> tools, less redundant development, and more reproducible science.
-
-### Open Ephys GUI Support
-
-The [Open Ephys GUI](https://open-ephys.github.io/gui-docs/) can also be used to interface with ONIX without Bonsai and the OpenEphys.Onix1 package. To understand the differences between both options, see our [comparison of Bonsai and the Open Ephys GUI](https://open-ephys.github.io/onix-docs/Software%20Guide/index.html#software-comparison). The Open Ephys GUI uses the [ONIX Source plugin](https://open-ephys.github.io/gui-docs/User-Manual/Plugins/Onix-Source.html) to acquire ONIX data. [Onix Source supports a subset of the ONIX features](https://open-ephys.github.io/gui-docs/User-Manual/Plugins/Onix-Source.html#onix-support) available in the OpenEphys.Onix1 package.
+> ONIX can also be used with the [Open Ephys
+> GUI](https://open-ephys.github.io/gui-docs/) via the [ONIX Source
+> plugin](https://open-ephys.github.io/gui-docs/User-Manual/Plugins/Onix-Source.html),
+> though it covers [a subset of ONIX
+> features](https://open-ephys.github.io/gui-docs/User-Manual/Plugins/Onix-Source.html#onix-support)
+> compared to `OpenEphys.Onix1`. See the [software
+> comparison](https://open-ephys.github.io/onix-docs/Software%20Guide/index.html#software-comparison)
+> for details.

@@ -56,7 +56,7 @@ prior knowledge of the data layout in order to be loaded correctly.
 
 ## Adding DataFrameWriter to a workflow
 
-<xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> ` is a sink operator that
+<xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> is a sink operator that
 accepts any device data stream that produces <xref:OpenEphys.Onix1.DataFrame> or
 <xref:OpenEphys.Onix1.BufferedDataFrame> elements. In practice, this means it
 can be placed downstream of virtually any [data source
@@ -331,11 +331,11 @@ Divide `clock_unique` by the acquisition clock rate to convert clock counts to s
 [Reading the acquisition clock rate](#reading-the-acquisition-clock-rate) for how to load that
 value from the metadata CSV file.
 
-## Loading and recovering corrupted files
+## Loading and recovering corrupt files
 
-If a power outage or other unforeseen event occurs during recording and leaves the file in a state
-where it cannot be opened by the example scripts above, the following scripts can be used to
-recover a file that has closed exceptionally.
+If a power outage or other unforeseen event occurs during recording and leaves
+the file in a state where it cannot be opened by the example scripts above, the
+following scripts can be used to recover a file that has closed exceptionally.
 
 > [!NOTE]
 > Data durability was a *first class requirement* when selecting the Arrow file
@@ -352,7 +352,7 @@ recover a file that has closed exceptionally.
 > Without
 > Borders](https://nwb-schema.readthedocs.io/en/latest/format_description.html)).
 
-### Loading file with invalid footer
+### Recovering an Arrow file with invalid footer
 
 If recording is interrupted, the file may be missing the footer that Arrow uses to index record
 batches, causing PyArrow to raise `ArrowInvalid: Not an Arrow file` when you try to open it. This
@@ -388,11 +388,11 @@ with pa.memory_map(input_path, 'r') as f:
                 except (pa.ArrowInvalid, OSError) as e:
                     print(f"Stopped reading at batch {num_batches}: {e}")
                     break
-                
+
     print(f"Recovered {num_batches} batches from {input_path}, saved to {output_path}")
 ```
 
-### Loading file with corrupted batches
+### Recovering an Arrow file with corrupted batches
 
 This script reads an Arrow file with an intact footer that has been corrupted in some other way
 (invalid buffers, corrupted headers, etc.) and writes all valid batches to a new file. One error
@@ -426,17 +426,18 @@ with pa.memory_map(input_path, 'r') as f:
                     num_batches += 1
                 except (pa.ArrowInvalid, OSError) as e:
                     print(f"Skipped batch {i}: {e}")
-                
+
         print(f"Recovered {num_batches} out of {reader.num_record_batches} batches from {input_path}, saved to {output_path}")
 ```
 
 ### Handling compressed data
 
-If the data was originally saved with compression and you want to re-save the recovered data with
-compression, pass an `IpcWriteOptions` object to `pa.ipc.new_file()`. The example below applies
-Zstandard compression, which is the same algorithm used by `DataFrameWriter` when
-`EnableCompression` is `True`. The change is the same for both recovery scripts above; this example
-uses the [invalid footer](#loading-file-with-invalid-footer) script:
+If the corrupt data file was originally saved with compression and you want to
+re-save the recovered data with compression, pass an `IpcWriteOptions` object to
+`pa.ipc.new_file()`. The example below applies Zstandard compression, which is
+the same algorithm used by `DataFrameWriter` when `EnableCompression` is `True`.
+The change is the same for both recovery scripts above; this example uses the
+[invalid footer](#loading-file-with-invalid-footer) script:
 
 ```python
 import pyarrow as pa
@@ -471,28 +472,30 @@ with pa.memory_map(input_path, 'r') as f:
     print(f"Recovered {num_batches} batches from {input_path}, saved to {output_path}")
 ```
 
-## Plotting data in Python
+## Plotting data from an Arrow file in Python
 
-The examples in this section also require `matplotlib`. Install it alongside the packages above if
-you have not already:
+The examples in this section also require `matplotlib`. Install it alongside the
+packages above if you have not already:
 
 ```
 pip install matplotlib
 ```
 
-To render and interact with figures, you will also need a matplotlib backend. See the [matplotlib
-backend documentation](https://matplotlib.org/stable/users/explain/figure/backends.html) for
-installation instructions.
+To render and interact with figures, you will also need a `matplotlib` backend.
+See the [matplotlib backend
+documentation](https://matplotlib.org/stable/users/explain/figure/backends.html)
+for installation instructions.
 
-This section shows how to plot data saved from a `MemoryMonitor` device. The MemoryMonitor schema contains columns including `Clock`, `PercentUsed`, and `BytesUsed`. The `Clock` column records the raw
-acquisition clock count and must be divided by the acquisition clock rate to produce a time value in
-seconds.
+This section shows how to plot data saved from a `MemoryMonitor` device. The
+MemoryMonitor schema contains columns including `Clock`, `PercentUsed`, and
+`BytesUsed`. The `Clock` column records the raw acquisition clock count and must
+be divided by the acquisition clock rate to produce a time value in seconds.
 
 ### Reading the acquisition clock rate
 
-The example workflow shown [above](#adding-dataframewriter-to-a-workflow) writes acquisition
-metadata, including the clock rate, to a `start-time_<suffix>.csv` file each time it runs. Load
-it with NumPy before plotting:
+The example workflow shown [above](#adding-dataframewriter-to-a-workflow) writes
+acquisition metadata, including the clock rate, to a `start-time_<suffix>.csv`
+file each time it runs. Load it with NumPy before plotting:
 
 ```python
 import numpy as np
@@ -506,10 +509,11 @@ acq_clk_hz = meta['acq_clk_hz']
 ### Plotting directly from a PyArrow table
 
 PyArrow column arrays implement the [Python array
-protocol](https://arrow.apache.org/docs/python/numpy.html), so most plotting libraries, including
-Matplotlib, can consume them directly without an explicit conversion step. The `Clock` column is an
-exception: arithmetic operations such as dividing by the clock rate require a call to `.to_numpy()`
-first to produce a NumPy array.
+protocol](https://arrow.apache.org/docs/python/numpy.html), so most plotting
+libraries, including Matplotlib, can consume them directly without an explicit
+conversion step. The `Clock` column is an exception: arithmetic operations such
+as dividing by the clock rate require a call to `.to_numpy()` first to produce a
+NumPy array.
 
 ```python
 import pyarrow as pa
@@ -577,7 +581,7 @@ df.plot(
   y="PercentUsed",
   ylabel="FIFO used (%)",
   legend=False)
-  
+
 df.plot(
   ax=axes[1],
   x="time_s",
@@ -585,12 +589,12 @@ df.plot(
   xlabel="Time (s)",
   ylabel="Bytes used",
   legend=False)
-  
+
 plt.tight_layout()
 plt.show()
 ```
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Calling `.to_pandas()` can copy the entire table into RAM, potentially doubling
 > memory usage. For short recordings this is a convenient workflow, but for large files on
 > memory-limited machines, prefer working directly with the PyArrow table as shown above.

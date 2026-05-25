@@ -4,9 +4,9 @@ title: Device Configuration Operators
 ---
 
 > [!TIP]
->  Device configuration operators are not recommended for using off-the-shelf
->  Open Ephys hardware. Use [Device Group configuration
->  operators](xref:configure) instead. They confer the following benefits:
+> Device configuration operators are not recommended for using off-the-shelf
+> Open Ephys hardware. Use [Device Group configuration
+> operators](xref:configure) instead. They confer the following benefits:
 > - The `address` and `name` properties of Device Group configuration operators
 >   undergo automatic configuration which reduces the risk of erroneous
 >   configuration.
@@ -17,7 +17,7 @@ title: Device Configuration Operators
 Device configuration operators belong in a top-level configuration chain between
 [CreateContext](xref:OpenEphys.Onix1.CreateContext) and
 [StartAcquisition](xref:OpenEphys.Onix1.StartAcquisition) to configure devices
-that can be found on ONIX hardware. Devices represent physical element
+that can be found on ONIX hardware. Devices represent physical elements
 interfacing with the environment (e.g., an external sensor with a digital
 communication interface like the BNO055, Neuropixels probes, or RHS2116 stimulus
 trigger) or internal data sources (e.g., a controller based digital logic module

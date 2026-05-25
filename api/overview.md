@@ -5,9 +5,9 @@ title: Library Reference
 
 [OpenEphys.Onix1](https://github.com/open-ephys/bonsai-onix1) is a Bonsai
 package that exposes a set of Bonsai Operators for control of and data
-acquisition from ONIX hardware. This library reference that documents each of
-the operators available in the package in a standardized format. This reference
-is generated from the [source code](https://github.com/open-ephys/bonsai-onix1).
+acquisition from ONIX hardware. This library reference documents each of the
+operators available in the package in a standardized format. This reference is
+generated from the [source code](https://github.com/open-ephys/bonsai-onix1).
 
 > [!TIP]
 > You can access the reference for a particular operator from within the Bonsai
@@ -15,6 +15,7 @@ is generated from the [source code](https://github.com/open-ephys/bonsai-onix1).
 > the workflow or Toolbox.
 
 ## Property Categories
+
 The behavior of Bonsai operators is governed by their "Properties".
 Properties can be viewed and changed using Property Editor on the right side of
 the workflow:
@@ -24,7 +25,7 @@ the workflow:
 Properties in this library fall into several categories which are useful for
 distinguishing when a property change will be applied to hardware and the scope
 of the property's effect. The following tags are used throughout the
-documentation designate these property categories:
+documentation to designate these property categories:
 
 | Category | Description |
 |----------|-------------|
