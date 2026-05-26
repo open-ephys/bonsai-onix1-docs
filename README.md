@@ -211,4 +211,4 @@ If there are discrepancies between local and remote builds:
 
 ## Style Guide
 
-Refer to the [Style Guide](style-guide.md).
+Refer to the [Style Guide issue](https://github.com/open-ephys/bonsai-onix1-docs/issues/340).
