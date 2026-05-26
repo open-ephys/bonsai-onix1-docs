@@ -307,6 +307,7 @@ selects only the rows containing new data. The same mask is applied to the
 
 ```python
 import pyarrow as pa
+import pyarrow.compute # Importing the compute library is necessary to decode run-end encoded data
 import numpy as np
 
 with pa.memory_map("npix-v1e-lfp_0.arrow", "r") as source:
