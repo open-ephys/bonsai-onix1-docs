@@ -6,7 +6,7 @@ title: Load Data
 The following python script can be used to load and plot the data produced by the Headstage Rhs2116
 [example workflow](xref:rhs2116).
 
-[!code-python[](../../../python/guides/rhs2116/load-rhs2116.py)]
+[!code-python[](../../../scripts/hardware/rhs2116/load-rhs2116.py)]
 
 > [!NOTE]
 > This script will attempt to load entire files into arrays. For long recordings, data will need to

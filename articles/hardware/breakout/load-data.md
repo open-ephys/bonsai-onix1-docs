@@ -5,7 +5,7 @@ title: Load Data
 
 The following python script can be used to load and plot the data produced by the Breakout Board [example workflow](xref:breakout_workflow).
 
-[!code-python[](../../../python/guides/breakout-board/load-breakoutboard.py)]
+[!code-python[](../../../scripts/hardware/breakout-board/load-breakoutboard.py)]
 
 > [!NOTE]
 > This script will attempt to load entire files into arrays. For long recordings, data will need to
