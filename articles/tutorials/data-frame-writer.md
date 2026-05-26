@@ -14,6 +14,11 @@ metadata file is needed to read it correctly. This tutorial explains how to use
 (including optional compression), and efficiently load the resulting Arrow files
 in Python.
 
+The first section walks through how to save data, and subsequently load the data in Python using the
+provided [example script](#loading-script) below. A more detailed explanation of the various
+parameters, background, and implementation details can be found in the
+[Advanced](#advanced-arrow-topics) section below.
+
 > [!NOTE]
 > Arrow is supported by many scientific computing environments. For instance:
 >
@@ -25,44 +30,18 @@ in Python.
 > - [Julia](https://arrow.apache.org/julia/stable/)
 > - [Matlab](https://github.com/apache/arrow/blob/main/matlab/README.md)
 
-## What is the Apache Arrow file format?
-
-Apache Arrow files organize data in a
-[column-oriented](https://en.wikipedia.org/wiki/Data_orientation#Column-oriented)
-layout optimized for operations typical in time-series analysis, such as
-filtering, grouping, and aggregation. Concretely, samples from a single data
-source, e.g. a single electrophysiology channel, are stored next to each other
-on disk. This means an analysis tool can read just the channels it needs without
-first rearranging or copying the contents of the file after it has been loaded
-into memory. Additionally, each file is self-describing: it opens with a schema that
-declares every column's name and data type, followed by a sequence of [record
-batches](https://arrow.apache.org/docs/format/Glossary.html#term-record-batch).
-Each record batch is a group of rows in which each column's values are stored as
-a contiguous array. Unlike plain text data formats
-(e.g. CSV files produced by
-[CsvWriter](https://bonsai-rx.org/docs/api/Bonsai.IO.CsvWriter.html)) or flat
-binary files (e.g. files produced by
-[MatrixWriter](https://bonsai-rx.org/docs/api/Bonsai.Dsp.MatrixWriter.html)),
-Arrow files contain data type information (e.g., 16-bit integers, 64-bit
-floating point numbers, etc.), and do not require a separate metadata file or
-prior knowledge of the data layout in order to be loaded correctly.
-
-> [!NOTE]
-> To convert from Arrow files to a format similar to the output of `CsvWriter` or `MatrixWriter`,
-> check out [this section](#converting-to-other-formats) for details on how to convert the data into
-> other formats.
+# Load and Save Arrow Data
 
 ## Adding DataFrameWriter to a workflow
 
-<xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> is a sink operator that
-accepts any device data stream that produces <xref:OpenEphys.Onix1.DataFrame> or
-<xref:OpenEphys.Onix1.BufferedDataFrame> elements. In practice, this means it
-can be placed downstream of virtually any [data source
-operator](xref:datasource).
+<xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> is a sink operator that accepts any device
+data stream that produces <xref:OpenEphys.Onix1.DataFrame> or
+<xref:OpenEphys.Onix1.BufferedDataFrame> elements. In practice, this means it can be placed
+downstream of virtually any [data source operator](xref:datasource).
 
-You can use multiple `DataFrameWriter` nodes in the same workflow, placing one
-per data stream. Give each node a descriptive `FileName` so recordings are easy
-to identify after the fact.
+You can use multiple `DataFrameWriter` nodes in the same workflow, placing one per data stream. Give
+each node a descriptive `FileName` so recordings are easy to identify after the fact. For more
+details on the available properties, see the [properties section](#dataframewriter-properties) below.
 
 ::: workflow
 ![workflow for testing DataFrameWriter with Breakout Board data](../../workflows/tutorials/data-frame-writer/data-frame-writer-example.bonsai)
@@ -101,18 +80,6 @@ reference is on the <xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> page.
   [Zstandard](https://facebook.github.io/zstd/) before being written to disk. See the
   [Compression](#compression) section for guidance on when to enable this.
 
-## How data is written
-
-`DataFrameWriter` does not write one row to disk per incoming frame. Instead, it
-accumulates frames into an in-memory buffer and writes them to disk as a single
-record batch. The target buffer size is determined automatically by the data
-frame type and is not user-configurable. The data in the buffer is written to
-disk when it reaches that size or after at most five seconds, whichever comes
-first.
-
-This batching strategy keeps disk I/O efficient without placing any special
-requirements on your workflow structure.
-
 ## Compression
 
 Setting `EnableCompression` to `True` instructs `DataFrameWriter` to compress
@@ -142,21 +109,6 @@ benchmark your system before relying on compression in long recordings.
 > the [closed-loop performance tutorial](xref:tune-readsize) for more information
 > on real-time optimization.
 
-### Loading compressed files
-
-You do not need to know whether a file is compressed or not in order to load
-it. PyArrow reads the compression metadata stored in each record batch header
-and decompresses the data automatically. The loading code shown in the [next
-section](#loading-data-in-python) works identically for both compressed and
-uncompressed files.
-
-The only difference compared to loading an uncompressed file is computational
-effort. Loading a compressed file requires decompressing each record batch
-before the data can be used, which adds CPU work that is not present when
-loading an uncompressed file. For analysis of large recordings this additional
-latency may be noticeable, especially on machines with slower CPUs. If fast
-random access to large files is a priority, prefer uncompressed files.
-
 ## Loading data in Python
 
 In Python, Arrow files can be read using
@@ -176,109 +128,59 @@ install the required packages:
 pip install pyarrow pandas
 ```
 
-### Memory-mapped loading
+### Loading script
 
-The most efficient way to read Arrow files in Python is to open the file as a memory map and pass it
-to `pyarrow.ipc.open_file()`. With this approach, PyArrow maps the file into the process's virtual
-address space and reads data on demand rather than copying the entire file into RAM upfront. For large
-recordings, this is significantly more memory-efficient than loading everything at once.
+Download the following script locally, and place the file in the same directory as other processing
+scripts. This script has one public function (`load_arrow_file`) which can be used to load an Arrow
+file. The following code snippets indicate how to call the function, and some of the options that
+can be leveraged when loading.
 
-```python
-import pyarrow as pa
+[Download loading script](../../python/tutorials/data-frame-writer/load_arrow.py)
 
-with pa.memory_map("memory-monitor_0.arrow", "r") as source:
-    with pa.ipc.open_file(source) as reader:
-        print(f"Schema: {reader.schema}")
-        print(f"Number of record batches: {reader.num_record_batches}")
-        table = reader.read_all()
-```
+<details>
+<summary>View the loading script inline.</summary>
 
-Individual record batches can be read one at a time, which is useful when you only need a subset of
-the data or when the full recording does not fit in available RAM:
+[!code-python[](../../python/tutorials/data-frame-writer/load_arrow.py)]
+</details>
 
-```python
-import pyarrow as pa
+### Load Arrow file
 
-with pa.memory_map("memory-monitor_0.arrow", "r") as source:
-    with pa.ipc.open_file(source) as reader:
-        for i in range(reader.num_record_batches):
-            batch = reader.get_batch(i)
-            # Process individual batch
-```
+To load the full Arrow file, simply call `load_arrow_file` with a string pointing to the file; this
+can be an absolute file path or a relative file path.
 
-It is also possible to load a specific range of record batches into a table to
-analyze a fixed time window without loading the full recording. In the following
-snippet, the first 10 record batches are loaded.
+[!code-python[](../../python/tutorials/data-frame-writer/load-file.py)]
 
-```python
-import pyarrow as pa
+### Load Arrow file with start and end indices
 
-with pa.memory_map("memory-monitor_0.arrow", "r") as source:
-    with pa.ipc.open_file(source) as reader:
-        indices = range(10) # Make sure the range does not exceed reader.num_record_batches
-        table = pa.Table.from_batches(reader.get_batch(i) for i in indices)
-```
+To only load a subset of the file, call `load_arrow_file` with the optional `start` and `end`
+parameters specified. The resulting table will contain the samples specified instead of the full
+file. If either index is outside of the valid range, an `IndexError` is thrown which will specify
+what the valid range of indices is.
 
-## Converting to other formats
+[!code-python[](../../python/tutorials/data-frame-writer/load-file-with-start-and-end-indices.py)]
 
-PyArrow can convert Arrow tables into several other formats for use with different libraries and
-workflows.
+### Load Arrow file with specific columns
 
-### Converting to a pandas DataFrame
+To only load a subset of channels, an array of strings can be given to filter for specific channels.
+If any of the given channels do not exist in the table, a `KeyError` is thrown indicating that the
+string does not exist in the file.
 
-If your analysis uses pandas, you can convert an Arrow Table to a DataFrame by calling `.to_pandas()`:
+[!code-python[](../../python/tutorials/data-frame-writer/load-file-with-specific-channels.py)]
 
-```python
-import pyarrow as pa
-import pandas as pd
+### Loading compressed files
 
-with pa.memory_map("memory-monitor_0.arrow", "r") as source:
-    with pa.ipc.open_file(source) as reader:
-        table = reader.read_all()
-        df = table.to_pandas(types_mapper=pd.ArrowDtype)
-```
+You do not need to know whether a file is compressed or not in order to load
+it. PyArrow reads the compression metadata stored in each record batch header
+and decompresses the data automatically. The loading code shown in the [loading
+section](#loading-data-in-python) works identically for both compressed and
+uncompressed files.
 
-> [!IMPORTANT]
-> Calling `.to_pandas()`, or any other method that converts the table to a pandas DataFrame, might
-> copy the entire dataset into RAM. Pandas and PyArrow can, in certain limited circumstances,
-> maintain memory mapping across boundaries, but it is not guaranteed. Keep this in mind when
-> working with long recordings on machines with limited memory.
-
-### Using pandas directly
-
-It is also possible to load an Arrow file directly with Pandas using
-[`pandas.read_feather()`](https://pandas.pydata.org/docs/reference/api/pandas.read_feather.html),
-which accepts Arrow IPC files directly because [Feather v2](https://arrow.apache.org/docs/python/feather.html#feather-file-format) and Arrow IPC share the same binary format.
-
-```python
-import pandas as pd
-
-df = pd.read_feather("memory-monitor_0.arrow", dtype_backend="pyarrow")
-```
-
-This is convenient for short recordings, but it calls PyArrow internally and
-loads the entire file into RAM regardless of how large it is. It also does not
-expose batch-level access, so there is no way to read only a portion of the
-recording without first loading the whole file. For large or long recordings,
-the memory-mapped approach described previously is preferable.
-
-### Exporting to NumPy
-
-Individual columns can be extracted as NumPy arrays using `.to_numpy()`. For large recordings,
-replace `reader.read_all()` with a batch loop using `reader.get_batch(i)` and process each batch
-incrementally to avoid loading the entire file into RAM at once.
-
-```python
-import pyarrow as pa
-import numpy as np
-
-with pa.memory_map("memory-monitor_0.arrow", "r") as source:
-    with pa.ipc.open_file(source) as reader:
-        table = reader.read_all()
-
-percent_used = table["PercentUsed"].to_numpy()
-clock = table["Clock"].to_numpy()
-```
+The only difference compared to loading an uncompressed file is computational
+effort. Loading a compressed file requires decompressing each record batch
+before the data can be used, which adds CPU work that is not present when
+loading an uncompressed file. For analysis of large recordings this additional
+latency may be noticeable, especially on machines with slower CPUs. If fast
+random access to large files is a priority, prefer uncompressed files.
 
 ## Working with subsampled data
 
@@ -303,167 +205,69 @@ The script below uses the known sample rate divisor to build a boolean mask that
 selects only the rows containing new data. The same mask is applied to the
 `Clock` column so that timestamps remain consistent with the subsampled data.
 
-```python
-import pyarrow as pa
-import pyarrow.compute # Importing the compute library is necessary to decode run-end encoded data
-import numpy as np
-
-with pa.memory_map("npix-v1e-lfp_0.arrow", "r") as source:
-    with pa.ipc.open_file(source) as reader:
-        table = reader.read_all()
-
-data_cols = [name for name in table.schema.names if "LfpData" in name]
-data = np.column_stack([table[col].to_numpy() for col in data_cols])
-clock = table["Clock"].to_numpy()
-
-divisor = 12  # 30 kHz primary rate / 2.5 kHz LFP rate for NeuropixelsV1
-
-mask = np.zeros(len(clock), dtype=bool)
-mask[::divisor] = True
-
-data_unique = data[mask]    # shape: (num_unique_lfp_samples, num_channels)
-clock_unique = clock[mask]  # acquisition clock counts at each unique LFP sample
-```
+[!code-python[](../../python/tutorials/data-frame-writer/load-subsampled-data.py)]
 
 After applying the mask, `data_unique` and `clock_unique` contain only the distinct LFP samples.
 Divide `clock_unique` by the acquisition clock rate to convert clock counts to seconds. See
 [Reading the acquisition clock rate](#reading-the-acquisition-clock-rate) for how to load that
 value from the metadata CSV file.
 
-## Loading and recovering corrupt files
+## Converting to other formats
 
-If a power outage or other unforeseen event occurs during recording and leaves
-the file in a state where it cannot be opened by the example scripts above, the
-following scripts can be used to recover a file that has closed exceptionally.
+PyArrow can convert Arrow tables into several other formats for use with different libraries and
+workflows.
 
-> [!NOTE]
-> Data durability was a *first class requirement* when selecting the Arrow file
-> format. Worst case data loss is a single record batch. For high-bandwidth
-> sources like Neuropixels, `DataFrameWriter` produces record batches that are
-> 1 second in duration. For low-bandwidth or aperiodic sources, it flushes its
-> input buffer to disk every 5 seconds. Data written before any interruption
-> (unhandled exception, out-of-memory condition, power outage, etc.) can always
-> be recovered.
+### Converting to a pandas DataFrame
 
-### Recovering an Arrow file with invalid footer
-
-If recording is interrupted, the file may be missing the footer that Arrow uses to index record
-batches, causing PyArrow to raise `ArrowInvalid: Not an Arrow file` when you try to open it. This
-script works around the missing footer by opening the file as an Arrow Stream rather than an Arrow
-File. The Stream format reads record batches sequentially without relying on the footer, so all
-batches written before the interruption can still be recovered. The recovered batches are then
-written to a new file, which automatically generates a valid footer on close.
+If your analysis uses pandas, you can convert an Arrow Table to a DataFrame by calling `.to_pandas()`:
 
 ```python
-import pyarrow as pa
+from load_arrow import load_arrow_file
 
-input_path = r"./path/to/corrupted_file.arrow"
-output_path = r"./path/to/fixed_file.arrow"
-
-with pa.memory_map(input_path, 'r') as f:
-    magic = f.read(8)
-    if magic != b'ARROW1\x00\x00':
-        raise ValueError('Not an Arrow file.')
-
-    with pa.ipc.open_stream(f) as reader:
-        schema = reader.schema
-        num_batches = 0
-
-        with pa.ipc.new_file(output_path, schema) as writer:
-            while True:
-                try:
-                    batch = reader.read_next_batch()
-                    writer.write_batch(batch)
-                    num_batches += 1
-                except StopIteration:
-                    print(f"Read {num_batches} batches from corrupted file.")
-                    break
-                except (pa.ArrowInvalid, OSError) as e:
-                    print(f"Stopped reading at batch {num_batches}: {e}")
-                    break
-
-    print(f"Recovered {num_batches} batches from {input_path}, saved to {output_path}")
+table = load_arrow_file("memory-monitor_0.arrow")
+df = table.to_pandas()
 ```
 
-### Recovering an Arrow file with corrupted batches
+> [!IMPORTANT]
+> Calling `.to_pandas()`, or any other method that converts the table to a pandas DataFrame, might
+> copy the entire dataset into RAM. Pandas and PyArrow can, in certain limited circumstances,
+> maintain memory mapping across boundaries, but it is not guaranteed. Keep this in mind when
+> working with long recordings on machines with limited memory.
 
-This script reads an Arrow file with an intact footer that has been corrupted in some other way
-(invalid buffers, corrupted headers, etc.) and writes all valid batches to a new file. One error
-that indicates the buffers or headers have been corrupted is `ArrowInvalid: Unexpected empty message
-in IPC file format`.
+### Using pandas directly
 
-> [!WARNING] 
-> This script will discard any batches that have an error without attempting to correct
-> the error, leading to skips in the data. The `Clock` column can be inspected afterward to identify
-> gaps where batches were skipped.
+It is also possible to load an Arrow file directly with Pandas using
+[`pandas.read_feather()`](https://pandas.pydata.org/docs/reference/api/pandas.read_feather.html),
+which accepts Arrow IPC files directly because [Feather
+v2](https://arrow.apache.org/docs/python/feather.html#feather-file-format) and Arrow IPC share the
+same binary format.
 
 ```python
-import pyarrow as pa
+import pandas as pd
 
-input_path = r"./path/to/corrupted_file.arrow"
-output_path = r"./path/to/fixed_file.arrow"
-
-with pa.memory_map(input_path, 'r') as f:
-    magic = f.read(8)
-    if magic != b'ARROW1\x00\x00':
-        raise ValueError('Not an Arrow file.')
-
-    with pa.ipc.open_file(f) as reader:
-        schema = reader.schema
-        num_batches = 0
-
-        with pa.ipc.new_file(output_path, schema) as writer:
-            for i in range(reader.num_record_batches):
-                try:
-                    batch = reader.get_batch(i)
-                    writer.write_batch(batch)
-                    num_batches += 1
-                except (pa.ArrowInvalid, OSError) as e:
-                    print(f"Skipped batch {i}: {e}")
-
-        print(f"Recovered {num_batches} out of {reader.num_record_batches} batches from {input_path}, saved to {output_path}")
+df = pd.read_feather("memory-monitor_0.arrow", dtype_backend="pyarrow")
 ```
 
-### Handling compressed data
+This is convenient for short recordings, but it calls PyArrow internally and
+loads the entire file into RAM regardless of how large it is. It also does not
+expose sample-index access, so there is no way to read only a portion of the
+recording without first loading the whole file. For large or long recordings,
+the memory-mapped approach described previously is preferable.
 
-If the corrupt data file was originally saved with compression and you want to
-re-save the recovered data with compression, pass an `IpcWriteOptions` object to
-`pa.ipc.new_file()`. The example below applies Zstandard compression, which is
-the same algorithm used by `DataFrameWriter` when `EnableCompression` is `True`.
-The change is the same for both recovery scripts above; this example uses the
-[invalid footer](#recovering-an-arrow-file-with-invalid-footer) script:
+### Exporting to NumPy
+
+Individual columns can be extracted as NumPy arrays using `.to_numpy()`. For large recordings,
+replace `reader.read_all()` with a batch loop using `reader.get_batch(i)` and process each batch
+incrementally (as shown [below](#manually-loading-arrow-files)) to avoid loading the entire file
+into RAM at once.
 
 ```python
-import pyarrow as pa
+from load_arrow import load_arrow_file
 
-input_path = r"./path/to/corrupted_file.arrow"
-output_path = r"./path/to/fixed_file.arrow"
+table = load_arrow_file("memory-monitor_0.arrow")
 
-with pa.memory_map(input_path, 'r') as f:
-    magic = f.read(8)
-    if magic != b'ARROW1\x00\x00':
-        raise ValueError('Not an Arrow file.')
-
-    with pa.ipc.open_stream(f) as reader:
-        schema = reader.schema
-        num_batches = 0
-
-        options = pa.ipc.IpcWriteOptions(compression="zstd")
-
-        with pa.ipc.new_file(output_path, schema, options=options) as writer:
-            while True:
-                try:
-                    batch = reader.read_next_batch()
-                    writer.write_batch(batch)
-                    num_batches += 1
-                except StopIteration:
-                    print(f"Read {num_batches} batches from corrupted file.")
-                    break
-                except (pa.ArrowInvalid, OSError) as e:
-                    print(f"Stopped reading at batch {num_batches}: {e}")
-                    break
-
-    print(f"Recovered {num_batches} batches from {input_path}, saved to {output_path}")
+percent_used = table["PercentUsed"].to_numpy()
+clock = table["Clock"].to_numpy()
 ```
 
 ## Plotting data from an Arrow file in Python
@@ -513,15 +317,14 @@ NumPy array.
 import pyarrow as pa
 import numpy as np
 import matplotlib.pyplot as plt
+from load_arrow import load_arrow_file
 
 dt = {'names': ('time', 'acq_clk_hz', 'block_read_sz', 'block_write_sz'),
       'formats': ('datetime64[us]', 'u4', 'u4', 'u4')}
 meta = np.genfromtxt("start-time_0.csv", delimiter=',', dtype=dt)
 acq_clk_hz = meta['acq_clk_hz']
 
-with pa.memory_map("memory-monitor_0.arrow", "r") as source:
-    with pa.ipc.open_file(source) as reader:
-        table = reader.read_all()
+table = load_arrow_file("memory-monitor_0.arrow")
 
 time_s = table["Clock"].to_numpy() / acq_clk_hz
 
@@ -532,16 +335,6 @@ plt.ylabel("FIFO used (%)")
 plt.title("Hardware Buffer Usage")
 plt.show()
 ```
-
-Working directly with the table means that as long as PyArrow keeps the file memory-mapped, only
-the columns you access are paged into RAM. No intermediate copy of the full dataset is made unless
-you explicitly request one.
-
-> [!NOTE]
-> If the recording is too large to hold in memory at once, read and plot subsets of record batches
-> using `reader.get_batch(i)` and call `plt.plot()` incrementally instead of calling
-> `reader.read_all()`. This keeps peak memory usage proportional to the size of a single batch
-> rather than the full recording.
 
 ### Plotting with pandas
 
@@ -554,16 +347,14 @@ import pyarrow as pa
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from load_arrow import load_arrow_file
 
 dt = {'names': ('time', 'acq_clk_hz', 'block_read_sz', 'block_write_sz'),
       'formats': ('datetime64[us]', 'u4', 'u4', 'u4')}
 meta = np.genfromtxt("start-time_0.csv", delimiter=',', dtype=dt)
 acq_clk_hz = meta['acq_clk_hz']
 
-with pa.memory_map("memory-monitor_0.arrow", "r") as source:
-    with pa.ipc.open_file(source) as reader:
-        table = reader.read_all()
-        df = table.to_pandas(types_mapper=pd.ArrowDtype)
+table = load_arrow_file("memory-monitor_0.arrow")
 
 df["time_s"] = df["Clock"] / acq_clk_hz
 
@@ -589,6 +380,149 @@ plt.show()
 ```
 
 > [!IMPORTANT]
-> Calling `.to_pandas()` can copy the entire table into RAM, potentially doubling
-> memory usage. For short recordings this is a convenient workflow, but for large files on
+> Calling `.to_pandas()` can copy the entire table into RAM, potentially exceeding
+> memory usage limits. For short recordings this is a convenient workflow, but for large files on
 > memory-limited machines, prefer working directly with the PyArrow table as shown above.
+
+# Advanced Arrow Topics
+
+## What is the Apache Arrow file format?
+
+Apache Arrow files organize data in a
+[column-oriented](https://en.wikipedia.org/wiki/Data_orientation#Column-oriented)
+layout optimized for operations typical in time-series analysis, such as
+filtering, grouping, and aggregation. Concretely, samples from a single data
+source, e.g. a single electrophysiology channel, are stored next to each other
+on disk. This means an analysis tool can read just the channels it needs without
+first rearranging or copying the contents of the file after it has been loaded
+into memory. Additionally, each file is self-describing: it opens with a schema that
+declares every column's name and data type, followed by a sequence of [record
+batches](https://arrow.apache.org/docs/format/Glossary.html#term-record-batch).
+Each record batch is a group of rows in which each column's values are stored as
+a contiguous array. Unlike plain text data formats
+(e.g. CSV files produced by
+[CsvWriter](https://bonsai-rx.org/docs/api/Bonsai.IO.CsvWriter.html)) or flat
+binary files (e.g. files produced by
+[MatrixWriter](https://bonsai-rx.org/docs/api/Bonsai.Dsp.MatrixWriter.html)),
+Arrow files contain data type information (e.g., 16-bit integers, 64-bit
+floating point numbers, etc.), and do not require a separate metadata file or
+prior knowledge of the data layout in order to be loaded correctly.
+
+> [!NOTE]
+> To convert from Arrow files to a format similar to the output of `CsvWriter` or `MatrixWriter`,
+> check out [this section](#converting-to-other-formats) for details on how to convert the data into
+> other formats.
+
+## How data is written
+
+`DataFrameWriter` does not write one row to disk per incoming frame. Instead, it
+accumulates frames into an in-memory buffer and writes them to disk as a single
+record batch. The target buffer size is determined automatically by the data
+frame type and is not user-configurable. The data in the buffer is written to
+disk when it reaches that size or after at most five seconds, whichever comes
+first.
+
+This batching strategy keeps disk I/O efficient without placing any special
+requirements on your workflow structure.
+
+## Manually Loading Arrow Files
+
+The scripts provided in the [loading section](#loading-data-in-python) utilize the [provided
+script](#loading-script) to handle loading data without you needing to know any specifics about how
+to access the data. In this section, we provide some code snippets that could be used to manually
+interact with the Arrow file in cases where the provided script does not meet some need.
+
+### Memory-mapped loading
+
+The most efficient way to read Arrow files in Python is to open the file as a memory map and pass it
+to `pyarrow.ipc.open_file()`. With this approach, PyArrow maps the file into the process's virtual
+address space and reads data on demand rather than copying the entire file into RAM upfront. For large
+recordings, this is significantly more memory-efficient than loading everything at once.
+
+```python
+import pyarrow as pa
+
+with pa.memory_map("memory-monitor_0.arrow", "r") as source:
+    with pa.ipc.open_file(source) as reader:
+        print(f"Schema: {reader.schema}")
+        print(f"Number of record batches: {reader.num_record_batches}")
+        table = reader.read_all()
+```
+
+Individual record batches can be read one at a time, which is useful when you only need a subset of
+the data or when the full recording does not fit in available RAM:
+
+```python
+import pyarrow as pa
+
+with pa.memory_map("memory-monitor_0.arrow", "r") as source:
+    with pa.ipc.open_file(source) as reader:
+        for i in range(reader.num_record_batches):
+            batch = reader.get_batch(i)
+            # Process individual batch
+```
+
+It is also possible to load a specific range of record batches into a table to
+analyze a fixed time window without loading the full recording. In the following
+snippet, the first 10 record batches are loaded.
+
+```python
+import pyarrow as pa
+
+with pa.memory_map("memory-monitor_0.arrow", "r") as source:
+    with pa.ipc.open_file(source) as reader:
+        indices = range(10) # Make sure the range does not exceed reader.num_record_batches
+        table = pa.Table.from_batches(reader.get_batch(i) for i in indices)
+```
+
+## Loading and recovering corrupt files
+
+If a power outage or other unforeseen event occurs during recording and leaves
+the file in a state where it cannot be opened by the example scripts above, the
+following scripts can be used to recover a file that has closed exceptionally.
+
+> [!NOTE]
+> Data durability was a *first class requirement* when selecting the Arrow file
+> format. Worst case data loss is a single record batch. For high-bandwidth
+> sources like Neuropixels, `DataFrameWriter` produces record batches that are
+> 1 second in duration. For low-bandwidth or aperiodic sources, it flushes its
+> input buffer to disk every 5 seconds. Data written before any interruption
+> (unhandled exception, out-of-memory condition, power outage, etc.) can always
+> be recovered.
+
+### Recovering an Arrow file with invalid footer
+
+If recording is interrupted, the file may be missing the footer that Arrow uses to index record
+batches, causing PyArrow to raise `ArrowInvalid: Not an Arrow file` when you try to open it. This
+script works around the missing footer by opening the file as an Arrow Stream rather than an Arrow
+File. The Stream format reads record batches sequentially without relying on the footer, so all
+batches written before the interruption can still be recovered. The recovered batches are then
+written to a new file, which automatically generates a valid footer on close.
+
+[!code-python[](../../python/tutorials/data-frame-writer/recover-invalid-footer.py)]
+
+### Recovering an Arrow file with corrupted batches
+
+This script reads an Arrow file with an intact footer that has been corrupted in some other way
+(invalid buffers, corrupted headers, etc.) and writes all valid batches to a new file. One error
+that indicates the buffers or headers have been corrupted is `ArrowInvalid: Unexpected empty message
+in IPC file format`.
+
+> [!WARNING] 
+> This script will discard any batches that have an error without attempting to correct
+> the error, leading to skips in the data. The `Clock` column can be inspected afterward to identify
+> gaps where batches were skipped.
+
+[!code-python[](../../python/tutorials/data-frame-writer/recover-corrupted-batches.py)]
+
+### Handling compressed data
+
+If the corrupt data file was originally saved with compression and you want to
+re-save the recovered data with compression, pass an `IpcWriteOptions` object to
+`pa.ipc.new_file()`. The example below applies Zstandard compression, which is
+the same algorithm used by `DataFrameWriter` when `EnableCompression` is `True`.
+The change is the same for both recovery scripts above; this example uses the
+[invalid footer](#recovering-an-arrow-file-with-invalid-footer) script:
+
+[!code-python[](../../python/tutorials/data-frame-writer/recover-compressed-data.py)]
+
