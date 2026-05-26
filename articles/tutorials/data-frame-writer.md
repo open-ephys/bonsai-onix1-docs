@@ -135,12 +135,12 @@ scripts. This script has one public function (`load_arrow_file`) which can be us
 file. The following code snippets indicate how to call the function, and some of the options that
 can be leveraged when loading.
 
-[Download loading script](../../python/tutorials/data-frame-writer/load_arrow.py)
+[Download loading script](../../scripts/tutorials/data-frame-writer/load_arrow.py)
 
 <details>
 <summary>View the loading script inline.</summary>
 
-[!code-python[](../../python/tutorials/data-frame-writer/load_arrow.py)]
+[!code-python[](../../scripts/tutorials/data-frame-writer/load_arrow.py)]
 </details>
 
 ### Load Arrow file
@@ -148,7 +148,7 @@ can be leveraged when loading.
 To load the full Arrow file, simply call `load_arrow_file` with a string pointing to the file; this
 can be an absolute file path or a relative file path.
 
-[!code-python[](../../python/tutorials/data-frame-writer/load-file.py)]
+[!code-python[](../../scripts/tutorials/data-frame-writer/load-file.py)]
 
 ### Load Arrow file with start and end indices
 
@@ -157,7 +157,7 @@ parameters specified. The resulting table will contain the samples specified ins
 file. If either index is outside of the valid range, an `IndexError` is thrown which will specify
 what the valid range of indices is.
 
-[!code-python[](../../python/tutorials/data-frame-writer/load-file-with-start-and-end-indices.py)]
+[!code-python[](../../scripts/tutorials/data-frame-writer/load-file-with-start-and-end-indices.py)]
 
 ### Load Arrow file with specific columns
 
@@ -165,7 +165,7 @@ To only load a subset of channels, an array of strings can be given to filter fo
 If any of the given channels do not exist in the table, a `KeyError` is thrown indicating that the
 string does not exist in the file.
 
-[!code-python[](../../python/tutorials/data-frame-writer/load-file-with-specific-channels.py)]
+[!code-python[](../../scripts/tutorials/data-frame-writer/load-file-with-specific-channels.py)]
 
 ### Loading compressed files
 
@@ -205,7 +205,7 @@ The script below uses the known sample rate divisor to build a boolean mask that
 selects only the rows containing new data. The same mask is applied to the
 `Clock` column so that timestamps remain consistent with the subsampled data.
 
-[!code-python[](../../python/tutorials/data-frame-writer/load-subsampled-data.py)]
+[!code-python[](../../scripts/tutorials/data-frame-writer/load-subsampled-data.py)]
 
 After applying the mask, `data_unique` and `clock_unique` contain only the distinct LFP samples.
 Divide `clock_unique` by the acquisition clock rate to convert clock counts to seconds. See
@@ -499,7 +499,7 @@ File. The Stream format reads record batches sequentially without relying on the
 batches written before the interruption can still be recovered. The recovered batches are then
 written to a new file, which automatically generates a valid footer on close.
 
-[!code-python[](../../python/tutorials/data-frame-writer/recover-invalid-footer.py)]
+[!code-python[](../../scripts/tutorials/data-frame-writer/recover-invalid-footer.py)]
 
 ### Recovering an Arrow file with corrupted batches
 
@@ -513,7 +513,7 @@ in IPC file format`.
 > the error, leading to skips in the data. The `Clock` column can be inspected afterward to identify
 > gaps where batches were skipped.
 
-[!code-python[](../../python/tutorials/data-frame-writer/recover-corrupted-batches.py)]
+[!code-python[](../../scripts/tutorials/data-frame-writer/recover-corrupted-batches.py)]
 
 ### Handling compressed data
 
@@ -524,5 +524,5 @@ the same algorithm used by `DataFrameWriter` when `EnableCompression` is `True`.
 The change is the same for both recovery scripts above; this example uses the
 [invalid footer](#recovering-an-arrow-file-with-invalid-footer) script:
 
-[!code-python[](../../python/tutorials/data-frame-writer/recover-compressed-data.py)]
+[!code-python[](../../scripts/tutorials/data-frame-writer/recover-compressed-data.py)]
 
