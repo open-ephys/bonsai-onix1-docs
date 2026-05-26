@@ -33,7 +33,9 @@
         "files": ["articles/**.{md,yml}", "api/**.{md,yml}", "toc.yml", "index.md"],
         "exclude": [
           "api/overview.md",
-          "api/dataframewriter-overview.md"
+          "api/dataframewriter-overview.md",
+          "api/OpenEphys.Onix1.Headstage64OpticalStimulatorTrigger.md",
+          "api/OpenEphys.Onix1.Headstage64ElectricalStimulatorTrigger.md"
         ]
       }
     ],
@@ -43,7 +45,9 @@
       {
         "files": [
           "api/overview.md",
-          "api/dataframewriter-overview.md"
+          "api/dataframewriter-overview.md",
+          "api/OpenEphys.Onix1.Headstage64OpticalStimulatorTrigger.md",
+          "api/OpenEphys.Onix1.Headstage64ElectricalStimulatorTrigger.md"
         ]
       }
     ],
