@@ -42,7 +42,7 @@
       "favicon.png",
       "images/**",
       "workflows/**",
-      "python/**"
+      "scripts/**"
       ],
     "output": "_site",
     "overwrite": [
