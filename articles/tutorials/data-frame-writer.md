@@ -16,7 +16,7 @@ in Python.
 
 > [!NOTE]
 > Arrow is supported by many scientific computing environments. For instance:
-> 
+>
 > - [Python](https://arrow.apache.org/docs/python/index.html)
 >   - With [NumPy](https://arrow.apache.org/docs/python/numpy.html) integration
 >   - With [Pandas](https://arrow.apache.org/docs/python/pandas.html) integration
@@ -25,7 +25,7 @@ in Python.
 > - [Julia](https://arrow.apache.org/julia/stable/)
 > - [Matlab](https://github.com/apache/arrow/blob/main/matlab/README.md)
 
-## What Is the Apache Arrow File Format?
+## What is the Apache Arrow file format?
 
 Apache Arrow files organize data in a
 [column-oriented](https://en.wikipedia.org/wiki/Data_orientation#Column-oriented)
@@ -54,10 +54,10 @@ prior knowledge of the data layout in order to be loaded correctly.
 > to SpikeInterface for processing. We are presently working towards a more
 > direct SpikeInterface integration.
 
-## Adding DataFrameWriter to a Workflow
+## Adding DataFrameWriter to a workflow
 
-`DataFrameWriter` is a sink operator that accepts any device data stream that
-produces <xref:OpenEphys.Onix1.DataFrame> or
+<xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> is a sink operator that
+accepts any device data stream that produces <xref:OpenEphys.Onix1.DataFrame> or
 <xref:OpenEphys.Onix1.BufferedDataFrame> elements. In practice, this means it
 can be placed downstream of virtually any [data source
 operator](xref:datasource).
@@ -70,7 +70,7 @@ to identify after the fact.
 ![workflow for testing DataFrameWriter with Breakout Board data](../../workflows/tutorials/data-frame-writer/data-frame-writer-example.bonsai)
 :::
 
-## DataFrameWriter Properties
+## DataFrameWriter properties
 
 `DataFrameWriter` exposes the following properties in the Bonsai property panel. The full API
 reference is on the <xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> page.
@@ -103,7 +103,7 @@ reference is on the <xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> page.
   [Zstandard](https://facebook.github.io/zstd/) before being written to disk. See the
   [Compression](#compression) section for guidance on when to enable this.
 
-## How Data Is Written
+## How data is written
 
 `DataFrameWriter` does not write one row to disk per incoming frame. Instead, it
 accumulates frames into an in-memory buffer and writes them to disk as a single
@@ -135,7 +135,7 @@ high-bandwidth configurations (e.g., multiple Neuropixels probes) or when
 running other computationally intensive processing in the same workflow,
 benchmark your system before relying on compression in long recordings.
 
-> [!TIP] 
+> [!TIP]
 > A practical way to evaluate the impact of compression on your specific
 > setup is to use a <xref:OpenEphys.Onix1.MemoryMonitorData> operator to
 > examine the state of the hardware buffer when `EnableCompression` is set to
@@ -159,7 +159,7 @@ loading an uncompressed file. For analysis of large recordings this additional
 latency may be noticeable, especially on machines with slower CPUs. If fast
 random access to large files is a priority, prefer uncompressed files.
 
-## Loading Data in Python
+## Loading data in Python
 
 In Python, Arrow files can be read using
 [PyArrow](https://arrow.apache.org/docs/python/index.html). Notably, several
@@ -221,7 +221,7 @@ with pa.memory_map("memory-monitor_0.arrow", "r") as source:
         table = pa.Table.from_batches(reader.get_batch(i) for i in indices)
 ```
 
-## Converting to Other Formats
+## Converting to other formats
 
 PyArrow can convert Arrow tables into several other formats for use with different libraries and
 workflows.
@@ -282,30 +282,31 @@ percent_used = table["PercentUsed"].to_numpy()
 clock = table["Clock"].to_numpy()
 ```
 
-## Devices that Produce Data at Different Sample Rates
+## Working with subsampled data
 
-Some ONIX devices produce data at different sample rates. For example, the
-<xref:OpenEphys.Onix1.NeuropixelsV1eData> produces
-[NeuropixelsV1DataFrames](xref:OpenEphys.Onix1.NeuropixelsV1DataFrame) which
-combine 30 kHz spike data and 2.5 kHz LFP data. When these data frames are saved
-with DataFrameWriter, all channels in the resulting Arrow file share the same
-number of rows. The slower stream, LFP data, is stored using [run-end
-encoding](https://arrow.apache.org/docs/format/Intro.html#run-end-encoded-layout),
-where each distinct value is written once along with the index at which that run
-ends, rather than repeating the value for every row, resulting in smaller file
-sizes. When decoded (for example, by calling `.to_numpy()`), each LFP sample
-expands to 12 consecutive rows with the same value, reflecting the 12:1 ratio
-between spike and LFP sample rates.
+Some ONIX device data frames contain data from streams that are acquired at
+different rates. For example, <xref:OpenEphys.Onix1.NeuropixelsV1DataFrame>
+combines AP-band spike data sampled at 30 kHz and LFP-band data sampled at 2.5
+kHz. Therefore one LFP sample corresponds to 12 consecutive primary-rate
+(AP-band) samples.
 
-### Removing repeated samples
+When `DataFrameWriter` writes these frames, all columns in the resulting Arrow
+file share the same number of rows, set by the primary (faster) rate. Each
+subsampled value occupies `divisor` consecutive rows. For instance, each 2.5 kHz
+LFP sample appears in 12 consecutive rows of the file. Calling `.to_numpy()` on
+a subsampled column therefore returns an array in which every distinct value is
+repeated `divisor` times. To recover only the unique samples you need to take
+every `divisor`-th row; the divisor for each device and data type is listed on
+the relevant data frame API page.
 
-The script below uses a user-provided sample rate ratio to build a boolean mask that selects only
-the rows containing new data. The same mask is applied to the `Clock` column so that the timestamps
-remain consistent with the subsampled data.
+### Extracting unique subsampled values
+
+The script below uses the known sample rate divisor to build a boolean mask that
+selects only the rows containing new data. The same mask is applied to the
+`Clock` column so that timestamps remain consistent with the subsampled data.
 
 ```python
 import pyarrow as pa
-import pyarrow.compute
 import numpy as np
 
 with pa.memory_map("npix-v1e-lfp_0.arrow", "r") as source:
@@ -316,25 +317,25 @@ data_cols = [name for name in table.schema.names if "LfpData" in name]
 data = np.column_stack([table[col].to_numpy() for col in data_cols])
 clock = table["Clock"].to_numpy()
 
-ratio = 12 # Ratio of sample rates: 30 kHz / 2.5 kHz for Neuropixels V1e LFP data
+divisor = 12  # 30 kHz primary rate / 2.5 kHz LFP rate for NeuropixelsV1
 
 mask = np.zeros(len(clock), dtype=bool)
-mask[::ratio] = True
+mask[::divisor] = True
 
-data_unique = data[mask]    # shape: (num_unique_samples, num_channels)
-clock_unique = clock[mask]  # timestamps of the unique samples
+data_unique = data[mask]    # shape: (num_unique_lfp_samples, num_channels)
+clock_unique = clock[mask]  # acquisition clock counts at each unique LFP sample
 ```
 
-After applying the mask, `data_unique` and `clock_unique` contain only the distinct samples at the
-true LFP rate (2.5 kHz for NeuropixelsV1e). Divide `clock_unique` by the acquisition clock rate,
-loaded from the `start-time_<suffix>.csv` file, to convert clock counts to seconds. See the [loading
-section](#reading-the-acquisition-clock-rate) below on how to extract the acquisition clock rate.
+After applying the mask, `data_unique` and `clock_unique` contain only the distinct LFP samples.
+Divide `clock_unique` by the acquisition clock rate to convert clock counts to seconds. See
+[Reading the acquisition clock rate](#reading-the-acquisition-clock-rate) for how to load that
+value from the metadata CSV file.
 
-## Loading and Recovering Corrupted Files
+## Loading and recovering corrupt files
 
-If a power outage or other unforeseen event occurs during recording and leaves the file in a state
-where it cannot be opened by the example scripts above, the following scripts can be used to
-recover a file that has closed exceptionally.
+If a power outage or other unforeseen event occurs during recording and leaves
+the file in a state where it cannot be opened by the example scripts above, the
+following scripts can be used to recover a file that has closed exceptionally.
 
 > [!NOTE]
 > Data durability was a *first class requirement* when selecting the Arrow file
@@ -351,7 +352,7 @@ recover a file that has closed exceptionally.
 > Without
 > Borders](https://nwb-schema.readthedocs.io/en/latest/format_description.html)).
 
-### Loading file with invalid footer
+### Recovering an Arrow file with invalid footer
 
 If recording is interrupted, the file may be missing the footer that Arrow uses to index record
 batches, causing PyArrow to raise `ArrowInvalid: Not an Arrow file` when you try to open it. This
@@ -387,11 +388,11 @@ with pa.memory_map(input_path, 'r') as f:
                 except (pa.ArrowInvalid, OSError) as e:
                     print(f"Stopped reading at batch {num_batches}: {e}")
                     break
-                
+
     print(f"Recovered {num_batches} batches from {input_path}, saved to {output_path}")
 ```
 
-### Loading file with corrupted batches
+### Recovering an Arrow file with corrupted batches
 
 This script reads an Arrow file with an intact footer that has been corrupted in some other way
 (invalid buffers, corrupted headers, etc.) and writes all valid batches to a new file. One error
@@ -425,17 +426,18 @@ with pa.memory_map(input_path, 'r') as f:
                     num_batches += 1
                 except (pa.ArrowInvalid, OSError) as e:
                     print(f"Skipped batch {i}: {e}")
-                
+
         print(f"Recovered {num_batches} out of {reader.num_record_batches} batches from {input_path}, saved to {output_path}")
 ```
 
 ### Handling compressed data
 
-If the data was originally saved with compression and you want to re-save the recovered data with
-compression, pass an `IpcWriteOptions` object to `pa.ipc.new_file()`. The example below applies
-Zstandard compression, which is the same algorithm used by `DataFrameWriter` when
-`EnableCompression` is `True`. The change is the same for both recovery scripts above; this example
-uses the [invalid footer](#loading-file-with-invalid-footer) script:
+If the corrupt data file was originally saved with compression and you want to
+re-save the recovered data with compression, pass an `IpcWriteOptions` object to
+`pa.ipc.new_file()`. The example below applies Zstandard compression, which is
+the same algorithm used by `DataFrameWriter` when `EnableCompression` is `True`.
+The change is the same for both recovery scripts above; this example uses the
+[invalid footer](#loading-file-with-invalid-footer) script:
 
 ```python
 import pyarrow as pa
@@ -470,28 +472,30 @@ with pa.memory_map(input_path, 'r') as f:
     print(f"Recovered {num_batches} batches from {input_path}, saved to {output_path}")
 ```
 
-## Plotting Data in Python
+## Plotting data from an Arrow file in Python
 
-The examples in this section also require `matplotlib`. Install it alongside the packages above if
-you have not already:
+The examples in this section also require `matplotlib`. Install it alongside the
+packages above if you have not already:
 
 ```
 pip install matplotlib
 ```
 
-To render and interact with figures, you will also need a matplotlib backend. See the [matplotlib
-backend documentation](https://matplotlib.org/stable/users/explain/figure/backends.html) for
-installation instructions.
+To render and interact with figures, you will also need a `matplotlib` backend.
+See the [matplotlib backend
+documentation](https://matplotlib.org/stable/users/explain/figure/backends.html)
+for installation instructions.
 
-This section shows how to plot data saved from a `MemoryMonitor` device. The MemoryMonitor schema contains columns including `Clock`, `PercentUsed`, and `BytesUsed`. The `Clock` column records the raw
-acquisition clock count and must be divided by the acquisition clock rate to produce a time value in
-seconds.
+This section shows how to plot data saved from a `MemoryMonitor` device. The
+MemoryMonitor schema contains columns including `Clock`, `PercentUsed`, and
+`BytesUsed`. The `Clock` column records the raw acquisition clock count and must
+be divided by the acquisition clock rate to produce a time value in seconds.
 
 ### Reading the acquisition clock rate
 
-The example workflow shown [above](#adding-dataframewriter-to-a-workflow) writes acquisition
-metadata, including the clock rate, to a `start-time_<suffix>.csv` file each time it runs. Load
-it with NumPy before plotting:
+The example workflow shown [above](#adding-dataframewriter-to-a-workflow) writes
+acquisition metadata, including the clock rate, to a `start-time_<suffix>.csv`
+file each time it runs. Load it with NumPy before plotting:
 
 ```python
 import numpy as np
@@ -505,10 +509,11 @@ acq_clk_hz = meta['acq_clk_hz']
 ### Plotting directly from a PyArrow table
 
 PyArrow column arrays implement the [Python array
-protocol](https://arrow.apache.org/docs/python/numpy.html), so most plotting libraries, including
-Matplotlib, can consume them directly without an explicit conversion step. The `Clock` column is an
-exception: arithmetic operations such as dividing by the clock rate require a call to `.to_numpy()`
-first to produce a NumPy array.
+protocol](https://arrow.apache.org/docs/python/numpy.html), so most plotting
+libraries, including Matplotlib, can consume them directly without an explicit
+conversion step. The `Clock` column is an exception: arithmetic operations such
+as dividing by the clock rate require a call to `.to_numpy()` first to produce a
+NumPy array.
 
 ```python
 import pyarrow as pa
@@ -576,7 +581,7 @@ df.plot(
   y="PercentUsed",
   ylabel="FIFO used (%)",
   legend=False)
-  
+
 df.plot(
   ax=axes[1],
   x="time_s",
@@ -584,12 +589,12 @@ df.plot(
   xlabel="Time (s)",
   ylabel="Bytes used",
   legend=False)
-  
+
 plt.tight_layout()
 plt.show()
 ```
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Calling `.to_pandas()` can copy the entire table into RAM, potentially doubling
 > memory usage. For short recordings this is a convenient workflow, but for large files on
 > memory-limited machines, prefer working directly with the PyArrow table as shown above.

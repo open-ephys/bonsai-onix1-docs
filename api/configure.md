@@ -1,14 +1,17 @@
 ---
 uid: configure
-title: Device Group Configuration Operators
+title: Configuration Operators
 ---
 
-Device Group configuration operators belong in a top-level configuration chain between
+Configuration operators configure all the devices on a headstage, miniscope, or
+breakout board in a single step. They belong in the configuration chain between
 [CreateContext](xref:OpenEphys.Onix1.CreateContext) and
-[StartAcquisition](xref:OpenEphys.Onix1.StartAcquisition) to configure ONIX hardware. These are
-known as Device Group configuration operators because they configure a group of devices on a given
-headstage, miniscope, breakout board, etc. Devices represent physical element
-interfacing with the environment (e.g., an external sensor with a digital
-communication interface like the BNO055, Neuropixels probes, or RHS2116 stimulus
-trigger) or internal data sources (e.g., a controller based digital logic module
-that generates system status reports like the port status controller).
+[StartAcquisition](xref:OpenEphys.Onix1.StartAcquisition).
+
+Each piece of ONIX hardware contains one or more devices. Devices are physical
+elements that interface with the environment (e.g., a BNO055 orientation sensor,
+a Neuropixels probe, or an RHS2116 stimulus trigger) or internal data sources
+(e.g., the port status controller). [Individual device configuration
+operators](xref:device-configure) are also available for cases where per-device
+control is needed, but most workflows use the combined operators documented
+here.

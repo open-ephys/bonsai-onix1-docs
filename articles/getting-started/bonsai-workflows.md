@@ -3,21 +3,23 @@ uid: bonsai-workflows
 title: Bonsai Workflows
 ---
 
-Scripts in Bonsai are known as **workflows**. A workflow comprises of "operators" that are represented
-by nodes which connect to form a data processing graph. Each connection indicates that the
-downstream operator on the right takes the sequence of data from the upstream operator on the left
-as input. The behavior of an operator depends on its type. For example:
+A Bonsai **workflow** is a graph of connected **operators**, each of which
+produces, transforms, or acts on a stream of data. Data flows left to right:
+each operator receives the output of the operator to its left as input. The
+role of an operator depends on its type:
 
-- A `source` operator produces its own sequence of data.
-- A `transform` operator transforms data in its input sequence.
-- A `sink` operator produces a side effect (such as writing data or outputting an external signal
-like a noise through your computer's speaker or a digital output toggle through your ONIX breakout
-board).
-- A `combinator` operator controls the flow of downstream sequences.
+- A `source` operator generates a sequence of data (e.g. from a hardware device).
+- A `transform` operator converts each element it receives.
+- A `sink` operator uses incoming data to produce an external effect, such as
+  saving to disk or toggling a digital output. Its output is identical to its
+  input.
+- A `combinator` operator merges, splits, gates, or otherwise controls the flow
+  of one or more sequences.
 
-The workflow editor represents these operators using different colors and a grey arc. The [official
-Bonsai docs](https://bonsai-rx.org/docs/articles/operators.html) provides a nice description of operators
-and the various types with pictures.
+These classifications are represented in the workflow editor using different
+colored nodes. The [official Bonsai
+docs](https://bonsai-rx.org/docs/articles/operators.html) provides a detailed
+description of operators and the various types with pictures.
 
 Below is an example workflow which configures ONIX hardware.
 

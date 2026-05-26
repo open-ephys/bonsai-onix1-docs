@@ -1,28 +1,28 @@
 <p>
   The following excerpt from the {{{hardware}}} <a class="xref"
   href="~/articles/hardware/{{{oe.hardwareDirectory}}}/{{{workflowLocation}}}.html">
-  example workflow</a> demonstrates how to configure your {{{hardware}}} and Breakout Board 
-  in Bonsai. This process comprises of the following steps: 
+  example workflow</a> demonstrates how to configure your {{{hardware}}} and Breakout Board
+  in Bonsai. This process comprises the following steps:
   <ul>
-    <li> 
+    <li>
       Create an ONIX acquisition context using <a class="xref"
       href="~/api/OpenEphys.Onix1.CreateContext.html">CreateContext</a>
     </li>
-    <li> 
+    <li>
       Configure the {{{hardware}}} and the Breakout Board using <a class="xref"
-      href="~/api/OpenEphys.Onix1.{{{operator}}}.html">{{{operator}}}</a> and 
+      href="~/api/OpenEphys.Onix1.{{{operator}}}.html">{{{operator}}}</a> and
       <a class="xref" href="~/api/OpenEphys.Onix1.ConfigureBreakoutBoard.html">
       ConfigureBreakoutBoard</a>
     </li>
-    <li> 
+    <li>
       Start acquisition using <a class="xref"
       href="~/api/OpenEphys.Onix1.StartAcquisition.html">StartAcquisition</a>.
     </li>
 </ul>
-  
+
 </p>
 
-<div class="workflow"> 
+<div class="workflow">
   <p><img src="~/workflows/{{{oe.path}}}.bonsai" alt="~/workflows/{{{oe.path}}}.bonsai workflow"></p>
 </div>
 
@@ -62,8 +62,8 @@
   data have been produced by the hardware. At {{{dataRate}}} MB/s the hardware will produce
   {{{blockReadSize}}} bytes every ~{{{timeUntilFullBuffer}}}. This is a hard bound on the latency of
   the system. If lower latencies are required, the hardware would need to produce data more quickly
-  or the ReadSize property value would need to be reduced. To learn about the process of tuning ReadSize, 
-  check out the 
+  or the ReadSize property value would need to be reduced. To learn about the process of tuning ReadSize,
+  check out the
   <a class="xref" href="~/articles/tutorials/tune-readsize.html">Tune ReadSize</a> tutorial.
 </p>
 
