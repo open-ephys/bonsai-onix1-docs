@@ -48,11 +48,9 @@ floating point numbers, etc.), and do not require a separate metadata file or
 prior knowledge of the data layout in order to be loaded correctly.
 
 > [!NOTE]
-> [SpikeInterface](https://spikeinterface.readthedocs.io/) does not yet have
-> Arrow integration. For workflows that depend on those libraries, you will need
-> to convert the data to another format (e.g., NumPy arrays) before passing it
-> to SpikeInterface for processing. We are presently working towards a more
-> direct SpikeInterface integration.
+> To convert from Arrow files to a format similar to the output of `CsvWriter` or `MatrixWriter`,
+> check out [this section](#converting-to-other-formats) for details on how to convert the data into
+> other formats.
 
 ## Adding DataFrameWriter to a workflow
 
@@ -346,12 +344,6 @@ following scripts can be used to recover a file that has closed exceptionally.
 > input buffer to disk every 5 seconds. Data written before any interruption
 > (unhandled exception, out-of-memory condition, power outage, etc.) can always
 > be recovered.
->
-> This was motivated by the lack of support for recovering corrupt files
-> encoded using other formats, most notably
-> [HDF5](https://www.hdfgroup.org/solutions/hdf5/) (the format used by [Neurodata
-> Without
-> Borders](https://nwb-schema.readthedocs.io/en/latest/format_description.html)).
 
 ### Recovering an Arrow file with invalid footer
 
@@ -400,9 +392,10 @@ This script reads an Arrow file with an intact footer that has been corrupted in
 that indicates the buffers or headers have been corrupted is `ArrowInvalid: Unexpected empty message
 in IPC file format`.
 
-Note that this script will discard any batches that have an error without attempting
-to correct the error, leading to skips in the data. The `Clock` column can be inspected afterward to
-identify gaps where batches were skipped.
+> [!WARNING] 
+> This script will discard any batches that have an error without attempting to correct
+> the error, leading to skips in the data. The `Clock` column can be inspected afterward to identify
+> gaps where batches were skipped.
 
 ```python
 import pyarrow as pa
