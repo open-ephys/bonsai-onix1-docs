@@ -10,7 +10,7 @@ If the [OrderByDepth](xref:np1e_np1) property is set to `False`, then channels w
 number (i.e., from 0 to 383). If it is set to `True`, then channels will be ordered by the
 electrode depth.
 
-[!code-python[](../../../workflows/hardware/np1e/load-np1e.py)]
+[!code-python[](../../../python/guides/np1e/load-np1e.py)]
 
 > [!NOTE]
 > - To plot probeinterface data, [save the probe configuration file](xref:np1e_gui#save-probeinterface-file) 
