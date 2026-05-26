@@ -3,13 +3,16 @@ uid: data-frame-writer
 title: Using DataFrameWriter to Save Data
 ---
 
-The <xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> operator provides an easy and efficient
-way to write [ONIX data](xref:data-elements) to disk using the [Apache Arrow IPC file
-format](https://arrow.apache.org/docs/format/Intro.html). IPC (Inter-Process Communication) is the
-Arrow project's name for its standard binary file format, a format that is columnar,
-self-describing, and supported by many scientific computing environments. This tutorial explains how
-to use `DataFrameWriter` in an acquisition workflow, configure its properties (including optional
-compression), and efficiently load the resulting files in Python.
+The <xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> operator provides an
+easy and efficient way to write [ONIX data](xref:data-elements) to disk using
+the [Apache Arrow file format](https://arrow.apache.org/docs/format/Intro.html).
+Apache Arrow stores data in a column-oriented binary layout where values from
+each channel or signal are packed contiguously on disk. Each file also embeds a
+schema containing column names, data types, and structure, so no separate
+metadata file is needed to read it correctly. This tutorial explains how to use
+`DataFrameWriter` in an acquisition workflow, configure its properties
+(including optional compression), and efficiently load the resulting Arrow files
+in Python.
 
 > [!NOTE]
 > Arrow is supported by many scientific computing environments. For instance:
@@ -24,19 +27,19 @@ compression), and efficiently load the resulting files in Python.
 
 ## What Is the Apache Arrow File Format?
 
-Apache Arrow IPC files organize data in a
+Apache Arrow files organize data in a
 [column-oriented](https://en.wikipedia.org/wiki/Data_orientation#Column-oriented)
 layout optimized for operations typical in time-series analysis, such as
 filtering, grouping, and aggregation. Concretely, samples from a single data
 source, e.g. a single electrophysiology channel, are stored next to each other
 on disk. This means an analysis tool can read just the channels it needs without
 first rearranging or copying the contents of the file after it has been loaded
-into memory. Additionally, each file is self-describing: it contains a schema
-that enumerates the data columns within each [record
-batch](https://arrow.apache.org/docs/format/Glossary.html#term-record-batch),
-which is a fixed-size group of rows with a data table. An Arrow file consists of
-a schema followed by potentially many record batches. Unlike plain text data
-formats (e.g. CSV files produced by
+into memory. Additionally, each file is self-describing: it opens with a schema that
+declares every column's name and data type, followed by a sequence of [record
+batches](https://arrow.apache.org/docs/format/Glossary.html#term-record-batch).
+Each record batch is a group of rows in which each column's values are stored as
+a contiguous array. Unlike plain text data formats
+(e.g. CSV files produced by
 [CsvWriter](https://bonsai-rx.org/docs/api/Bonsai.IO.CsvWriter.html)) or flat
 binary files (e.g. files produced by
 [MatrixWriter](https://bonsai-rx.org/docs/api/Bonsai.Dsp.MatrixWriter.html)),
@@ -118,8 +121,7 @@ Setting `EnableCompression` to `True` instructs `DataFrameWriter` to compress
 each record batch using the [Zstandard](https://facebook.github.io/zstd/) codec
 before writing it to disk. Zstandard is an open-source general-purpose
 compression algorithm that offers a good balance between compression ratio and
-speed and is exceptionally good at compressing small batches of data, like the
-record batches. For typical neural data, enabling compression can substantially
+speed. For typical neural data, enabling compression can substantially
 reduce file sizes.
 
 ### When to enable compression
@@ -289,10 +291,11 @@ combine 30 kHz spike data and 2.5 kHz LFP data. When these data frames are saved
 with DataFrameWriter, all channels in the resulting Arrow file share the same
 number of rows. The slower stream, LFP data, is stored using [run-end
 encoding](https://arrow.apache.org/docs/format/Intro.html#run-end-encoded-layout),
-where each sample is written once alongside a run length rather than being
-repeated explicitly, resulting in smaller file sizes. When decoded (for example,
-by calling `.to_numpy()`), each LFP sample expands to 12 consecutive rows with
-the same value, reflecting the 12:1 ratio between spike and LFP sample rates.
+where each distinct value is written once along with the index at which that run
+ends, rather than repeating the value for every row, resulting in smaller file
+sizes. When decoded (for example, by calling `.to_numpy()`), each LFP sample
+expands to 12 consecutive rows with the same value, reflecting the 12:1 ratio
+between spike and LFP sample rates.
 
 ### Removing repeated samples
 
