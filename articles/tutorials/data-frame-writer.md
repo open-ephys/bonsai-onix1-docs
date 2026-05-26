@@ -438,7 +438,7 @@ re-save the recovered data with compression, pass an `IpcWriteOptions` object to
 `pa.ipc.new_file()`. The example below applies Zstandard compression, which is
 the same algorithm used by `DataFrameWriter` when `EnableCompression` is `True`.
 The change is the same for both recovery scripts above; this example uses the
-[invalid footer](#loading-file-with-invalid-footer) script:
+[invalid footer](#recovering-an-arrow-file-with-invalid-footer) script:
 
 ```python
 import pyarrow as pa
