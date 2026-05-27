@@ -14,10 +14,9 @@ metadata file is needed to read it correctly. This tutorial explains how to use
 (including optional compression), and efficiently load the resulting Arrow files
 in Python.
 
-The first section walks through how to save data, and subsequently load the data in Python using the
-provided [example script](#loading-script) below. A more detailed explanation of the various
-parameters, background, and implementation details can be found in the
-[Advanced](#advanced-arrow-topics) section below.
+The first section walks through how to save, load, and plot data written by a
+`DataFrameWriter` using Python. More detailed explanation are considered in the
+[Advanced](#advanced-arrow-topics) at the end of this article.
 
 > [!NOTE]
 > Arrow is supported by many scientific computing environments. For instance:
@@ -76,7 +75,7 @@ reference is on the <xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> page.
   already exists. This setting has no practical effect when `Suffix` is `FileCount` or `Timestamp`,
   because those modes always produce a unique file name.
 
-- **EnableCompression** (default: `false`) When `true`, each record batch is compressed with
+- **EnableCompression** (default: `false`) When `true`, data is compressed with
   [Zstandard](https://facebook.github.io/zstd/) before being written to disk. See the
   [Compression](#compression) section for guidance on when to enable this.
 
