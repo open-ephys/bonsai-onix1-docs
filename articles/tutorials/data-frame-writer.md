@@ -401,7 +401,7 @@ balances compression ratio and speed. Since compression runs on the same machine
 that is acquiring data, it competes with the rest of the acquisition pipeline
 for CPU resources. For experiments that combine high-bandwidth hardware
 configurations (e.g., multiple Neuropixels probes) or computationally intensive
-workflows with long recordings and low-latency (e.g., sub-millisecond)
+workflows with long recordings or low-latency (e.g., sub-millisecond)
 closed-loop feedback, benchmark the system with compression enabled.
 
 > [!TIP]
