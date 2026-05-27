@@ -31,25 +31,33 @@ The first section walks through how to save, load, and plot data written by a
 
 ## Save Arrow data
 
-### Adding DataFrameWriter to a workflow
+Follow the [Getting Started](xref:getting-started) guide to set up and familiarize yourself with
+Bonsai. In particular:
 
-<xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> is a sink operator that accepts any device
-data stream that produces <xref:OpenEphys.Onix1.DataFrame> or
-<xref:OpenEphys.Onix1.BufferedDataFrame> elements. In practice, this means it can be placed
-downstream of virtually any [data source operator](xref:datasource).
+- [Install or update the required Bonsai packages](xref:install-configure-bonsai#install-packages),
+  including the latest `OpenEphys.Onix1` package.
+- Ensure your hardware is set up and working. Follow the [data acquisition quick start
+  guide](xref:data-acq-quick-start) for your hardware if you have not already.
 
-You can use multiple `DataFrameWriter` nodes in the same workflow, placing one per data stream. Give
-each node a descriptive `FileName` so recordings are easy to identify after the fact. For more
-details on the available properties, see the [properties section](#dataframewriter-properties) below.
+### Set up a workflow
+
+To follow along with this tutorial, you need a workflow that contains at least
+one `DataFrameWriter` node. `DataFrameWriter` is a
+<xref:datasink-dataframewriter> operator which accepts any data stream producing
+<xref:OpenEphys.Onix1.DataFrame> or <xref:OpenEphys.Onix1.BufferedDataFrame>
+elements, meaning it can be placed downstream of virtually any [data source
+node](xref:datasource). You can use the example workflow below which saves data
+from several Breakout Board devices. The scripts on this page assume you are
+loading data from this workflow. However, you can also add a `DataFrameWriter`
+node to a workflow and adapt the scripts according to your needs to follow
 
 ::: workflow
 ![workflow for testing DataFrameWriter with Breakout Board data](../../workflows/tutorials/data-frame-writer/data-frame-writer-example.bonsai)
 :::
 
-### DataFrameWriter properties
+### Configure DataFrameWriter
 
-`DataFrameWriter` exposes the following properties in the Bonsai property panel. The full API
-reference is on the <xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> page.
+`DataFrameWriter` exposes the following properties in the Bonsai property panel:
 
 - **FileName** The path of the output file, including the `.arrow` extension (e.g.,
   `data/memory-monitor.arrow`). Any intermediate directories in the path are created automatically
@@ -80,6 +88,12 @@ reference is on the <xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> page.
   See [Compression](#compression) in the [Advanced](#advanced-arrow-topics)
   section for more information on compression and when to use it.
 
+### Run the workflow
+
+[Start the workflow](xref:workflow-editor#starting-the-workflow). `DataFrameWriter` will write
+data to the file specified in `FileName` as the workflow runs, and will stop when the workflow
+stops.
+
 ## Load Arrow data
 
 In Python, Arrow files can be read using
@@ -89,22 +103,21 @@ scientific analysis libraries such as [pandas](https://pandas.pydata.org/),
 internally to support loading Arrow files into their environment. In this
 section, we will demonstrate file loading using both PyArrow and Pandas.
 
-### Installation
+### Install Python and required packages
 
-To follow along with the examples in this section, you will need Python,
-PyArrow, and pandas. Once Python is installed, run the following command to
-install the required packages:
+Once Python is installed, run the following command to install the required packages:
 
 ```
 pip install pyarrow pandas
 ```
 
-### Loading script
+### Download the loading script
 
-Download the following script locally, and place the file in the same directory as other processing
-scripts. This script has one public function (`load_arrow_file`) which can be used to load an Arrow
-file. The following code snippets indicate how to call the function, and some of the options that
-can be leveraged when loading.
+Download the loading script and place it in the same directory as your other processing scripts.
+The script provides a single public function, `load_arrow_file`, which loads data from an Arrow
+file efficiently using [zero-copy](https://en.wikipedia.org/wiki/Zero-copy) memory mapping. The optional
+`start`, `end`, and `columns` parameters allow loading only the rows and columns you need without
+reading the full file into memory.
 
 [Download loading script](../../scripts/tutorials/data-frame-writer/load_arrow.py)
 
@@ -139,24 +152,6 @@ match a column name in the file, a `KeyError` is raised.
 > compression metadata in each record batch header and decompresses
 > automatically when necessary. This decompression process can incur CPU overhead
 > that extends the amount of time it takes to load a file. 
-
-## Working with subsampled data
-
-Some ONIX device data frames contain data from streams that are acquired at
-different rates. For example, <xref:OpenEphys.Onix1.NeuropixelsV1DataFrame>
-combines AP-band spike data sampled at 30 kHz and LFP-band data sampled at 2.5
-kHz. Because all columns share the row count of the faster AP-band stream, each
-LFP value repeats 12 rows in the loaded data. The following script extracts only
-the unique LFP samples and their corresponding `Clock` values from the loaded data.
-
-[!code-python[](../../scripts/tutorials/data-frame-writer/load-subsampled-data.py)]
-
-Divide `clock_unique` by the acquisition clock rate to convert clock counts to seconds. See
-[Reading the acquisition clock rate](#reading-the-acquisition-clock-rate) for how to load that
-value from the metadata CSV file.
-
-See the [Subsampled data](#subsampled-data) section for a more detailed
-explanation.
 
 ### Converting to other formats
 
@@ -237,7 +232,7 @@ be divided by the acquisition clock rate to produce a time value in seconds.
 
 ### Reading the acquisition clock rate
 
-The example workflow shown [above](#adding-dataframewriter-to-a-workflow) writes
+The example workflow shown [above](#set-up-a-workflow) writes
 acquisition metadata, including the clock rate, to a `start-time_<suffix>.csv`
 file each time it runs. Load it with NumPy before plotting:
 
@@ -330,6 +325,24 @@ plt.show()
 > memory usage limits. For short recordings this is a convenient workflow, but for large files on
 > memory-limited machines, prefer working directly with the PyArrow table as shown above.
 
+## Working with subsampled data
+
+Some ONIX device data frames contain data from streams that are acquired at
+different rates. For example, <xref:OpenEphys.Onix1.NeuropixelsV1DataFrame>
+combines AP-band spike data sampled at 30 kHz and LFP-band data sampled at 2.5
+kHz. Because all columns share the row count of the faster AP-band stream, each
+LFP value repeats 12 rows in the loaded data. The following script extracts only
+the unique LFP samples and their corresponding `Clock` values from the loaded data.
+
+[!code-python[](../../scripts/tutorials/data-frame-writer/load-subsampled-data.py)]
+
+Divide `clock_unique` by the acquisition clock rate to convert clock counts to seconds. See
+[Reading the acquisition clock rate](#reading-the-acquisition-clock-rate) for how to load that
+value from the metadata CSV file.
+
+See the [Subsampled data](#subsampled-data) section for a more detailed
+explanation.
+
 ## Advanced Arrow Topics
 
 ### What is the Apache Arrow file format?
@@ -391,7 +404,7 @@ closed-loop feedback, benchmark the system with compression enabled.
 >   both cases, compression does not risk buffer overflow and might not be
 >   impacting the real-time performance. Refer to the [Tuning closed-loop
 >   performance tutorial](xref:tune-readsize) for more information.
-> - Enabling the [`Buffered` property](#dataframewriter-properties) can
+> - Enabling the [`Buffered` property](#configure-dataframewriter) can
 >   alleviate the CPU overhead by offloading compression to a background thread. 
 
 ### Subsampled data
@@ -416,7 +429,7 @@ calculated.
 ### Manually Loading Arrow Files
 
 The scripts provided in the [loading section](#load-arrow-data) utilize the [provided
-script](#loading-script) to handle loading data without you needing to know any specifics about how
+script](#download-the-loading-script) to handle loading data without you needing to know any specifics about how
 to access the data. In this section, we provide some code snippets that could be used to manually
 interact with the Arrow file in cases where the provided script does not meet some need.
 
