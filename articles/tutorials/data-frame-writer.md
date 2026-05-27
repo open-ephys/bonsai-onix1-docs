@@ -14,10 +14,9 @@ metadata file is needed to read it correctly. This tutorial explains how to use
 (including optional compression), and efficiently load the resulting Arrow files
 in Python.
 
-The first section walks through how to save data, and subsequently load the data in Python using the
-provided [example script](#loading-script) below. A more detailed explanation of the various
-parameters, background, and implementation details can be found in the
-[Advanced](#advanced-arrow-topics) section below.
+The first section walks through how to save, load, and plot data written by a
+`DataFrameWriter` using Python. More detailed explanations are covered in the
+[Advanced](#advanced-arrow-topics) section at the end of this article.
 
 > [!NOTE]
 > Arrow is supported by many scientific computing environments. For instance:
@@ -30,27 +29,35 @@ parameters, background, and implementation details can be found in the
 > - [Julia](https://arrow.apache.org/julia/stable/)
 > - [Matlab](https://github.com/apache/arrow/blob/main/matlab/README.md)
 
-# Load and Save Arrow Data
+## Save Arrow data
 
-## Adding DataFrameWriter to a workflow
+Follow the [Getting Started](xref:getting-started) guide to set up and familiarize yourself with
+Bonsai. In particular:
 
-<xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> is a sink operator that accepts any device
-data stream that produces <xref:OpenEphys.Onix1.DataFrame> or
-<xref:OpenEphys.Onix1.BufferedDataFrame> elements. In practice, this means it can be placed
-downstream of virtually any [data source operator](xref:datasource).
+- [Install or update the required Bonsai packages](xref:install-configure-bonsai#install-packages),
+  including the latest `OpenEphys.Onix1` package.
+- Ensure your hardware is set up and working. Follow the [data acquisition quick start
+  guide](xref:data-acq-quick-start) for your hardware if you have not already.
 
-You can use multiple `DataFrameWriter` nodes in the same workflow, placing one per data stream. Give
-each node a descriptive `FileName` so recordings are easy to identify after the fact. For more
-details on the available properties, see the [properties section](#dataframewriter-properties) below.
+### Set up a workflow
+
+To follow along with this tutorial, you need a workflow that contains at least
+one `DataFrameWriter` node. `DataFrameWriter` is a
+<xref:datasink-dataframewriter> operator which accepts any data stream producing
+<xref:OpenEphys.Onix1.DataFrame> or <xref:OpenEphys.Onix1.BufferedDataFrame>
+elements, meaning it can be placed downstream of virtually any [data source
+node](xref:datasource). You can use the example workflow below which saves data
+from several Breakout Board devices. The scripts on this page assume you are
+loading data from this workflow. However, you can also add a `DataFrameWriter`
+node to a workflow and adapt the scripts according to your needs to follow along.
 
 ::: workflow
 ![workflow for testing DataFrameWriter with Breakout Board data](../../workflows/tutorials/data-frame-writer/data-frame-writer-example.bonsai)
 :::
 
-## DataFrameWriter properties
+### Configure DataFrameWriter
 
-`DataFrameWriter` exposes the following properties in the Bonsai property panel. The full API
-reference is on the <xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> page.
+`DataFrameWriter` exposes the following properties in the Bonsai property panel:
 
 - **FileName** The path of the output file, including the `.arrow` extension (e.g.,
   `data/memory-monitor.arrow`). Any intermediate directories in the path are created automatically
@@ -60,9 +67,11 @@ reference is on the <xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> page.
   workflow starts. Choose one of three options:
   - `None` (default): No suffix is added. If a file at the specified path already exists and
     `Overwrite` is `false`, the workflow raises an error on startup.
-  - `FileCount`: Appends an underscore followed by a count of files already in the same directory
-    with the same base name and extension (`_0`, `_1`, `_2`, …). Use this to automatically number
-    successive recordings without having to rename the node before each run.
+  - `FileCount`: Appends the count of files already in the same directory
+    with the same base name and extension (`0`, `1`, `2`, …). Use this to automatically number
+    successive recordings without having to rename the node before each run. Adding an underscore at
+    the end of the `FileName`, but before the extension, separates the suffix from the filename
+    (e.g., `data/memory-monitor_.arrow`).
   - `Timestamp`: Appends an underscore followed by a high-resolution system timestamp at the moment
     the file is created (ISO 8601 format), guaranteeing a unique file name for every run.
 
@@ -76,40 +85,18 @@ reference is on the <xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> page.
   already exists. This setting has no practical effect when `Suffix` is `FileCount` or `Timestamp`,
   because those modes always produce a unique file name.
 
-- **EnableCompression** (default: `false`) When `true`, each record batch is compressed with
-  [Zstandard](https://facebook.github.io/zstd/) before being written to disk. See the
-  [Compression](#compression) section for guidance on when to enable this.
+- **EnableCompression** (default: `false`) When `true`, data is compressed
+  before being written to disk to reduce file size at the cost of CPU overhead.
+  See [Compression](#compression) in the [Advanced](#advanced-arrow-topics)
+  section for more information on compression and when to use it.
 
-## Compression
+### Run the workflow
 
-Setting `EnableCompression` to `True` instructs `DataFrameWriter` to compress
-each record batch using the [Zstandard](https://facebook.github.io/zstd/) codec
-before writing it to disk. Zstandard is an open-source general-purpose
-compression algorithm that offers a good balance between compression ratio and
-speed. For typical neural data, enabling compression can substantially
-reduce file sizes.
+[Start the workflow](xref:workflow-editor#starting-the-workflow). `DataFrameWriter` will write
+data to the file specified in `FileName` as the workflow runs, and will stop when the workflow
+stops.
 
-### When to enable compression
-
-Enable compression when storage space is a constraint and the additional CPU
-load during acquisition is acceptable. Compression runs on the same machine that
-is acquiring data, so it competes with the rest of your acquisition pipeline for
-CPU resources (although enabling the `Buffered` [property](#dataframewriter-properties) can
-alleviate this). For most workloads this overhead is negligible, but for very
-high-bandwidth configurations (e.g., multiple Neuropixels probes) or when
-running other computationally intensive processing in the same workflow,
-benchmark your system before relying on compression in long recordings.
-
-> [!TIP]
-> A practical way to evaluate the impact of compression on your specific
-> setup is to use a <xref:OpenEphys.Onix1.MemoryMonitorData> operator to
-> examine the state of the hardware buffer when `EnableCompression` is set to
-> True or False. If the `PercentUsed` value remains near zero in both cases,
-> compression is not impacting the real-time performance in your workflow. See
-> the [closed-loop performance tutorial](xref:tune-readsize) for more information
-> on real-time optimization.
-
-## Loading data in Python
+## Load Arrow data
 
 In Python, Arrow files can be read using
 [PyArrow](https://arrow.apache.org/docs/python/index.html). Notably, several
@@ -118,22 +105,21 @@ scientific analysis libraries such as [pandas](https://pandas.pydata.org/),
 internally to support loading Arrow files into their environment. In this
 section, we will demonstrate file loading using both PyArrow and Pandas.
 
-### Installation
+### Install Python and required packages
 
-To follow along with the examples in this section, you will need Python,
-PyArrow, and pandas. Once Python is installed, run the following command to
-install the required packages:
+Once Python is installed, run the following command to install the required packages:
 
 ```
 pip install pyarrow pandas
 ```
 
-### Loading script
+### Download the loading script
 
-Download the following script locally, and place the file in the same directory as other processing
-scripts. This script has one public function (`load_arrow_file`) which can be used to load an Arrow
-file. The following code snippets indicate how to call the function, and some of the options that
-can be leveraged when loading.
+Download the loading script and place it in the same directory as your other processing scripts.
+The script provides a single public function, `load_arrow_file`, which loads data from an Arrow
+file efficiently using [zero-copy](https://en.wikipedia.org/wiki/Zero-copy) memory mapping. The optional
+`start`, `end`, and `columns` parameters allow loading only the rows and columns you need without
+reading the full file into memory.
 
 [Download loading script](../../scripts/tutorials/data-frame-writer/load_arrow.py)
 
@@ -145,79 +131,36 @@ can be leveraged when loading.
 
 ### Load Arrow file
 
-To load the full Arrow file, simply call `load_arrow_file` with a string pointing to the file; this
-can be an absolute file path or a relative file path.
+To load the full Arrow file, simply call `load_arrow_file` with a string
+pointing to the file; this can be an absolute file path or a relative file path.
 
 [!code-python[](../../scripts/tutorials/data-frame-writer/load-file.py)]
 
-### Load Arrow file with start and end indices
+The optional `start` and `end` parameters are integers that specify the first
+and last row indices (0-based) to read from the file. The optional `columns`
+parameter is a list of strings that restricts loading to specific channels by
+name. Any combination of these parameters can be used together to avoid loading
+the full file into memory, which can reduce load time significantly for large
+recordings.
 
-To only load a subset of the file, call `load_arrow_file` with the optional `start` and `end`
-parameters specified. The resulting table will contain the samples specified instead of the full
-file. If either index is outside of the valid range, an `IndexError` is thrown which will specify
-what the valid range of indices is.
+[!code-python[](../../scripts/tutorials/data-frame-writer/load-file-with-optional-parameters.py)]
 
-[!code-python[](../../scripts/tutorials/data-frame-writer/load-file-with-start-and-end-indices.py)]
+If `start` or `end` is outside the valid row index range, an `IndexError` is
+raised indicating what the valid range is. If any string in `columns` does not
+match a column name in the file, a `KeyError` is raised.
 
-### Load Arrow file with specific columns
+> [!NOTE]
+> Compressed and uncompressed files are loaded identically. PyArrow reads the
+> compression metadata in each record batch header and decompresses
+> automatically when necessary. This decompression process can incur CPU overhead
+> that extends the amount of time it takes to load a file. 
 
-To only load a subset of channels, an array of strings can be given to filter for specific channels.
-If any of the given channels do not exist in the table, a `KeyError` is thrown indicating that the
-string does not exist in the file.
-
-[!code-python[](../../scripts/tutorials/data-frame-writer/load-file-with-specific-channels.py)]
-
-### Loading compressed files
-
-You do not need to know whether a file is compressed or not in order to load
-it. PyArrow reads the compression metadata stored in each record batch header
-and decompresses the data automatically. The loading code shown in the [loading
-section](#loading-data-in-python) works identically for both compressed and
-uncompressed files.
-
-The only difference compared to loading an uncompressed file is computational
-effort. Loading a compressed file requires decompressing each record batch
-before the data can be used, which adds CPU work that is not present when
-loading an uncompressed file. For analysis of large recordings this additional
-latency may be noticeable, especially on machines with slower CPUs. If fast
-random access to large files is a priority, prefer uncompressed files.
-
-## Working with subsampled data
-
-Some ONIX device data frames contain data from streams that are acquired at
-different rates. For example, <xref:OpenEphys.Onix1.NeuropixelsV1DataFrame>
-combines AP-band spike data sampled at 30 kHz and LFP-band data sampled at 2.5
-kHz. Therefore one LFP sample corresponds to 12 consecutive primary-rate
-(AP-band) samples.
-
-When `DataFrameWriter` writes these frames, all columns in the resulting Arrow
-file share the same number of rows, set by the primary (faster) rate. Each
-subsampled value occupies `divisor` consecutive rows. For instance, each 2.5 kHz
-LFP sample appears in 12 consecutive rows of the file. Calling `.to_numpy()` on
-a subsampled column therefore returns an array in which every distinct value is
-repeated `divisor` times. To recover only the unique samples you need to take
-every `divisor`-th row; the divisor for each device and data type is listed on
-the relevant data frame API page.
-
-### Extracting unique subsampled values
-
-The script below uses the known sample rate divisor to build a boolean mask that
-selects only the rows containing new data. The same mask is applied to the
-`Clock` column so that timestamps remain consistent with the subsampled data.
-
-[!code-python[](../../scripts/tutorials/data-frame-writer/load-subsampled-data.py)]
-
-After applying the mask, `data_unique` and `clock_unique` contain only the distinct LFP samples.
-Divide `clock_unique` by the acquisition clock rate to convert clock counts to seconds. See
-[Reading the acquisition clock rate](#reading-the-acquisition-clock-rate) for how to load that
-value from the metadata CSV file.
-
-## Converting to other formats
+### Converting to other formats
 
 PyArrow can convert Arrow tables into several other formats for use with different libraries and
 workflows.
 
-### Converting to a pandas DataFrame
+#### Converting to a pandas DataFrame
 
 If your analysis uses pandas, you can convert an Arrow Table to a DataFrame by calling `.to_pandas()`:
 
@@ -234,7 +177,7 @@ df = table.to_pandas()
 > maintain memory mapping across boundaries, but it is not guaranteed. Keep this in mind when
 > working with long recordings on machines with limited memory.
 
-### Using pandas directly
+#### Using pandas directly
 
 It is also possible to load an Arrow file directly with Pandas using
 [`pandas.read_feather()`](https://pandas.pydata.org/docs/reference/api/pandas.read_feather.html),
@@ -254,12 +197,11 @@ expose sample-index access, so there is no way to read only a portion of the
 recording without first loading the whole file. For large or long recordings,
 the memory-mapped approach described previously is preferable.
 
-### Exporting to NumPy
+#### Exporting to NumPy
 
-Individual columns can be extracted as NumPy arrays using `.to_numpy()`. For large recordings,
-replace `reader.read_all()` with a batch loop using `reader.get_batch(i)` and process each batch
-incrementally (as shown [below](#manually-loading-arrow-files)) to avoid loading the entire file
-into RAM at once.
+Individual columns can be extracted as NumPy arrays using `.to_numpy()`. For large recordings, pass
+start and end indices to `load_arrow_file()` (as shown [previously](#load-arrow-file)) to avoid
+loading the entire file into RAM at once.
 
 ```python
 from load_arrow import load_arrow_file
@@ -270,7 +212,7 @@ percent_used = table["PercentUsed"].to_numpy()
 clock = table["Clock"].to_numpy()
 ```
 
-## Plotting data from an Arrow file in Python
+## Plot Arrow data
 
 The examples in this section also require `matplotlib`. Install it alongside the
 packages above if you have not already:
@@ -291,7 +233,7 @@ be divided by the acquisition clock rate to produce a time value in seconds.
 
 ### Reading the acquisition clock rate
 
-The example workflow shown [above](#adding-dataframewriter-to-a-workflow) writes
+The example workflow shown [above](#set-up-a-workflow) writes
 acquisition metadata, including the clock rate, to a `start-time_<suffix>.csv`
 file each time it runs. Load it with NumPy before plotting:
 
@@ -343,7 +285,6 @@ column-based indexing, which can make exploratory analysis more concise. The pan
 the memory monitor data looks like this:
 
 ```python
-import pyarrow as pa
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -355,6 +296,7 @@ meta = np.genfromtxt("start-time_0.csv", delimiter=',', dtype=dt)
 acq_clk_hz = meta['acq_clk_hz']
 
 table = load_arrow_file("memory-monitor_0.arrow")
+df = table.to_pandas()
 
 df["time_s"] = df["Clock"] / acq_clk_hz
 
@@ -384,9 +326,27 @@ plt.show()
 > memory usage limits. For short recordings this is a convenient workflow, but for large files on
 > memory-limited machines, prefer working directly with the PyArrow table as shown above.
 
-# Advanced Arrow Topics
+## Working with subsampled data
 
-## What is the Apache Arrow file format?
+Some ONIX device data frames contain data from streams that are acquired at
+different rates. For example, <xref:OpenEphys.Onix1.NeuropixelsV1DataFrame>
+combines AP-band spike data sampled at 30 kHz and LFP-band data sampled at 2.5
+kHz. Because all columns share the row count of the faster AP-band stream, each
+LFP value repeats 12 rows in the loaded data. The following script extracts only
+the unique LFP samples and their corresponding `Clock` values from the loaded data.
+
+[!code-python[](../../scripts/tutorials/data-frame-writer/load-subsampled-data.py)]
+
+Divide `clock_unique` by the acquisition clock rate to convert clock counts to seconds. See
+[Reading the acquisition clock rate](#reading-the-acquisition-clock-rate) for how to load that
+value from the metadata CSV file.
+
+See the [Subsampled data](#subsampled-data) section for a more detailed
+explanation.
+
+## Advanced Arrow Topics
+
+### What is the Apache Arrow file format?
 
 Apache Arrow files organize data in a
 [column-oriented](https://en.wikipedia.org/wiki/Data_orientation#Column-oriented)
@@ -413,7 +373,7 @@ prior knowledge of the data layout in order to be loaded correctly.
 > check out [this section](#converting-to-other-formats) for details on how to convert the data into
 > other formats.
 
-## How data is written
+### How data is written
 
 `DataFrameWriter` does not write one row to disk per incoming frame. Instead, it
 accumulates frames into an in-memory buffer and writes them to disk as a single
@@ -425,14 +385,56 @@ first.
 This batching strategy keeps disk I/O efficient without placing any special
 requirements on your workflow structure.
 
-## Manually Loading Arrow Files
+### Compression
 
-The scripts provided in the [loading section](#loading-data-in-python) utilize the [provided
-script](#loading-script) to handle loading data without you needing to know any specifics about how
+When `EnableCompression` is `true`, `DataFrameWriter` compresses each record
+batch using the [Zstandard](https://facebook.github.io/zstd/) codec before
+writing it to disk. Zstandard is an open-source general-purpose algorithm that
+balances compression ratio and speed. Since compression runs on the same machine
+that is acquiring data, it competes with the rest of the acquisition pipeline
+for CPU resources. For experiments that combine high-bandwidth hardware
+configurations (e.g., multiple Neuropixels probes) or computationally intensive
+workflows with long recordings and low-latency (e.g., sub-millisecond)
+closed-loop feedback, benchmark the system with compression enabled.
+
+> [!TIP]
+> - To evaluate the impact of compression on your specific setup, compare the
+>   data from a <xref:OpenEphys.Onix1.MemoryMonitorData> operator to examine the
+>   state of the hardware buffer when `EnableCompression` is set to `true` and
+>   when it is set to `false`. If the `PercentUsed` value remains near zero in
+>   both cases, compression does not risk buffer overflow and might not be
+>   impacting the real-time performance. Refer to the [Tuning closed-loop
+>   performance tutorial](xref:tune-readsize) for more information.
+> - Enabling the [`Buffered` property](#configure-dataframewriter) can
+>   alleviate the CPU overhead by offloading compression to a background thread. 
+
+### Subsampled data
+
+When `DataFrameWriter` writes frames that contain streams acquired at different
+rates, all columns in the resulting Arrow file share the same number of rows,
+set by the primary (faster) rate. Each subsampled value therefore occupies
+`stride` consecutive rows. For instance, each 2.5 kHz LFP sample from a
+`NeuropixelsV1DataFrame` appears in 12 consecutive rows of the file to match the
+30 kHz spike data sample rate. This is a form of [run-length
+encoding](https://en.wikipedia.org/wiki/Run-length_encoding). Calling
+`.to_numpy()` on a subsampled column returns an array in which every distinct
+value is repeated `stride` times. To recover only unique values, the [Working
+with subsampled data script](#working-with-subsampled-data) applies a boolean
+mask with `True` at every `stride`-th index. This is an example of [strided
+indexing](https://en.wikipedia.org/wiki/Stride_of_an_array), which selects only
+the rows that contain new samples. The sample rate for each device is listed on
+the relevant data frame [API page](xref:data-elements) (e.g.,
+<xref:OpenEphys.Onix1.NeuropixelsV1DataFrame>), from which the stride can be
+calculated.
+
+### Manually Loading Arrow Files
+
+The scripts provided in the [loading section](#load-arrow-data) utilize the [provided
+script](#download-the-loading-script) to handle loading data without you needing to know any specifics about how
 to access the data. In this section, we provide some code snippets that could be used to manually
 interact with the Arrow file in cases where the provided script does not meet some need.
 
-### Memory-mapped loading
+#### Memory-mapped loading
 
 The most efficient way to read Arrow files in Python is to open the file as a memory map and pass it
 to `pyarrow.ipc.open_file()`. With this approach, PyArrow maps the file into the process's virtual
@@ -475,7 +477,7 @@ with pa.memory_map("memory-monitor_0.arrow", "r") as source:
         table = pa.Table.from_batches(reader.get_batch(i) for i in indices)
 ```
 
-## Loading and recovering corrupt files
+### Loading and recovering corrupt files
 
 If a power outage or other unforeseen event occurs during recording and leaves
 the file in a state where it cannot be opened by the example scripts above, the
@@ -490,7 +492,7 @@ following scripts can be used to recover a file that has closed exceptionally.
 > (unhandled exception, out-of-memory condition, power outage, etc.) can always
 > be recovered.
 
-### Recovering an Arrow file with invalid footer
+#### Recovering an Arrow file with invalid footer
 
 If recording is interrupted, the file may be missing the footer that Arrow uses to index record
 batches, causing PyArrow to raise `ArrowInvalid: Not an Arrow file` when you try to open it. This
@@ -501,7 +503,7 @@ written to a new file, which automatically generates a valid footer on close.
 
 [!code-python[](../../scripts/tutorials/data-frame-writer/recover-invalid-footer.py)]
 
-### Recovering an Arrow file with corrupted batches
+#### Recovering an Arrow file with corrupted batches
 
 This script reads an Arrow file with an intact footer that has been corrupted in some other way
 (invalid buffers, corrupted headers, etc.) and writes all valid batches to a new file. One error
@@ -515,12 +517,12 @@ in IPC file format`.
 
 [!code-python[](../../scripts/tutorials/data-frame-writer/recover-corrupted-batches.py)]
 
-### Handling compressed data
+#### Handling compressed data
 
 If the corrupt data file was originally saved with compression and you want to
 re-save the recovered data with compression, pass an `IpcWriteOptions` object to
 `pa.ipc.new_file()`. The example below applies Zstandard compression, which is
-the same algorithm used by `DataFrameWriter` when `EnableCompression` is `True`.
+the same algorithm used by `DataFrameWriter` when `EnableCompression` is `true`.
 The change is the same for both recovery scripts above; this example uses the
 [invalid footer](#recovering-an-arrow-file-with-invalid-footer) script:
 
