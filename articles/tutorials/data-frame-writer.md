@@ -150,37 +150,24 @@ pointing to the file; this can be an absolute file path or a relative file path.
 
 [!code-python[](../../scripts/tutorials/data-frame-writer/load-file.py)]
 
-### Load Arrow file with start and end indices
+The optional `start` and `end` parameters are integers that specify the first
+and last row indices (0-based) to read from the file. The optional `columns`
+parameter is a list of strings that restricts loading to specific channels by
+name. Any combination of these parameters can be used together to avoid loading
+the full file into memory, which can reduce load time significantly for large
+recordings.
 
-To only load a subset of the file, call `load_arrow_file` with the optional `start` and `end`
-parameters specified. The resulting table will contain the samples specified instead of the full
-file. If either index is outside of the valid range, an `IndexError` is thrown which will specify
-what the valid range of indices is.
+[!code-python[](../../scripts/tutorials/data-frame-writer/load-file-with-optional-parameters.py)]
 
-[!code-python[](../../scripts/tutorials/data-frame-writer/load-file-with-start-and-end-indices.py)]
+If `start` or `end` is outside the valid row index range, an `IndexError` is
+raised indicating what the valid range is. If any string in `columns` does not
+match a column name in the file, a `KeyError` is raised.
 
-### Load Arrow file with specific columns
-
-To only load a subset of channels, an array of strings can be given to filter for specific channels.
-If any of the given channels do not exist in the table, a `KeyError` is thrown indicating that the
-string does not exist in the file.
-
-[!code-python[](../../scripts/tutorials/data-frame-writer/load-file-with-specific-channels.py)]
-
-### Loading compressed files
-
-You do not need to know whether a file is compressed or not in order to load
-it. PyArrow reads the compression metadata stored in each record batch header
-and decompresses the data automatically. The loading code shown in the [loading
-section](#loading-data-in-python) works identically for both compressed and
-uncompressed files.
-
-The only difference compared to loading an uncompressed file is computational
-effort. Loading a compressed file requires decompressing each record batch
-before the data can be used, which adds CPU work that is not present when
-loading an uncompressed file. For analysis of large recordings this additional
-latency may be noticeable, especially on machines with slower CPUs. If fast
-random access to large files is a priority, prefer uncompressed files.
+> [!NOTE]
+> Compressed and uncompressed files are loaded identically. PyArrow reads the
+> compression metadata in each record batch header and decompresses
+> automatically when necessary. This decompression process can incur CPU overhead
+> that extends the amount of time it takes to load a file. 
 
 ## Working with subsampled data
 
