@@ -16,7 +16,7 @@ in Python.
 
 The first section walks through how to save, load, and plot data written by a
 `DataFrameWriter` using Python. More detailed explanations are covered in the
-[Advanced](#advanced-arrow-topics) at the end of this article.
+[Advanced](#advanced-arrow-topics) section at the end of this article.
 
 > [!NOTE]
 > Arrow is supported by many scientific computing environments. For instance:
@@ -67,9 +67,11 @@ node to a workflow and adapt the scripts according to your needs to follow along
   workflow starts. Choose one of three options:
   - `None` (default): No suffix is added. If a file at the specified path already exists and
     `Overwrite` is `false`, the workflow raises an error on startup.
-  - `FileCount`: Appends an underscore followed by a count of files already in the same directory
-    with the same base name and extension (`_0`, `_1`, `_2`, …). Use this to automatically number
-    successive recordings without having to rename the node before each run.
+  - `FileCount`: Appends the count of files already in the same directory
+    with the same base name and extension (`0`, `1`, `2`, …). Use this to automatically number
+    successive recordings without having to rename the node before each run. Adding an underscore at
+    the end of the `FileName`, but before the extension, separates the suffix from the filename
+    (e.g., `data/memory-monitor_.arrow`).
   - `Timestamp`: Appends an underscore followed by a high-resolution system timestamp at the moment
     the file is created (ISO 8601 format), guaranteeing a unique file name for every run.
 
@@ -127,7 +129,7 @@ reading the full file into memory.
 [!code-python[](../../scripts/tutorials/data-frame-writer/load_arrow.py)]
 </details>
 
-### Load Arrow data
+### Load Arrow file
 
 To load the full Arrow file, simply call `load_arrow_file` with a string
 pointing to the file; this can be an absolute file path or a relative file path.
@@ -197,10 +199,9 @@ the memory-mapped approach described previously is preferable.
 
 #### Exporting to NumPy
 
-Individual columns can be extracted as NumPy arrays using `.to_numpy()`. For large recordings,
-replace `reader.read_all()` with a batch loop using `reader.get_batch(i)` and process each batch
-incrementally (as shown [below](#manually-loading-arrow-files)) to avoid loading the entire file
-into RAM at once.
+Individual columns can be extracted as NumPy arrays using `.to_numpy()`. For large recordings, pass
+start and end indices to `load_arrow_file()` (as shown [previously](#load-arrow-file)) to avoid
+loading the entire file into RAM at once.
 
 ```python
 from load_arrow import load_arrow_file
@@ -284,7 +285,6 @@ column-based indexing, which can make exploratory analysis more concise. The pan
 the memory monitor data looks like this:
 
 ```python
-import pyarrow as pa
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -296,6 +296,7 @@ meta = np.genfromtxt("start-time_0.csv", delimiter=',', dtype=dt)
 acq_clk_hz = meta['acq_clk_hz']
 
 table = load_arrow_file("memory-monitor_0.arrow")
+df = table.to_pandas()
 
 df["time_s"] = df["Clock"] / acq_clk_hz
 
@@ -386,7 +387,7 @@ requirements on your workflow structure.
 
 ### Compression
 
-When `EnableCompression` is `True`, `DataFrameWriter` compresses each record
+When `EnableCompression` is `true`, `DataFrameWriter` compresses each record
 batch using the [Zstandard](https://facebook.github.io/zstd/) codec before
 writing it to disk. Zstandard is an open-source general-purpose algorithm that
 balances compression ratio and speed. Since compression runs on the same machine
@@ -399,8 +400,8 @@ closed-loop feedback, benchmark the system with compression enabled.
 > [!TIP]
 > - To evaluate the impact of compression on your specific setup, compare the
 >   data from a <xref:OpenEphys.Onix1.MemoryMonitorData> operator to examine the
->   state of the hardware buffer when `EnableCompression` is set to True and
->   when it is set to False. If the `PercentUsed` value remains near zero in
+>   state of the hardware buffer when `EnableCompression` is set to `true` and
+>   when it is set to `false`. If the `PercentUsed` value remains near zero in
 >   both cases, compression does not risk buffer overflow and might not be
 >   impacting the real-time performance. Refer to the [Tuning closed-loop
 >   performance tutorial](xref:tune-readsize) for more information.
@@ -521,7 +522,7 @@ in IPC file format`.
 If the corrupt data file was originally saved with compression and you want to
 re-save the recovered data with compression, pass an `IpcWriteOptions` object to
 `pa.ipc.new_file()`. The example below applies Zstandard compression, which is
-the same algorithm used by `DataFrameWriter` when `EnableCompression` is `True`.
+the same algorithm used by `DataFrameWriter` when `EnableCompression` is `true`.
 The change is the same for both recovery scripts above; this example uses the
 [invalid footer](#recovering-an-arrow-file-with-invalid-footer) script:
 
