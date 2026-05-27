@@ -15,7 +15,7 @@ metadata file is needed to read it correctly. This tutorial explains how to use
 in Python.
 
 The first section walks through how to save, load, and plot data written by a
-`DataFrameWriter` using Python. More detailed explanation are considered in the
+`DataFrameWriter` using Python. More detailed explanations are covered in the
 [Advanced](#advanced-arrow-topics) at the end of this article.
 
 > [!NOTE]
@@ -49,7 +49,7 @@ elements, meaning it can be placed downstream of virtually any [data source
 node](xref:datasource). You can use the example workflow below which saves data
 from several Breakout Board devices. The scripts on this page assume you are
 loading data from this workflow. However, you can also add a `DataFrameWriter`
-node to a workflow and adapt the scripts according to your needs to follow
+node to a workflow and adapt the scripts according to your needs to follow along.
 
 ::: workflow
 ![workflow for testing DataFrameWriter with Breakout Board data](../../workflows/tutorials/data-frame-writer/data-frame-writer-example.bonsai)
@@ -421,7 +421,7 @@ value is repeated `stride` times. To recover only unique values, the [Working
 with subsampled data script](#working-with-subsampled-data) applies a boolean
 mask with `True` at every `stride`-th index. This is an example of [strided
 indexing](https://en.wikipedia.org/wiki/Stride_of_an_array), which selects only
-the rows that contains new samples. The sample rate for each device is listed on
+the rows that contain new samples. The sample rate for each device is listed on
 the relevant data frame [API page](xref:data-elements) (e.g.,
 <xref:OpenEphys.Onix1.NeuropixelsV1DataFrame>), from which the stride can be
 calculated.
