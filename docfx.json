@@ -39,7 +39,13 @@
         ]
       }
     ],
-    "resource": ["onix-logo.svg", "favicon.png", "images/**", "workflows/**"],
+    "resource": [
+      "onix-logo.svg",
+      "favicon.png",
+      "images/**",
+      "workflows/**",
+      "scripts/**"
+      ],
     "output": "_site",
     "overwrite": [
       {
