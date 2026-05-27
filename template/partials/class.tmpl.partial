@@ -27,6 +27,8 @@
 {{/oe.operator}}
 {{/oe.operator.workflow}}
 
+{{{conceptual}}}
+
 <h2>Properties</h2>
 
 {{#oe.operator.hub}}

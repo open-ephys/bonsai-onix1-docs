@@ -9,6 +9,17 @@
       "dest": "api",
       "filter": "filter.yml",
       "enumSortOrder": "declaringOrder"
+    },
+    {
+      "src": [
+        {
+          "files": ["Bonsai.System.dll"],
+          "src": "_external-stage"
+        }
+      ],
+      "dest": "_external-api",
+      "filter": "filter.external.yml",
+      "enumSortOrder": "declaringOrder"
     }
   ],
   "build": {
@@ -20,14 +31,30 @@
     "content": [ 
       {
         "files": ["articles/**.{md,yml}", "api/**.{md,yml}", "toc.yml", "index.md"],
-        "exclude": ["api/overview.md"]
+        "exclude": [
+          "api/overview.md",
+          "api/dataframewriter-overview.md",
+          "api/OpenEphys.Onix1.Headstage64OpticalStimulatorTrigger.md",
+          "api/OpenEphys.Onix1.Headstage64ElectricalStimulatorTrigger.md"
+        ]
       }
     ],
-    "resource": ["onix-logo.svg", "favicon.png", "images/**", "workflows/**"],
+    "resource": [
+      "onix-logo.svg",
+      "favicon.png",
+      "images/**",
+      "workflows/**",
+      "scripts/**"
+      ],
     "output": "_site",
     "overwrite": [
       {
-        "files": ["api/overview.md"]
+        "files": [
+          "api/overview.md",
+          "api/dataframewriter-overview.md",
+          "api/OpenEphys.Onix1.Headstage64OpticalStimulatorTrigger.md",
+          "api/OpenEphys.Onix1.Headstage64ElectricalStimulatorTrigger.md"
+        ]
       }
     ],
     "template": ["default", "modern", "template", "docfx-tools/template"],

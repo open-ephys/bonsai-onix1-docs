@@ -56,7 +56,7 @@ function extractPropertiesData(model, sharedModel) {
 }
 
 function extractPropertiesFromInheritedMembersData(model, sharedModel) {
-  return model.inheritedMembers
+  return (model.inheritedMembers || [])
     .filter(filterProperties)
     .map(inheritedMember => 
     (

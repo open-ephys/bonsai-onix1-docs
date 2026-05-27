@@ -12,23 +12,18 @@
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="onix1:ConfigureNeuropixelsV1e">
-          <onix1:DeviceName>HeadstageNeuropixelsV1e/NeuropixelsV1e</onix1:DeviceName>
-          <onix1:DeviceAddress>256</onix1:DeviceAddress>
+        <Combinator xsi:type="onix1:ConfigureNeuropixelsV2PsbDecoder">
+          <onix1:DeviceAddress>0</onix1:DeviceAddress>
           <onix1:Enable>true</onix1:Enable>
-          <onix1:EnableLed>true</onix1:EnableLed>
           <onix1:ProbeConfiguration>
-            <onix1:SpikeAmplifierGain>Gain1000</onix1:SpikeAmplifierGain>
-            <onix1:LfpAmplifierGain>Gain50</onix1:LfpAmplifierGain>
+            <onix1:InvertPolarity>true</onix1:InvertPolarity>
             <onix1:Reference>External</onix1:Reference>
-            <onix1:SpikeFilter>true</onix1:SpikeFilter>
-            <onix1:InvertPolarity>false</onix1:InvertPolarity>
           </onix1:ProbeConfiguration>
         </Combinator>
       </Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="onix1:StartAcquisition">
-          <onix1:ReadSize>2048</onix1:ReadSize>
+          <onix1:ReadSize>8192</onix1:ReadSize>
           <onix1:WriteSize>2048</onix1:WriteSize>
         </Combinator>
       </Expression>

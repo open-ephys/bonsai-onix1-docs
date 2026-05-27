@@ -3,19 +3,20 @@ uid: onix-acquisition
 title: Data Acquisition
 ---
 
-Data produced by ONIX hardware is captured using data input
-operators and sent to hardware using data output operators, respectively. This
-section covers their use.
+Data flows into a Bonsai workflow from ONIX hardware through [data source
+operators](xref:datasource), and back out to the hardware through [data sink
+operators](xref:datasink). This section covers how to use them.
 
-## Acquire Data
+## Acquiring Data
 
-Streaming data into Bonsai requires at least one [data I/O operator](xref:dataio).
+Streaming data from ONIX hardware into Bonsai requires at least one [data source
+operator](xref:datasource).
 
-### Set up data I/O operator(s)
+### Set up data source operator(s)
 
-Place a data I/O operator and set its DeviceName property for every device from which you would like
+Place a data source operator and set its DeviceName property for every device from which you would like
 to stream. Setting the DeviceName property will tell the operator from which device to stream data.
-This is referred to linking the data I/O operator to the device. Take this workflow for example:
+This is referred to linking the data source operator to the device. Take this workflow for example:
 
 ::: workflow
 ![Workflow with data operator](../../workflows/getting-started/polled-bno055.bonsai)
@@ -28,7 +29,7 @@ AnalogIO device on the breakout board.
 
 ### Multiple headstages/miniscopes
 
-Linking the data I/O operator to devices when using two identical headstages or
+Linking the data source operator to devices when using two identical headstages or
 miniscopes involves an additional step: renaming a configuration operator.
 Suppose you want to stream orientation data from two Neuropixels 2.0 Headstages
 through using two <xref:OpenEphys.Onix1.PolledBno055Data> operators. By default,
@@ -67,14 +68,14 @@ three systems are used, they would have `Index` values of 0, 1, and 2. etc.
 ![/workflows/getting-started/multiple-breakout.bonsai workflow](../../workflows/getting-started/multiple-breakout.bonsai)
 :::
 
-Now that you can stream data into Bonsai from ONIX hardware, the next step is
+Now that you can stream data into Bonsai from ONIX hardware, the next step is to
 visualize the data.
 
-## Minimum Version Check
+<!-- ## Minimum Version Check
 
 If you start a workflow and are presented with an exception such as this:
 
 ![Exception showing an attempt to acquire from device with unsupported gateware version](../../images/unsupported-version.png)
 
 you must revert to a software version
-that supports the indicated version of the gateware. 
+that supports the indicated version of the gateware. -->
