@@ -75,38 +75,10 @@ reference is on the <xref:OpenEphys.Onix1.DataFrameWriter.DataFrameWriter> page.
   already exists. This setting has no practical effect when `Suffix` is `FileCount` or `Timestamp`,
   because those modes always produce a unique file name.
 
-- **EnableCompression** (default: `false`) When `true`, data is compressed with
-  [Zstandard](https://facebook.github.io/zstd/) before being written to disk. See the
-  [Compression](#compression) section for guidance on when to enable this.
-
-### Compression
-
-Setting `EnableCompression` to `True` instructs `DataFrameWriter` to compress
-each record batch using the [Zstandard](https://facebook.github.io/zstd/) codec
-before writing it to disk. Zstandard is an open-source general-purpose
-compression algorithm that offers a good balance between compression ratio and
-speed. For typical neural data, enabling compression can substantially
-reduce file sizes.
-
-#### When to enable compression
-
-Enable compression when storage space is a constraint and the additional CPU
-load during acquisition is acceptable. Compression runs on the same machine that
-is acquiring data, so it competes with the rest of your acquisition pipeline for
-CPU resources (although enabling the `Buffered` [property](#dataframewriter-properties) can
-alleviate this). For most workloads this overhead is negligible, but for very
-high-bandwidth configurations (e.g., multiple Neuropixels probes) or when
-running other computationally intensive processing in the same workflow,
-benchmark your system before relying on compression in long recordings.
-
-> [!TIP]
-> A practical way to evaluate the impact of compression on your specific
-> setup is to use a <xref:OpenEphys.Onix1.MemoryMonitorData> operator to
-> examine the state of the hardware buffer when `EnableCompression` is set to
-> True or False. If the `PercentUsed` value remains near zero in both cases,
-> compression is not impacting the real-time performance in your workflow. See
-> the [closed-loop performance tutorial](xref:tune-readsize) for more information
-> on real-time optimization.
+- **EnableCompression** (default: `false`) When `true`, data is compressed
+  before being written to disk to reduce file size at the cost of CPU overhead.
+  See [Compression](#compression) in the [Advanced](#advanced-arrow-topics)
+  section for more information on compression and when to use it.
 
 ## Load Arrow data
 
@@ -398,6 +370,29 @@ first.
 
 This batching strategy keeps disk I/O efficient without placing any special
 requirements on your workflow structure.
+
+### Compression
+
+When `EnableCompression` is `True`, `DataFrameWriter` compresses each record
+batch using the [Zstandard](https://facebook.github.io/zstd/) codec before
+writing it to disk. Zstandard is an open-source general-purpose algorithm that
+balances compression ratio and speed. Since compression runs on the same machine
+that is acquiring data, it competes with the rest of the acquisition pipeline
+for CPU resources. For experiments that combine high-bandwidth hardware
+configurations (e.g., multiple Neuropixels probes) or computationally intensive
+workflows with long recordings and low-latency (e.g., sub-millisecond)
+closed-loop feedback, benchmark the system with compression enabled.
+
+> [!TIP]
+> - To evaluate the impact of compression on your specific setup, compare the
+>   data from a <xref:OpenEphys.Onix1.MemoryMonitorData> operator to examine the
+>   state of the hardware buffer when `EnableCompression` is set to True and
+>   when it is set to False. If the `PercentUsed` value remains near zero in
+>   both cases, compression does not risk buffer overflow and might not be
+>   impacting the real-time performance. Refer to the [Tuning closed-loop
+>   performance tutorial](xref:tune-readsize) for more information.
+> - Enabling the [`Buffered` property](#dataframewriter-properties) can
+>   alleviate the CPU overhead by offloading compression to a background thread. 
 
 ### Subsampled data
 
