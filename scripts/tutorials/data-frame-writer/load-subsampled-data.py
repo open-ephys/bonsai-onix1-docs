@@ -7,10 +7,10 @@ data_cols = [name for name in table.schema.names if "LfpData" in name]
 data = np.column_stack([table[col].to_numpy() for col in data_cols])
 clock = table["Clock"].to_numpy()
 
-divisor = 12  # 30 kHz primary rate / 2.5 kHz LFP rate for NeuropixelsV1
+stride = 12  # 30 kHz primary rate / 2.5 kHz LFP rate for NeuropixelsV1
 
 mask = np.zeros(len(clock), dtype=bool)
-mask[::divisor] = True
+mask[::stride] = True
 
 data_unique = data[mask]    # shape: (num_unique_lfp_samples, num_channels)
 clock_unique = clock[mask]  # acquisition clock counts at each unique LFP sample

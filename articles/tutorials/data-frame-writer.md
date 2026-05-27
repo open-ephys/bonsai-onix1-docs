@@ -173,30 +173,18 @@ match a column name in the file, a `KeyError` is raised.
 Some ONIX device data frames contain data from streams that are acquired at
 different rates. For example, <xref:OpenEphys.Onix1.NeuropixelsV1DataFrame>
 combines AP-band spike data sampled at 30 kHz and LFP-band data sampled at 2.5
-kHz. Therefore one LFP sample corresponds to 12 consecutive primary-rate
-(AP-band) samples.
-
-When `DataFrameWriter` writes these frames, all columns in the resulting Arrow
-file share the same number of rows, set by the primary (faster) rate. Each
-subsampled value occupies `divisor` consecutive rows. For instance, each 2.5 kHz
-LFP sample appears in 12 consecutive rows of the file. Calling `.to_numpy()` on
-a subsampled column therefore returns an array in which every distinct value is
-repeated `divisor` times. To recover only the unique samples you need to take
-every `divisor`-th row; the divisor for each device and data type is listed on
-the relevant data frame API page.
-
-### Extracting unique subsampled values
-
-The script below uses the known sample rate divisor to build a boolean mask that
-selects only the rows containing new data. The same mask is applied to the
-`Clock` column so that timestamps remain consistent with the subsampled data.
+kHz. Because all columns share the row count of the faster AP-band stream, each
+LFP value repeats 12 rows in the loaded data. The following script extracts only
+the unique LFP samples and their corresponding `Clock` values from the loaded data.
 
 [!code-python[](../../scripts/tutorials/data-frame-writer/load-subsampled-data.py)]
 
-After applying the mask, `data_unique` and `clock_unique` contain only the distinct LFP samples.
 Divide `clock_unique` by the acquisition clock rate to convert clock counts to seconds. See
 [Reading the acquisition clock rate](#reading-the-acquisition-clock-rate) for how to load that
 value from the metadata CSV file.
+
+See the [Subsampled data](#subsampled-data) section for a more detailed
+explanation.
 
 ### Converting to other formats
 
@@ -411,9 +399,28 @@ first.
 This batching strategy keeps disk I/O efficient without placing any special
 requirements on your workflow structure.
 
+### Subsampled data
+
+When `DataFrameWriter` writes frames that contain streams acquired at different
+rates, all columns in the resulting Arrow file share the same number of rows,
+set by the primary (faster) rate. Each subsampled value therefore occupies
+`stride` consecutive rows. For instance, each 2.5 kHz LFP sample from a
+`NeuropixelsV1DataFrame` appears in 12 consecutive rows of the file to match the
+30 kHz spike data sample rate. This is a form of [run-length
+encoding](https://en.wikipedia.org/wiki/Run-length_encoding). Calling
+`.to_numpy()` on a subsampled column returns an array in which every distinct
+value is repeated `stride` times. To recover only unique values, the [Working
+with subsampled data script](#working-with-subsampled-data) applies a boolean
+mask with `True` at every `stride`-th index. This is an example of [strided
+indexing](https://en.wikipedia.org/wiki/Stride_of_an_array), which selects only
+the rows that contains new samples. The sample rate for each device is listed on
+the relevant data frame [API page](xref:data-elements) (e.g.,
+<xref:OpenEphys.Onix1.NeuropixelsV1DataFrame>), from which the stride can be
+calculated.
+
 ### Manually Loading Arrow Files
 
-The scripts provided in the [loading section](#loading-data-in-python) utilize the [provided
+The scripts provided in the [loading section](#load-arrow-data) utilize the [provided
 script](#loading-script) to handle loading data without you needing to know any specifics about how
 to access the data. In this section, we provide some code snippets that could be used to manually
 interact with the Arrow file in cases where the provided script does not meet some need.
