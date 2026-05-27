@@ -105,6 +105,13 @@ scientific analysis libraries such as [pandas](https://pandas.pydata.org/),
 internally to support loading Arrow files into their environment. In this
 section, we will demonstrate file loading using both PyArrow and Pandas.
 
+> [!NOTE]
+> Some analysis libraries, such as [SpikeInterface](https://spikeinterface.readthedocs.io/), do not
+> yet have Arrow integration. For workflows that depend on those libraries, you will need to
+> [convert](#converting-to-other-formats) the data to another format (e.g., [NumPy
+> arrays](#exporting-to-numpy)) before passing it to SpikeInterface for processing. We are working
+> towards a more direct SpikeInterface integration.
+
 ### Install Python and required packages
 
 Once Python is installed, run the following command to install the required packages:
