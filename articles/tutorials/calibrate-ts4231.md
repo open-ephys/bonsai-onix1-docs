@@ -29,8 +29,8 @@ coordinates measured by the TS4231 device to the user-defined coordinate system.
 1.  Copy the following workflow into the Bonsai workflow editor by hovering over
     the workflow image and clicking on the clipboard icon that appears.
 
-    ::: workflow ![SVG of copyable TS4231 calibration
-    workflow](../../workflows/tutorials/calibrate-ts4231/calibrate-ts4231.bonsai)
+    ::: workflow
+    ![SVG of copyable TS4231 calibration workflow](../../workflows/tutorials/calibrate-ts4231/calibrate-ts4231.bonsai)
     :::
 
     Open Bonsai and paste this workflow by clicking the Bonsai workflow editor
