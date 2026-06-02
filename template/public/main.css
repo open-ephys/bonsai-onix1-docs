@@ -6,12 +6,12 @@
 
 .tableFormat table {
   display: grid;
-  grid-template-columns: auto; 
-  margin-top: 1rem; 
+  grid-template-columns: auto;
+  margin-top: 1rem;
   margin: 0;
   padding: 0;
-  border: 0 hidden; 
-  border-collapse: collapse; 
+  border: 0 hidden;
+  border-collapse: collapse;
 }
 
 .tableFormat td {
@@ -21,9 +21,9 @@
 
 .tableFormat td.term {
   /* !important tag prevents overrides from dotnet.css associated with:
-   body[data-yaml-mime="ManagedReference"] article td.term, body[data-yaml-mime="ApiPage"] article td.term 
+   body[data-yaml-mime="ManagedReference"] article td.term, body[data-yaml-mime="ApiPage"] article td.term
    important tags are not good practice*/
-  font-weight: var(--bs-body-font-weight) !important; 
+  font-weight: var(--bs-body-font-weight) !important;
   white-space: nowrap;
 }
 
@@ -37,7 +37,7 @@
 
 figcaption {
   font-style: italic;
-  border: solid 1px var(--bs-border-color); 
+  border: solid 1px var(--bs-border-color);
   padding: 0.25rem;
 }
 
@@ -49,6 +49,38 @@ ol ol, ol ul {
 
 ol li div {
   margin-bottom: 0rem !important;
+}
+
+
+/* Indent h3-level entries in the "In this article" sidebar */
+
+#affix li:has(.link-secondary) {
+  padding-left: 0.32rem;
+  font-size:0.8rem;
+}
+
+/* Heading size hierarchy within article content */
+article h2 {
+  font-size: 1.75rem;
+}
+
+article h3 {
+  font-size: 1.5rem;
+}
+
+article h4 {
+  font-size: 1.3rem;
+  color: var(--bs-secondary-color);
+}
+
+article h5 {
+  font-size: 1.1rem;
+  color: var(--bs-secondary-color);
+}
+
+article h6 {
+  font-size: 1rem;
+  color: var(--bs-secondary-color);
 }
 
 /* Create color palette for badges */
@@ -258,4 +290,85 @@ li.nav-item > a.nav-link.active {
   justify-content: center;
   background-color: var(--oe-purple-background);
   border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+}
+
+/* Collapsible <details> / <summary> blocks */
+
+:root, [data-bs-theme=light] {
+  --oe-code-bg: #f5f5f5;
+  --oe-details-border-color: color-mix(in srgb, var(--bs-border-color), black 30%);
+}
+
+[data-bs-theme=dark] {
+  --oe-code-bg: #1e1e1e;
+  --oe-details-border-color: color-mix(in srgb, var(--bs-border-color), white 30%);
+}
+
+details {
+  border: var(--bs-border-width) var(--bs-border-style) var(--oe-details-border-color);
+  border-radius: var(--bs-border-radius);
+  margin-bottom: 1rem;
+  background-color: var(--oe-code-bg);
+}
+
+details > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--bs-border-radius);
+  color: var(--bs-link-color);
+  user-select: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details > summary::before {
+  content: "▶";
+  font-size: 0.7em;
+  transition: transform 0.15s ease;
+  flex-shrink: 0;
+  color: var(--bs-body-color);
+}
+
+details[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+details > summary:hover {
+  background-color: var(--bs-tertiary-bg);
+}
+
+details[open] > summary {
+  border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+  border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0;
+}
+
+details[open] > *:not(summary) {
+  padding: 0 0.75rem;
+}
+
+details[open] > *:last-child {
+  padding-bottom: 0.75rem;
+}
+
+details > summary .details-download {
+  margin-left: auto;
+  font-size: 0.875rem;
+  font-weight: normal;
+  color: var(--bs-link-color);
+  text-decoration: none;
+  padding: 0.1rem 0.5rem;
+  border: var(--bs-border-width) var(--bs-border-style) var(--oe-details-border-color);
+  border-radius: var(--bs-border-radius-sm);
+}
+
+details > summary .details-download:hover {
+  color: var(--bs-link-hover-color);
+  background-color: var(--bs-primary-bg-subtle);
+  text-decoration: none;
 }
