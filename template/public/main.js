@@ -20,5 +20,10 @@ export default {
   ],
   start: () => {
       WorkflowContainer.init();
+
+      // Prevent .details-download links from toggling their parent <details>
+      document.querySelectorAll('summary .details-download').forEach(link => {
+        link.addEventListener('click', e => e.stopPropagation());
+      });
   }
 }

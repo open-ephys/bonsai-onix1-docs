@@ -19,8 +19,8 @@ Open Ephys GUI:
 > - This tutorial uses NeuropixelsV1e Headstage as an example, but the process is
 >   similar for other ephys headstages. In fact, this tutorial can be used to send
 >   data from any Bonsai operator that produces [matrices](xref:OpenCV.Net.Mat).
-> - This tutorial assumes you are familiar with the <xref:data-acq-quick-start> 
->   guide for the ONIX headstage you intend to use. 
+> - This tutorial assumes you are familiar with the <xref:data-acq-quick-start>
+>   guide for the ONIX headstage you intend to use.
 > - A [video summary](#video-summary) of this tutorial is available at the
 >   bottom of this page.
 
@@ -28,10 +28,10 @@ Open Ephys GUI:
 
 Follow the [Getting Started](xref:getting-started) guide to set up and
 familiarize yourself with Bonsai. In particular, [download the necessary Bonsai
-packages](xref:install-configure-bonsai#package-installation) or [check for
-updates](xref:install-configure-bonsai#update-packages) if they're already
+packages](xref:install-configure-bonsai#package-management) or [check for
+updates](xref:install-configure-bonsai#updating-packages) if they're already
 installed. Once you've done that, copy/paste the following workflow into your
-Bonsai editor. The following sections explain how to create this workflow and 
+Bonsai editor. The following sections explain how to create this workflow and
 configure its elements.
 
 ::: workflow
@@ -48,8 +48,8 @@ set their properties:
 - **Address**: Use "localhost" if you are running Bonsai and the Open Ephys GUI
   on the same machine. Use the IP address of the machine running the GUI if not.
 - **Name**: give the TCP server a unique name. This name is used later in the
-  the workflow to specify to which server to send data. In this example, we have 
-  named them "SpikeServer" and "LfpServer". These names are arbitrary, but in 
+  the workflow to specify to which server to send data. In this example, we have
+  named them "SpikeServer" and "LfpServer". These names are arbitrary, but in
   our example they correspond to the kind of data they will transmit.
 - **Port**: choose a unique [port
   number](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers). We
@@ -119,7 +119,7 @@ streams. This operator comes from the OpenEphys.Sockets Bonsai package.
 :::
 
 Set the "Connection" property of each `SendMatOverSocket` operator to the name
-of a TCP Socket configured earlier. In this example, "SpikeServer" is used 
+of a TCP Socket configured earlier. In this example, "SpikeServer" is used
 for "SpikeData" and "LfpServer" for "LfPData".
 
 > [!TIP]
@@ -147,8 +147,8 @@ get familiarized with the Open Ephys GUI. In particular:
   [General plugin
   features](https://open-ephys.github.io/gui-docs/User-Manual/Plugins/index.html#general-plugin-features)
 
-Once you've done that, <a href="../../workflows/tutorials/ephys-socket/sockets-signal-chain" download>download</a> 
-the following signal chain and load it into the GUI. The following sections explain how to 
+Once you've done that, <a href="../../workflows/tutorials/ephys-socket/sockets-signal-chain" download>download</a>
+the following signal chain and load it into the GUI. The following sections explain how to
 create this signal chain and configure its elements.
 
 ![cropped screenshot of sockets signal chains A & B](../../images/ephys-socket-tut/sockets-signal-chain.webp)
@@ -174,9 +174,9 @@ In this tutorial we used the following values:
   encoded signed 10-bit data, so 512 corresponds to 0 volts.
 
 > [!TIP]
-> The appropriate scale and offset values for any headstage can be found by navigating to its 
-> respective Data Frame page. For example, those values for the Neuropixels 1.0 device are 
-> available on the <xref:OpenEphys.Onix1.NeuropixelsV1DataFrame> page. 
+> The appropriate scale and offset values for any headstage can be found by navigating to its
+> respective Data Frame page. For example, those values for the Neuropixels 1.0 device are
+> available on the <xref:OpenEphys.Onix1.NeuropixelsV1DataFrame> page.
 
 After configuring `Ephys Socket` processor, press the "Connect" button to
 establish a connection with the `SpikeServer` running in Bonsai.

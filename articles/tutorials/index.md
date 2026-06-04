@@ -18,4 +18,4 @@ Tutorials include:
 - [Using DataFrameWriter to Save Data](xref:data-frame-writer): explains how to add the
   `DataFrameWriter` operator to an acquisition workflow to save data in the Apache Arrow file
   format which supports efficient random access and partial loading of large datasets. This tutorial
-  also includes guidance on compression and how to load the resulting files in Python. 
+  also includes guidance on compression and how to load the resulting files in Python.
