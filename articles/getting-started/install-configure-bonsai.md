@@ -20,7 +20,7 @@ To download Bonsai, select between the portable download and the installer downl
 > When using multiple environments, create and name shortcuts such that different Bonsai
 > environments are easier to find and distinguish.
 
-## Package Installation
+## Package Management
 
 Bonsai packages expand the set of operators available to you for building useful
 workflows. For example, the `OpenEphys.Onix1` package is required to interface
@@ -66,7 +66,7 @@ It is good practice to periodically check for package updates. To do this, open 
 1. Click the `Update` tab.
 1. Set `Package source` to `All`.
 1. Leave the search bar blank if you want to check for updates for all installed
-   packages.Alternatively, if you want to check for an update for a particular
+   packages. Alternatively, if you want to check for an update for a particular
    package, you may type that package's name in the search bar to expedite the
    update retrieval process.
 1. Click `Update All` if you want to perform all available updates that appear

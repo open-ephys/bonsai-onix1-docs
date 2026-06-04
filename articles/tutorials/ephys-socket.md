@@ -28,7 +28,7 @@ Open Ephys GUI:
 
 Follow the [Getting Started](xref:getting-started) guide to set up and
 familiarize yourself with Bonsai. In particular, [download the necessary Bonsai
-packages](xref:install-configure-bonsai#package-installation) or [check for
+packages](xref:install-configure-bonsai#package-management) or [check for
 updates](xref:install-configure-bonsai#updating-packages) if they're already
 installed. Once you've done that, copy/paste the following workflow into your
 Bonsai editor. The following sections explain how to create this workflow and

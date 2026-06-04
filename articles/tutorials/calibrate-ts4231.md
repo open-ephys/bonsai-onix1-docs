@@ -23,7 +23,7 @@ coordinates measured by the TS4231 device to the user-defined coordinate system.
    in the ONIX Hardware docs.
 1. Follow the [Getting Started](xref:getting-started) guide to set up and
    familiarize yourself with Bonsai. In particular, [download the necessary
-   Bonsai packages](xref:install-configure-bonsai#package-installation) or
+   Bonsai packages](xref:install-configure-bonsai#package-management) or
    [check for updates](xref:install-configure-bonsai#updating-packages) if they're
    already installed.
 1. Copy the following workflow into the Bonsai workflow editor by hovering over
@@ -71,7 +71,7 @@ coordinates measured by the TS4231 device to the user-defined coordinate system.
 
     ![Screenshot of blank TS4231V1 Calibration GUI](../../images/tutorials/calibrate-ts4231/calibration-gui.png)
 
-1. ark four points in your behavioral arena. The position coordinates of these
+1. Mark four points in your behavioral arena. The position coordinates of these
    four points will be measured both in the TS4231 reference frame by the
    TS4231 device itself and in the user-defined reference frame. Here is a
    simple way to choose the four points:

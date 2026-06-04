@@ -13,7 +13,7 @@ Streaming data from ONIX hardware into Bonsai requires at least one [data source
 operator](xref:datasource).Place a data source operator and set its DeviceName
 property for every device from which you would like to stream. Setting the
 DeviceName property will tell the operator from which device to stream data.
-This is referred to linking the data source operator to the device. Take this
+This is referred to as linking the data source operator to the device. Take this
 workflow for example:
 
 ::: workflow
