@@ -8,9 +8,9 @@ export default {
       title: 'GitHub'
     },
     {
-      icon: 'twitter-x',
-      href: 'https://x.com/openephys',
-      title: 'X (Twitter)'
+      icon: 'bluesky',
+      href: 'https://bsky.app/profile/open-ephys.org',
+      title: 'Bluesky'
     },
     {
       icon: 'discord',
