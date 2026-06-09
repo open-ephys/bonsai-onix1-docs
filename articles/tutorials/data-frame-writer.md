@@ -216,7 +216,18 @@ table = load_arrow_file("memory-monitor_0.arrow")
 
 percent_used = table["PercentUsed"].to_numpy()
 clock = table["Clock"].to_numpy()
+
+# To save as raw binary files (similar to MatrixWriter output), uncomment:
+# clock.tofile("memory-monitor_clock_0.raw")
+# percent_used.tofile("memory-monitor_percent_0.raw")
 ```
+
+After converting to NumPy arrays, data can be written to binary files in a
+format compatible with `MatrixWriter` output. This allows users to use their
+Arrow data with existing data-loading pipelines built around `MatrixWriter`
+binary files, while retaining the data integrity benefits of Arrow during the
+writing process. This can be performed, for example, by uncommenting the last
+two lines in the above script. 
 
 ## Plotting data from Arrow files
 
