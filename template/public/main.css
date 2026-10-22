@@ -49,10 +49,38 @@
   border: 0px hidden transparent;
 }
 
-figcaption {
-  font-style: italic;
-  border: solid 1px var(--bs-border-color);
-  padding: 0.25rem;
+/* Figures read as one unit: the caption sits directly under its image, as wide as the image. */
+
+article figure {
+  display: table;
+  margin: 1.5rem 0;
+}
+
+/* NB: Markdig wraps the image in a paragraph, whose margin would part it from its caption. */
+article figure > p {
+  margin: 0;
+}
+
+article figure img,
+article figure video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--bs-border-color);
+}
+
+article figure figcaption {
+  display: table-caption;
+  caption-side: bottom;
+  margin-top: 0.4rem;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--bs-secondary-color);
+}
+
+article figure .figure-label {
+  font-weight: 600;
+  color: var(--bs-body-color);
 }
 
 /* Format markdown files */
