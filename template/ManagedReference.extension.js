@@ -13,7 +13,7 @@ function extractEnumData(model) {
     .map(child => ({
       'field&value': child.syntax.content[0].value,
       'description': [child.summary, child.remarks].join(''),
-      'id': child.uid.replaceAll('.', '_'),
+      'id': child.uid.replace(/\W/g, '_'),
     }));
 }
 
@@ -42,7 +42,7 @@ function processChildProperty(child, sharedModel) {
     },
     'configuration': configuration,
     'acquisition': acquisition,
-    'id': child.uid.replaceAll('.', '_'),
+    'id': child.uid.replace(/\W/g, '_'),
   }
 }
 
@@ -82,7 +82,7 @@ function extractConstituentOperatorsData(model) {
         'constituentOperator': true,
         'hasProperties': properties === undefined || properties.length === 0 ? false : true,
         'properties': properties,
-        'id': child.uid.replaceAll('.', '_'),
+        'id': child.uid.replace(/\W/g, '_'),
       };
     }
   );
@@ -98,7 +98,7 @@ function extractOperatorData(model) {
   hub = checkInheritance('OpenEphys.Onix1.MultiDeviceFactory');
   configureDevice = checkInheritance('OpenEphys.Onix1.SingleDeviceFactory');
   type = model.uid.includes('DeviceFactory') ? false : sink ? 'sink' : combinator ? 'combinator' : source ? 'source' : transform ? 'transform' : false;
-  if (hub) {model = model.__global._shared['~/api/OpenEphys.Onix1.MultiDeviceFactory.yml'];}
+  if (hub) {model = model.__global._shared['~/api/OpenEphys.Onix1.MultiDeviceFactory-1.yml'];}
   overloads = model.children
     .filter(child => child.name[0].value.includes('Process') || child.name[0].value.includes('Generate'))
     .map(child => ({
