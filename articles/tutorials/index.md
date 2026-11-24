@@ -19,3 +19,6 @@ Tutorials include:
   `DataFrameWriter` operator to an acquisition workflow to save data in the Apache Arrow file
   format which supports efficient random access and partial loading of large datasets. This tutorial
   also includes guidance on compression and how to load the resulting files in Python.
+- [Using Long Tethers](xref:long-tethers): explains what limits tether length and how to set the
+  port voltage manually so that tethers longer than the supplied 2.5 m deliver enough voltage to the
+  headstage.
